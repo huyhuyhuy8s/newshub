@@ -1,0 +1,347 @@
+.ng-nhp-child {
+    position: absolute;
+    top: 140px;
+    left: 515px;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    width: 450px;
+    height: 850px;
+}
+.email-rectangle {
+    position: absolute;
+    top: 26.5px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    width: 310px;
+    height: 49px;
+    padding: 5px; /* To add padding inside the input field */
+    color: #050505; /* Adjust text color if needed */
+
+}
+
+.email {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 156.5px);
+    font-size: 14px;
+    color: #695c5c;
+    display: inline-block;
+    width: 100px;
+    height: 21px;
+}
+.email-field-text {
+    position: absolute;
+    top: 150px;
+    left: 80px;
+    width: 313px;
+    height: 75px;
+}
+
+.password-field-text {
+    position: absolute;
+    top: 240px;
+    left: 80px;
+    width: 312px;
+    height: 74px;
+}
+.password-rectangle {
+    position: absolute;
+    top: 26px;
+    left: 0px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    width: 312px;
+    height: 48px;
+    padding: 5px;
+}
+.nhp-mt-khu {
+    position: absolute;
+    top: 39px;
+    left: 10px;
+}
+.eye-icon {
+    position: absolute;
+    top: 43px;
+    left: 279px;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+}
+
+.password {
+position: absolute;
+    top: 0px;
+    left: calc(50% - 156.5px);
+    font-size: 14px;
+    color: #695c5c;
+    display: inline-block;
+    width: 100px;
+    height: 21px;
+}
+
+.rectangle-remember {
+    position: absolute;
+    height: 87.83%;
+    width: 6.75%;
+    top: 7.25%;
+    right: 93.25%;
+    bottom: 4.92%;
+    left: 0%;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #cdd1e0;
+    box-sizing: border-box;
+}
+.tick-icon {
+    position: absolute;
+    height: 39.57%;
+    width: 4.06%;
+    top: 29.25%;
+    right: 94.59%;
+    bottom: 31.19%;
+    left: 1.35%;
+    border-radius: 1px;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+}
+.forgot-password-text {
+    position: absolute;
+    top: 0px;
+    left: 174.78px;
+    font-weight: 500;
+    font-family: Poppins;
+    color: #e86969;
+}
+
+.remember-me {
+    text-align: left;
+    position: absolute;
+    height: 2.69%;
+    width: 75.97%;
+    top: 330px;
+    right: 20%;
+    bottom: 50.82%;
+    left: 80px;
+    font-size: 15px;
+    color: #000c14;
+    font-family: Manrope;
+}
+.button-rectangle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 5px;
+    background-color: #6e071a;
+    width: 312px;
+    height: 48px;
+}
+.login-text {
+    position: absolute;
+    top: 12px;
+    left: 113px;
+    font-weight: 600;
+    color: white;
+}
+.login-button {
+    position: absolute;
+    top: 370px;
+    left: 80px;
+    width: 312px;
+    height: 48px;
+    color: rgba(255, 255, 255, 0.9);
+}
+.line-field-child {
+    position: absolute;
+    top: 19.5px;
+    left: -0.5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    width: 117px;
+    height: 1px;
+}
+.line-field-item {
+    position: absolute;
+    top: 19.5px;
+    left: 192.5px;
+    border-top: 1px solid rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
+    width: 126px;
+    height: 1px;
+}
+.hoc {
+    margin: 0;
+}
+.or-text {
+    position: absolute;
+    top: 5px;
+    left: 119px;
+    display: inline-block;
+    width: 74px;
+}
+.line-field {
+    position: absolute;
+    top: 440px;
+    left: 80px;
+    width: 318px;
+    height: 54px;
+    text-align: center;
+    font-size: 15px;
+    color: rgba(0, 0, 0, 0.8);
+}
+.facebook-rectangle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    background-color: #1877f2;
+    width: 312px;
+    height: 48px;
+}
+.login-with-facebook1 {
+    position: absolute;
+    top: 11px;
+    left: 77px;
+    font-weight: 400;
+}
+.facebook-logo-icon {
+    position: absolute;
+    top: 10px;
+    left: 9px;
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+}
+.login-with-facebook {
+    position: absolute;
+    top: 450px;
+    left: 80px;
+    width: 312px;
+    height: 48px;
+    color: rgba(255, 255, 255, 0.9);
+}
+.google-rectangle {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(0, 0, 0, 0.4);
+    box-sizing: border-box;
+    width: 312px;
+    height: 48px;
+}
+.login-with-google1 {
+    position: absolute;
+    top: 11px;
+    left: 86px;
+    font-weight: 600;
+}
+.google-logo-icon {
+    position: absolute;
+    top: 11px;
+    left: 8px;
+    width: 26px;
+    height: 26px;
+    object-fit: cover;
+}
+.login-with-google {
+    position: absolute;
+    top: 530px;
+    left: 80px;
+    width: 312px;
+    height: 48px;
+    color: rgba(0, 0, 0, 0.6);
+}   
+.bn-cha-c {
+    position: absolute;
+    height: 100%;
+    width: 59%;
+    top: 0%;
+    left: 0%;
+    font-weight: 600;
+    display: inline-block;
+}
+.to-ti-khon {
+    position: absolute;
+    height: 100%;
+    width: 35.45%;
+    top: 0%;
+    left: 64.55%;
+    font-weight: 600;
+    color: #160062;
+    display: inline-block;
+}
+.already-account {
+    position: absolute;
+    height: 100px;
+    width: 300px;
+    top: 600px;
+    right: 6.56%;
+    bottom: 4.65%;
+    left: 80px;
+    color: #0d0e0e;
+    font-family: Manrope;
+}
+
+.logo-icon {
+    position: absolute;
+    top: 50px;
+    left: 70px;
+    width: 300px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.ng-nhp1 {
+    position: absolute;
+    top: 151px;
+    left: 520px;
+    background-color: #fff;
+    width: 392px;
+    height: 650px;
+    overflow: hidden; 
+}
+
+.logo-icon1 {
+    position: absolute;
+    top: -15px;
+    left: 1500px;
+    width: 250px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.ng-nhp {
+    justify-content: center;
+    width: 100%;
+    position: absolute;
+    background-color: #fff;
+    height: 1000px;
+    overflow: hidden;
+    text-align: left;
+    font-size: 16px;
+    color: rgba(0, 0, 0, 0.7);
+    font-family: Poppins;
+}
+
+.khungdangnhap {
+    width: 100%;
+    position: relative;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 1px solid #000;
+    box-sizing: border-box;
+    height: 900px;
+    width: 500px;
+    height: 750px;
+    left: 500px;
+    top: 120px;
+}
+

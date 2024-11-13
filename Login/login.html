@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+
+    <link rel="stylesheet" href="./login.css" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" />
+</head>
+
+<body>
+    <img class="logo-icon" alt="" src="logo.png">
+    <div class="rectangle-div">
+        <div class="ng-nhp">
+            <div class="khungdangnhap"></div>
+            <div class="ng-nhp1">
+                <form action="#" method="post">
+                    
+                    <div class="email-field-text">
+                        <input type="email" class="email-rectangle" placeholder="Nhập Email của bạn" name="email">
+                        <label class="email">Email</label>
+                    </div>
+
+                    <div class="password-field-text">
+                        <input type="password" id="passwordInput" class="password-rectangle" placeholder="Nhập mật khẩu của bạn" name="password">
+                        <img class="eye-icon" alt="" src="Image/Eye Icon.svg" onclick="togglePassword()">
+                        <label class="password">Mật khẩu</label>
+                    </div>
+                    
+                    <script>
+                    function togglePassword() {
+                        const passwordInput = document.getElementById("passwordInput");
+                        // Toggle between password and text
+                        if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                        } else {
+                            passwordInput.type = "password";
+                        }
+                    }
+                    </script>
+                    
+                    <div class="remember-me">
+                        <!-- Checkbox for 'Ghi nhớ' -->
+                        <input type="checkbox" class="checkbox-remember" id="rememberMe">Ghi nhớ
+                        <!-- Forgot password link -->
+                        <a href="/forgot-password" class="forgot-password-text">Quên mật khẩu?</a>
+                    </div>
+
+                    <div class="login-button">
+                        <button class="button-rectangle" onclick="loginFunction()">
+                            <span class="login-text">Đăng Nhập</span>
+                        </button>
+                    </div>
+
+                    <div class="line-field">
+                        <div class="line-field-child">
+                        </div>
+                        <div class="line-field-item">
+                        </div>
+                        <div class="or-text">
+                            <p class="hoc">Hoặc</p>
+                        </div>
+                    </div>
+
+                    <div class="login-with-facebook">
+                        <div class="facebook-rectangle">
+                        </div>
+                        <div class="login-with-facebook1">Đăng nhập với Facebook</div>
+                        <img class="facebook-logo-icon" alt="" src="Image/Facebook Logo.png">
+
+                    </div>
+
+                    <div class="login-with-google">
+                        <div class="google-rectangle">
+                        </div>
+                        <div class="login-with-google1">Đăng nhập với Google</div>
+                        <img class="google-logo-icon" alt="" src="Image/Google Logo.png">
+
+                    </div>
+
+                    <div class="already-account">
+                        <div class="bn-cha-c">Bạn chưa có tài khoản?</div>
+                        <div class="to-ti-khon">Tạo tài khoản</div>
+                    </div>
+                    <img class="logo-icon" alt="" src="Image/LogoNewsHubWhite.jpg">
+                </form>
+
+            </div>
+            <img class="logo-icon1" alt="" src="Image/LogoNewsHubWhite.jpg">
+        </div>
+    </div>
+    
+
+
+
+
+</body>
+
+</html>
