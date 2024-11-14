@@ -9,6 +9,7 @@
     width: 450px;
     height: 850px;
 }
+
 .email-rectangle {
     position: absolute;
     top: 26.5px;
@@ -18,8 +19,10 @@
     box-sizing: border-box;
     width: 310px;
     height: 49px;
-    padding: 5px; /* To add padding inside the input field */
-    color: #050505; /* Adjust text color if needed */
+    padding: 5px;
+    /* To add padding inside the input field */
+    color: #050505;
+    /* Adjust text color if needed */
 
 }
 
@@ -33,6 +36,7 @@
     width: 100px;
     height: 21px;
 }
+
 .email-field-text {
     position: absolute;
     top: 150px;
@@ -48,6 +52,7 @@
     width: 312px;
     height: 74px;
 }
+
 .password-rectangle {
     position: absolute;
     top: 26px;
@@ -60,11 +65,13 @@
     height: 48px;
     padding: 5px;
 }
+
 .nhp-mt-khu {
     position: absolute;
     top: 39px;
     left: 10px;
 }
+
 .eye-icon {
     position: absolute;
     top: 43px;
@@ -75,7 +82,7 @@
 }
 
 .password {
-position: absolute;
+    position: absolute;
     top: 0px;
     left: calc(50% - 156.5px);
     font-size: 14px;
@@ -98,6 +105,7 @@ position: absolute;
     border: 1px solid #cdd1e0;
     box-sizing: border-box;
 }
+
 .tick-icon {
     position: absolute;
     height: 39.57%;
@@ -111,6 +119,7 @@ position: absolute;
     overflow: hidden;
     max-height: 100%;
 }
+
 .forgot-password-text {
     position: absolute;
     top: 0px;
@@ -133,6 +142,7 @@ position: absolute;
     color: #000c14;
     font-family: Manrope;
 }
+
 .button-rectangle {
     position: absolute;
     top: 0px;
@@ -142,6 +152,7 @@ position: absolute;
     width: 312px;
     height: 48px;
 }
+
 .login-text {
     position: absolute;
     top: 12px;
@@ -149,6 +160,7 @@ position: absolute;
     font-weight: 600;
     color: white;
 }
+
 .login-button {
     position: absolute;
     top: 370px;
@@ -157,6 +169,7 @@ position: absolute;
     height: 48px;
     color: rgba(255, 255, 255, 0.9);
 }
+
 .line-field-child {
     position: absolute;
     top: 19.5px;
@@ -166,6 +179,7 @@ position: absolute;
     width: 117px;
     height: 1px;
 }
+
 .line-field-item {
     position: absolute;
     top: 19.5px;
@@ -175,9 +189,11 @@ position: absolute;
     width: 126px;
     height: 1px;
 }
+
 .hoc {
     margin: 0;
 }
+
 .or-text {
     position: absolute;
     top: 5px;
@@ -185,6 +201,7 @@ position: absolute;
     display: inline-block;
     width: 74px;
 }
+
 .line-field {
     position: absolute;
     top: 440px;
@@ -195,6 +212,7 @@ position: absolute;
     font-size: 15px;
     color: rgba(0, 0, 0, 0.8);
 }
+
 .facebook-rectangle {
     position: absolute;
     top: 0px;
@@ -204,12 +222,14 @@ position: absolute;
     width: 312px;
     height: 48px;
 }
+
 .login-with-facebook1 {
     position: absolute;
     top: 11px;
     left: 77px;
     font-weight: 400;
 }
+
 .facebook-logo-icon {
     position: absolute;
     top: 10px;
@@ -218,6 +238,7 @@ position: absolute;
     height: 26px;
     object-fit: cover;
 }
+
 .login-with-facebook {
     position: absolute;
     top: 450px;
@@ -226,6 +247,7 @@ position: absolute;
     height: 48px;
     color: rgba(255, 255, 255, 0.9);
 }
+
 .google-rectangle {
     position: absolute;
     top: 0px;
@@ -237,12 +259,14 @@ position: absolute;
     width: 312px;
     height: 48px;
 }
+
 .login-with-google1 {
     position: absolute;
     top: 11px;
     left: 86px;
     font-weight: 600;
 }
+
 .google-logo-icon {
     position: absolute;
     top: 11px;
@@ -251,6 +275,7 @@ position: absolute;
     height: 26px;
     object-fit: cover;
 }
+
 .login-with-google {
     position: absolute;
     top: 530px;
@@ -258,7 +283,8 @@ position: absolute;
     width: 312px;
     height: 48px;
     color: rgba(0, 0, 0, 0.6);
-}   
+}
+
 .bn-cha-c {
     position: absolute;
     height: 100%;
@@ -268,6 +294,7 @@ position: absolute;
     font-weight: 600;
     display: inline-block;
 }
+
 .to-ti-khon {
     position: absolute;
     height: 100%;
@@ -278,6 +305,7 @@ position: absolute;
     color: #160062;
     display: inline-block;
 }
+
 .already-account {
     position: absolute;
     height: 100px;
@@ -306,7 +334,7 @@ position: absolute;
     background-color: #fff;
     width: 392px;
     height: 650px;
-    overflow: hidden; 
+    overflow: hidden;
 }
 
 .logo-icon1 {
@@ -323,6 +351,7 @@ position: absolute;
     width: 100%;
     position: absolute;
     background-color: #fff;
+    background-color: rgb(#e2e1df);
     height: 1000px;
     overflow: hidden;
     text-align: left;
@@ -344,4 +373,3 @@ position: absolute;
     left: 500px;
     top: 120px;
 }
-

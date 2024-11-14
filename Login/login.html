@@ -17,30 +17,31 @@
             <div class="khungdangnhap"></div>
             <div class="ng-nhp1">
                 <form action="#" method="post">
-                    
+
                     <div class="email-field-text">
                         <input type="email" class="email-rectangle" placeholder="Nhập Email của bạn" name="email">
                         <label class="email">Email</label>
                     </div>
 
                     <div class="password-field-text">
-                        <input type="password" id="passwordInput" class="password-rectangle" placeholder="Nhập mật khẩu của bạn" name="password">
+                        <input type="password" id="passwordInput" class="password-rectangle"
+                            placeholder="Nhập mật khẩu của bạn" name="password">
                         <img class="eye-icon" alt="" src="Image/Eye Icon.svg" onclick="togglePassword()">
                         <label class="password">Mật khẩu</label>
                     </div>
-                    
+
                     <script>
-                    function togglePassword() {
-                        const passwordInput = document.getElementById("passwordInput");
-                        // Toggle between password and text
-                        if (passwordInput.type === "password") {
-                            passwordInput.type = "text";
-                        } else {
-                            passwordInput.type = "password";
+                        function togglePassword() {
+                            const passwordInput = document.getElementById("passwordInput");
+                            // Toggle between password and text
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                            } else {
+                                passwordInput.type = "password";
+                            }
                         }
-                    }
                     </script>
-                    
+
                     <div class="remember-me">
                         <!-- Checkbox for 'Ghi nhớ' -->
                         <input type="checkbox" class="checkbox-remember" id="rememberMe">Ghi nhớ
@@ -65,11 +66,12 @@
                     </div>
 
                     <div class="login-with-facebook">
-                        <div class="facebook-rectangle">
-                        </div>
-                        <div class="login-with-facebook1">Đăng nhập với Facebook</div>
-                        <img class="facebook-logo-icon" alt="" src="Image/Facebook Logo.png">
-
+                        <a href="#">
+                            <div class="facebook-rectangle">
+                            </div>
+                            <div class="login-with-facebook1">Đăng nhập với Facebook</div>
+                            <img class="facebook-logo-icon" alt="" src="Image/Facebook Logo.png">
+                        </a>
                     </div>
 
                     <div class="login-with-google">
@@ -91,7 +93,7 @@
             <img class="logo-icon1" alt="" src="Image/LogoNewsHubWhite.jpg">
         </div>
     </div>
-    
+
 
 
 
