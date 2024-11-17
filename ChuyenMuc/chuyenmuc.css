@@ -1,0 +1,975 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+td {
+    padding: 4px;
+}
+
+/* Thiết kế cho dòng đầu tiên */
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Căn đều các phần tử */
+    position: relative;
+    padding: 10px;
+    position: sticky;
+}
+
+/* Các nút Menu và Home */
+body {
+    font-family: Arial, sans-serif;
+}
+
+.menu-button,
+.home-button {
+    margin-right: 10px;
+}
+
+/* Thanh tìm kiếm */
+.search-bar {
+    flex-grow: 1;
+    /* Để thanh tìm kiếm chiếm không gian còn lại giữa các nút và logo */
+    margin: 0 10px;
+}
+
+/* Định vị logo ở giữa */
+.logo {
+    position: absolute;
+    /* Định vị tuyệt đối */
+    left: 50%;
+    /* Đặt logo ở giữa phần tử cha */
+    transform: translateX(-50%);
+    /* Dịch chuyển logo về chính giữa */
+    text-align: center;
+}
+
+/* Chinh kich thuoc cho logo */
+.logo-image {
+    width: 300px;
+    /* Thay đổi chiều rộng của logo */
+    height: auto;
+    /* Giữ tỉ lệ của logo */
+}
+
+/* Định dạng cho các nút Đăng Ký và Đăng Nhập */
+.auth-buttons {
+    display: flex;
+    position: absolute;
+    /* Định vị tuyệt đối để các nút nằm ở bên phải */
+    right: 10px;
+    /* Căn lề phải */
+}
+
+/* Thiết kế cho thanh tìm kiếm */
+.search-bar input {
+    width: 200px;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+/* Thiết kế cho các nút đăng ký, đăng nhập */
+.auth-buttons button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.catalog-bar {
+    display: flex;
+    flex-wrap: nowrap;
+    /* Đảm bảo các mục không bị xuống hàng */
+    list-style: none;
+    padding: 5px;
+    margin: 0 auto;
+    background-color: #e0e0e0;
+    justify-content: center;
+    /* Canh giữa nội dung */
+    gap: 10px;
+    /* Khoảng cách giữa các mục */
+    border-top: 2px solid #b1154a;
+    border-bottom: 2px solid #b1154a;
+    width: 70%;
+}
+
+.catalog-bar li {
+    margin: 0;
+    /* Xóa khoảng cách thừa */
+}
+
+.catalog-bar button {
+    background: none;
+    border: none;
+    font-weight: bold;
+    font-size: 10px;
+    cursor: pointer;
+    padding: 5px 10px;
+    width: auto;
+}
+
+.catalog-bar button:hover {
+    color: #7D0017;
+    /* Màu khi hover */
+}
+
+
+/* Thiết kế cho dòng thứ ba (heading) */
+.heading {
+    background-color: #7D0017;
+    color: white;
+    text-align: left;
+    padding: 10px;
+    padding-left: 225px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+
+/* grid layout */
+.parent {
+    display: flex;
+    flex-wrap: wrap;
+    /* Cho phép các phần tử tự động xuống dòng */
+    gap: 20px;
+    /* Khoảng cách giữa các div */
+    padding: 10px;
+}
+
+.parent>div {
+    flex: 1 1 200px;
+    /* Các div sẽ có kích thước tối thiểu là 250px, nhưng có thể mở rộng nếu không gian cho phép */
+    height: auto;
+    /* Chiều cao tự động điều chỉnh theo nội dung */
+    box-sizing: border-box;
+    /* Đảm bảo padding và border không ảnh hưởng đến kích thước */
+}
+
+.parent {
+    display: grid;
+    grid-template-columns: 20% 20% 20% repeat(2, 1fr);
+    /* grid-template-rows: repeat(5, 1fr); */
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+    /* margin-left: 220px;
+    margin-right: 200px; */
+    margin-left: 23%;
+    max-width: 1000px;
+    min-width: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: 1px solid #D4BFCB;
+}
+
+.div1 {
+    grid-area: 1 / 1 / 5 / 4;
+}
+
+.div2 {
+    grid-area: 5 / 1 / 8 / 2;
+}
+
+.div3 {
+    grid-area: 5 / 2 / 8 / 3;
+}
+
+.div4 {
+    grid-area: 5 / 3 / 8 / 4;
+}
+
+.div5 {
+    grid-area: 1 / 4 / 2 / 6;
+}
+
+.div6 {
+    grid-area: 2 / 4 / 3 / 6;
+}
+
+.div7 {
+    grid-area: 3 / 4 / 4 / 6;
+}
+
+.div8 {
+    grid-area: 4 / 4 / 5 / 6;
+}
+
+.div9 {
+    grid-area: 5 / 4 / 6 / 6;
+}
+
+.div10 {
+    grid-area: 6 / 4 / 7 / 6;
+}
+
+
+
+@media (max-width: 1200px) {
+    .parent {
+        grid-template-columns: 1fr 1fr;
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+
+
+
+.highlight {
+    background-color: aqua;
+
+
+}
+
+
+/* div1 */
+.div1 {
+    width: 100%;
+    /* Responsive width */
+    height: autopx;
+    max-width: 800px;
+    /* Optional: to limit the max width on larger screens */
+    margin: 0 auto;
+    /* Center align on the page */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* Space between elements */
+    border: 1px solid #D4BFCB;
+}
+
+.hinhanh-div1 {
+    width: 100%;
+    /* Adjust this to control the width */
+    max-width: 900px;
+    /* Set a maximum width to keep the image contained */
+    height: 70%;
+    /* Maintain the aspect ratio */
+    object-fit: fill;
+    margin: 0 auto;
+    /* Center the image within the container */
+}
+
+
+.text-div1 {
+    margin-top: 5px;
+    margin-left: 15px;
+    margin-right: 7px;
+    width: 100%;
+    /* Make it adapt to parent width */
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-weight: bold;
+    font-size: 19px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.noi-dung-div1 {
+    margin-left: 15px;
+    width: 100%;
+    position: relative;
+    font-size: 12px;
+    font-weight: 200;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #000;
+    text-align: left;
+    display: flex;
+    height: 100px;
+    font-size: 15px;
+}
+
+.link-div1 {
+    text-decoration: none;
+    /* Loại bỏ gạch dưới mặc định */
+    color: inherit;
+    /* Giữ màu văn bản gốc */
+}
+
+.link-div1:hover {
+    color: rgb(11, 11, 11);
+    /* Màu khi hover */
+}
+
+/* div2 */
+/* .div2 {
+    margin-top: 5px;
+    border: 0.5px solid #0e0d0d;
+}
+
+.hinhanh-div2 {
+    margin-top: 0px;
+    margin-bottom: 0px;
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+.text-div2 {
+    margin-left: 5px;
+    margin-top: 0px;
+    width: 100%;
+    position: relative;
+    font-size: 10px;
+    color: #000;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    height: 100%;
+} */
+
+/* div3 */
+/* .div3, .div4 {
+    margin-top: 5px;
+    border: 0.5px solid #0e0d0d;
+    margin-left: 5px;
+}
+
+.hinhanh-div3 {
+    margin-top: 0px;
+    margin-bottom: 10px;
+    width: 100%;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 100%;
+    object-fit: fill;
+} */
+
+/* Đặt kích thước cố định cho div2, div3 và div4 */
+.div2,
+.div3,
+.div4 {
+    width: 100%;
+    height: auto;
+    /* Đặt chiều cao cố định cho các div */
+    border-top: 1px solid #D4BFCB;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* Căn giữa nội dung theo chiều dọc */
+    align-items: center;
+    /* Căn giữa nội dung theo chiều ngang */
+    padding: 0px;
+    box-sizing: border-box;
+    /* Đảm bảo padding không làm thay đổi kích thước của div */
+}
+
+/* Định dạng ảnh bên trong để giữ kích thước và căn chỉnh cho giống nhau */
+
+.hinhanh-div2,
+.hinhanh-div3,
+.hinhanh-div4 {
+    width: 100%;
+    height: 100%;
+    /* Căn chỉnh chiều cao ảnh */
+    object-fit: cover;
+    /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
+}
+
+/* Căn chỉnh nội dung văn bản để giống nhau */
+.text-div2 {
+    text-align: left;
+    /* Căn giữa nội dung văn bản */
+    font-size: 12px;
+    color: #000;
+    padding: 5px;
+    font-weight: bold;
+}
+
+/* div 5 */
+.div5,
+.div6,
+.div7,
+.div8,
+.div9,
+.div10 {
+    margin-top: 5px;
+    display: grid;
+    width: 110%;
+    height: 150px;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: auto auto;
+    grid-template-areas:
+        "title image"
+        "content image";
+    gap: 5px;
+    padding: 5px;
+    font-family: Arial, sans-serif;
+    background-color: white;
+    border-top: 1px solid #D4BFCB;
+    border-radius: 5px;
+}
+
+.div5 .title,
+.div6 .title,
+.div7 .title,
+.div8 .title,
+.div9 .title,
+.div10 .title {
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+    color: #000;
+}
+
+.div5 .content,
+.div6 .content,
+.div7 .content,
+.div8 .content,
+.div9 .content,
+.div10 .content {
+    line-height: 1.25;
+    color: #333;
+    margin: 0;
+    text-align: justify;
+    font-size: 10px;
+    font-weight: 500;
+    font-style: normal;
+    font-variant: normal;
+    letter-spacing: 0px;
+    word-spacing: 0px;
+    color: #655d5d;
+}
+
+.div5 .date,
+.div6 .date,
+.div7 .date,
+.div8 .date,
+.div9 .date,
+.div10 .date {
+    font-size: 14px;
+    color: #d00;
+    margin-top: 5;
+}
+
+.div5 .image-container,
+.div6 .image-container,
+.div7 .image-container,
+.div8 .image-container,
+.div9 .image-container,
+.div10 .image-container {
+    grid-area: image;
+    width: 10 0%;
+    height: 100%;
+    overflow: hidden;
+
+}
+
+.div5 .image-1-icon,
+.div6 .image-1-icon,
+.div7 .image-1-icon,
+.div8 .image-1-icon,
+.div9 .image-1-icon,
+.div10 .image-1-icon {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    height: auto;
+    object-fit: fill;
+    object-position: 50% 50%;
+    margin-right: 15px;
+    /* Tạo khoảng cách với các phần tử bên cạnh */
+}
+
+
+/* Sport section phân mục */
+sports-container {
+    width: 1000px;
+    height: 1000px;
+    border-color: #000;
+    display: flex;
+    margin-left: 100px;
+}
+
+.parent2 {
+    display: grid;
+    grid-template-columns: repeat(3, 350px);
+    grid-template-rows: repeat(1, 1fr);
+    grid-column-gap: 10px;
+    grid-row-gap: 0px;
+    margin-left: 22.5%;
+    max-width: 1000px;
+    min-width: 900px;
+    margin-top: 5%;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.section1 {
+    grid-area: 1 / 1 / 3 / 2;
+    height: 300px;
+}
+
+
+.section2 {
+    grid-area: 3 / 1 / 4 / 2;
+
+}
+
+.section3 {
+    grid-area: 4 / 1 / 5 / 2;
+
+}
+
+.section4 {
+    grid-area: 5 / 1 / 6 / 2;
+
+}
+
+.section5 {
+    grid-area: 1 / 2 / 3 / 3;
+    height: 300px;
+}
+
+.section6 {
+    grid-area: 3 / 2 / 4 / 3;
+}
+
+.section7 {
+    grid-area: 4 / 2 / 5 / 3;
+}
+
+.section8 {
+    grid-area: 5 / 2 / 6 / 3;
+}
+
+.section9 {
+    grid-area: 1 / 3 / 3 / 4;
+    height: 300px;
+}
+
+.section10 {
+    grid-area: 3 / 3 / 4 / 4;
+}
+
+.section11 {
+    grid-area: 4 / 3 / 5 / 4;
+}
+
+.section12 {
+    grid-area: 5 / 3 / 6 / 4;
+}
+
+.section1,
+.section2,
+.section3,
+.section4,
+.section5,
+.section6,
+.section7,
+.section8,
+.section9,
+.section10,
+.section11,
+.section12 {
+    border-top: 1px solid #D4BFCB;
+    padding: 10px;
+    /* Optional: Adds some space inside the border */
+    margin-bottom: 20px;
+    /* Optional: Adds spacing between sections */
+}
+
+/* Common image styling */
+.section1-image,
+.section5 .section1-image,
+.section9 .section1-image {
+    width: 330px;
+    /* Adjust the width to your desired size */
+    height: auto;
+    /* Keeps the aspect ratio intact */
+}
+
+/* Common image container styling for these sections */
+.section1 .section1-imagecontainer,
+.section5 .section1-imagecontainer,
+.section9 .section1-imagecontainer {
+    display: flex;
+    justify-content: center;
+    /* Horizontally center the image */
+    align-items: center;
+    /* Vertically center the image */
+    width: 100%;
+    height: 100%;
+}
+
+/* Common text styling for the titles */
+.section1-title,
+.section5 .section1-title,
+.section9 .section1-title {
+    font-size: 20px;
+    /* Make the title smaller */
+    margin: 5px 0;
+    /* Add margin for spacing */
+    color: #b1154a;
+}
+
+.Tuadebaiviet,
+.section5 .section1-title2,
+.section9 .section1-title2 {
+    font-size: 14px;
+    /* Make the subtitle smaller */
+    margin: 10px 0;
+    /* Add margin for spacing */
+}
+
+
+/* General grid layout for sections 2, 3, 4, 6, 7, 8, 10, 11, 12 */
+.section2,
+.section3,
+.section4,
+.section6,
+.section7,
+.section8,
+.section10,
+.section11,
+.section12 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Create two equal columns */
+    grid-template-rows: auto auto;
+    /* Two rows, auto height for each */
+    grid-gap: 10px;
+    /* Space between grid items */
+}
+
+/* Title in the first row, first column */
+.section2 .section2-content.title,
+.section3 .section2-content.title,
+.section4 .section2-content.title,
+.section6 .section2-content.title,
+.section7 .section2-content.title,
+.section8 .section2-content.title,
+.section10 .section2-content.title,
+.section11 .section2-content.title,
+.section12 .section2-content.title {
+    grid-area: 1 / 1 / 2 / 3;
+    display: flex;
+    align-items: center;
+    /* Vertically align title */
+}
+
+/* Image in the first row, second column */
+.section2 .section2-content.image,
+.section3 .section2-content.image,
+.section4 .section2-content.image,
+.section6 .section2-content.image,
+.section7 .section2-content.image,
+.section8 .section2-content.image,
+.section10 .section2-content.image,
+.section11 .section2-content.image,
+.section12 .section2-content.image {
+    grid-area: 1 / 2 / 2 / 3;
+    display: flex;
+    justify-content: center;
+    /* Center the image */
+    align-items: center;
+}
+
+/* Content in the second row */
+.section2 .section2-content.content,
+.section3 .section2-content.content,
+.section4 .section2-content.content,
+.section6 .section2-content.content,
+.section7 .section2-content.content,
+.section8 .section2-content.content,
+.section10 .section2-content.content,
+.section11 .section2-content.content,
+.section12 .section2-content.content {
+    grid-area: 2 / 1 / 3 / 3;
+    display: flex;
+    align-items: flex-start;
+    /* Align content to the top */
+
+}
+
+/* Title style */
+.section2-title,
+.section3 .section2-title,
+.section4 .section2-title,
+.section6 .section2-title,
+.section7 .section2-title,
+.section8 .section2-title,
+.section10 .section2-title,
+.section11 .section2-title,
+.section12 .section2-title {
+    font-size: 12px;
+    color: #333;
+    margin: 0;
+    font-weight: bold;
+}
+
+/* Content (description) style */
+.section2-description,
+.section3 .section2-description,
+.section4 .section2-description,
+.section6 .section2-description,
+.section7 .section2-description,
+.section8 .section2-description,
+.section10 .section2-description,
+.section11 .section2-description,
+.section12 .section2-description {
+    font-size: 16px;
+    color: #333;
+    margin: 0;
+}
+
+/* Style for the image */
+.section2-image,
+.section3 .section2-image,
+.section4 .section2-image,
+.section6 .section2-image,
+.section7 .section2-image,
+.section8 .section2-image,
+.section10 .section2-image,
+.section11 .section2-image,
+.section12 .section2-image {
+    width: 100%;
+    /* Make the image responsive */
+    height: auto;
+    /* Maintain aspect ratio */
+    object-fit: cover;
+    /* Ensure the image fills the container without distortion */
+}
+
+
+
+.chuyenmuc1 {
+    border-bottom: 1px solid #D4BFCB;
+}
+
+
+/* Bài viết về thể thao  */
+.parent3 {
+    display: grid;
+    grid-template-columns: 1fr;
+    /* Một cột */
+    grid-template-rows: repeat(10, 1fr);
+    /* 10 hàng, mỗi hàng chiếm khoảng cách bằng nhau */
+    grid-gap: 5px;
+    /* Khoảng cách giữa các bài viết */
+    width: 50%;
+    /* Tùy chỉnh độ rộng */
+    margin: 0 auto;
+    /* Canh giữa */
+    margin-left: 25%;
+    max-width: 1000px;
+    min-width: 900px;
+    margin-top: 5%;
+    border-top: 1px solid #D4BFCB;
+}
+
+
+.parent3>div {
+    padding: 15px;
+    /* Khoảng cách bên trong */
+    text-align: center;
+    /* Canh giữa nội dung */
+    font-family: Arial, sans-serif;
+    /* Font chữ */
+    font-size: 16px;
+    /* Kích thước chữ */
+    color: #333;
+    /* Màu chữ */
+}
+
+
+.baiviet {
+    display: grid;
+    grid-template-areas:
+        "image title"
+        "image content";
+    grid-template-columns: 1fr 2fr;
+    /* Cột cho image và title/content */
+    grid-template-rows: auto auto;
+    /* Hai hàng: title và content */
+    border-bottom: 1px solid #D4BFCB;
+    gap: 5px;
+    /* Khoảng cách giữa các phần */
+}
+
+.image {
+    grid-area: image;
+    align-self: center;
+    /* Căn giữa theo chiều dọc */
+    text-align: center;
+    /* Căn giữa theo chiều ngang */
+    margin-right: 15px;
+    /* Tạo khoảng cách với các phần tử bên cạnh */
+}
+
+.image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.title {
+    grid-area: title;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    align-self: center;
+    /* Căn giữa theo chiều dọc */
+    text-align: left;
+}
+
+.content {
+    grid-area: content;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.6;
+    text-align: left;
+}
+
+
+
+
+/* pagination */
+
+/* footer */
+.content-main {
+    height: 200vh;
+}
+
+.fh5co-bg {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.fh5co-bg {
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+.fh5co-bg .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+.fh5co-bg-section {
+    background: rgba(0, 0, 0, 0.05);
+}
+
+#fh5co-footer {
+    padding: 7em 0;
+    clear: both;
+}
+
+@media screen and (max-width: 768px) {
+    #fh5co-footer {
+        padding: 3em 0;
+    }
+}
+
+#fh5co-footer {
+    position: relative;
+}
+
+#fh5co-footer .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #6E071A;
+    -webkit-transition: 0.5s;
+    -o-transition: 0.5s;
+    transition: 0.5s;
+}
+
+#fh5co-footer h3 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#fh5co-footer .fh5co-footer-links {
+    padding: 0;
+    margin: 0;
+}
+
+#fh5co-footer .fh5co-footer-links li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#fh5co-footer .fh5co-footer-links li a {
+    color: rgb(238, 212, 212);
+    text-decoration: none;
+    font-size: 16px;
+}
+
+#fh5co-footer .fh5co-footer-links li a:hover {
+    text-decoration: underline;
+}
+
+#fh5co-footer .fh5co-widget {
+    margin-bottom: 30px;
+}
+
+@media screen and (max-width: 768px) {
+    #fh5co-footer .fh5co-widget {
+        text-align: left;
+    }
+}
+
+#fh5co-footer .fh5co-widget h3 {
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-size: 15px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+#fh5co-footer .copyright .block {
+    margin-top: 30px;
+    display: block;
+    color: grey;
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.btn-primary {
+    background: #F85A16;
+    color: #fff;
+    border: 2px solid #F85A16;
+}
+
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active {
+    background: #f96c2f !important;
+    border-color: #f96c2f !important;
+}
+
+.btn-primary.btn-outline {
+    background: transparent;
+    color: #F85A16;
+    border: 1px solid #F85A16;
+}
+
+.btn-primary.btn-outline:hover,
+.btn-primary.btn-outline:focus,
+.btn-primary.btn-outline:active {
+    background: #F85A16;
+    color: #fff;
+}
