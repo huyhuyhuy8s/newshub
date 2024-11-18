@@ -1,3 +1,8 @@
+:root {
+    --text-fam: Arial, Helvetica, sans-serif;
+    --parent12-maxheight: 820px;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;
@@ -5,6 +10,16 @@ table {
 
 td {
     padding: 4px;
+}
+
+p,
+h4,
+h5,
+h2,
+h1,
+h3,
+a {
+    text-align: justify;
 }
 
 /* Thiết kế cho dòng đầu tiên */
@@ -159,35 +174,6 @@ body {
     grid-area: 1 / 1 / 3 / 4;
 }
 
-.div2 {
-    grid-area: 3 / 1 / 5 / 2;
-}
-
-.div3 {
-    grid-area: 3 / 2 / 5 / 3;
-}
-
-.div4 {
-    grid-area: 3 / 3 / 5 / 4;
-}
-
-.div5 {
-    grid-area: 1 / 4 / 2 / 5;
-}
-
-.div6 {
-    grid-area: 2 / 4 / 3 / 5;
-}
-
-.div7 {
-    grid-area: 3 / 4 / 4 / 5;
-}
-
-.div8 {
-    grid-area: 4 / 4 / 5 / 5;
-}
-
-
 @media (max-width: 1200px) {
     .parent {
         grid-template-columns: 1fr 1fr;
@@ -198,17 +184,12 @@ body {
 
 .parent1 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-rows: 1fr;
-    grid-column-gap: 0px;
-    grid-row-gap: 20px;
-    max-width: 1000px;
-    margin-left: 17%;
-    margin-top: 2%;
-    max-height: 780px;
-    border-bottom: 1px solid #D4BFCB; 
-    border-left: 1px solid #D4BFCB; 
-    border-right: 1px solid #D4BFCB; 
+    grid-template: 1fr / 5.5fr 4.5fr;
+    gap: 1em;
+    margin: 2em 20em;
+    border-bottom: 1px solid #D4BFCB;
+    /* height: 10em; */
+
     .child1 {
         grid-area: 1 / 1 / 2 / 2;
     }
@@ -220,58 +201,27 @@ body {
 
 .child1 {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-
+    grid-template: 7fr 3fr / 1fr;
+    max-height: var(--parent12-maxheight);
 
     .div1 {
         grid-area: 1 / 1 / 2 / 4;
     }
 
-    .div2 {
-        grid-area: 2 / 1 / 3 / 2;
-    }
-
-    .div3 {
-        grid-area: 2 / 2 / 3 / 3;
-    }
-
-    .div4 {
-        grid-area: 2 / 3 / 3 / 4;
+    .div-234 {
+        display: grid;
+        grid-template: 1fr / repeat(3, 1fr);
+        gap: 0.5em;
     }
 }
 
 
 .child2 {
     display: grid;
-    grid-template-columns: 1fr;
-    grid-template-rows: repeat(5, 1fr);
-    grid-column-gap: 0px;
-    grid-row-gap: 0px;
-    max-width: 600px;
-    max-height: 50%;
-
-    .div5 {
-        grid-area: 1 / 1 / 2 / 2;
-    }
-
-    .div6 {
-        grid-area: 2 / 1 / 3 / 2;
-    }
-
-    .div7 {
-        grid-area: 3 / 1 / 4 / 2;
-    }
-
-    .div8 {
-        grid-area: 4 / 1 / 5 / 2;
-    }
-
-    .div9 {
-        grid-area: 5 / 1 / 6 / 2;
-    }
+    grid-template: repeat(5, 1fr) / 1fr;
+    gap: 1em;
+    max-height: var(--parent12-maxheight);
+    overflow: scroll;
 }
 
 
@@ -319,21 +269,17 @@ body {
 }
 
 
-/* div1 */
 .div1 {
-    width: 100%;
-    /* Responsive width */
-    height: 100%;
-    max-width: 800px;
-    /* Optional: to limit the max width on larger screens */
-    margin: 0 auto;
-    /* Center align on the page */
+    grid-area: 1 / 1 / 1 / 1;
+}
+
+/* div1 */
+.div1 a {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 10px;
+    gap: 1em;
     /* Space between elements */
-    border-bottom: 1px solid #D4BFCB; 
+    border-bottom: 1px solid #D4BFCB;
 }
 
 .hinhanh-div1 {
@@ -341,40 +287,20 @@ body {
     /* Adjust this to control the width */
     max-width: 900px;
     /* Set a maximum width to keep the image contained */
-    height: 70%;
-    /* Maintain the aspect ratio */
-    object-fit: fill;
-    margin: 0 auto;
-    /* Center the image within the container */
+    object-fit: cover;
 }
 
 
 .text-div1 {
-    margin-top: 5px;
-    margin-left: 15px;
-    margin-right: 7px;
-    width: 100%;
     /* Make it adapt to parent width */
-    text-align: left;
-    display: flex;
-    align-items: center;
     font-weight: bold;
     font-size: 19px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--text-fam);
 }
 
 .noi-dung-div1 {
-    margin-left: 15px;
-    width: 100%;
-    position: relative;
-    font-size: 12px;
-    font-weight: 200;
-    font-family: Arial, Helvetica, sans-serif;
-    color: #000;
-    text-align: left;
-    display: flex;
-    height: 100px;
-    font-size: 15px;
+    font-size: 12pt;
+    font-family: var(--text-fam);
 }
 
 .link-div1 {
@@ -391,137 +317,61 @@ body {
 
 
 /* Đặt kích thước cố định cho div2, div3 và div4 */
-.div2,
-.div3,
-.div4 {
-    width: 100%;
-    height: 60% ;
+
+.div2 {
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    margin-top: 20px;
-    /* Căn giữa nội dung theo chiều dọc */
-    align-items: center;
-    /* Căn giữa nội dung theo chiều ngang */
-    padding: 0px;
     box-sizing: border-box;
-    /* Đảm bảo padding không làm thay đổi kích thước của div */
+    /* border-bottom: 1px solid #D4BFCB; */
 }
 
 /* Định dạng ảnh bên trong để giữ kích thước và căn chỉnh cho giống nhau */
 
-.hinhanh-div2,
-.hinhanh-div3,
-.hinhanh-div4 {
+.hinhanh-div {
     width: 100%;
-    height: 100%;
     /* Căn chỉnh chiều cao ảnh */
     object-fit: cover;
-    /* Đảm bảo ảnh lấp đầy khung mà không bị méo */
 }
 
 /* Căn chỉnh nội dung văn bản để giống nhau */
 .text-div2 {
-    text-align: left;
-    /* Căn giữa nội dung văn bản */
     font-size: 14px;
-    color: #000;
-    padding: 2px;
     font-weight: bold;
 }
 
 /* div 5 */
-.div5,
-.div6,
-.div7,
-.div8,
-.div9,
-.div10 {
+.div5 {
     display: grid;
-    width: 100%;
-    height: 150px;
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: auto auto;
-    grid-template-areas:
-        "title image"
-        "content image";
-    gap: 5px;
-    padding: 5px;
-    font-family: Arial, sans-serif;
-    background-color: white;
-    border-top: 1px solid #D4BFCB;
-    border-radius: 5px;
+    grid-template: 1fr / 6fr 4fr;
+    margin: 1em;
+    margin-top: 0;
+    padding-top: 0.5em;
+    border-top: 1px solid;
+
+    .infor {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        /* gap: 0.5em; */
+        padding: 0 0.5em 0 0.5em;
+
+        h4 {
+            font-weight: bold;
+            color: #000;
+        }
+
+        .date {
+            font-size: 12px;
+            color: #d00;
+        }
+    }
+
+    .image-container {
+        background-image: url(./hinhanh/nhatban.png);
+        background-size: cover;
+    }
 }
 
-.div5 .title,
-.div6 .title,
-.div7 .title,
-.div8 .title,
-.div9 .title,
-.div10 .title {
-    font-size: 12px;
-    font-weight: bold;
-    margin: 0;
-    color: #000;
-}
-
-.div5 .content,
-.div6 .content,
-.div7 .content,
-.div8 .content,
-.div9 .content,
-.div10 .content {
-    line-height: 1.25;
-    color: #333;
-    margin: 0;
-    text-align: justify;
-    font-size: 11px;
-    font-weight: 500;
-    font-style: normal;
-    font-variant: normal;
-    letter-spacing: 0px;
-    word-spacing: 0px;
-    color: #655d5d;
-}
-
-.div5 .date,
-.div6 .date,
-.div7 .date,
-.div8 .date,
-.div9 .date,
-.div10 .date {
-    font-size: 12px;
-    color: #d00;
-}
-
-.div5 .image-container,
-.div6 .image-container,
-.div7 .image-container,
-.div8 .image-container,
-.div9 .image-container,
-.div10 .image-container {
-    grid-area: image;
-    width: 10 0%;
-    height: 100%;
-    overflow: hidden;
-
-}
-
-.div5 .image-1-icon,
-.div6 .image-1-icon,
-.div7 .image-1-icon,
-.div8 .image-1-icon,
-.div9 .image-1-icon,
-.div10 .image-1-icon {
-    width: 100%;
-    max-width: 100%;
-    overflow: hidden;
-    height: auto;
-    object-fit: fill;
-    object-position: 50% 50%;
-    margin-right: 15px;
-    /* Tạo khoảng cách với các phần tử bên cạnh */
-}
 
 
 /* Sport section phân mục */
@@ -543,7 +393,7 @@ sports-container {
     max-width: 1000px;
     min-width: 900px;
     margin-top: 5%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: var(--text-fam);
 }
 
 .section1 {

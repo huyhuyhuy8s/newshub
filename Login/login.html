@@ -1,12 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="login1.css">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <title>Login</title>
 </head>
+
 <body>
     <div class="login-box">
         <div class="login-header">
@@ -28,29 +31,37 @@
             </section>
         </div>
 
-        <div class="input-submit">
-            <button class="submit-btn" id="submit"></button>
-            <label for="submit">Sign In</label>
+        <div class="login-button input-submit">
+            <button class="submit-btn" id="submit">
+                <p>Sign In</p>
+            </button>
         </div>
 
-        <div class="login-with-facebook">
-            <button class="facebook-btn" id="facebook-login"></button>
-            <label for="facebook-login">
+        <div class="login-button login-with-facebook">
+            <button class="facebook-btn" id="facebook-login">
+                <div class="flex-fb">
+                    <img class="facebook-logo-icon" alt="Facebook Logo" src="hinhanh/Facebook Logo.png">
+                    <p>Login with Facebook</p>
+                </div>
+            </button>
+            <!-- <label for="facebook-login">
                 <img class="facebook-logo-icon" alt="Facebook Logo" src="hinhanh/Facebook Logo.png">
                 Login with Facebook
-            </label>
+            </label> -->
         </div>
-        <div class="login-with-google">
+
+        <div class="login-button login-with-google">
             <button class="google-btn" id="google-login"></button>
             <label for="google-login">
                 <img class="google-logo-icon" alt="Google Logo" src="hinhanh/circlegoogle.png">
                 Login with Google
             </label>
         </div>
- 
+
         <div class="sign-up-link">
-            <p>Don't have account? <a href="#">Sign Up</a></p>
+            <a href="#" id="temp">Sign Up</a>
         </div>
     </div>
 </body>
+
 </html>

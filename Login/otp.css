@@ -1,13 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
-*{
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
 
-body{
+body {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -15,7 +15,7 @@ body{
     background: #f3f4f6;
 }
 
-.otp-box{
+.otp-box {
     display: flex;
     justify-content: center;
     flex-direction: column;
@@ -28,52 +28,52 @@ body{
     background-color: #fff;
 }
 
-.otp-header{
+.otp-header {
     text-align: center;
     margin: 20px 0 40px 0;
 }
 
-.otp-header header{
+.otp-header header {
     color: #333;
     font-size: 30px;
     font-weight: 600;
 }
 
-.otp-text-box{
+.otp-text-box {
     text-align: justify;
     font-size: 16px;
     color: #555;
     margin-bottom: 20px;
 }
 
-.otp-input-box{
+.otp-input-box {
     display: flex;
     justify-content: space-between;
     margin-bottom: 20px;
 }
 
-.otp-input-box .otp-field{
+.otp-input-box .otp-field {
     width: 50px;
     height: 60px;
     font-size: 22px;
     text-align: center;
     border-radius: 10px;
     border: 2px solid #ccc;
-    box-shadow: 0px 5px 10px 1px rgba(0,0,0, 0.1);
+    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1);
     outline: none;
     transition: .3s;
 }
 
-.otp-field:focus{
+.otp-field:focus {
     border-color: #6e071a;
-    box-shadow: 0px 0px 5px 2px rgba(110,7,26, 0.3);
+    box-shadow: 0px 0px 5px 2px rgba(110, 7, 26, 0.3);
 }
 
-.input-submit{
+.input-submit {
     position: relative;
 }
 
-.submit-btn{
+.submit-btn {
     width: 100%;
     height: 60px;
     background: #6e071a;
@@ -83,7 +83,7 @@ body{
     transition: .3s;
 }
 
-.input-submit label{
+.input-submit label {
     position: absolute;
     top: 45%;
     left: 50%;
@@ -92,39 +92,38 @@ body{
     cursor: pointer;
 }
 
-.submit-btn:hover{
+.submit-btn:hover {
     background: #000;
-    transform: scale(1.05,1);
+    transform: scale(1.05, 1);
 }
 
-.otp-resend{
+.otp-resend {
     text-align: center;
     margin-top: 10px;
     font-size: 14px;
 }
 
-.otp-resend a{
+.otp-resend a {
     color: #6e071a;
     text-decoration: none;
 }
 
-.otp-resend a:hover{
+.otp-resend a:hover {
     text-decoration: underline;
 }
 
-.sign-in-link{
+.sign-in-link {
     text-align: center;
     font-size: 15px;
     margin-top: 20px;
 }
 
-.sign-in-link a{
+.sign-in-link a {
     color: #000;
     font-weight: 600;
 }
 
-.logo-icon{
-    width: 200px;
-    height: auto;  
+.logo-icon {
+    height: 2em;
     object-fit: cover;
 }
