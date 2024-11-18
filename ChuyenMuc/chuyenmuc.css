@@ -149,60 +149,43 @@ body {
 
 .parent {
     display: grid;
-    grid-template-columns: 20% 20% 20% repeat(2, 1fr);
-    /* grid-template-rows: repeat(5, 1fr); */
-    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
-    grid-column-gap: 10px;
-    grid-row-gap: 10px;
-    /* margin-left: 220px;
-    margin-right: 200px; */
-    margin-left: 23%;
-    max-width: 1000px;
-    min-width: 100px;
-    font-family: Arial, Helvetica, sans-serif;
-    border-bottom: 1px solid #D4BFCB;
+    grid-template-columns: repeat(3, 1fr) 2fr;
+    grid-template-rows: repeat(4, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
 }
 
 .div1 {
-    grid-area: 1 / 1 / 5 / 4;
+    grid-area: 1 / 1 / 3 / 4;
 }
 
 .div2 {
-    grid-area: 5 / 1 / 8 / 2;
+    grid-area: 3 / 1 / 5 / 2;
 }
 
 .div3 {
-    grid-area: 5 / 2 / 8 / 3;
+    grid-area: 3 / 2 / 5 / 3;
 }
 
 .div4 {
-    grid-area: 5 / 3 / 8 / 4;
+    grid-area: 3 / 3 / 5 / 4;
 }
 
 .div5 {
-    grid-area: 1 / 4 / 2 / 6;
+    grid-area: 1 / 4 / 2 / 5;
 }
 
 .div6 {
-    grid-area: 2 / 4 / 3 / 6;
+    grid-area: 2 / 4 / 3 / 5;
 }
 
 .div7 {
-    grid-area: 3 / 4 / 4 / 6;
+    grid-area: 3 / 4 / 4 / 5;
 }
 
 .div8 {
-    grid-area: 4 / 4 / 5 / 6;
+    grid-area: 4 / 4 / 5 / 5;
 }
-
-.div9 {
-    grid-area: 5 / 4 / 6 / 6;
-}
-
-.div10 {
-    grid-area: 6 / 4 / 7 / 6;
-}
-
 
 
 @media (max-width: 1200px) {
@@ -213,12 +196,126 @@ body {
     }
 }
 
+.parent1 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 20px;
+    max-width: 1000px;
+    margin-left: 17%;
+    margin-top: 2%;
+    max-height: 780px;
+    border-bottom: 1px solid #D4BFCB; 
+    border-left: 1px solid #D4BFCB; 
+    border-right: 1px solid #D4BFCB; 
+    .child1 {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .child2 {
+        grid-area: 1 / 2 / 2 / 3;
+    }
+}
+
+.child1 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+
+
+    .div1 {
+        grid-area: 1 / 1 / 2 / 4;
+    }
+
+    .div2 {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .div3 {
+        grid-area: 2 / 2 / 3 / 3;
+    }
+
+    .div4 {
+        grid-area: 2 / 3 / 3 / 4;
+    }
+}
+
+
+.child2 {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(5, 1fr);
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+    max-width: 600px;
+    max-height: 50%;
+
+    .div5 {
+        grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .div6 {
+        grid-area: 2 / 1 / 3 / 2;
+    }
+
+    .div7 {
+        grid-area: 3 / 1 / 4 / 2;
+    }
+
+    .div8 {
+        grid-area: 4 / 1 / 5 / 2;
+    }
+
+    .div9 {
+        grid-area: 5 / 1 / 6 / 2;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 .highlight {
     background-color: aqua;
-
-
 }
 
 
@@ -226,7 +323,7 @@ body {
 .div1 {
     width: 100%;
     /* Responsive width */
-    height: autopx;
+    height: 100%;
     max-width: 800px;
     /* Optional: to limit the max width on larger screens */
     margin: 0 auto;
@@ -236,7 +333,7 @@ body {
     align-items: center;
     gap: 10px;
     /* Space between elements */
-    border: 1px solid #D4BFCB;
+    border-bottom: 1px solid #D4BFCB; 
 }
 
 .hinhanh-div1 {
@@ -292,65 +389,17 @@ body {
     /* Màu khi hover */
 }
 
-/* div2 */
-/* .div2 {
-    margin-top: 5px;
-    border: 0.5px solid #0e0d0d;
-}
-
-.hinhanh-div2 {
-    margin-top: 0px;
-    margin-bottom: 0px;
-    width: 100%;
-    position: relative;
-    max-width: 100%;
-    height: 100%;
-    object-fit: fill;
-}
-
-.text-div2 {
-    margin-left: 5px;
-    margin-top: 0px;
-    width: 100%;
-    position: relative;
-    font-size: 10px;
-    color: #000;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    height: 100%;
-} */
-
-/* div3 */
-/* .div3, .div4 {
-    margin-top: 5px;
-    border: 0.5px solid #0e0d0d;
-    margin-left: 5px;
-}
-
-.hinhanh-div3 {
-    margin-top: 0px;
-    margin-bottom: 10px;
-    width: 100%;
-    position: relative;
-    max-width: 100%;
-    overflow: hidden;
-    height: 100%;
-    object-fit: fill;
-} */
 
 /* Đặt kích thước cố định cho div2, div3 và div4 */
 .div2,
 .div3,
 .div4 {
     width: 100%;
-    height: auto;
-    /* Đặt chiều cao cố định cho các div */
-    border-top: 1px solid #D4BFCB;
-
+    height: 60% ;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 20px;
     /* Căn giữa nội dung theo chiều dọc */
     align-items: center;
     /* Căn giữa nội dung theo chiều ngang */
@@ -375,9 +424,9 @@ body {
 .text-div2 {
     text-align: left;
     /* Căn giữa nội dung văn bản */
-    font-size: 12px;
+    font-size: 14px;
     color: #000;
-    padding: 5px;
+    padding: 2px;
     font-weight: bold;
 }
 
@@ -388,9 +437,8 @@ body {
 .div8,
 .div9,
 .div10 {
-    margin-top: 5px;
     display: grid;
-    width: 110%;
+    width: 100%;
     height: 150px;
     grid-template-columns: 2fr 1fr;
     grid-template-rows: auto auto;
@@ -427,7 +475,7 @@ body {
     color: #333;
     margin: 0;
     text-align: justify;
-    font-size: 10px;
+    font-size: 11px;
     font-weight: 500;
     font-style: normal;
     font-variant: normal;
@@ -442,9 +490,8 @@ body {
 .div8 .date,
 .div9 .date,
 .div10 .date {
-    font-size: 14px;
+    font-size: 12px;
     color: #d00;
-    margin-top: 5;
 }
 
 .div5 .image-container,
@@ -492,7 +539,7 @@ sports-container {
     grid-template-rows: repeat(1, 1fr);
     grid-column-gap: 10px;
     grid-row-gap: 0px;
-    margin-left: 22.5%;
+    margin-left: 15%;
     max-width: 1000px;
     min-width: 900px;
     margin-top: 5%;
@@ -755,7 +802,7 @@ sports-container {
     /* Tùy chỉnh độ rộng */
     margin: 0 auto;
     /* Canh giữa */
-    margin-left: 25%;
+    margin-left: 20%;
     max-width: 1000px;
     min-width: 900px;
     margin-top: 5%;
