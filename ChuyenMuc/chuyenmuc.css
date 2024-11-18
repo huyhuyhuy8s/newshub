@@ -36,7 +36,11 @@ a {
 
 /* Các nút Menu và Home */
 body {
-    font-family: Arial, sans-serif;
+    font-family: var(--text-fam);
+}
+
+.body {
+    padding: 2em 20em;
 }
 
 .menu-button,
@@ -186,7 +190,6 @@ body {
     display: grid;
     grid-template: 1fr / 5.5fr 4.5fr;
     gap: 1em;
-    margin: 2em 20em;
     border-bottom: 1px solid #D4BFCB;
     /* height: 10em; */
 
@@ -209,6 +212,7 @@ body {
     }
 
     .div-234 {
+        padding-top: 1em;
         display: grid;
         grid-template: 1fr / repeat(3, 1fr);
         gap: 0.5em;
@@ -319,45 +323,44 @@ body {
 /* Đặt kích thước cố định cho div2, div3 và div4 */
 
 .div2 {
-    display: flex;
-    flex-direction: column;
-    box-sizing: border-box;
-    /* border-bottom: 1px solid #D4BFCB; */
+    display: grid;
+    grid-template: 1fr 1fr / 1fr;
+
+    p {
+        font-size: 14px;
+        font-weight: bold;
+        padding: 0 1em;
+    }
+
+    .hinhanh-div {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
 }
 
-/* Định dạng ảnh bên trong để giữ kích thước và căn chỉnh cho giống nhau */
-
-.hinhanh-div {
-    width: 100%;
-    /* Căn chỉnh chiều cao ảnh */
-    object-fit: cover;
-}
-
-/* Căn chỉnh nội dung văn bản để giống nhau */
-.text-div2 {
-    font-size: 14px;
-    font-weight: bold;
-}
-
-/* div 5 */
 .div5 {
     display: grid;
-    grid-template: 1fr / 6fr 4fr;
-    margin: 1em;
-    margin-top: 0;
+    grid-template: 1fr / 6.5fr 3.5fr;
     padding-top: 0.5em;
     border-top: 1px solid;
+    /* height: 10em; */
 
     .infor {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         /* gap: 0.5em; */
-        padding: 0 0.5em 0 0.5em;
+        padding: 0 0.5em;
 
         h4 {
             font-weight: bold;
+            font-size: 11pt;
             color: #000;
+        }
+
+        p {
+            font-size: 8pt
         }
 
         .date {
