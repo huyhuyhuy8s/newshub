@@ -1,88 +1,108 @@
-
-
-
 #body {
     font-family: Arial, sans-serif;
-    margin: 0 auto; /* Căn giữa block element */
+    margin: 0 auto;
+    /* Căn giữa block element */
     width: 75%;
-    
+
 }
+
+p {
+    padding-top: 1em;
+    text-align: justify;
+}
+
 #nav {
     display: flex;
     justify-content: space-between;
     margin: 0 25px 0 25px;
+
     ol {
         background-color: white;
     }
 }
+
 #article {
     h5 {
         text-align: center;
         font-weight: bold;
         font-size: 30px;
     }
+
     .b_title {
         display: flex;
         flex-direction: row;
         justify-content: space-between;
         margin: 0 25px 0 25px;
     }
+
     img {
         width: 100%;
     }
+
     .content {
         margin: 0 170px 0 170px;
     }
 }
+
 #cmt {
-    
-    .cmt_area { 
+
+    .cmt_area {
         display: flex;
+
         textarea {
             width: 100%;
-            
+
         }
     }
+
     .cmts {
         display: flex;
         justify-content: space-between;
         margin: 10px 0 0 10px;
+
         .button {
             display: flex;
             justify-content: end;
+
             .btn {
-                margin:5px 5px 10px 10px;
+                margin: 5px 5px 10px 10px;
             }
         }
     }
+
     .cmt_mn {
         display: flex;
         flex-direction: row;
         border-top: 0.2px solid #e6e8ea;
+
         p {
             margin-left: 10px;
         }
     }
 }
-#article_related, #article_highlight {
+
+#article_related,
+#article_highlight {
     margin-bottom: 10px;
 
     h4 {
         font-weight: bold;
         color: black;
         height: 50px;
-        border-top:0.2px solid #e6e8ea;
+        border-top: 0.2px solid #e6e8ea;
         margin-top: 20px;
         padding-top: 10px;
-        
+
     }
+
     .item {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
         background-color: #6e071a;
-        padding: 20px 0 20px 0; 
+        padding: 20px 0 20px 0;
     }
+
     .card {
         background-color: #6e071a;
         color: white;
@@ -90,37 +110,44 @@
         text-align: center;
     }
 }
+
 #article_list {
     margin-top: 10px;
     display: flex;
     flex-direction: row;
+
     div {
         border: 0.1px solid #e6e8ea;
         padding: 10px 5px 0 5px;
     }
+
     h6 {
         font-weight: bold;
         margin-top: 5px;
     }
 }
+
 #footer {
     background-color: #6e071a;
+
     img {
         text-align: start;
     }
+
     table td {
         border-top: none;
         border-right: 0.2px solid white;
         color: white;
     }
+
     .bot {
         border-top: 0.2px solid white;
         display: flex;
         justify-content: space-between;
         color: white;
+
         a {
             margin-right: 18px;
         }
     }
 }
-     
