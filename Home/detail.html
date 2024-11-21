@@ -12,10 +12,48 @@
 </head>
 
 <body>
-    <div class="card">
-        <div class="card-header">
-            Header a
-        </div>
+    <div class="card border">
+        <div class="card-header p-0 sticky-top">
+            <nav id="head">
+              <div class="left">
+                <a href="#" class="btn">
+                  <i class="bi bi-list"></i>
+                </a>
+                <a href="#" class="btn">
+                  <i class="bi bi-house-door"></i>
+                </a>
+                <div class="search">
+                  <input type="text" placeholder="Nhập thông tin cần tìm...">
+                  <button type="submit" class="btn border-left">
+                    <i class="bi bi-search"></i>
+                  </button>
+      
+                </div>
+              </div>
+              <a class="center">
+                <img src="./imgs/logo.jpg" width="50%" height="80%">
+              </a>
+              <div class="right">
+                <button type="button">Đăng ký</button>
+                <button type="button">Đăng nhập</button>
+              </div>
+              
+              <div class="category">
+                <a href="#" class="button button-news">Thời sự</a>
+                <a href="#" class="button">Kinh doanh</a>
+                <a href="#" class="button">Khoa học</a>
+                <a href="#" class="button">Thể thao</a>
+                <a href="#" class="button">Giáo dục</a>
+                <a href="#" class="button">Đời sống</a>
+                <a href="#" class="button">Thế giới</a>
+                <a href="#" class="button">Bất động sản</a>
+                <a href="#" class="button">Giải trí</a>
+                <a href="#" class="button">Pháp luật</a>
+                <a href="#" class="button">Sức khỏe</a>
+                <a href="#" class="button">Du lịch</a>
+              </div>
+            </nav>
+          </div>
         <div class="card-body pr-0 pl-0" id="body">
             <!-- Chuyên mục & tag -->
             <div id="nav">
@@ -396,67 +434,42 @@
             </div>
         </div>
         <div class="card-footer text-muted" id="footer">
-            <div class="row">
-                <div class="col-sm-3">
-                    <img src="./imgs/logokonen.png" width="300px" height="100px" alt="">
-                </div>
-                <div class="col-sm-6">
-                    <div class="top">
-                        <table class="table">
-                            <tr>
-                                <td>
-                                    <a>Trang chủ</a>
-                                </td>
-                                <td>
-                                    <a>Thể Thao</a>
-                                </td>
-                                <td>
-                                    <a>Khoa Học</a>
-                                </td>
-                                <td>
-                                    <a>Bất Động Sản</a>
-                                </td>
-                                <td>
-                                    <a>Sức Khỏe</a>
-                                </td>
-                                <td style="border: none">
-                                    <a>Phát Luật</a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <a>Thời Sự</a>
-                                </td>
-                                <td>
-                                    <a>Kinh Doanh</a>
-                                </td>
-                                <td>
-                                    <a>Đời Sống</a>
-                                </td>
-                                <td>
-                                    <a>Giải Trí</a>
-                                </td>
-                                <td>
-                                    <a>Du Lịch</a>
-                                </td>
-                            </tr>    
-                          </table>
-                    </div>
-                    <div class="bot">
-                        <div>
-                            <a>Giới thiệu</a>
-                            <a>Chính sách bảo mật</a>
-                            <a>Thông tin liên hệ</a>
-                            <a>Đóng góp ý kiến</a>
-                            <a>Trợ giúp khả năng về truy cập</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-sm-3">
-
-                </div>
+            <div class="left">
+              <img src="./imgs/logokonen.png" width="100%" height="50%">
             </div>
-        </div>
+            <div class="right">
+              <div class="top">
+                <a href="#" class="com-row-1">Trang chủ</a>
+                <a href="#">Thời sự</a>
+                <a href="#">Kinh doanh</a>
+                <a href="#">Khoa học</a>
+                <a href="#">Thể thao</a>
+                <a href="#">Giáo dục</a>
+                <a href="#">Đời sống</a>
+                <a href="#"class="com-row-1">Thế giới</a>
+                <a href="#">Bất động sản</a>
+                <a href="#">Giải trí</a>
+                <a href="#">Pháp luật</a>
+                <a href="#">Sức khỏe</a>
+                <a href="#">Du lịch</a>
+              </div>
+              <div class="center">
+                <a href="#" class="com-row-2">Giới thiệu</a>
+                <a href="#">Chính sách bảo mật</a>
+                <a href="#">Thông tin liên hệ</a>
+                <a href="#">Đóng góp ý kiến</a>
+                <a href="#">Hỗ trợ khả năng về truy cập</a>
+                <a href="#" class="com-row-2">Điều khoản sử dụng</a>
+                <a href="#">Dữ liệu người dùng</a>
+                <a href="#">Cookie</a>
+              </div>
+              <div class="bot">
+                <p>NewHubs không chịu trách nhiệm về nội dung của các trang web bên ngoài.</p>
+                <a href="#" class="pl-2">Đọc thêm về điều khoản</a>
+      
+              </div>
+            </div>
+          </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
