@@ -1,4 +1,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+:root {
+    --white: #fffaf1;
+    --whiteforbox: #fff;
+    --black: #000000;
+    --gray: #555555;
+    --light-gray: #ccc;
+    --dark-gray: #333333;
+    --button-red: #6e071a;
+    --hover-dark: #000;
+    --shadow-red: rgba(110, 7, 26, 0.3);
+    --box-shadow: rgba(0, 0, 0, 0.2);
+    --field-shadow: rgba(0, 0, 0, 0.1);
+}
 
 * {
     margin: 0;
@@ -12,7 +25,7 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #f3f4f6;
+    background: var(--white);
 }
 
 .otp-box {
@@ -22,10 +35,10 @@ body {
     width: 400px;
     height: 600px;
     padding: 30px;
-    border: 2px solid #333;
+    border: 2px solid var(--dark-gray);
     border-radius: 15px;
-    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    background-color: #fff;
+    box-shadow: 0px 5px 15px var(--box-shadow);
+    background-color: var(--whiteforbox);
 }
 
 .otp-header {
@@ -34,7 +47,7 @@ body {
 }
 
 .otp-header header {
-    color: #333;
+    color: var(--dark-gray);
     font-size: 30px;
     font-weight: 600;
 }
@@ -42,7 +55,7 @@ body {
 .otp-text-box {
     text-align: justify;
     font-size: 16px;
-    color: #555;
+    color: var(--gray);
     margin-bottom: 20px;
 }
 
@@ -58,15 +71,15 @@ body {
     font-size: 22px;
     text-align: center;
     border-radius: 10px;
-    border: 2px solid #ccc;
-    box-shadow: 0px 5px 10px 1px rgba(0, 0, 0, 0.1);
+    border: 2px solid var(--light-gray);
+    box-shadow: 0px 5px 10px 1px var(--field-shadow);
     outline: none;
     transition: .3s;
 }
 
 .otp-field:focus {
-    border-color: #6e071a;
-    box-shadow: 0px 0px 5px 2px rgba(110, 7, 26, 0.3);
+    border-color: var(--button-red);
+    box-shadow: 0px 0px 5px 2px var(--shadow-red);
 }
 
 .input-submit {
@@ -76,7 +89,7 @@ body {
 .submit-btn {
     width: 100%;
     height: 60px;
-    background: #6e071a;
+    background: var(--button-red);
     border: none;
     border-radius: 30px;
     cursor: pointer;
@@ -87,13 +100,13 @@ body {
     position: absolute;
     top: 45%;
     left: 50%;
-    color: #fff;
+    color: var(--white);
     transform: translate(-50%, -50%);
     cursor: pointer;
 }
 
 .submit-btn:hover {
-    background: #000;
+    background: var(--hover-dark);
     transform: scale(1.05, 1);
 }
 
@@ -104,7 +117,7 @@ body {
 }
 
 .otp-resend a {
-    color: #6e071a;
+    color: var(--button-red);
     text-decoration: none;
 }
 
@@ -119,11 +132,12 @@ body {
 }
 
 .sign-in-link a {
-    color: #000;
+    color: var(--black);
     font-weight: 600;
 }
 
 .logo-icon {
+    width: 300px;
     height: 2em;
     object-fit: cover;
 }
