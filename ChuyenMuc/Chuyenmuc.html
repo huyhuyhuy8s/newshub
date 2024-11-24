@@ -5,85 +5,78 @@
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, width=device-width">
     <title>NewsHub Header</title>
-    <link rel="stylesheet" href="chuyenmuc.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lato:wght@300;600;700&display=swap" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="chuyenmuc.css">
 </head>
 
 <body>
     <header>
-        <table>
-            <!-- Dòng thứ nhất: Header bao gồm các nút menu, home, thanh tìm kiếm, logo và các nút đăng ký/đăng nhập -->
-            <tr>
-                <td>
-                    <div class="header-top">
-                        <button class="menu-button">
-                            <img src="hinhanh/menu.png" alt="Menu" style="width: 20px; height: 20px;">
-                        </button>
-                        <button class="home-button">
-                            <img src="hinhanh/Home Button.png" alt="Home" style="width: 20px; height: 20px;">
-                        </button>
-                        <div class="search-bar">
-                            <input type="text" placeholder="Nhập tin tức cần tìm">
-                        </div>
-
-                        <div class="logo">
-                            <img src="hinhanh/logokonen.png" alt="NewsHub Logo" class="logo-image">
-                        </div>
-
-                        <div class="auth-buttons">
-                            <button style="background-color: #7D0017; color: white;">Đăng Ký</button>
-                            <button style="background-color: #D1BBA7; color: black;">Đăng Nhập</button>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-
-            <!-- Dòng thứ hai: Thanh catalog ngang chứa các chuyên mục -->
-            <tr>
-                <td>
-                    <ul class="catalog-bar">
-                        <li><button>THỜI SỰ</button></li>
-                        <li><button>KINH DOANH</button></li>
-                        <li><button>KHOA HỌC</button></li>
-                        <li><button>THỂ THAO</button></li>
-                        <li><button>GIÁO DỤC</button></li>
-                        <li><button>ĐỜI SỐNG</button></li>
-                        <li><button>THẾ GIỚI</button></li>
-                        <li><button>BẤT ĐỘNG SẢN</button></li>
-                        <li><button>GIẢI TRÍ</button></li>
-                        <li><button>PHÁP LUẬT</button></li>
-                        <li><button>SỨC KHỎE</button></li>
-                        <li><button>DU LỊCH</button></li>
-                    </ul>
-                </td>
-            </tr>
-
-            <!-- Dòng thứ ba: Heading "THỂ THAO" -->
-            <tr>
-                <td>
-                    <div class="heading">THỂ THAO</div>
-                </td>
-            </tr>
-
-        </table>
+        <ul class="left">
+            <li>
+                <a href="#"><i class="bi bi-list"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="bi bi-search"></i></a>
+            </li>
+        </ul>
+        <div class="middle">
+            <a href="#"><img src="./hinhanh/logokonen2.png"></a>
+        </div>
+        <ul class="right">
+            <a href="#">
+                <li>
+                    Đăng nhập
+                </li>
+            </a>
+            <a href="#">
+                <li>
+                    Đăng ký
+                </li>
+            </a>
+        </ul>
     </header>
+    <nav id="nav">
+        <ul>
+            <li> <a href="#" class="button button-news">Thời sự</a></li>
+            <li> <a href="#" class="button">Kinh doanh</a></li>
+            <li> <a href="#" class="button">Khoa học</a></li>
+            <li> <a href="#" class="button">Thể thao</a></li>
+            <li> <a href="#" class="button">Giáo dục</a></li>
+            <li> <a href="#" class="button">Đời sống</a></li>
+            <li> <a href="#" class="button">Thế giới</a></li>
+            <li> <a href="#" class="button">Bất động sản</a></li>
+            <li> <a href="#" class="button">Giải trí</a></li>
+            <li> <a href="#" class="button">Pháp luật</a></li>
+            <li> <a href="#" class="button">Sức khỏe</a></li>
+            <li> <a href="#" class="button">Du lịch</a></li>
+        </ul>
+    </nav>
 
     <div class="body">
+        <h2>
+            Thể thao
+        </h2>
         <div class="parent1">
             <div class="child1">
                 <div class="div1">
                     <a href="#" class="link-div1">
                         <img class="hinhanh-div1" alt="" src="hinhanh/mancity1.png">
-                        <h4 class="text-div1">Trực tiếp bóng đá Brighton - Man City: So kè căng thẳng (Ngoại hạng Anh)
+                        <h4 class="text-div1">Trực tiếp bóng đá Brighton - Man City: So kè căng thẳng (Ngoại hạng
+                            Anh)
                         </h4>
                         <p class="noi-dung-div1">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Optio
                             incidunt
-                            dolore quaerat odit temporibus delectus sequi inventore, mollitia illum culpa, nulla quod!
-                            Officiis nesciunt ut sit laboriosam ex perferendis dolor nostrum magni mollitia placeat, non
+                            dolore quaerat odit temporibus delectus sequi inventore, mollitia illum culpa, nulla
+                            quod!
+                            Officiis nesciunt ut sit laboriosam ex perferendis dolor nostrum magni mollitia placeat,
+                            non
                             dolore impedit nulla perspiciatis voluptatum fugiat alias illum voluptatibus! Aliquam
                             voluptatem
-                            ea consequatur itaque delectus?</p>
+                            ea consequatur itaque delectus?
+                        </p>
                     </a>
                 </div>
 
@@ -109,7 +102,44 @@
                 <div class="div5">
                     <div class="infor">
                         <h4>Siêu kinh điển bóng chuyền nữ VN: Ngoại binh châu Phi thắng Bích Tuyền</h4>
-                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng giúp
+                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng
+                            giúp
+                            Hóa
+                            chất
+                            Đức Giang (HCĐG) Lào Cai thắng ấn tượng đương kim vô địch LPBank Ninh Bình có Bích Tuyền
+                            trong
+                            đội
+                            hình.
+                            Bích Tuyền bị “khóa”, HCĐG Lào Cai thắng LPBank Ninh Bình</p>
+                        <p class="date">November 10, 2024</p>
+                    </div>
+                    <div class="image-container">
+                        <!-- <img alt="Image 8" src="hinhanh/nhatban.webp"> -->
+                    </div>
+                </div>
+
+                <div class="div5">
+                    <div class="infor">
+                        <h4>Báo Indonesia bình luận khi thầy trò Shin Tae Yong thảm bại trước Nhật Bản</h4>
+                        <p>Nhiều tờ báo Indonesia đã tỏ ra thất vọng sau khi chứng kiến đội nhà thất bại 0-4
+                            trước
+                            Nhật Bản vào tối 15/11. Tuy nhiên, họ cho rằng cơ hội đi tiếp của thầy trò HLV Shin Tae
+                            Yong
+                            chưa bị
+                            dập
+                            tắt.</p>
+                        <p class="date">November 12, 2024</p>
+                    </div>
+                    <div class="image-container">
+                        <!-- <img alt="Image 8" src="hinhanh/nhatban.png"> -->
+                    </div>
+                </div>
+
+                <div class="div5">
+                    <div class="infor">
+                        <h4>Siêu kinh điển bóng chuyền nữ VN: Ngoại binh châu Phi thắng Bích Tuyền</h4>
+                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng
+                            giúp
                             Hóa
                             chất
                             Đức Giang (HCĐG) Lào Cai thắng ấn tượng đương kim vô địch LPBank Ninh Bình có Bích Tuyền
@@ -129,7 +159,8 @@
                         <h4>Báo Indonesia bình luận khi thầy trò Shin Tae Yong thảm bại trước Nhật Bản</h4>
                         <p>Nhiều tờ báo Indonesia đã tỏ ra thất vọng sau khi chứng kiến đội nhà thất bại 0-4
                             trước
-                            Nhật Bản vào tối 15/11. Tuy nhiên, họ cho rằng cơ hội đi tiếp của thầy trò HLV Shin Tae Yong
+                            Nhật Bản vào tối 15/11. Tuy nhiên, họ cho rằng cơ hội đi tiếp của thầy trò HLV Shin Tae
+                            Yong
                             chưa bị
                             dập
                             tắt.</p>
@@ -143,7 +174,8 @@
                 <div class="div5">
                     <div class="infor">
                         <h4>Siêu kinh điển bóng chuyền nữ VN: Ngoại binh châu Phi thắng Bích Tuyền</h4>
-                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng giúp
+                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng
+                            giúp
                             Hóa
                             chất
                             Đức Giang (HCĐG) Lào Cai thắng ấn tượng đương kim vô địch LPBank Ninh Bình có Bích Tuyền
@@ -163,7 +195,8 @@
                         <h4>Báo Indonesia bình luận khi thầy trò Shin Tae Yong thảm bại trước Nhật Bản</h4>
                         <p>Nhiều tờ báo Indonesia đã tỏ ra thất vọng sau khi chứng kiến đội nhà thất bại 0-4
                             trước
-                            Nhật Bản vào tối 15/11. Tuy nhiên, họ cho rằng cơ hội đi tiếp của thầy trò HLV Shin Tae Yong
+                            Nhật Bản vào tối 15/11. Tuy nhiên, họ cho rằng cơ hội đi tiếp của thầy trò HLV Shin Tae
+                            Yong
                             chưa bị
                             dập
                             tắt.</p>
@@ -177,41 +210,8 @@
                 <div class="div5">
                     <div class="infor">
                         <h4>Siêu kinh điển bóng chuyền nữ VN: Ngoại binh châu Phi thắng Bích Tuyền</h4>
-                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng giúp
-                            Hóa
-                            chất
-                            Đức Giang (HCĐG) Lào Cai thắng ấn tượng đương kim vô địch LPBank Ninh Bình có Bích Tuyền
-                            trong
-                            đội
-                            hình.
-                            Bích Tuyền bị “khóa”, HCĐG Lào Cai thắng LPBank Ninh Bình</p>
-                        <p class="date">November 10, 2024</p>
-                    </div>
-                    <div class="image-container">
-                        <!-- <img alt="Image 8" src="hinhanh/nhatban.png"> -->
-                    </div>
-                </div>
-
-                <div class="div5">
-                    <div class="infor">
-                        <h4>Báo Indonesia bình luận khi thầy trò Shin Tae Yong thảm bại trước Nhật Bản</h4>
-                        <p>Nhiều tờ báo Indonesia đã tỏ ra thất vọng sau khi chứng kiến đội nhà thất bại 0-4
-                            trước
-                            Nhật Bản vào tối 15/11. Tuy nhiên, họ cho rằng cơ hội đi tiếp của thầy trò HLV Shin Tae Yong
-                            chưa bị
-                            dập
-                            tắt.</p>
-                        <p class="date">November 12, 2024</p>
-                    </div>
-                    <div class="image-container">
-                        <!-- <img alt="Image 8" src="hinhanh/nhatban.png"> -->
-                    </div>
-                </div>
-
-                <div class="div5">
-                    <div class="infor">
-                        <h4>Siêu kinh điển bóng chuyền nữ VN: Ngoại binh châu Phi thắng Bích Tuyền</h4>
-                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng giúp
+                        <p>(Tin thể thao, tin bóng chuyền) Tay đập người Kenya Chepchumba có ngày thi đấu rực sáng
+                            giúp
                             Hóa
                             chất
                             Đức Giang (HCĐG) Lào Cai thắng ấn tượng đương kim vô địch LPBank Ninh Bình có Bích Tuyền
@@ -232,317 +232,405 @@
             <div class="chuyenmuc1">
                 <div class="section1">
                     <div class="sport-section1">
-                        <h1 class="section1-title">Bóng Rổ</h1>
+                        <h3 class="section1-title">Bóng rổ</h3>
                         <div class="section1-imagecontainer">
-                            <img class="section1-image" alt="Image11" src="hinhanh/pickball.webp">
+                            <a href="#">
+                                <img class="section1-image" alt="Image11" src="hinhanh/pickball.webp">
+                            </a>
                         </div>
-                        <h2 class="Tuadebaiviet">Lebron James lập kỷ lục trong ngày lakers thua trận</h2>
+                        <h2 class="Tuadebaiviet">
+                            <a href="#">Lebron James lập kỷ lục trong ngày lakers thua trận</a>
+                        </h2>
                     </div>
                 </div>
 
                 <div class="section2">
                     <div class="section2-content title-image">
-                        <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào thế khó
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
+                    </div>
+                    <div class="section2-image-container">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="section2">
+                    <div class="section2-content title-image">
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
+                    </div>
+                    <div class="section2-image-container">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
+                    </div>
+                </div>
+
+                <div class="section2">
+                    <div class="section2-content title-image">
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
+                    </div>
+                    <div class="section2-image-container">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chuyenmuc1">
+                <div class="section1">
+                    <div class="sport-section1">
+                        <h3 class="section1-title">Bóng rổ</h3>
+                        <div class="section1-imagecontainer">
+                            <a href="#">
+                                <img class="section1-image" alt="Image11" src="hinhanh/pickball.webp">
+                            </a>
+                        </div>
+                        <h2 class="Tuadebaiviet">
+                            <a href="#">Lebron James lập kỷ lục trong ngày lakers thua trận</a>
                         </h2>
                     </div>
-                    <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
-                    </div>
-                    <!-- <div class="section2-content content">
-                    <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-                </div> -->
                 </div>
 
-                <div class="section3">
+                <div class="section2">
                     <div class="section2-content title-image">
-                        <h2 class="section2-title">Chủ tịch Liên đoàn bóng đá Indonesia có thể từ chức sau trận thua
-                            Nhật
-                            Bản</h2>
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
                     </div>
                     <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
                     </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-                </div> -->
                 </div>
-                <div class="section4">
+
+                <div class="section2">
                     <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
                     </div>
                     <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
                     </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-                </div> -->
+                </div>
+
+                <div class="section2">
+                    <div class="section2-content title-image">
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
+                    </div>
+                    <div class="section2-image-container">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
+                    </div>
                 </div>
             </div>
 
             <div class="chuyenmuc1">
-                <div class="section5">
+                <div class="section1">
                     <div class="sport-section1">
-                        <h1 class="section1-title">Tennis</h1>
+                        <h3 class="section1-title">Bóng rổ</h3>
                         <div class="section1-imagecontainer">
-                            <img class="section1-image" alt="Image11" src="hinhanh/ronaldo.webp">
+                            <a href="#">
+                                <img class="section1-image" alt="Image11" src="hinhanh/pickball.webp">
+                            </a>
                         </div>
-                        <h2 class="Tuadebaiviet">Lebron James lập kỷ lục trong ngày lakers thua trận</h2>
+                        <h2 class="Tuadebaiviet">
+                            <a href="#">Lebron James lập kỷ lục trong ngày lakers thua trận</a>
+                        </h2>
                     </div>
                 </div>
 
-                <div class="section6">
+                <div class="section2">
                     <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
                     </div>
                     <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
                     </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-            </div> -->
                 </div>
-                <div class="section7">
-                    <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
-                    </div>
-                    <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
-                    </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-            </div> -->
-                </div>
-                <div class="section8">
-                    <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
-                    </div>
-                    <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
-                    </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-            </div> -->
-                </div>
-            </div>
 
-            <div class="chuyenmuc1">
-                <div class="section9">
-                    <div class="sport-section1">
-                        <h1 class="section1-title">Đua Xe</h1>
-                        <div class="section1-imagecontainer">
-                            <img class="section1-image" alt="Image11" src="hinhanh/tennis.webp">
-                        </div>
-                        <h2 class="Tuadebaiviet">Lebron James lập kỷ lục trong ngày lakers thua trận</h2>
-                    </div>
-                </div>
-                <div class="section10">
+                <div class="section2">
                     <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
                     </div>
                     <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
                     </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-                </div> -->
                 </div>
-                <div class="section11">
+
+                <div class="section2">
                     <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
+                        <a href="#" class="section2-link">
+                            <h2 class="section2-title">Nhật Bản, Hàn Quốc tiến sát đến World Cup, Indonesia lâm vào
+                                thế
+                                khó</h2>
+                        </a>
                     </div>
                     <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
+                        <a href="#">
+                            <img class="section2-image" src="hinhanh/nhatbanhanquoc.webp" alt="Image for Section 2">
+                        </a>
                     </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-                </div> -->
-                </div>
-                <div class="section12">
-                    <div class="section2-content title-image">
-                        <h2 class="section2-title">Lịch thi đấu chính thức AFF Cup 2024</h2>
-                    </div>
-                    <div class="section2-image-container">
-                        <img class="section2-image" src="hinhanh/lebron.png" alt="Image for Section 2">
-                    </div>
-                    <!-- <div class="section2-content content">
-                <p class="section2-description">This is some content about the event that happened on the same day Lebron James made the record.</p>
-                div> -->
                 </div>
             </div>
         </div>
 
         <div class="parent3">
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <!-- Lặp lại các bài viết tương tự -->
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
-            <div class="baiviet">
-                <a href="link-to-article.html" class="image">
-                    <img src="hinhanh/shintaeyong.webp" alt="Image" />
-                </a>
-                <a href="link-to-article.html" class="title">
-                    HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản
-                </a>
-                <a href="link-to-article.html" class="content">
-                    Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp lực
-                    khủng
-                    khiếp.
-                    Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
-                </a>
-            </div>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
+            <a href="#" class="post">
+                <p>10 hours ago</p>
+                <div class="content">
+                    <h4>HLV Shin Tae Yong nói thẳng sự thật sau trận thua thảm trước Nhật Bản</h4>
+                    <p>
+                        Phát biểu sau trận đấu với Nhật Bản, HLV Shin Tae Yong thừa nhận đội tuyển Indonesia chịu áp
+                        lực
+                        khủng
+                        khiếp.
+                        Bên cạnh đó, ông cũng cho rằng Indonesia khó giành vé dự World Cup 2026.
+                    </p>
+                </div>
+                <img src="./hinhanh/shintaeyong.webp" alt="" class="image">
+            </a>
         </div>
     </div>
 
-
-    <footer id="fh5co-footer" class="fh5co-bg" role="contentinfo">
-        <div class="overlay"></div>
-        <div class="container">
-            <div class="row row-pb-md">
-                <div class="col-md-4 fh5co-widget">
-                    <h3>A Little About Newspaper.</h3>
-
-                    <p><a class="btn btn-primary" href="#">Become A Member</a></p>
-                </div>
-                <div class="col-md-8">
-                    <h3>Giới Thiệu</h3>
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <ul class="fh5co-footer-links">
-                            <li><a href="#">Thời Sự</a></li>
-                            <li><a href="#">Thể Thao</a></li>
-                            <li><a href="#">Pháp Luật</a></li>
-                            <li><a href="#">Kinh Doanh</a></li>
-                            <li><a href="#">Bất Động Sản</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <ul class="fh5co-footer-links">
-                            <li><a href="#">Khoa Học</a></li>
-                            <li><a href="#">Đời Sống</a></li>
-                            <li><a href="#">Sức Khỏe</a></li>
-                            <li><a href="#">Giải Trí</a></li>
-                            <li><a href="#">Du Lịch</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="col-md-4 col-sm-4 col-xs-6">
-                        <ul class="fh5co-footer-links">
-                            <li><a href="#">Chính sách bảo mật</a></li>
-                            <li><a href="#">Thông tin liên hệ</a></li>
-                            <li><a href="#">Điều khoản sử dụng</a></li>
-                            <li><a href="#">Đóng góp ý kiến</a></li>
-                            <li><a href="#">Cookie</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row copyright">
-                <div class="col-md-12 text-center">
-                    <p>
-                        <small class="block">&copy; 2024 NewsHub | NewsHub không chịu trách nhiệm về nội dung của các
-                            trang web bên ngoài.</small>
-                    </p>
-                </div>
-            </div>
-
+    <footer>
+        <div class="left">
+            <img src="./hinhanh/logokonen2.png">
         </div>
+        <div class="right">
+            <ul class="right-top">
+                <li><a href="#">Trang chủ</a></li>
+                <li><a href="#">Thời sự</a></li>
+                <li><a href="#">Kinh doanh</a></li>
+                <li><a href="#">Khoa học</a></li>
+                <li><a href="#">Thể thao</a></li>
+                <li><a href="#">Giáo dục</a></li>
+                <li><a href="#">Đời sống</a></li>
+                <li><a href="#">Thế giới</a></li>
+                <li><a href="#">Bất động sản</a></li>
+                <li><a href="#">Giải trí</a></li>
+                <li><a href="#">Pháp luật</a></li>
+                <li><a href="#">Sức khỏe</a></li>
+                <li><a href="#">Du lịch</a></li>
+            </ul>
+            <ul class="right-center">
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+                <li><a href="#">Thông tin liên hệ</a></li>
+                <li><a href="#">Đóng góp ý kiến</a></li>
+                <li><a href="#">Hỗ trợ khả năng về truy cập</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Dữ liệu người dùng</a></li>
+                <li><a href="#">Cookie</a></li>
+            </ul>
+        </div>
+        <p class="right-bot">NewHubs không chịu trách nhiệm về nội dung của các trang web bên ngoài.<a href="#"
+                class="pl-2">Đọc thêm về điều khoản</a></p>
     </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+    <script>
+        let navbar = document.getElementById("nav")
+        let shouldStickPosition = navbar.offsetTop;
+
+        function addOrRemoveStickyClass() {
+            if (window.pageYOffset >= shouldStickPosition) {
+                navbar.classList.add("sticky");
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+
+        window.onscroll = function () {
+            addOrRemoveStickyClass();
+        }
+    </script>
 </body>
 
 
