@@ -13,13 +13,13 @@
 }
 
 .body {
+    margin: 2em 12.5%;
+
     h2 {
         font-weight: bold;
-        border-bottom: 1px solid var(--black);
+        border-bottom: 2px solid var(--black);
         margin-bottom: 1.5em;
     }
-
-    margin: 2em 12.5%;
 }
 
 /* grid layout */
@@ -39,56 +39,39 @@
     /* height: 10em; */
 
     .child1 {
+        display: flex;
+        flex-direction: column;
         grid-area: 1 / 1 / 2 / 2;
+        /* max-height: var(--parent12-maxheight); */
+
+        .div1 a {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            /* Space between elements */
+            border-bottom: 1px solid #D4BFCB;
+        }
+
+        .div-234 {
+            display: grid;
+            grid-template: 1fr / repeat(3, 1fr);
+            gap: 0.5em;
+            padding-top: 1em;
+        }
     }
 
     .child2 {
         grid-area: 1 / 2 / 2 / 3;
-    }
-}
-
-.child1 {
-    display: grid;
-    grid-template: 7fr 3fr / 1fr;
-    max-height: var(--parent12-maxheight);
-
-    .div1 {
-        grid-area: 1 / 1 / 2 / 4;
-    }
-
-    .div-234 {
-        padding-top: 1em;
         display: grid;
-        grid-template: 1fr / repeat(3, 1fr);
-        gap: 0.5em;
+        grid-template: repeat(5, 1fr) / 1fr;
+        gap: 1em;
+        /* max-height: var(--parent12-maxheight); */
+        overflow: scroll;
     }
-}
-
-
-.child2 {
-    display: grid;
-    grid-template: repeat(5, 1fr) / 1fr;
-    gap: 1em;
-    max-height: var(--parent12-maxheight);
-    overflow: scroll;
 }
 
 .highlight {
     background-color: aqua;
-}
-
-
-.div1 {
-    grid-area: 1 / 1 / 1 / 1;
-}
-
-/* div1 */
-.div1 a {
-    display: flex;
-    flex-direction: column;
-    gap: 1em;
-    /* Space between elements */
-    border-bottom: 1px solid #D4BFCB;
 }
 
 .hinhanh-div1 {
@@ -121,8 +104,8 @@
 
 /* Đặt kích thước cố định cho div2, div3 và div4 */
 .div2 {
-    display: grid;
-    grid-template: 1fr 1fr / 1fr;
+    display: flex;
+    flex-direction: column;
 
     p {
         font-size: 13px;
@@ -141,7 +124,7 @@
     display: grid;
     grid-template: 1fr / 6.5fr 3.5fr;
     padding-top: 0.5em;
-    border-top: 1px solid;
+    border-top: 2px solid var(--grey);
     /* height: 10em; */
 
     .infor {
