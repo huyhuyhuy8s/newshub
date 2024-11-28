@@ -1,0 +1,143 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+:root {
+    --white: #fffaf1;
+    --whiteforbox: #fff;
+    --black: #000000;
+    --gray: #555555;
+    --light-gray: #ccc;
+    --dark-gray: #333333;
+    --button-red: #6e071a;
+    --hover-dark: #000;
+    --shadow-red: rgba(110, 7, 26, 0.3);
+    --box-shadow: rgba(0, 0, 0, 0.2);
+    --field-shadow: rgba(0, 0, 0, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--white);
+}
+
+.otp-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    height: 600px;
+    padding: 30px;
+    border: 2px solid var(--dark-gray);
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px var(--box-shadow);
+    background-color: var(--whiteforbox);
+}
+
+.otp-header {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.otp-header header {
+    color: var(--dark-gray);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.otp-text-box {
+    text-align: justify;
+    font-size: 16px;
+    color: var(--gray);
+    margin-bottom: 20px;
+}
+
+.otp-input-box {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.otp-input-box .otp-field {
+    width: 50px;
+    height: 60px;
+    font-size: 22px;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid var(--light-gray);
+    box-shadow: 0px 5px 10px 1px var(--field-shadow);
+    outline: none;
+    transition: .3s;
+}
+
+.otp-field:focus {
+    border-color: var(--button-red);
+    box-shadow: 0px 0px 5px 2px var(--shadow-red);
+}
+
+.input-submit {
+    position: relative;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 60px;
+    background: var(--button-red);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.input-submit label {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: var(--white);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+}
+
+.submit-btn:hover {
+    background: var(--hover-dark);
+    transform: scale(1.05, 1);
+}
+
+.otp-resend {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.otp-resend a {
+    color: var(--button-red);
+    text-decoration: none;
+}
+
+.otp-resend a:hover {
+    text-decoration: underline;
+}
+
+.sign-in-link {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.sign-in-link a {
+    color: var(--black);
+    font-weight: 600;
+}
+
+.logo-icon {
+    width: 300px;
+    height: 2em;
+    object-fit: cover;
+}

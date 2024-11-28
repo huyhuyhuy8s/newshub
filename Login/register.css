@@ -1,13 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
 
+
 :root {
-    --white: #fffaf1;
-    --white2: #fff;
+    --whitebackground: #fffaf1;
     --brown: #333;
-    --black: #000401;
+    --earthred: #222;
     --facebook: #3b5998;
     --google: #4285F4;
-    --mediumgray: #555;
+    --blackhover: #000;
+    --greyoutline: #b9bdbb;
+    --whitefff: #fff;
+    --redbutton: #6e071a;
+    --black000000: #000000;
+    --boxshadow: rgba(0, 0, 0, 0.2);
+    --boxshadowinput:rgba(0, 0, 0, 0.05);
 }
 
 * {
@@ -22,46 +28,37 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: var(--white);
-
+    background: var(--whitebackground);
 }
 
 p {
     font-size: medium;
     /* font-weight: bold; */
-    color: var(--white);
+    color: white;
 }
 
-.login-box {
+.register-box {
     display: flex;
     justify-content: center;
     flex-direction: column;
     width: 480px;
-    height: 700px;
+    height: 850px;
     padding: 30px;
     border: 2px solid var(--brown);
-    /* Thêm viền */
     border-radius: 15px;
-    /* Làm bo góc */
-    box-shadow: 0px 2px 5px var(--black);
-    /* Tạo hiệu ứng đổ bóng */
-    background-color: var(--white2);
-    /* Đảm bảo nền trắng */
+    box-shadow: 0px 5px 15px var(--boxshadow);
+    background-color: var(--whitefff);
 }
 
-.login-header {
+.register-header {
     text-align: center;
     margin: 20px 0 40px 0;
 }
 
-.login-header header {
+.register-header header {
     color: var(--brown);
     font-size: 30px;
     font-weight: 600;
-}
-
-.login-button {
-    padding-top: 1em;
 }
 
 .input-box .input-field {
@@ -71,48 +68,19 @@ p {
     padding: 0 25px;
     margin-bottom: 15px;
     border-radius: 30px;
-    border: 1px solid var(--black);
-    box-shadow: 0px 3px 10px 1px var(--black);
-    outline: none;
+    border: none;
+    box-shadow: 0px 5px 10px 10px var(--boxshadowinput);
+    outline: 0.5px solid var(--greyoutline);
     transition: .3s;
 }
 
 ::placeholder {
     font-weight: 500;
-    color: #222;
+    color: var(--earthred);
 }
 
 .input-field:focus {
     width: 105%;
-}
-
-.forgot {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 40px;
-}
-
-section {
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: var(--mediumgray);
-}
-
-#check {
-    margin-right: 10px;
-}
-
-a {
-    text-decoration: none;
-}
-
-a:hover {
-    text-decoration: underline;
-}
-
-section a {
-    color: var(--mediumgray);
 }
 
 .input-submit {
@@ -122,41 +90,47 @@ section a {
 .submit-btn {
     width: 100%;
     height: 60px;
-    background: #6e071a;
-    ;
-    border: 1px solid var(--black);
+    background: var(--redbutton);
+    border: none;
     border-radius: 30px;
     cursor: pointer;
     transition: .3s;
 }
 
-
+/* .input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+} */
 
 .submit-btn:hover {
-    background: var(--black)0;
+    background: var(--blackhover);
     transform: scale(1.05, 1);
 }
 
-.sign-up-link {
+.sign-in-link {
     text-align: center;
     font-size: 15px;
     margin-top: 20px;
 }
 
-.sign-up-link a {
-    color: var(--black);
+.sign-in-link a {
+    color: var(--blackhover);
     font-weight: 600;
 }
 
 .logo-icon {
     width: 300px;
-    height: 100px;
+    height: 50px;
     object-fit: cover;
 }
 
-/* General button styling */
-.login-with-facebook,
-.login-with-google {
+
+.register-with-facebook,
+.register-with-google {
     position: relative;
 }
 
@@ -172,7 +146,7 @@ section a {
     height: 60px;
     background: var(--facebook);
     /* Facebook blue */
-    border: 1px solid var(--black);
+    border: 1px solid var(--black000000);
     border-radius: 30px;
     cursor: pointer;
     transition: 0.3s;
@@ -193,6 +167,11 @@ section a {
     border-radius: 20px;
 }
 
+.register-button {
+    padding-top: 1em;
+    /* Thay Đổi khoảng cách giữa các nút */
+}
+
 .facebook-btn:hover,
 .google-btn:hover {
     transform: scale(1.05, 1);
@@ -201,17 +180,6 @@ section a {
 }
 
 #temp::before {
-    content: 'Don\' t have account\? ';
+    content: 'Already have an account \? ';
     font-weight: lighter;
 }
-
-/* .input-submit label {
-    position: absolute;
-    top: 45%;
-    left: 50%;
-    color: #fff;
-    -webkit-transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    cursor: pointer;
-} */

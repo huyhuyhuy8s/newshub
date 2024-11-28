@@ -1,103 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="initial-scale=1, width=device-width">
-
-    <link rel="stylesheet" href="./login.css" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap" />
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <title>Login</title>
 </head>
 
 <body>
-    <img class="logo-icon" alt="" src="logo.png">
-    <div class="rectangle-div">
-        <div class="ng-nhp">
-            <div class="khungdangnhap"></div>
-            <div class="ng-nhp1">
-                <form action="#" method="post">
+    <div class="login-box">
+        <div class="login-header">
+            <header><img class="logo-icon" alt="" src="hinhanh/LogoNewsHubWhite.jpg"></header>
+        </div>
+        <div class="input-box">
+            <input type="text" class="input-field" placeholder="Email" autocomplete="off" required>
+        </div>
+        <div class="input-box">
+            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
+        </div>
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Remember me</label>
+            </section>
+            <section>
+                <a href="#">Forgot password</a>
+            </section>
+        </div>
 
-                    <div class="email-field-text">
-                        <input type="email" class="email-rectangle" placeholder="Nhập Email của bạn" name="email">
-                        <label class="email">Email</label>
-                    </div>
+        <div class="login-button input-submit">
+            <button class="submit-btn" id="submit">
+                <p>Login</p>
+            </button>
+        </div>
 
-                    <div class="password-field-text">
-                        <input type="password" id="passwordInput" class="password-rectangle"
-                            placeholder="Nhập mật khẩu của bạn" name="password">
-                        <img class="eye-icon" alt="" src="Image/Eye Icon.svg" onclick="togglePassword()">
-                        <label class="password">Mật khẩu</label>
-                    </div>
+        <div class="login-button login-with-facebook">
+            <button class="facebook-btn" id="facebook-login">
+                <div class="flex">
+                    <img class="facebook-logo-icon" alt="Facebook Logo" src="hinhanh/Facebook Logo.png">
+                    <p>Login with Facebook</p>
+                </div>
+            </button>
+        </div>
 
-                    <script>
-                        function togglePassword() {
-                            const passwordInput = document.getElementById("passwordInput");
-                            // Toggle between password and text
-                            if (passwordInput.type === "password") {
-                                passwordInput.type = "text";
-                            } else {
-                                passwordInput.type = "password";
-                            }
-                        }
-                    </script>
+        <div class="login-button login-with-google">
+            <button class="google-btn" id="google-login">
+                <div class="flex">
+                    <img class="google-logo-icon" alt="Gooogle Logo" src="hinhanh/Googlecr.png">
+                    <p>Login with Google</p>
+                </div>
+            </button>
+        </div>
 
-                    <div class="remember-me">
-                        <!-- Checkbox for 'Ghi nhớ' -->
-                        <input type="checkbox" class="checkbox-remember" id="rememberMe">Ghi nhớ
-                        <!-- Forgot password link -->
-                        <a href="/forgot-password" class="forgot-password-text">Quên mật khẩu?</a>
-                    </div>
-
-                    <div class="login-button">
-                        <button class="button-rectangle" onclick="loginFunction()">
-                            <span class="login-text">Đăng Nhập</span>
-                        </button>
-                    </div>
-
-                    <div class="line-field">
-                        <div class="line-field-child">
-                        </div>
-                        <div class="line-field-item">
-                        </div>
-                        <div class="or-text">
-                            <p class="hoc">Hoặc</p>
-                        </div>
-                    </div>
-
-                    <div class="login-with-facebook">
-                        <a href="#">
-                            <div class="facebook-rectangle">
-                            </div>
-                            <div class="login-with-facebook1">Đăng nhập với Facebook</div>
-                            <img class="facebook-logo-icon" alt="" src="Image/Facebook Logo.png">
-                        </a>
-                    </div>
-
-                    <div class="login-with-google">
-                        <div class="google-rectangle">
-                        </div>
-                        <div class="login-with-google1">Đăng nhập với Google</div>
-                        <img class="google-logo-icon" alt="" src="Image/Google Logo.png">
-
-                    </div>
-
-                    <div class="already-account">
-                        <div class="bn-cha-c">Bạn chưa có tài khoản?</div>
-                        <div class="to-ti-khon">Tạo tài khoản</div>
-                    </div>
-                    <img class="logo-icon" alt="" src="Image/LogoNewsHubWhite.jpg">
-                </form>
-
-            </div>
-            <img class="logo-icon1" alt="" src="Image/LogoNewsHubWhite.jpg">
+        <div class="sign-up-link">
+            <a href="register.html" id="temp">Sign Up</a>
         </div>
     </div>
-
-
-
-
-
 </body>
 
 </html>
