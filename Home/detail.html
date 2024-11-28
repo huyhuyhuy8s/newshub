@@ -19,8 +19,10 @@
                     <a href="#"><i class="bi bi-list"></i></a>
                 </li>
                 <li>
-                    <a href="#"><i class="bi bi-search"></i></a>
+                    <button type="button" class="search-icon" onclick="searchClick()"><i
+                            class="bi bi-search"></i></button>
                 </li>
+
             </ul>
             <div class="middle">
                 <a href="#"><img src="./imgs/logokonen2.png"></a>
@@ -143,7 +145,7 @@
             <!-- Bình luận -->
             <div id="cmt">
                 <div class="cmt_area">
-                    <img src="./imgs/biden.jpg" class="rounded-circle" width="50px" height="50px">
+                    <img src="./imgs/biden.jpg" class="rounded-circle">
                     <textarea placeholder="Thêm bình luận mới...."></textarea>
                 </div>
                 <div class="cmts">
@@ -163,168 +165,17 @@
                         một mối quan hệ được phát triển, từ tình bạn</p>
                 </div>
             </div>
-            <!-- Bài viết liên quan -->
-            <!-- <div class="container-fluid" id="article_related">
-                <h4>Top bài viết liên quan</h5>
-                    <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="item">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="item">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="carousel-item">
-                                <div class="item">
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                    <div class="card" style="width: 18rem;">
-                                        <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
-                                        <div class="card-body">
-                                            <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
-                                                trong 6 tháng tới'</h5>
-                                            <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
-                                                phòng Chính phủ Trần
-                                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-control-prev btn-secondary" type="button"
-                            data-target="#carouselExampleControls" data-slide="prev">
-                            <span class="carousel-control-prev-icon " aria-hidden="true"></span>
-                            <span class="sr-only">Previous</span>
-                        </button>
-                        <button class="carousel-control-next btn-secondary" type="button"
-                            data-target="#carouselExampleControls" data-slide="next">
-                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                            <span class="sr-only">Next</span>
-                        </button>
-                    </div>
-
-            </div> -->
-            <div class=" cotainer-fluid" id="article-related">
+            <div class="cotainer-fluid" id="article-related">
                 <div class="title">
                     <h4>Bài viết liên quan</h4>
-                    <div>
-                        <button onclick="showPrev()">Previous</button>
-                        <button onclick="showNext()">Next</button>
+                    <div class="button-flex">
+                        <button onclick="scrollPrev()">Previous</button>
+                        <button onclick="scrollNext()">Next</button>
                     </div>
                 </div>
-                <div class="top-article">
+                <div class="top-article" id="bai-viet-lien-quan">
                     <div class="top1">
-                        <div class="articles">
+                        <div class="articles" id="very-first">
                             <img src="./imgs/bv.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <a href="#">
@@ -423,6 +274,7 @@
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
             <!-- Bài viết nổi bật -->
@@ -575,9 +427,9 @@
             </div>
         </div>
         <footer>
-            <div class="left">
+            <a class="left" href="#">
                 <img src="./imgs/logokonen2.png">
-            </div>
+            </a>
             <div class="right">
                 <ul class="right-top">
                     <li><a href="#">Trang chủ</a></li>
@@ -618,47 +470,40 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
         integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
         crossorigin="anonymous"></script>
+    <script src="../ChuyenMuc/scriptMain.js"></script>
     <script>
-        let navbar = document.getElementById("nav")
-        let shouldStickPosition = navbar.offsetTop;
+        var veryFirst = document.getElementById("very-first");
+        function scrollNext() {
+            var baiVietLienQuan = document.getElementById("bai-viet-lien-quan");
+            baiVietLienQuan.scrollBy(veryFirst.offsetWidth + 32, 0)
+        }
+        function scrollPrev() {
+            var baiVietLienQuan = document.getElementById("bai-viet-lien-quan");
+            baiVietLienQuan.scrollBy(-veryFirst.offsetWidth + 32, 0)
+        }
+        // var visibleDiv = 0;
+        // function showDiv() {
+        //     $(".top1").hide();
+        //     $(".top1:eq(" + visibleDiv + ")").show();
+        // }
+        // showDiv();
 
-        function addOrRemoveStickyClass() {
-            if (window.pageYOffset >= shouldStickPosition) {
-                navbar.classList.add("sticky");
-            } else {
-                navbar.classList.remove("sticky");
-            }
-        }
-
-        window.onscroll = function () {
-            addOrRemoveStickyClass();
-        }
-    </script>
-    <script>
-        var visibleDiv = 0;
-        function showDiv() {
-            $(".top1").hide();
-            $(".top1:eq(" + visibleDiv + ")").show();
-        }
-        showDiv();
-
-        function showNext() {
-            if (visibleDiv == $(".top1").length - 1) {
-                visibleDiv == 0;
-            } else {
-                visibleDiv++;
-            }
-            showDiv();
-        }
-        function showPrev() {
-            if (visibleDiv == 0) {
-                visibleDiv == $(".top1").length - 1;
-            } else {
-                visibleDiv--;
-            }
-            showDiv();
-        }
-
+        // function showNext() {
+        //     if (visibleDiv == $(".top1").length - 1) {
+        //         visibleDiv == 0;
+        //     } else {
+        //         visibleDiv++;
+        //     }
+        //     showDiv();
+        // }
+        // function showPrev() {
+        //     if (visibleDiv == 0) {
+        //         visibleDiv == $(".top1").length - 1;
+        //     } else {
+        //         visibleDiv--;
+        //     }
+        //     showDiv();
+        // }
     </script>
 </body>
 

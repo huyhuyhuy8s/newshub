@@ -1,6 +1,11 @@
 // set child2 height = child1 (include div1 and triple highlight)
-document.getElementsByClassName('child2')[0].style.height = `${document.getElementsByClassName('div1')[0].offsetHeight + document.getElementsByClassName('triple-highlight')[0].offsetHeight}px`;
+try {
+    document.getElementsByClassName('child2')[0].style.height = `${document.getElementsByClassName('div1')[0].offsetHeight + document.getElementsByClassName('triple-highlight')[0].offsetHeight}px`;
 
+}
+catch {
+
+}
 let navbar = document.getElementById("nav")
 let shouldStickPosition = navbar.offsetTop;
 
