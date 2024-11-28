@@ -12,8 +12,6 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.21.1",
-    "express-handlebars": "^8.0.1",
-    "knex": "^3.1.0",
-    "mysql2": "^3.11.4"
+    "express-handlebars": "^8.0.1"
   }
 }
