@@ -225,7 +225,12 @@ p {
     }
 }
 
-
+#article_related,
+#article_highlight {
+    margin-bottom: 10px;
+    max-width: 100em;
+    overflow-x: auto;
+}
 
 #article-related,
 #article-highlight {
