@@ -18,6 +18,11 @@ img {
     object-fit: contain;
 }
 
+button {
+    background-color: transparent;
+    border: none;
+}
+
 header {
     width: 75%;
     margin: 1em auto;
@@ -32,6 +37,8 @@ header {
         list-style-type: none;
         text-align: center;
         display: flex;
+        flex-direction: row;
+        gap: 4em;
     }
 
     li {
@@ -45,7 +52,6 @@ header {
     .left {
         li a {
             color: black;
-            padding-right: 3em;
         }
     }
 
