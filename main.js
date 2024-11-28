@@ -2,6 +2,7 @@ import express from 'express'
 import { engine } from 'express-handlebars'
 import { dirname } from 'path'
 import { fileURLToPath } from 'url';
+import { MarkdownBlock, MarkdownSpan, MarkdownElement } from "md-block";
 
 const app = express();
 
@@ -18,6 +19,12 @@ app.get('/', function (req, res) {
     });
 });
 
+app.get('/test', function (req, res) {
+    // res.send('Hello world');/
+    res.render('test', {
+        // layout: false,
+    });
+});
 
 
 const __dirname = dirname(fileURLToPath(import.meta.url));

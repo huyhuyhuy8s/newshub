@@ -1,0 +1,367 @@
+:root {
+    --card-height: 797px;
+    --red: #6e071a;
+    --grey: #e6e8ea;
+    --white: #ffffff;
+    --black: #000000;
+    --border-radius: 15px;
+}
+
+.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 1;
+    width: 100%;
+}
+
+header {
+    width: 75%;
+    margin: 1em auto;
+    display: grid;
+    grid-template: 1fr / 25% 50% 25%;
+    text-align: center;
+    align-items: center;
+
+    ul {
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align: center;
+        display: flex;
+    }
+
+    li {
+        display: inline-block;
+    }
+
+    img {
+        width: 10em;
+    }
+
+    .left {
+        li a {
+            color: black;
+            padding-right: 3em;
+        }
+    }
+
+    .right {
+        gap: 2em;
+        flex-direction: row-reverse;
+
+        a {
+            color: var(--white);
+            text-align: center;
+            line-height: 2em;
+            font-weight: bold;
+            text-decoration-line: none;
+
+            li {
+                border-radius: var(--border-radius);
+                background-color: var(--red);
+                height: 2em;
+                width: 8em;
+            }
+        }
+
+        a:hover {
+            color: var(--red);
+
+            li {
+                background-color: var(--grey);
+            }
+        }
+
+        a:last-child {
+            color: var(--red);
+
+            li {
+                background-color: var(--grey);
+            }
+        }
+
+        a:last-child:hover {
+            color: var(--white);
+
+            li {
+                background-color: var(--red);
+            }
+        }
+    }
+}
+
+nav {
+    background-color: var(--red);
+
+    ul {
+        display: flex;
+        margin: 0;
+        padding: 0;
+        list-style-type: none;
+        text-align: center;
+        justify-content: center;
+        gap: 0em;
+
+        li {
+            display: inline-block;
+            align-items: center;
+            height: 2em;
+            line-height: 2em;
+            width: 7.5em;
+
+            a {
+                text-decoration-line: none;
+                color: var(--white);
+                font-weight: bold;
+            }
+
+            a:hover {
+                text-decoration-line: none;
+            }
+        }
+
+        li:hover {
+            background-color: var(--white);
+
+            a {
+                color: var(--red);
+            }
+        }
+    }
+}
+
+#body {
+    font-family: Arial, sans-serif;
+    margin: 0 auto;
+    /* Căn giữa block element */
+    width: 75%;
+
+}
+
+a {
+    color: var(--black);
+}
+
+
+p {
+    padding-top: 1em;
+    text-align: justify;
+}
+
+#nav-article {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 25px 0 25px;
+
+    ol {
+        background-color: var(--white);
+    }
+
+    .tags {
+        border-radius: 10px;
+        background-color: var(--red);
+        color: var(--white);
+    }
+}
+
+#article {
+    h5 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .b_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 0 25px 0 25px;
+    }
+
+    img {
+        width: 100%;
+    }
+
+    .content {
+        margin: 0 170px 0 170px;
+    }
+}
+
+#cmt {
+
+    .cmt_area {
+        display: flex;
+
+        textarea {
+            width: 100%;
+
+        }
+    }
+
+    .cmts {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0 0 10px;
+
+        .button {
+            display: flex;
+            justify-content: end;
+
+            .btn {
+                margin: 5px 5px 10px 10px;
+            }
+        }
+    }
+
+    .cmt_mn {
+        display: flex;
+        flex-direction: row;
+        border-top: 0.2px solid var(--grey);
+        border-bottom: 0.2px solid var(--grey);
+
+        p {
+            margin-left: 10px;
+        }
+    }
+}
+
+
+
+#article-related,
+#article-highlight {
+    h4 {
+        font-weight: bold;
+        color: var(--black);
+        height: 50px;
+        margin-top: 20px;
+
+    }
+
+    a {
+        color: var(--white);
+        text-decoration-color: var(--white);
+    }
+
+    .title {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .top-article {
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        background-color: var(--red);
+
+
+    }
+}
+
+.top1,
+.top2 {
+    display: flex;
+    flex-direction: row;
+    transition: margin-left 2s 0.5s ease-in-out;
+    -moz-transition: margin-left 2s 0.5s ease-in-out;
+    -webkit-transition: margin-left 2s 0.5s ease-in-out;
+
+}
+
+.top1:hover {
+    margin-left: 150px;
+}
+
+.articles {
+    width: 20em;
+    flex-shrink: 0;
+    color: var(--white);
+    border: 0.2px solid var(--white);
+    margin: 1em 1em;
+
+
+    p {
+        font-size: 15px;
+    }
+}
+
+
+
+#article_list {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+
+
+    div {
+        border: 0.1px solid var(--grey);
+        padding: 10px 5px 0 5px;
+    }
+
+    h6 {
+        font-weight: bold;
+        margin-top: 5px;
+    }
+
+    a:hover {
+        color: var(--black);
+    }
+}
+
+footer {
+    /* width: 75%; */
+    /* margin: 0 auto; */
+    margin-top: 4em;
+    padding: 0 12.5%;
+    display: flex;
+    flex-direction: column;
+    border-top: 1px solid var(--red);
+
+    ul {
+        list-style-type: none;
+        padding: 0;
+    }
+
+    li,
+    .right-bot,
+    img {
+        margin: 0.5em 0;
+        padding-left: 0.5em;
+        /* border-left: 1px solid white; */
+    }
+
+    a {
+        color: black;
+        font-weight: bold;
+        font-size: 11pt;
+    }
+
+    a:hover {
+        color: var(--black);
+        text-decoration-line: none;
+    }
+
+    .left {
+        padding-top: 2em;
+
+        img {
+            height: 2em;
+        }
+    }
+
+    .right {
+
+        .right-top {
+            display: flex;
+            gap: 1em;
+        }
+
+        .right-center {
+            margin-top: 2em;
+            display: flex;
+            gap: 1em;
+            border-top: 1px solid black;
+        }
+
+    }
+}
