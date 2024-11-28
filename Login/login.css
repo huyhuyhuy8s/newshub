@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+:root {
+    --white: #fffaf1;
+    --white2: #fff;
+    --brown: #333;
+    --black: #000401;
+    --facebook: #3b5998;
+    --google: #4285F4;
+    --mediumgray: #555;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--white);
+
+}
+
+p {
+    font-size: medium;
+    /* font-weight: bold; */
+    color: var(--white);
+}
+
+.login-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 480px;
+    height: 700px;
+    padding: 30px;
+    border: 2px solid var(--brown);
+    /* Thêm viền */
+    border-radius: 15px;
+    /* Làm bo góc */
+    box-shadow: 0px 2px 5px var(--black);
+    /* Tạo hiệu ứng đổ bóng */
+    background-color: var(--white2);
+    /* Đảm bảo nền trắng */
+}
+
+.login-header {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.login-header header {
+    color: var(--brown);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.login-button {
+    padding-top: 1em;
+}
+
+.input-box .input-field {
+    width: 100%;
+    height: 60px;
+    font-size: 17px;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: 1px solid var(--black);
+    box-shadow: 0px 3px 10px 1px var(--black);
+    outline: none;
+    transition: .3s;
+}
+
+::placeholder {
+    font-weight: 500;
+    color: #222;
+}
+
+.input-field:focus {
+    width: 105%;
+}
+
+.forgot {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 40px;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: var(--mediumgray);
+}
+
+#check {
+    margin-right: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+section a {
+    color: var(--mediumgray);
+}
+
+.input-submit {
+    position: relative;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 60px;
+    background: #6e071a;
+    ;
+    border: 1px solid var(--black);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+
+
+.submit-btn:hover {
+    background: var(--black)0;
+    transform: scale(1.05, 1);
+}
+
+.sign-up-link {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.sign-up-link a {
+    color: var(--black);
+    font-weight: 600;
+}
+
+.logo-icon {
+    width: 300px;
+    height: 100px;
+    object-fit: cover;
+}
+
+/* General button styling */
+.login-with-facebook,
+.login-with-google {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.facebook-btn,
+.google-btn {
+    width: 100%;
+    height: 60px;
+    background: var(--facebook);
+    /* Facebook blue */
+    border: 1px solid var(--black);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.google-btn {
+    background: var(--google);
+}
+
+.facebook-logo-icon,
+.google-logo-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.google-logo-icon {
+    border-radius: 20px;
+}
+
+.facebook-btn:hover,
+.google-btn:hover {
+    transform: scale(1.05, 1);
+    filter: brightness(0.9);
+    /* Slight darkening effect */
+}
+
+#temp::before {
+    content: 'Don\' t have account\? ';
+    font-weight: lighter;
+}
+
+/* .input-submit label {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+} */

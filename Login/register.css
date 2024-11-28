@@ -1,0 +1,185 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap');
+
+
+:root {
+    --whitebackground: #fffaf1;
+    --brown: #333;
+    --earthred: #222;
+    --facebook: #3b5998;
+    --google: #4285F4;
+    --blackhover: #000;
+    --greyoutline: #b9bdbb;
+    --whitefff: #fff;
+    --redbutton: #6e071a;
+    --black000000: #000000;
+    --boxshadow: rgba(0, 0, 0, 0.2);
+    --boxshadowinput:rgba(0, 0, 0, 0.05);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--whitebackground);
+}
+
+p {
+    font-size: medium;
+    /* font-weight: bold; */
+    color: white;
+}
+
+.register-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 480px;
+    height: 850px;
+    padding: 30px;
+    border: 2px solid var(--brown);
+    border-radius: 15px;
+    box-shadow: 0px 5px 15px var(--boxshadow);
+    background-color: var(--whitefff);
+}
+
+.register-header {
+    text-align: center;
+    margin: 20px 0 40px 0;
+}
+
+.register-header header {
+    color: var(--brown);
+    font-size: 30px;
+    font-weight: 600;
+}
+
+.input-box .input-field {
+    width: 100%;
+    height: 60px;
+    font-size: 17px;
+    padding: 0 25px;
+    margin-bottom: 15px;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0px 5px 10px 10px var(--boxshadowinput);
+    outline: 0.5px solid var(--greyoutline);
+    transition: .3s;
+}
+
+::placeholder {
+    font-weight: 500;
+    color: var(--earthred);
+}
+
+.input-field:focus {
+    width: 105%;
+}
+
+.input-submit {
+    position: relative;
+}
+
+.submit-btn {
+    width: 100%;
+    height: 60px;
+    background: var(--redbutton);
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+/* .input-submit label{
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    cursor: pointer;
+} */
+
+.submit-btn:hover {
+    background: var(--blackhover);
+    transform: scale(1.05, 1);
+}
+
+.sign-in-link {
+    text-align: center;
+    font-size: 15px;
+    margin-top: 20px;
+}
+
+.sign-in-link a {
+    color: var(--blackhover);
+    font-weight: 600;
+}
+
+.logo-icon {
+    width: 300px;
+    height: 50px;
+    object-fit: cover;
+}
+
+
+.register-with-facebook,
+.register-with-google {
+    position: relative;
+}
+
+.flex {
+    display: flex;
+    justify-content: center;
+    gap: 1em;
+}
+
+.facebook-btn,
+.google-btn {
+    width: 100%;
+    height: 60px;
+    background: var(--facebook);
+    /* Facebook blue */
+    border: 1px solid var(--black000000);
+    border-radius: 30px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+
+.google-btn {
+    background: var(--google);
+}
+
+.facebook-logo-icon,
+.google-logo-icon {
+    width: 20px;
+    height: 20px;
+}
+
+.google-logo-icon {
+    border-radius: 20px;
+}
+
+.register-button {
+    padding-top: 1em;
+    /* Thay Đổi khoảng cách giữa các nút */
+}
+
+.facebook-btn:hover,
+.google-btn:hover {
+    transform: scale(1.05, 1);
+    filter: brightness(0.9);
+    /* Slight darkening effect */
+}
+
+#temp::before {
+    content: 'Already have an account \? ';
+    font-weight: lighter;
+}

@@ -19,8 +19,9 @@
           <a href="#"><i class="bi bi-list"></i></a>
         </li>
         <li>
-          <a href="#"><i class="bi bi-search"></i></a>
+          <button type="button" class="search-icon" onclick="searchClick()"><i class="bi bi-search"></i></button>
         </li>
+
       </ul>
       <div class="middle">
         <a href="#"><img src="./imgs/logokonen2.png"></a>
@@ -247,7 +248,7 @@
         <div class="title">
           <h4>Top bài viết nổi bật</h4>
         </div>
-        <div id="carouselExampleControls" class="carousel slide " data-ride="carousel">
+        <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
           <div class="carousel-inner">
             <div class="carousel-item active">
               <div class="item">
@@ -420,28 +421,20 @@
               </div>
               <div class="article-small">
                 <div class="article">
-                  <div class="img">
-                    <img src="./imgs/bv.jpg" class="rounded-sm">
-                  </div>
+                  <img src="./imgs/bv.jpg" class="rounded-sm">
                   <div class="content">
-                    <a href="#">
-                      <h6 class="font-weight-bold">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
-                        tới'</h6>
-                    </a>
+                    <h6 class="font-weight-bold">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
+                      tới'</h6>
                     <p class="font-italic mb-0">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
                       Chính phủ Trần
                       Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                   </div>
                 </div>
                 <div class="article">
-                  <div class="img">
-                    <img src="./imgs/bv.jpg">
-                  </div>
+                  <img src="./imgs/bv.jpg">
                   <div class="content">
-                    <a href="#">
-                      <h6 class="font-weight-bold">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
-                        tới'</h6>
-                    </a>
+                    <h6 class="font-weight-bold">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
+                      tới'</h6>
                     <p class="font-italic mb-0">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
                       Chính phủ Trần
                       Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
@@ -449,14 +442,10 @@
 
                 </div>
                 <div class="article">
-                  <div class="img">
-                    <img src="./imgs/bv.jpg">
-                  </div>
+                  <img src="./imgs/bv.jpg">
                   <div class="content">
-                    <a href="#">
-                      <h6 class="font-weight-bold">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
-                        tới'</h6>
-                    </a>
+                    <h6 class="font-weight-bold">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
+                      tới'</h6>
                     <p class="font-italic mb-0">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
                       Chính phủ Trần
                       Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
@@ -870,9 +859,9 @@
     </div>
 
     <footer>
-      <div class="left">
+      <a class="left" href="#">
         <img src="./imgs/logokonen2.png">
-      </div>
+      </a>
       <div class="right">
         <ul class="right-top">
           <li><a href="#">Trang chủ</a></li>
@@ -914,22 +903,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
     integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
     crossorigin="anonymous"></script>
-  <script>
-    let navbar = document.getElementById("nav")
-    let shouldStickPosition = navbar.offsetTop;
-
-    function addOrRemoveStickyClass() {
-      if (window.pageYOffset >= shouldStickPosition) {
-        navbar.classList.add("sticky");
-      } else {
-        navbar.classList.remove("sticky");
-      }
-    }
-
-    window.onscroll = function () {
-      addOrRemoveStickyClass();
-    }
-  </script>
+  <script src="../ChuyenMuc/scriptMain.js"></script>
 </body>
 
 </html>
