@@ -1,4 +1,4 @@
-@import "../ChuyenMuc/styleMain.css";
+@import "../clientSide/styleMain.css";
 
 .container-fluid {
     margin: 0;
@@ -22,18 +22,17 @@
         font-weight: bold;
         color: var(--black);
     }
+}
 
-
+.date {
+    display: flex;
+    flex-direction: row;
+    font-size: small;
 }
 
 .date:before {
-    content: "Ngày đăng: ";
-}
-
-
-
-.card-height {
-    height: var(--card-height);
+    content: "Ngày đăng:";
+    padding-right: 0.5em;
 }
 
 #article_list {
@@ -43,8 +42,11 @@
     gap: 1em;
 
     .article-list-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
         border: 0.1px solid var(--grey);
-        padding: 0.5em;
+        padding: 0.8em;
     }
 
     p {
@@ -61,6 +63,7 @@
     grid-template: 1fr / 5fr 3fr;
     margin-left: 15px;
     margin-right: 15px;
+    border: 1px solid var(--grey);
 
     /* grid-template-rows: 1fr; */
     .img-grid-head {
@@ -68,6 +71,9 @@
     }
 
     .content-grid-head {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
         grid-area: 1/2/1/2;
         padding: 1em;
     }
@@ -75,32 +81,25 @@
 
 #article_top10,
 #article_top10_2 {
-    height: var(--card-height);
     overflow-y: auto;
-
-    h6 {
-        margin: 0 0 5px 0;
-    }
-
-    p {
-        font-weight: initial;
-        font-size: small;
-    }
 
     .card-body {
         padding: 1em;
         border: 0.1px solid var(--grey);
-    }
 
-    .category {
-        border-bottom: 2px solid var(--red);
-        margin-bottom: 0.5em;
-    }
+        .category {
+            border-bottom: 2px solid var(--red);
+            margin-bottom: 0.5em;
+        }
 
-    .date {
-        display: flex;
-        flex-direction: row;
-        font-size: small;
+        h6 {
+            margin: 0 0 5px 0;
+        }
+
+        p {
+            font-weight: initial;
+            font-size: small;
+        }
     }
 }
 
@@ -117,7 +116,6 @@
             display: flex;
             align-items: center;
         }
-
     }
 
     .item {
@@ -128,36 +126,40 @@
     }
 }
 
-#cata-news {
-    height: 500px;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1em;
+.col-sm-4 .article-big {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
-    .article-big {
-        grid-column-start: 1;
+    img {
+        object-fit: cover;
     }
 
+    .article-big-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1em;
+        padding: 1em;
+    }
+}
+
+.col-sm-4 {
     .article-small {
-        grid-column-start: 2;
-        display: grid;
-        grid-template-rows: 3;
-        gap: 2em;
+        display: flex;
+        flex-direction: column;
 
         .article {
-            display: grid;
-            grid-template-columns: 0.5fr 1fr;
-            gap: 0.5em;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
             border: 0.2px solid var(--grey);
-
-            img {
-                width: 100%;
-                height: 100%;
-            }
+            padding: 1em;
 
             .content {
-                margin-right: 1em;
-                font-size: 9pt;
+                display: flex;
+                flex-direction: column;
+                gap: 1em;
+                font-size: 10pt;
 
                 h6 {
                     font-size: 11pt;
@@ -165,7 +167,6 @@
             }
         }
     }
-
 }
 
 #article_cata,
@@ -185,8 +186,6 @@
 
     .img {
         border-radius: 10px;
-        width: 50px;
-        height: 100px;
     }
 
     .content {
@@ -194,129 +193,63 @@
         flex-direction: column;
         font-size: small;
         margin-left: 110px;
-        border: none;
-
     }
 }
 
-#article_tour {
+div.pt-3 h5.font-weight-bold {
+    padding-top: 2em;
+    margin-bottom: 1em;
+    border-bottom: 1px solid var(--grey);
+}
 
-    img {
-        object-fit: contain;
-        width: 100%;
-    }
+#article_tour {
+    padding-right: 15px;
 
     #article_outer,
     #article_ourter_2 {
         display: grid;
         grid-template: 1fr / 1fr 1fr;
-
-        a {
-            font-size: 30px;
-            color: var(--black);
-        }
-
-        .article_outer-img {
-            grid-area: 1 / 1 / 1 / 1;
-
-            img {
-                object-fit: cover;
-                height: 100%;
-            }
-        }
+        gap: 2em;
 
         .article-title {
-            grid-area: 1 / 2 / 1/ 2;
-            padding: 2em 2em 0 2em;
             display: grid;
-            grid-template: 1fr 1fr/ 1fr;
+            grid-template: 1fr 1fr / 1fr;
+
+            .article-title-content {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                gap: 0.5em;
+            }
         }
     }
 
     #article-inner {
         display: grid;
-        grid-template: 1fr / 6fr 4fr;
+        grid-template: 1fr / 1fr 1fr;
+        align-items: center;
+        gap: 1em;
         border: 0.2px solid var(--grey);
 
-        .article-inner-content {
-            grid-area: 1 / 1 /1 /1;
-            padding: 1em 1em 0 1em;
+        .article-inner-content-right,
+        .article-inner-content-left {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            height: 100%;
+            gap: 0.5em;
         }
 
-        .article-inner-image {
-            grid-area: 1 / 2 /1 / 2;
-
+        .article-inner-content-right {
+            padding-left: 1em;
         }
 
-        img {
-            height: 100%;
-            object-fit: cover;
-        }
-
-        h5 {
-            font-size: large;
-            color: var(--black);
+        .article-inner-content-left {
+            padding-right: 1em;
         }
 
         p {
             font-size: small;
-            margin-top: 5px;
-        }
-
-        .date:before {
-            content: "Ngày đăng: ";
         }
     }
-}
-
-#article_healthy {
-    h5 {
-        font-size: large;
-        color: var(--black);
-    }
-
-    a {
-        font-size: 30px;
-        color: var(--black);
-    }
-
-    #article_outer_2 {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
-
-    .article-title {
-        padding: 2em 2em 0 2em;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        .article-inner_2 {
-            border: 0.2px solid var(--grey);
-            display: grid;
-            grid-template-columns: 0.75fr 1fr;
-
-            img {
-                height: 100%;
-                object-fit: cover;
-            }
-
-            p {
-                font-size: small;
-                margin-top: 5px;
-            }
-
-            .article-inner-content {
-                padding: 1em 1em 0 1em;
-            }
-        }
-    }
-
-
 }
 
 #article_related {
@@ -357,46 +290,42 @@ html body div.card.border div#body.card-body.pr-0.pl-0 div#article_top_high.cont
 
 .cata-politic {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1em;
+    grid-template: 1fr / 1fr 1fr;
+    gap: 2em;
 
     .politic-left {
-        border: 0.5px solid var(--grey);
-        display: grid;
-
-        img {
-            width: 100%;
-        }
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--grey);
 
         .content {
-            padding: 1em 1em 0 1em;
             display: flex;
-            justify-content: space-around;
             flex-direction: column;
+            gap: 1em;
+            padding: 2em;
         }
     }
 
     .politic-right {
-        border: 0.5px solid var(--grey);
-        display: flex;
-        flex-direction: column;
+        display: grid;
+        grid-template: repeat(3, 1fr) / 1fr;
+        justify-content: space-between;
+        gap: 2em;
 
         .politic-article {
+            display: grid;
+            grid-template: 1fr / 6fr 4fr;
             border: 0.2px solid var(--grey);
-            display: flex;
-            margin: 1em 1em 1em 1em;
 
             img {
-                width: 100%;
+                object-fit: cover;
             }
 
             .content {
                 display: flex;
                 flex-direction: column;
-                justify-content: space-around;
-                font-size: small;
-                border: none;
-                padding: 1em 1em 0 1em;
+                padding: 1em;
+                justify-content: space-between;
             }
 
         }

@@ -3,13 +3,32 @@
     --parent12-maxheight: 820px;
     --orange: #b1154a;
     --green: #555;
-    --card-height: 797px;
     --red: #6e071a;
     --grey: #e6e8ea;
     --white: #ffffff;
     --black: #000000;
     --border-radius: 15px;
     --signup-signin-lineheight: 3em;
+
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+    margin: 0;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: bold;
 }
 
 img {
@@ -102,6 +121,8 @@ header {
 nav {
     background-color: var(--red);
     font-size: 12pt;
+    display: flex;
+    flex-direction: column;
 
     ul {
         display: flex;
@@ -112,29 +133,37 @@ nav {
         justify-content: center;
         gap: 0em;
 
-        li {
+        a {
             display: inline-block;
             align-items: center;
             height: 2em;
             line-height: 2em;
             width: 7.5em;
+            white-space: nowrap;
 
-            a {
+            li {
+                text-align: center;
                 text-decoration-line: none;
                 color: var(--white);
                 font-weight: bold;
             }
-
-            a:hover {
-                text-decoration-line: none;
-            }
         }
 
-        li:hover {
+        a:hover {
             background-color: var(--white);
 
-            a {
+            li {
                 color: var(--red);
+            }
+        }
+    }
+
+    #subnav {
+        ul {
+
+            a {
+                width: max-content;
+                padding: 0 2em;
             }
         }
     }

@@ -1,4 +1,4 @@
-@import "../ChuyenMuc/styleMain.css";
+@import "../clientSide/styleMain.css";
 
 .sticky {
     position: fixed;
@@ -10,9 +10,7 @@
 #body {
     font-family: Arial, sans-serif;
     margin: 0 auto;
-    /* Căn giữa block element */
     width: 75%;
-
 }
 
 a {
@@ -55,49 +53,65 @@ p {
         margin: 0 25px 0 25px;
     }
 
-    img {
-        width: 100%;
-    }
-
     .content {
         margin: 0 170px 0 170px;
     }
 }
 
 #cmt {
+    padding-top: 4em;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
 
-    .cmt_area {
-        display: flex;
-
-        textarea {
-            width: 100%;
-
-        }
+    textarea {
+        width: 100%;
     }
 
-    .cmts {
-        display: flex;
-        justify-content: space-between;
-        margin: 10px 0 0 10px;
-
-        .button {
-            display: flex;
-            justify-content: end;
-
-            .btn {
-                margin: 5px 5px 10px 10px;
-            }
-        }
-    }
-
-    .cmt_mn {
+    .your-comment {
         display: flex;
         flex-direction: row;
-        border-top: 0.2px solid var(--grey);
-        border-bottom: 0.2px solid var(--grey);
 
-        p {
-            margin-left: 10px;
+        button {
+            width: 4em;
+            background-color: var(--black);
+            border: 1px solid var(--black);
+            color: var(--white);
+        }
+    }
+
+    .ours-comment {
+        .comment {
+            display: flex;
+            flex-direction: row;
+            gap: 2em;
+            margin: 1em 4em;
+            border: 1px solid var(--black);
+            padding: 1em;
+
+            .img-container {
+                display: flex;
+                flex-direction: column;
+                gap: 0.5em;
+
+                .image {
+                    height: 4em;
+                    width: 4em;
+                    flex-shrink: 0;
+
+                    img {
+                        object-fit: cover;
+                        border-radius: 50%;
+                    }
+                }
+            }
+
+            p {
+                padding-top: 0;
+                align-self: center;
+                /* pointer-events: none; */
+                height: fit-content;
+            }
         }
     }
 }
@@ -106,54 +120,7 @@ p {
 
 #article-related,
 #article-highlight {
-    h4 {
-        font-weight: bold;
-        color: var(--black);
-        height: 50px;
-        margin-top: 20px;
-
-    }
-
-    a {
-        color: var(--white);
-        text-decoration-color: var(--white);
-    }
-
-    .title {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
-
-    .top-article {
-        display: flex;
-        flex-direction: row;
-        overflow-x: scroll;
-        background-color: var(--red);
-        scroll-behavior: smooth;
-    }
-}
-
-.rounded-circle {
-    width: 50px;
-    height: 50px;
-}
-
-.top1,
-.top2 {
-    display: flex;
-    flex-direction: row;
-    transition: margin-left 2s 0.5s ease-in-out;
-    -moz-transition: margin-left 2s 0.5s ease-in-out;
-    -webkit-transition: margin-left 2s 0.5s ease-in-out;
-
-}
-
-/* .top1:hover {
-    margin-left: 150px;
-} */
-
-.cotainer-fluid {
+    padding-top: 4em;
 
     .button-flex {
         display: flex;
@@ -178,51 +145,86 @@ p {
             transition: 0.2s ease;
         }
     }
-}
 
-.articles {
-    width: 20em;
-    display: grid;
-    /* grid-template: 1fr 1fr 1fr / 1fr; */
-    flex-shrink: 0;
-    color: var(--white);
-    border: 0.2px solid var(--white);
-    margin: 1em 1em;
-
-    img {
-        height: 100%;
+    h4 {
+        font-weight: bold;
+        color: var(--black);
+        height: 50px;
+        margin-top: 20px;
     }
 
+    a {
+        text-decoration-color: var(--white);
+    }
 
-    .card-body {
+    .title {
         display: flex;
-        flex-direction: column;
+        justify-content: space-between;
+        align-items: center;
+    }
 
-        p {
-            font-size: 15px;
+    .top-article {
+        display: flex;
+        flex-direction: row;
+        overflow-x: scroll;
+        scroll-behavior: smooth;
+        gap: 1em;
+
+        .articles {
+            width: 20em;
+            display: grid;
+            grid-template: 1fr 1fr / 1fr;
+            color: var(--black);
+            border: 0.2px solid var(--black);
+            margin: 1em 0;
+            flex-shrink: 0;
+
+            img {
+                object-fit: cover;
+            }
+
+            .card-body {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+
+                p {
+                    font-size: 15px;
+                }
+            }
         }
     }
 }
 
-
-
-#article_list {
-    margin-top: 10px;
+#bai-viet-khac {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
+    gap: 1em;
 
-
-    div {
-        border: 0.1px solid var(--grey);
-        padding: 10px 5px 0 5px;
+    h3 {
+        padding-top: 3em;
     }
 
-    h6 {
-        font-weight: bold;
-        margin-top: 5px;
-    }
+    #article_list {
+        display: flex;
+        flex-direction: row;
+        gap: 2em;
 
-    a:hover {
-        color: var(--black);
+        a {
+            display: flex;
+            flex-direction: column;
+            border: 0.1px solid var(--grey);
+
+            div {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                padding: 1em;
+
+                h6 {
+                    font-weight: bold;
+                }
+            }
+        }
     }
 }
