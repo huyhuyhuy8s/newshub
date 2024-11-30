@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/Login/register.css">
+    <title>Register</title>
+</head>
+
+<body>
+    <div class="register-box">
+        <div class="register-header">
+            <header><img class="logo-icon" alt="" src="/Login/hinhanh/logokonen.png"></header>
+        </div>
+        <form action="/api/register" method="POST" id="register-form">
+            <div class="input-box">
+                <input type="text" name="fullname" class="input-field" placeholder="Full Name" autocomplete="off"
+                    required>
+            </div>
+            <div class="input-box">
+                <input type="email" name="email" class="input-field" placeholder="Email" autocomplete="off" required>
+            </div>
+            <div class="input-box">
+                <input type="date" name="birthday" class="input-field" placeholder="Birthday" autocomplete="off"
+                    required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="password" class="input-field" placeholder="Password" autocomplete="off"
+                    required>
+            </div>
+            <div class="input-box">
+                <input type="password" name="confirmPassword" class="input-field" placeholder="Confirm Password"
+                    autocomplete="off" required>
+            </div>
+
+            <div id="error-message" style="display: none; color: red;">
+                <span id="error-text"></span>
+            </div>
+            <div class="register-button input-submit">
+                <button class="submit-btn" id="submit">
+                    <p>Sign Up</p>
+                </button>
+            </div>
+
+            <div class="register-button register-with-facebook">
+                <button class="facebook-btn" id="facebook-register">
+                    <div class="flex">
+                        <img class="facebook-logo-icon" alt="Facebook Logo" src="/Login/hinhanh/Facebook Logo.png">
+                        <p>Sign up with Facebook</p>
+                    </div>
+                </button>
+            </div>
+
+            <div class="register-button register-with-google">
+                <button class="google-btn" id="google-register">
+                    <div class="flex">
+                        <img class="google-logo-icon" alt="Gooogle Logo" src="/Login/hinhanh/Googlecr.png">
+                        <p>Sign up with Google</p>
+                    </div>
+                </button>
+            </div>
+        </form>
+
+        <div class="sign-in-link">
+            <a href="/login" id="temp">Login</a>
+        </div>
+    </div>
+
+</body>
+
+</html>
