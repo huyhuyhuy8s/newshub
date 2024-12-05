@@ -1,60 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="register.css">
-    <title>Register</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="./account.css">
+    <title>Đăng ký</title>
 </head>
+
 <body>
-    <div class="register-box">
-        <div class="register-header">
-            <header><img class="logo-icon" alt="" src="hinhanh/logokonen.png"></header>
-        </div>
-        <div class="input-box">
-            <input type="text" class="input-field" placeholder="Full Name" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="email" class="input-field" placeholder="Email" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="birthday" class="input-field" placeholder="Birthday" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Password" autocomplete="off" required>
-        </div>
-        <div class="input-box">
-            <input type="password" class="input-field" placeholder="Confirm Password" autocomplete="off" required>
-        </div>
-        
-        <div class="register-button input-submit">
-            <button class="submit-btn" id="submit">
-                <p>Sign Up</p>
-            </button>
-        </div>
-
-        <div class="register-button register-with-facebook">
-            <button class="facebook-btn" id="facebook-register">
-                <div class="flex">
-                    <img class="facebook-logo-icon" alt="Facebook Logo" src="hinhanh/Facebook Logo.png">
-                    <p>Sign up with Facebook</p>
-                </div>
-            </button>
-        </div>
-
-        <div class="register-button register-with-google">
-            <button class="google-btn" id="google-register">
-                <div class="flex">
-                    <img class="google-logo-icon" alt="Gooogle Logo" src="hinhanh/Googlecr.png">
-                    <p>Sign up with Google</p>
-                </div>
-            </button>
-        </div>
-        
-        <div class="sign-in-link">
-            <a href="login.html" id="temp">Login</a>
+    <div id="center-form">
+        <div class="container">
+            <div class="wrap">
+                <form action="#" method="get">
+                    <h2>Đăng ký</h2>
+                    <!-- <img src="./hinhanh/logokonen2.png" alt="" class="logo"> -->
+                    <div class="information">
+                        <input type="text" maxlength="10" id="phone-number" placeholder="Họ và tên">
+                        <input type="text" id="phone-number" placeholder="Email">
+                        <input placeholder="Ngày sinh" class="textbox-n" type="text" onfocus="(this.type='date')"
+                            onblur="(this.type='text')" id="dob" />
+                        <input type="password" id="phone-number" placeholder="Mật khẩu">
+                        <input type="password" id="confirm-password" placeholder="Nhập lại mật khẩu">
+                    </div>
+                    <div class="active-button">
+                        <p>Tạo tài khoản</p>
+                    </div>
+                    <div class="active-button google">
+                        <img src="./hinhanh/Google__G__logo.svg.webp" alt="">
+                        <p>Tạo tài khoản bằng Google</p>
+                    </div>
+                    <div class="active-button facebook">
+                        <img src="./hinhanh/Facebook_Logo_Secondary.png" alt="">
+                        <p>Tạo tài khoản bằng Facebook</p>
+                    </div>
+                    <a href="./login.html" class="login"><strong>Đăng nhập!</strong></a>
+                </form>
+            </div>
         </div>
     </div>
-</body> 
+</body>
+
 </html>
