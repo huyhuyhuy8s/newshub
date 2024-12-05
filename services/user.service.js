@@ -2,10 +2,10 @@ import db from '../utils/db.js';
 
 export default {
     add(entity) {
-        return db('users').insert(entity);
+        return db('user').insert(entity);
     },
 
-    findByUsername(username) {
-        return db('users').where('username', username).first();
+    findByEmail(email) {
+        return db('user').where('email', email).first();
     }
 }
