@@ -1,4 +1,4 @@
-@import url("../layouts/styleMain.css");
+@import url("./styleMain.css");
 
 :root {
     --blue-fb: #1877F2;
@@ -23,7 +23,7 @@ body {
         justify-content: center;
         align-items: center;
         /* background: #f2f2f2; */
-        background-image: url("../../imgs/main/background.jpg");
+        background-image: url("imgs/main/background.jpg");
 
         .wrap {
             width: 25em;
