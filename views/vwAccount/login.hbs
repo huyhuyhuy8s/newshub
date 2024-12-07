@@ -1,22 +1,32 @@
-<form action="#" method="get">
+<form action="/account/login" method="post">
     <h2>Đăng nhập</h2>
-    <!-- <img src="./hinhanh/logokonen2.png" alt="" class="logo"> -->
     <div class="information">
-        <h3>Số điện thoại</h3>
-        <input type="text" maxlength="10" id="phone-number">
+        <h3>Email</h3>
+        <input type="email" name="email" required>
         <h3>Mật khẩu</h3>
-        <input type="password" id="password">
+        <input type="password" name="password" required>
     </div>
+    {{#if error_message}}
+    <div class="error-message">
+        {{error_message}}
+    </div>
+    {{/if}}
     <div class="forgot-remember-me">
         <div class="remember-me">
-            <input type="checkbox" name="" id="remember-cb">
+            <input type="checkbox" name="remember" id="remember-cb">
             <label for="remember-cb">Remember me</label>
         </div>
-        <a href="./otp.html">Forgot password</a>
+        <a href="/account/otp">Forgot password</a>
     </div>
-    <div class="active-button">
+
+    <!-- Button ẩn -->
+    <button type="submit" style="display: none;" id="submitBtn"></button>
+
+    <!-- Div gốc kích hoạt submit -->
+    <div class="active-button" onclick="document.getElementById('submitBtn').click()">
         <p>Đăng nhập</p>
     </div>
+
     <div class="active-button google">
         <img src="../../imgs/account/Google__G__logo.svg.webp" alt="">
         <p>Đăng nhập bằng Google</p>
@@ -25,5 +35,5 @@
         <img src="../../imgs/account/Facebook_Logo_Secondary.png" alt="">
         <p>Đăng nhập bằng Facebook</p>
     </div>
-    <a href="./register.html" class="register"><strong>Tạo tài khoản!</strong></a>
+    <a href="/account/register" class="register"><strong>Tạo tài khoản!</strong></a>
 </form>

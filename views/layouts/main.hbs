@@ -26,9 +26,27 @@
 
             </ul>
             <div class="middle">
-                <a href="#"><img src="main/logokonen.png"></a>
+                <a href="#"><img src="/imgs/main/logokonen.png"></a>
             </div>
             <ul class="right">
+                {{!-- <a href="/account/login">
+                    <li>
+                        Đăng nhập
+                    </li>
+                </a>
+                <a href="/account/register">
+                    <li>
+                        Đăng ký
+                    </li>
+                </a> --}}
+                {{#if user}}
+                <li>
+                    Xin chào, {{user.Name}}
+                </li>
+                <li>
+                    <a href="/account/logout">Đăng xuất</a>
+                </li>
+                {{else}}
                 <a href="/account/login">
                     <li>
                         Đăng nhập
@@ -39,6 +57,7 @@
                         Đăng ký
                     </li>
                 </a>
+                {{/if}}
             </ul>
         </header>
         <nav id="nav">
