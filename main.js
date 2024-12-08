@@ -76,6 +76,7 @@ import session from 'express-session';
 import numeral from 'numeral';
 import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
+import categoryService from './services/category.service.js';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -107,15 +108,59 @@ app.engine('hbs', engine({
             return numeral(value).format('0,0') + ' vnd';
         },
         fillHtmlContent: hbs_section(),
+
+
+        toLowerCase(str) {
+            console.log('toLowerCase input:', str);
+            if (!str) return '';
+            const result = str.toLowerCase().replace(/\s+/g, '-');
+            // console.log('toLowerCase output:', result);
+            return result;
+        },
+        formatName(str) {
+            // console.log('formatName input:', str);
+            if (!str) return '';
+            return str;
+        },
+        eq(v1, v2) {
+            console.log('eq comparing:', v1, v2);
+            return v1 === v2;
+        }
+
     },
 }));
+
+// Thêm middleware để load categories
+app.use(async function (req, res, next) {
+    try {
+        const categories = await categoryService.findAllActive();
+        console.log('Categories loaded:', categories); // Debug log
+        if (!categories || categories.length === 0) {
+            console.log('No categories found');
+        }
+        res.locals.lcCategories = categories;
+        next();
+    } catch (err) {
+        console.error('Failed to load categories:', err);
+        next(err);
+    }
+});
+
 app.set('view engine', 'hbs');
 app.set('views', join(__dirname, 'views'));
+
+
+app.get('/test-categories', (req, res) => {
+    console.log('lcCategories in test route:', res.locals.lcCategories);
+    res.json(res.locals.lcCategories);
+});
+
 
 // Routes
 // app.get('/', (req, res) => {
 //     res.render('home');
 // });
+
 app.get('/', function (req, res) {
     if (!req.session.auth) {
         return res.redirect('/account/login');
@@ -125,6 +170,18 @@ app.get('/', function (req, res) {
         user: req.session.authUser
     });
 });
+
+//test thử vào category
+app.get('/', function (req, res) {
+    if (!req.session.auth) {
+        return res.redirect('/account/login');
+    }
+    res.render('vwCategory/category', {
+        layout: 'main',
+        user: req.session.authUser
+    });
+});
+
 
 
 app.use('/account', accountRouter);

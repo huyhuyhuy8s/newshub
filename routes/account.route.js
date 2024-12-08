@@ -5,6 +5,8 @@ import session from 'express-session';
 import loginService from '../services/login.service.js';
 import registerService from '../services/register.service.js';
 
+import nodemailer from 'nodemailer';
+
 
 import userService from '../services/user.service.js';
 
@@ -96,6 +98,20 @@ router.post('/register', async function (req, res) {
         });
     }
 });
+
+router.get('/logout', function (req, res) {
+    req.session.auth = false;
+    req.session.authUser = null;
+    req.session.destroy(function(err) {
+        res.redirect('/account/login');
+    });
+});
+
+// router.get('/otp', function (req, res) {
+//     res.render('vwAccount/otp');
+// });
+
+
 
 
 // router.get('/login', function (req, res) {

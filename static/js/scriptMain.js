@@ -107,3 +107,44 @@ try {
     })
 }
 catch { }
+
+
+// Handle logout
+try {
+    function handleLogout(event) {
+        event.preventDefault();
+        // Xóa session hoặc localStorage nếu có
+        // localStorage.removeItem('user');
+        
+        // Chuyển hướng về trang login
+        window.location.href = '/account/logout';
+    }
+}
+catch { }
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    const navItems = document.querySelectorAll('#nav-ul li ');
+    const subnavs = document.querySelectorAll('#subnav ul');
+    
+    navItems.forEach(item => {
+        item.addEventListener('mouseenter', function() {
+            // Ẩn tất cả submenu trước
+            subnavs.forEach(subnav => subnav.hidden = true);
+            
+            // Hiển thị submenu tương ứng
+            const categoryClass = this.className;
+            const subnav = document.getElementById(categoryClass);
+            if (subnav) {
+                subnav.hidden = false;
+            }
+        });
+    });
+    
+    // Ẩn submenu khi rời khỏi nav area
+    document.getElementById('nav').addEventListener('mouseleave', function() {
+        subnavs.forEach(subnav => subnav.hidden = true);
+    });
+});
+
