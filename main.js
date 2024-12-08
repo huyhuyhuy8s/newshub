@@ -1,73 +1,3 @@
-// import express from 'express'
-// import { engine } from 'express-handlebars'
-// import { dirname, join } from 'path'
-// import { fileURLToPath } from 'url';
-// // import { MarkdownBlock, MarkdownSpan, MarkdownElement } from "md-block";
-// import session from 'express-session';
-
-// const app = express();
-// app.set('trust proxy', 1) // trust first proxy
-// app.use(session({
-//     secret: 'keyboard cat',
-//     resave: false,
-//     saveUninitialized: true,
-//     cookie: {}
-// }))
-
-// app.use(express.urlencoded({
-//     extended: true
-// }));
-
-// import hbs_section from 'express-handlebars-sections';
-// app.engine('hbs', engine({
-//     extname: 'hbs',
-//     helpers: {
-//         format_number(value) {
-//             return numeral(value).format('0,0') + ' vnd';
-//         },
-//         fillHtmlContent: hbs_section()
-//     }
-// }));
-// app.set('view engine', 'hbs');
-// app.set('views', './views');
-
-// // use /static folder to public for client
-// // app.use('/static', express.static('static'));
-// const __dirname = dirname(fileURLToPath(import.meta.url));
-// app.use(express.static(__dirname + '/static'));
-// app.use(express.static(__dirname + '/imgs'));
-// // console.log(join("main;:", __dirname, '/static'));
-// // console.log(__dirname);
-
-// // middleware
-// // app.use(async function (req, res, next) {
-// //     const list = await categoryService.findAll();
-// //     res.locals.lcCategories = list;
-// //     next();
-// // });
-
-
-// app.get('/', function (req, res) {
-//     res.render('home', {
-//         // layout: false,
-//     });
-// });
-
-// // import categoryRouter from './routes/category.route.js';
-// // import accountRouter from './routes/account.route.js';
-// // import { isAuth, isAdmin } from './middleware/auth.node.js';
-
-// // app.use('/category', categoryRouter);
-// app.use('/account', accountRouter);
-
-// import accountRouter from './routes/account.route.js';
-
-// app.use('/account', accountRouter);
-
-// app.listen(3000, function (req, res) {
-//     console.log('server started on http://localhost:3000');
-// });
-
 import express from 'express';
 import { engine } from 'express-handlebars';
 import { dirname, join } from 'path';
@@ -77,6 +7,8 @@ import numeral from 'numeral';
 import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
 import categoryService from './services/category.service.js';
+import categoryRouter from './routes/category.route.js';
+import moment from 'moment';
 
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
@@ -125,6 +57,12 @@ app.engine('hbs', engine({
         eq(v1, v2) {
             console.log('eq comparing:', v1, v2);
             return v1 === v2;
+        },
+        formatDate(date) {
+            return moment(date).format('MMMM DD, YYYY');
+        },
+        formatTimeAgo(date) {
+            return moment(date).fromNow();
         }
 
     },
@@ -134,7 +72,18 @@ app.engine('hbs', engine({
 app.use(async function (req, res, next) {
     try {
         const categories = await categoryService.findAllActive();
-        console.log('Categories loaded:', categories); // Debug log
+
+        // Tạo một bản sao của categories để xử lý log
+        const categoriesForLog = categories.map(category => ({
+            Name: category.Name,
+            Status: category.Status[0],
+            // Chuyển SubCategories thành string trên cùng một hàng
+            SubCategories: `[${category.SubCategories.map(sub => 
+                `{${sub.Name}}`
+            ).join(', ')}]`
+        }));
+        console.log('Categories loadedddd:', categoriesForLog);
+
         if (!categories || categories.length === 0) {
             console.log('No categories found');
         }
@@ -144,6 +93,13 @@ app.use(async function (req, res, next) {
         console.error('Failed to load categories:', err);
         next(err);
     }
+});
+
+//  middleware để xử lý auth cho toàn bộ ứng dụng
+app.use(function (req, res, next) {
+    res.locals.auth = req.session.auth;
+    res.locals.authUser = req.session.authUser; // Thống nhất dùng authUser
+    next();
 });
 
 app.set('view engine', 'hbs');
@@ -157,9 +113,6 @@ app.get('/test-categories', (req, res) => {
 
 
 // Routes
-// app.get('/', (req, res) => {
-//     res.render('home');
-// });
 
 app.get('/', function (req, res) {
     if (!req.session.auth) {
@@ -172,19 +125,22 @@ app.get('/', function (req, res) {
 });
 
 //test thử vào category
-app.get('/', function (req, res) {
-    if (!req.session.auth) {
-        return res.redirect('/account/login');
-    }
-    res.render('vwCategory/category', {
-        layout: 'main',
-        user: req.session.authUser
-    });
-});
+// app.get('/', function (req, res) {
+//     if (!req.session.auth) {
+//         return res.redirect('/account/login');
+//     }
+//     res.render('vwCategory/category', {
+//         layout: 'main',
+//         user: req.session.authUser
+//     });
+// });
 
 
 
+
+app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
+
 
 // Server setup
 app.listen(3000, () => {
