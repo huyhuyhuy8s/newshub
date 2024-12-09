@@ -15,15 +15,19 @@ router.get('/:id', async function (req, res) {
 
         // Lấy danh sách tin tức của category
         const allNews = await categoryService.getNewsByCategory(categoryId);
+        // Lấy danh sách subcategories có nhiều views nhất
+        const topSubCategories = await categoryService.getTopSubCategoriesByViews(categoryId);
+        // Lấy tất cả bài viết của category sắp xếp theo thời gian
+        const recentNews = await categoryService.getRecentNewsByCategory(categoryId);
 
         // Phân chia tin tức theo layout
         const firstNews = allNews[0] || null;
         const topNews = allNews.slice(1, 4);
-        const otherNews = allNews.slice(4);
+        const otherNews = allNews.slice(4, 14);
 
-        // Log để debug
-        console.log('Category loaded:', category.Name);
-        console.log('News count:', allNews.length);
+        // // Log để debug (có thể bỏ)
+        // console.log('Category loaded:', category.Name);
+        // console.log('News count:', allNews.length);
 
         res.render('vwCategory/category', {
             layout: 'main',
@@ -31,6 +35,8 @@ router.get('/:id', async function (req, res) {
             firstNews,
             topNews,
             otherNews,
+            topSubCategories,
+            recentNews,
             empty: allNews.length === 0
         });
     } catch (err) {

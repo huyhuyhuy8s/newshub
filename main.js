@@ -58,11 +58,54 @@ app.engine('hbs', engine({
             console.log('eq comparing:', v1, v2);
             return v1 === v2;
         },
-        formatDate(date) {
-            return moment(date).format('MMMM DD, YYYY');
+        formatDate: (date) => {
+            const d = new Date(date);
+            const day = d.getDate().toString().padStart(2, '0');
+            const month = (d.getMonth() + 1).toString().padStart(2, '0');
+            const year = d.getFullYear();
+            return `Ngày đăng: ${day}/${month}/${year}`;
         },
-        formatTimeAgo(date) {
-            return moment(date).fromNow();
+
+        // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
+        truncateText: (text, length) => {
+            if (text.length <= length) return text;
+            return text.substring(0, length) + '...';
+        },
+
+        // helper mới để tính thời gian
+        timeAgo: (date) => {
+            const now = new Date();
+            const postDate = new Date(date);
+            const diffTime = Math.abs(now - postDate);
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 0) {
+                const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
+                if (diffHours === 0) {
+                    const diffMinutes = Math.floor(diffTime / (1000 * 60));
+                    return `${diffMinutes} phút trước`;
+                }
+                return `${diffHours} giờ trước`;
+            }
+            
+            // Thêm logic xử lý tháng
+            if (diffDays >= 30) {
+                const diffMonths = Math.floor(diffDays / 30);
+                if (diffMonths === 1) {
+                    return '1 tháng trước';
+                }
+                if (diffMonths < 12) {
+                    return `${diffMonths} tháng trước`;
+                }
+                // Nếu trên 12 tháng thì hiển thị năm
+                const diffYears = Math.floor(diffMonths / 12);
+                if (diffYears === 1) {
+                    return '1 năm trước';
+                }
+                return `${diffYears} năm trước`;
+            }
+            
+            return `${diffDays} ngày trước`;
         }
 
     },
@@ -78,7 +121,7 @@ app.use(async function (req, res, next) {
             Name: category.Name,
             Status: category.Status[0],
             // Chuyển SubCategories thành string trên cùng một hàng
-            SubCategories: `[${category.SubCategories.map(sub => 
+            SubCategories: `[${category.SubCategories.map(sub =>
                 `{${sub.Name}}`
             ).join(', ')}]`
         }));

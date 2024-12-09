@@ -270,7 +270,8 @@
         }
 
         .content:after {
-            content: "Thể thao";
+            /* Công Thuận chỉnh sửa css bỏ dòng content: "Thể thao"...  (10/12/2024) */
+            /* content: "Thể thao"; */
             font-style: italic;
         }
     }
