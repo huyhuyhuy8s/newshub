@@ -1,21 +1,20 @@
 import express from 'express';
-import bcrypt from 'bcryptjs';
+
 import moment from 'moment';
 import session from 'express-session';
-import loginService from '../services/login.service.js';
-import registerService from '../services/register.service.js';
 
-
-import userService from '../services/user.service.js';
+import accountService from '../services/account.service.js';
 
 const router = express.Router();
+
+const otpCache = {}
 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url));
 router.use(express.static(join(__dirname, '../static')));
 router.use(express.static(join(__dirname, '../imgs')));
-// console.log(join(__dirname, '../static'));
+
 
 
 router.get('/login', function (req, res) {
@@ -36,7 +35,7 @@ router.post('/login', async function (req, res) {
     console.log('Login attempt:', { email, password });
 
     try {
-        const result = await loginService.validateUser(email, password);
+        const result = await accountService.validateUser(email, password);
         // console.log('Login result:', result);
 
         if (result.error) {
@@ -83,7 +82,7 @@ router.post('/register', async function (req, res) {
         };
 
         // Lưu vào database
-        await registerService.add(entity);
+        await accountService.add(entity);
 
         // Chuyển đến trang đăng nhập sau khi đăng ký thành công
         res.redirect('/account/login');
@@ -97,7 +96,43 @@ router.post('/register', async function (req, res) {
     }
 });
 
+router.post('/otp', (req, res) => {
+    const { email } = req.body;
+    res.render('vwAccount/otp',
+        {
+            layout: 'account',
+            email: email
+        }
 
+    );
+    const otp = accountService.generateOTP();
+    otpCache[email] = otp;
+
+    accountService.sendOTP(email, otp);
+    res.cookie('otpCache', otpCache, { maxAge: 30000, httpOnly: true })
+    // res.status(200).json({message:'OTP sent successfully'})
+
+})
+
+router.post('/verifyOTP', (req, res) => {
+    const { email,otp } = req.body;
+    
+    if(!otpCache.hasOwnProperty(email)){
+
+        //delete otpCache[email]
+        return res.status(400).json({message: 'Email not found'})
+    }
+
+    if(otpCache[email]===otp.trim()){
+
+        delete otpCache[email]
+        return res.status(200).json({message: 'OTP verified successfully'})
+    }
+    else{
+        return res.status(400).json({message: 'Invalid OTP'})
+    }
+
+})
 // router.get('/login', function (req, res) {
 //   res.render('vwAccount/login');
 // });

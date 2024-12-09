@@ -98,9 +98,13 @@ form {
         font-weight: bold;
         justify-content: center;
         align-items: center;
+        button{
+            color: var(--white);
+            font-weight: bold;
+        }
     }
 
-
+       
     .active-button:hover {
         background-color: var(--red);
         transition: ease-in-out 200ms;

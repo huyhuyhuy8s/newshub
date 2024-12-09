@@ -77,6 +77,7 @@ import numeral from 'numeral';
 import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
 
+
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Session configuration
