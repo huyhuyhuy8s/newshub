@@ -56,7 +56,7 @@ export default {
     generateOTP(){
         return randomstring.generate({length:6,charset:'numeric'})
     },
-    //
+    
     sendOTP(email,otp){
         const mailOptions = {
             from:'bacviplata123@gmail.com',
@@ -83,5 +83,8 @@ export default {
             }
         })
     }
+
+
+    
 
 }

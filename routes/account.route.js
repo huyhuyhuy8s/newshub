@@ -7,7 +7,7 @@ import accountService from '../services/account.service.js';
 
 const router = express.Router();
 
-const otpCache = {}
+var otpCache = {}
 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path'
@@ -98,41 +98,45 @@ router.post('/register', async function (req, res) {
 
 router.post('/otp', (req, res) => {
     const { email } = req.body;
-    res.render('vwAccount/otp',
-        {
-            layout: 'account',
-            email: email
-        }
 
-    );
+    // Tạo OTP
     const otp = accountService.generateOTP();
+    
+    // Lưu OTP vào cache
     otpCache[email] = otp;
 
+    // Gửi OTP qua email
     accountService.sendOTP(email, otp);
-    res.cookie('otpCache', otpCache, { maxAge: 30000, httpOnly: true })
-    // res.status(200).json({message:'OTP sent successfully'})
+    
+    // Render trang nhập OTP và gửi email tới người dùng
+    res.render('vwAccount/otp', {
+        layout: 'account',
+        email: email
+    });
 
-})
+    // Cài đặt thời gian hết hạn cho cookie OTP
+    res.cookie('otpCache', otpCache, { maxAge: 300000, httpOnly: true });
+});
+
 
 router.post('/verifyOTP', (req, res) => {
-    const { email,otp } = req.body;
-    
-    if(!otpCache.hasOwnProperty(email)){
+    // Extract email and otp from the JSON request body
+    const { email, otp } = req.body;
 
-        //delete otpCache[email]
-        return res.status(400).json({message: 'Email not found'})
+    // Kiểm tra xem email có trong cache OTP không
+    if (!otpCache.hasOwnProperty(email)) {
+        return res.json(false);  // Trả về false nếu không tìm thấy email trong cache
     }
 
-    if(otpCache[email]===otp.trim()){
-
-        delete otpCache[email]
-        return res.status(200).json({message: 'OTP verified successfully'})
+    // Kiểm tra OTP
+    if (otpCache[email] === otp.trim()) {
+        delete otpCache[email];  // Xóa OTP sau khi xác minh thành công
+        return res.json(true);  // Trả về true nếu OTP hợp lệ
+    } else {
+        return res.json(false);  // Trả về false nếu OTP không hợp lệ
     }
-    else{
-        return res.status(400).json({message: 'Invalid OTP'})
-    }
+});
 
-})
 // router.get('/login', function (req, res) {
 //   res.render('vwAccount/login');
 // });
