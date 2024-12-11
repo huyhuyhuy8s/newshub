@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="dashboard.css">
+    <script src="chart.js" defer></script> 
+</head>
+
+<body>
+    <div class="header">
+        <a href="/views/vwadmin/Dashboard/dashboard.html" class="header-item">Dashboard</a>
+        <a href="/views/vwadmin/QuanLyThanhVien/quanlythanhvien.html" class="header-item">Quản lý thành viên</a>
+        <a href="/views/vwadmin/QuanLyBaiViet/quanlybaiviet.html" class="header-item">Quản lý bài viết</a>
+        <a href="/views/vwadmin/QuanLyReport/quanlyreport.html" class="header-item">Quản lý report</a>
+    </div>
+    <div class="dashboard">
+        <h1>Dashboard</h1>
+        <div class="cards">
+            <a href="#" class="card" style="background-color: #d1e7ff;">
+                <span class="card-icon">👥</span>
+                <span class="card-value">Tổng thành viên: 247</span>
+            </a>
+            <a href="#" class="card" style="background-color: #fce5cd;">
+                <span class="card-icon">🧑‍💼</span>
+                <span class="card-value">Nhân sự: 19</span>
+            </a>
+            <a href="#" class="card" style="background-color: #d9ead3;">
+                <span class="card-icon">⭐</span>
+                <span class="card-value">Membership: 40</span>
+            </a>
+            <a href="#" class="card" style="background-color: #ffd6e8;">
+                <span class="card-icon">📊</span>
+                <span class="card-value">Report: 15</span>
+            </a>
+        </div>
+        <div class="cards">
+            <a href="#" class="card" style="background-color: #f4cccc;">
+                <span class="card-icon">📄</span>
+                <span class="card-value">Bài viết: 500</span>
+            </a>
+            <a href="#" class="card" style="background-color: #d9f7be;">
+                <span class="card-icon">✔️</span>
+                <span class="card-value">Đã duyệt: 488</span>
+            </a>
+            <a href="#" class="card" style="background-color: #ffebb8;">
+                <span class="card-icon">⏳</span>
+                <span class="card-value">Chờ phê duyệt: 12</span>
+            </a>
+            <a href="#" class="card" style="background-color: #f4cccc;">
+                <span class="card-icon">🚫</span>
+                <span class="card-value">Bị từ chối: 9</span>
+            </a>
+        </div>
+
+        <!-- Các biểu đồ -->
+        <div class="charts-container">
+            <div class="chart">
+                <h2>Tổng quan các bài viết từng chuyên mục</h2>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
+            </div>
+
+            <div class="chart">
+                <h2>Tổng số lượng view các bài viết theo chuyên mục</h2>
+                <div class="chart-container">
+                    <canvas id="categoryPieChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        // Biểu đồ cột (Bar Chart)
+        const ctxBar = document.getElementById('categoryChart').getContext('2d');
+        const categoryChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Thời sự', 'Kinh doanh', 'Khoa học', 'Thể thao', 'Giáo dục', 'Âm nhạc', 'Phim ảnh', 'Sức khỏe', 'Du lịch'],
+                datasets: [
+                    {
+                        label: 'Quý 1',
+                        data: [80, 50, 70, 60, 90, 40, 50, 70, 80],
+                        backgroundColor: 'rgba(54, 162, 235, 0.5)'
+                    },
+                    {
+                        label: 'Quý 2',
+                        data: [60, 40, 80, 70, 85, 55, 65, 75, 90],
+                        backgroundColor: 'rgba(255, 206, 86, 0.5)'
+                    },
+                    {
+                        label: 'Quý 3',
+                        data: [70, 55, 75, 65, 95, 50, 60, 80, 85],
+                        backgroundColor: 'rgba(75, 192, 192, 0.5)'
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Biểu đồ tròn (Pie Chart)
+        const ctxPie = document.getElementById('categoryPieChart').getContext('2d');
+        const categoryPieChart = new Chart(ctxPie, {
+                type: 'pie',
+                data: {
+                    labels: [
+                        'Kinh doanh',
+                        'Khoa học',
+                        'Thể thao',
+                        'Giáo dục',
+                        'Đời sống',
+                        'Thế giới',
+                        'Bất động sản',
+                        'Giải trí',
+                        'Pháp luật',
+                        'Sức khỏe'
+                    ],
+                    datasets: [{
+                        data: [1500, 800, 900, 1800, 1300, 1400, 1700, 1600, 800, 1700],
+                        backgroundColor: [
+                            '#8e44ad', // Kinh doanh
+                            '#e74c3c', // Khoa học
+                            '#3498db', // Thể thao
+                            '#f1c40f', // Giáo dục
+                            '#1abc9c', // Đời sống
+                            '#2ecc71', // Thế giới
+                            '#f39c12', // Bất động sản
+                            '#d35400', // Giải trí
+                            '#34495e', // Pháp luật
+                            '#9b59b6'  // Sức khỏe
+                        ],
+                        borderWidth: 1,
+                        borderColor: '#fff',
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function (tooltipItem) {
+                                    return tooltipItem.label + ': ' + tooltipItem.raw;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+    </script>
+</body>
+
+</html>

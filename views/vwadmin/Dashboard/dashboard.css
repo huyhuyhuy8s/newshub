@@ -1,0 +1,112 @@
+/* Phần Header */
+.header {
+    display: flex;
+    background-color: #ffffff;
+    border-bottom: 2px solid #800000; /* Đường kẻ màu đỏ */
+    padding: 10px 20px;
+}
+
+.header-item {
+    text-decoration: none;
+    color: #800000; /* Màu chữ */
+    padding: 10px 15px;
+    border-right: 1px solid #800000; /* Đường phân cách */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-item:last-child {
+    border-right: none; /* Bỏ đường kẻ cuối */
+}
+
+.header-item:hover {
+    background-color: #ffe6e6; /* Màu nền khi hover */
+    color: #000000;
+}
+
+/* Phần Body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f9f9f9;
+}
+
+/* Phần Dashboard */
+.dashboard {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+}
+
+/* Tiêu đề chính */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 40px;
+}
+
+/* Phần Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 20px; /* Khoảng cách giữa các card */
+    margin-bottom: 40px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    height: 100px;
+    margin: 10px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+.card-icon {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.card-value {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+/* Phần Biểu đồ */
+.charts-container {
+    display: flex;
+    gap: 20px; /* Khoảng cách giữa hai biểu đồ */
+    justify-content: space-between;
+    margin-top: 50px;
+}
+
+.chart {
+    flex: 1; /* Cả hai biểu đồ sẽ chiếm cùng một không gian */
+    text-align: center;
+}
+
+.chart-container {
+    position: relative;
+    height: 400px; 
+    width: 100%;
+}
+
+canvas {
+    width: 80% !important; 
+    height: auto !important;
+}
+
+
