@@ -45,4 +45,44 @@ router.get('/:id', async function (req, res) {
     }
 });
 
+
+
+//syb_Category
+router.get('/:categoryId/:subCategoryId', async function (req, res) {
+    try {
+        const categoryId = req.params.categoryId;
+        const subCategoryId = req.params.subCategoryId;
+        
+        // Lấy thông tin subcategory
+        const subcategory = await categoryService.findSubCategoryById(subCategoryId);
+        if (!subcategory) {
+            return res.status(404).send('Subcategory not found');
+        }
+
+        // Lấy các bài viết nhiều view nhất trong 7 ngày
+        const allNews = await categoryService.getTopViewedNewsBySubCategory(subCategoryId, 7);
+        
+        // Lấy các bài viết mới nhất của subcategory
+        const recentNews = await categoryService.getRecentNewsBySubCategory(subCategoryId);
+
+        // Phân chia tin tức cho parent1
+        const firstNews = allNews[0] || null;
+        const topNews = allNews.slice(1, 4);
+        const otherNews = allNews.slice(4, 14);
+
+        res.render('vwCategory/subcategory', {
+            layout: 'main',
+            subcategory,
+            firstNews,
+            topNews,
+            otherNews,
+            recentNews,
+            empty: allNews.length === 0
+        });
+    } catch (err) {
+        console.error('Error in subcategory route:', err);
+        res.status(500).send('Internal Server Error');
+    }
+});
+
 export default router;

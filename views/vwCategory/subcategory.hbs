@@ -1,6 +1,6 @@
 <div class="body">
     <h2>
-        {{category.Name}}
+        {{subcategory.Name}}
     </h2>
     <div class="parent1">
         <div class="child1">
@@ -36,33 +36,6 @@
             </a>
             {{/each}}
         </div>
-    </div>
-
-    <div class="parent2">
-        {{#each topSubCategories}}
-        <div class="highlight-section">
-            <a href="/category/{{Id_Category}}/{{Id_SubCategory}}" class="title">
-                <h4>{{SubCategoryName}}</h4>
-            </a>
-            {{#with highlightPost}}
-            <a href="/news/{{Id_News}}" class="highlight-post">
-                <img src="/imgs/category/pickball.webp" alt="{{Meta_title}}">
-                <h5>{{Meta_title}}</h5>
-                <p>{{formatDate Date}}</p>
-            </a>
-            {{/with}}
-            <div class="other-section">
-                {{#each otherPosts}}
-                <a class="post-section" href="/news/{{Id_News}}">
-                    <p>{{Meta_title}}</p>
-
-                    <img src="/imgs/category/nhatban.webp" alt="{{Meta_title}}">
-                    <p>{{formatDate Date}}</p>
-                </a>
-                {{/each}}
-            </div>
-        </div>
-        {{/each}}
     </div>
 
     <div class="parent3">

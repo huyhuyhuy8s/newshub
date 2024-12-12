@@ -8,6 +8,7 @@ import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
 import categoryService from './services/category.service.js';
 import categoryRouter from './routes/category.route.js';
+import newsRouter from './routes/news.route.js';
 import moment from 'moment';
 
 const app = express();
@@ -43,7 +44,7 @@ app.engine('hbs', engine({
 
 
         toLowerCase(str) {
-            console.log('toLowerCase input:', str);
+            // console.log('toLowerCase input:', str);
             if (!str) return '';
             const result = str.toLowerCase().replace(/\s+/g, '-');
             // console.log('toLowerCase output:', result);
@@ -55,7 +56,7 @@ app.engine('hbs', engine({
             return str;
         },
         eq(v1, v2) {
-            console.log('eq comparing:', v1, v2);
+            // console.log('eq comparing:', v1, v2);
             return v1 === v2;
         },
         formatDate: (date) => {
@@ -116,16 +117,16 @@ app.use(async function (req, res, next) {
     try {
         const categories = await categoryService.findAllActive();
 
-        // Tạo một bản sao của categories để xử lý log
-        const categoriesForLog = categories.map(category => ({
-            Name: category.Name,
-            Status: category.Status[0],
-            // Chuyển SubCategories thành string trên cùng một hàng
-            SubCategories: `[${category.SubCategories.map(sub =>
-                `{${sub.Name}}`
-            ).join(', ')}]`
-        }));
-        console.log('Categories loadedddd:', categoriesForLog);
+        // // Tạo một bản sao của categories để xử lý log
+        // const categoriesForLog = categories.map(category => ({
+        //     Name: category.Name,
+        //     Status: category.Status[0],
+        //     // Chuyển SubCategories thành string trên cùng một hàng
+        //     SubCategories: `[${category.SubCategories.map(sub =>
+        //         `{${sub.Name}}`
+        //     ).join(', ')}]`
+        // }));
+        // console.log('Categories loadedddd:', categoriesForLog);
 
         if (!categories || categories.length === 0) {
             console.log('No categories found');
@@ -180,9 +181,11 @@ app.get('/', function (req, res) {
 
 
 
-
+// Routes
 app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
+app.use('/news', newsRouter);
+
 
 
 // Server setup

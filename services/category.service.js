@@ -83,7 +83,7 @@ export default {
                 .where({
                     'c.Id_Category': categoryId,
                     'c.Status': 1,
-                    'n.Id_Status': 'STS0001'  // Status đã xuất bản
+                    'n.Id_Status': 'STS0001'  
                 })
                 // .andWhere('n.Date', '>=', oneMonthAgo) // Thêm điều kiện lọc theo thời gian
                 .andWhere('n.Date', '>=', sevenDaysAgo) // Thêm điều kiện lọc theo thời gian
@@ -98,7 +98,7 @@ export default {
                 )
                 .orderBy('n.Views', 'desc');
 
-            console.log('News found:', news.length);
+          
             return news;
         } catch (error) {
             console.error('Database error:', error);
@@ -164,6 +164,7 @@ export default {
         }
     },
 
+    // lấy bài viết mới nhất của category sắp xếp theo thời gian
     async getRecentNewsByCategory(categoryId) {
         try {
             const news = await db('News as n')
@@ -188,5 +189,61 @@ export default {
             console.error('Database error:', error);
             throw error;
         }
-    }
+    },
+
+
+
+    // sub_category
+    async findSubCategoryById(subCategoryId) {
+        try {
+            const subcategory = await db('SubCategory')
+                .where('Id_SubCategory', subCategoryId)
+                .first();
+            return subcategory;
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    },
+
+    async getTopViewedNewsBySubCategory(subCategoryId, days) {
+        try {
+            const date = new Date();
+            date.setDate(date.getDate() - days); // Lấy ngày 7 ngày trước
+
+            const news = await db('News')
+                .where('Id_SubCategory', subCategoryId)
+                .where('Date', '>=', date)
+                .where('Id_Status', 'STS0001')
+                .orderBy('Views', 'desc')
+                .select('*');
+            
+            return news;
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    },
+
+    async getRecentNewsBySubCategory(subCategoryId) {
+        try {
+            const news = await db('News as n')
+                .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
+                .where('n.Id_SubCategory', subCategoryId)
+                .where('n.Id_Status', 'STS0001')
+                .orderBy('n.Date', 'desc')
+                .select(
+                    'n.*',
+                    's.Name as SubCategoryName'
+                )
+                .limit(10); // Giới hạn 10 bài viết mới nhất
+            
+            return news;
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    },
+
+
 }
