@@ -8,7 +8,7 @@ import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
 import categoryService from './services/category.service.js';
 import categoryRouter from './routes/category.route.js';
-import newsRouter from './routes/news.route.js';
+import newsRouter from './routes/detailnews.route.js';
 import moment from 'moment';
 
 const app = express();
@@ -107,8 +107,7 @@ app.engine('hbs', engine({
             }
             
             return `${diffDays} ngày trước`;
-        }
-
+        },
     },
 }));
 
