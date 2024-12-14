@@ -200,6 +200,7 @@ div.pt-3 h5.font-weight-bold {
     padding-top: 2em;
     margin-bottom: 1em;
     border-bottom: 1px solid var(--grey);
+    text-transform: uppercase; /* thêm lệnh này để capslock nội dung */
 }
 
 #article_tour {

@@ -1,12 +1,18 @@
+
+console.log('Detail news script loaded');
 function scrollNext(scroller, value, para = 1) {
     document.getElementById(scroller).scrollBy(para * document.getElementById(value).offsetWidth + 16, 0);
 }
 
 document.getElementById('submitComment').addEventListener('click', async () => {
-    const comment = document.getElementById('commentInput').value;
+    console.log('Submit button clicked');
+    const commentInput = document.getElementById('commentInput');
+    const comment = commentInput.value;
     const newsId = '{{news.Id_News}}'; // Lấy ID bài viết
     const userId = '{{userId}}'; // Sử dụng userId từ template
-
+    console.log('News ID:', newsId);
+    console.log('User ID:', userId);
+    console.log('Comment:', comment);
     if (comment.trim() === '') {
         alert('Vui lòng nhập bình luận!');
         return;
@@ -14,10 +20,9 @@ document.getElementById('submitComment').addEventListener('click', async () => {
 
     const commentId = `CMT${String(Date.now()).slice(-5)}`; // Tạo ID bình luận
 
-    console.log({ newsId, userId, comment, commentId });
-
     try {
-        const response = await fetch('/comments', {
+        console.log('Sending comment:', { newsId, userId, comment });
+        const response = await fetch('/detailnews/comments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -30,22 +35,21 @@ document.getElementById('submitComment').addEventListener('click', async () => {
             alert(result.message);
 
             // Cập nhật danh sách bình luận mà không tải lại trang
-            const commentsContainer = document.getElementById('commentsContainer'); // ID của phần chứa bình luận
+            const commentsContainer = document.querySelector('.ours-comment'); // ID của phần chứa bình luận
             const newComment = document.createElement('div');
+            newComment.classList.add('comment');
             newComment.innerHTML = `
-                <div class="comment">
-                    <div class="img-container">
-                        <div class="image">
-                            <img src="/imgs/detail/biden.jpg" alt="Avatar">
-                        </div>
-                        <h6>${userId}</h6>
+                <div class="img-container">
+                    <div class="image">
+                        <img src="/imgs/detail/biden.jpg" alt="Avatar">
                     </div>
-                    <p>${comment}</p>
-                    <small>${new Date().toLocaleString()}</small>
+                    <h6>${userId}</h6>
                 </div>
+                <p>${comment}</p>
+                <small>${new Date().toLocaleString()}</small>
             `;
             commentsContainer.appendChild(newComment);
-            document.getElementById('commentInput').value = ''; // Xóa nội dung ô nhập
+            commentInput.value = ''; // Xóa nội dung ô nhập
         } else {
             const error = await response.json();
             alert(error.message);

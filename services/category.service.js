@@ -137,7 +137,7 @@ export default {
                         'Id_Status': 'STS0001'
                     })
                     .andWhere('Date', '>=', oneMonthAgo)
-                    .select('Id_News', 'Meta_title', 'Image', 'Date')
+                    .select('*')
                     .orderBy('Views', 'desc')
                     .first();
 
@@ -148,7 +148,7 @@ export default {
                         'Id_Status': 'STS0001'
                     })
                     .andWhere('Date', '>=', oneMonthAgo)
-                    .select('Id_News', 'Meta_title', 'Image', 'Date')
+                    .select('*')
                     .orderBy('Views', 'desc')
                     .offset(1)
                     .limit(3);
@@ -175,11 +175,7 @@ export default {
                     'n.Id_Status': 'STS0001'
                 })
                 .select(
-                    'n.Id_News',
-                    'n.Title',
-                    'n.Meta_title',
-                    'n.Meta_description',
-                    'n.Date',
+                    'n.*',
                     's.Name as SubCategoryName'
                 )
                 .orderBy('n.Date', 'desc');

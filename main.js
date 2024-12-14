@@ -9,6 +9,7 @@ import accountRouter from './routes/account.route.js';
 import categoryService from './services/category.service.js';
 import categoryRouter from './routes/category.route.js';
 import newsRouter from './routes/detailnews.route.js';
+import homeRouter from './routes/home.route.js';
 import moment from 'moment';
 
 const app = express();
@@ -157,15 +158,15 @@ app.get('/test-categories', (req, res) => {
 
 // Routes
 
-app.get('/', function (req, res) {
-    if (!req.session.auth) {
-        return res.redirect('/account/login');
-    }
-    res.render('home', {
-        layout: 'main',
-        user: req.session.authUser
-    });
-});
+// app.get('/', function (req, res) {
+//     if (!req.session.auth) {
+//         return res.redirect('/account/login');
+//     }
+//     res.render('home', {
+//         layout: 'main',
+//         user: req.session.authUser
+//     });
+// });
 
 //test thử vào category
 // app.get('/', function (req, res) {
@@ -181,6 +182,7 @@ app.get('/', function (req, res) {
 
 
 // Routes
+app.use('/', homeRouter);
 app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
 app.use('/news', newsRouter);

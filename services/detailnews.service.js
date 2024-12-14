@@ -52,20 +52,22 @@ const newsService = {
         }
     },
 
-    // async addComment({ newsId, userId, comment, commentId }) {
-    //     try {
-    //         await db('Comment').insert({
-    //             Id_Comment: commentId,
-    //             Id_News: newsId,
-    //             Id_User: userId,
-    //             Comment: comment,
-    //             Time: new Date()
-    //         });
-    //     } catch (error) {
-    //         console.error('Database error:', error);
-    //         throw error;
-    //     }
-    // },
+    async addComment({ newsId, userId, comment }) {
+        try {
+            console.log('Adding comment:', { newsId, userId, comment });
+            const commentId = `CMT${Date.now()}`; // Tạo ID bình luận (có thể thay đổi cách tạo ID)
+            await db('Comment').insert({
+                Id_Comment: commentId,
+                Id_News: newsId,
+                Id_User: userId,
+                Comment: comment,
+                Time: new Date()
+            });
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    },
 
     async getRelatedNewsByTag(newsId) {
         try {

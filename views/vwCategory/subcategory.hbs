@@ -7,7 +7,7 @@
             {{#with firstNews}}
             <a class="div1" href="/news/{{Id_News}}">
                 <img alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                <h4>{{Meta_title}}</h4>
+                <h4>{{truncateText Meta_title 30}}</h4>
                 <p>{{truncateText Meta_description 100}}</p>
                 <p>{{formatDate Date}}</p>
             </a>
@@ -17,7 +17,7 @@
                 {{#each topNews}}
                 <a class="highlight-element" href="/news/{{Id_News}}">
                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                    <p>{{Meta_title}}</p>
+                    <p>{{truncateText Meta_title 30}}</p>
                     <h6>{{formatDate Date}}</h6>
                 </a>
                 {{/each}}
@@ -29,7 +29,7 @@
             <a class="div2" href="/news/{{Id_News}}">
                 <div class="infor">
                     <h4>{{formatDate Date}}</h4>
-                    <h6>{{Meta_title}}</h6>
+                    <h6>{{truncateText Meta_title 30}}</h6>
                     <p>{{truncateText Meta_description 100}}</p>
                 </div>
                 <img src="/imgs/category/mancity1.png" alt="{{Meta_title}}" class="image-container">
@@ -43,7 +43,7 @@
         <a href="/news/{{Id_News}}" class="post">
             <p>{{timeAgo Date}}</p>
             <div class="content">
-                <h4>{{Meta_title}}</h4>
+                <h4>{{truncateText Meta_title 30}}</h4>
                 <p>
                     {{truncateText Meta_description 200}}
                 </p>

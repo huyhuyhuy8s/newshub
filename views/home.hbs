@@ -4,355 +4,155 @@
         <div class="row">
             <div class="col-sm-8">
                 <div class="row">
-                    <div class="grid-head">
+                    {{#if firstNewstopViewedNews}}
+                    <div class="grid-head" href="/news/{{firstNewstopViewedNews.Id_News}}">
                         <img src="/imgs/home/donal.jpg"
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
                         <div class="content-grid-head">
-                            <h4>Ukraine đối mặt tương lai bất định khi ông Trump nắm quyền</h4>
-                            <p>Dù tuyên bố sẽ nhanh chóng chấm dứt chiến sự, ông Trump chưa đề ra kế hoạch cụ
-                                thể
-                                và nếu có, chúng cũng khó đem lại nhiều lợi ích cho Ukraine.</p>
+                            <h4>{{truncateText firstNewstopViewedNews.Meta_title 30}}</h4>
+                            <!-- Tiêu đề bài viết đầu tiên -->
+                            <p>{{truncateText firstNewstopViewedNews.Meta_description 100}}</p>
+                            <!-- Mô tả bài viết đầu tiên -->
                             <p class="date">
-                                22/11/2024
+                                {{formatDate firstNewstopViewedNews.Date}} <!-- Ngày bài viết đầu tiên -->
                             </p>
                         </div>
                     </div>
+                    {{/if}}
                 </div>
                 <div id="article_list">
-                    <div class="article-list-element">
+                    <!-- Hiển thị 3 bài viết tiếp theo -->
+                    {{#each News234stopViewedNews}}
+                    <div class="article-list-element" href="/news/{{this.Id_News}}">
                         <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
                         <div class="article-list-content">
                             <a href="#">
-                                <h5>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới'</h5>
+                                <h5>{{truncateText this.Meta_title 30}}</h5> <!-- Tiêu đề bài viết -->
                             </a>
-                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ
-                                Trần
-                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                            <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
                             <p class="date">
-                                22/11/2024
+                                {{formatDate this.Date}} <!-- Ngày bài viết -->
                             </p>
                         </div>
                     </div>
-                    <div class="article-list-element">
-                        <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
-                        <div class="article-list-content">
-                            <a href="#">
-                                <h5>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới'</h5>
-                            </a>
-                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ
-                                Trần
-                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            <p class="date">
-                                22/11/2024
-                            </p>
-                        </div>
-                    </div>
-                    <div class="article-list-element">
-                        <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
-                        <div class="article-list-content">
-                            <a href="#">
-                                <h5>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới'</h5>
-                            </a>
-                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ
-                                Trần
-                                Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            <p class="date">
-                                22/11/2024
-                            </p>
-                        </div>
-                    </div>
+                    {{/each}}
                 </div>
             </div>
+
+
             <div class="col-sm-4">
                 <div class="card mb-3 shadow-sm" id="article_top10">
                     <div class="list-group list-group-flush">
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
+                        {{#each topCategories}}
+                        <div class="card-body" href="/news/{{this.latestNews.Id_News}}">
+                            <div class="category">{{this.CategoryName}}</div>
                             <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
+                                <h6 class="card-title">{{truncateText this.latestNews.Meta_title 30}}</h6>
+                                <!-- Tiêu đề bài viết mới nhất -->
                             </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <p class="card-text">{{truncateText this.latestNews.Meta_description 100}}</p>
+                            <!-- Mô tả bài viết -->
                             <div class="date">
-                                <div>22/11/2024</div>
+                                <div>{{formatDate this.latestNews.Date}}</div> <!-- Ngày bài viết -->
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
+
+
         </div>
     </div>
-    <!-- Top bài viết nổi bật -->
+
+
+
+
+
+
+    <!-- 12 news view cao nhất mọi danh mục trong 1 tháng -->
     <div class="container-fluid" id="article_top_high">
         <div class="title">
-            <h4>Top bài viết nổi bật</h4>
+            <h4>12 news view cao nhất mọi danh mục trong 1 tháng </h4>
         </div>
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+
+
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <div class="item">
-                        <div class="card" style="width: 18rem;">
+                        {{#each firstNewsget12TopViewedNews}}
+                        <div class="card" style="width: 18rem;" href="/news/{{this.Id_News}}">
                             <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
+                                    <h5 class="card-title">{{truncateText this.Meta_title 30}}</h5>
+                                    <!-- Tiêu đề bài viết -->
                                 </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                                <!-- Mô tả bài viết -->
+                                <p class="date">
+                                    {{formatDate this.Date}} <!-- Ngày bài viết đầu tiên -->
+                                </p>
                             </div>
                         </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
+
+
                 </div>
+
                 <div class="carousel-item">
                     <div class="item">
-                        <div class="card" style="width: 18rem;">
+                        {{#each secondNewsget12TopViewedNews}}
+                        <div class="card" style="width: 18rem;" href="/news/{{this.Id_News}}">
                             <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
+                                    <h5 class="card-title">{{truncateText this.Meta_title 30}}</h5>
+                                    <!-- Tiêu đề bài viết -->
                                 </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                                <!-- Mô tả bài viết -->
+                                <p class="date">
+                                    {{formatDate this.Date}} <!-- Ngày bài viết đầu tiên -->
+                                </p>
                             </div>
                         </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
+
+
                 </div>
+
                 <div class="carousel-item">
                     <div class="item">
-                        <div class="card" style="width: 18rem;">
+                        {{#each thirdNewsget12TopViewedNews}}
+                        <div class="card" style="width: 18rem;" href="/news/{{this.Id_News}}">
                             <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                             <div class="card-body">
                                 <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
+                                    <h5 class="card-title">{{truncateText this.Meta_title 30}}</h5>
+                                    <!-- Tiêu đề bài viết -->
                                 </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                                <!-- Mô tả bài viết -->
+                                <p class="date">
+                                    {{formatDate this.Date}} <!-- Ngày bài viết đầu tiên -->
+                                </p>
                             </div>
                         </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
-                        <div class="card" style="width: 18rem;">
-                            <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <a href="#">
-                                    <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                        tháng tới'</h5>
-                                </a>
-                                <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính
-                                    phủ Trần
-                                    Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
+
+
                 </div>
+
             </div>
+
+
+
             <button class="carousel-control-prev btn-secondary" type="button" data-target="#carouselExampleControls"
                 data-slide="prev">
                 <span class="carousel-control-prev-icon " aria-hidden="true"></span>
@@ -365,17 +165,26 @@
             </button>
         </div>
 
+
     </div>
-    <!-- Category thời sự -->
+
+
+
+
+
+
+
+
+    <!-- Category nổi bật nhất -->
     <div class="container-fluid">
         <div class="pt-3">
-            <h5 class="font-weight-bold">THỜI SỰ</h5>
+            <h5 class="font-weight-bold">{{topCategory.CategoryName}}</h5>
         </div>
         <div class="row">
             <div class="col-sm-4">
                 <div class="card shadow-sm">
                     <div class="article-small">
-                        <div class="article">
+                        {{!-- <div class="article">
                             <div class="content">
                                 <h5>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng
                                     tới'</h5>
@@ -411,13 +220,24 @@
                                     22/11/2024
                                 </p>
                             </div>
+                        </div> --}}
+                        {{#each News234getTopNewsFromTopCategory}}
+
+                        <div class="article">
+                            <div class="content">
+                                <h5>{{truncateText this.Meta_title 30}}</h5> <!-- Tiêu đề bài viết -->
+                                <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
+                                <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
+                            </div>
                         </div>
+
+                        {{/each}}
                     </div>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="card shadow-sm">
-                    <div class="article-big">
+                    {{!-- <div class="article-big">
                         <img src="/imgs/home/donal.jpg">
                         <div class="article-big-content">
                             <h4>Ukraine đối mặt tương lai bất định khi ông Trump nắm quyền</h4>
@@ -427,209 +247,345 @@
                                 22/11/2024
                             </p>
                         </div>
+                    </div> --}}
+                    <div class="article-big">
+                        {{#if firstNewsgetTopNewsFromTopCategory}} <!-- Kiểm tra xem có bài viết đầu tiên không -->
+                        <img src="/imgs/home/donal.jpg">
+                        <div class="article-big-content">
+                            <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 30}}</h4>
+
+                            <p>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_description 100}}</p>
+
+                            <p class="date">{{formatDate firstNewsgetTopNewsFromTopCategory.Date}}</p>
+
+                        </div>
+                        {{/if}}
                     </div>
                 </div>
             </div>
+
+
+
+
+
+
             <div class="col-sm-4">
                 <div class="card mb-3 shadow-sm" id="article_top10_2">
+                    {{!-- <div class="list-group list-group-flush">
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="category">Thời sự</div>
+                            <a href="#">
+                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
+                                    thống</h6>
+                            </a>
+                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng
+                                Dân
+                                chủ sẽ
+                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <div class="date">
+                                <div>22/11/2024</div>
+                            </div>
+                        </div>
+                    </div> --}}
                     <div class="list-group list-group-flush">
+                        {{#each top10NewsRecent}}
                         <div class="card-body">
-                            <div class="category">Thời sự</div>
+                            <div class="category">{{this.CategoryName}}</div>
                             <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
+                                <h6 class="card-title">{{truncateText this.Meta_title 30}}</h6>
                             </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
+                            <p class="card-text">{{truncateText this.Meta_description 100}}</p>
                             <div class="date">
-                                <div>22/11/2024</div>
+                                <div>{{formatDate this.Date}}</div>
                             </div>
                         </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
-                        <div class="card-body">
-                            <div class="category">Thời sự</div>
-                            <a href="#">
-                                <h6 class="card-title">Bà Pelosi đổ lỗi cho ông Biden về thất bại trong bầu cử tổng
-                                    thống</h6>
-                            </a>
-                            <p class="card-text">Cựu chủ tịch Hạ viện Mỹ chỉ trích Tổng thống Biden, cho rằng đảng Dân
-                                chủ sẽ
-                                đạt kết quả tốt hơn nếu ông sớm rời cuộc đua Nhà Trắng.</p>
-                            <div class="date">
-                                <div>22/11/2024</div>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
     <!-- Category du lịch -->
     <div class="container-fluid" id="article_tour">
         <div class="pt-3">
-            <h5 class="font-weight-bold">DU LỊCH</h5>
+            <h5 class="font-weight-bold">Du lịch</h5>
         </div>
         <div id="article_outer">
+            {{#if firstNewsRecentTravelNews}}
             <img src="/imgs/home/suôi thầu.jpg">
+            {{/if}}
             <div class="article-title">
-                <div class="article-title-content">
-                    <h3>Suôi Thầu vào mùa tam giác mạch</h3>
-                    <p>Hà Giang Thảo nguyên Suôi Thầu được ví như "Thụy Sĩ thu nhỏ", thu hút khách du lịch khi hoa tam
-                        giác
-                        mạch bung nở.</p>
+                {{#if firstNewsRecentTravelNews}}
+                <div class="article-title-content" href="/news/{{firstNewsRecentTravelNews.Id_News}}">
+                    <h3>{{truncateText firstNewsRecentTravelNews.Meta_title 30}}</h3>
+                    <p>{{truncateText firstNewsRecentTravelNews.Meta_description 100}}</p>
                     <p class="date">
-                        22/11/2024
+                        {{formatDate firstNewsRecentTravelNews.Date}}
                     </p>
                 </div>
+                {{/if}}
+
                 <div class="media position-relative" id="article-inner">
-                    <div class="media-body article-inner-content-right">
-                        <h5>48 giờ nghỉ dưỡng ở vịnh Ninh Vân</h5>
-                        <p>Khánh Hòa-Du khách đến vịnh Ninh Vân có thể trải nghiệm ngắm bình minh, cắm trại, hoặc chọn
-                            nghỉ
-                            dưỡng tại một resort cao cấp để cảm nhận không khí yên bình.</p>
-                        <p class="date">22/11/2024</p>
+                    {{#if SecondNewsRecentTravelNews}}
+                    <div class="media-body article-inner-content-right"
+                        href="/news/{{SecondNewsRecentTravelNews.Id_News}}">
+                        <h5>{{truncateText SecondNewsRecentTravelNews.Meta_title 30}}</h5>
+                        <p>{{truncateText SecondNewsRecentTravelNews.Meta_description 100}}</p>
+                        <p class="date">{{formatDate SecondNewsRecentTravelNews.Date}}</p>
                     </div>
                     <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
+                    {{/if}}
                 </div>
             </div>
         </div>
     </div>
+
+
+
     <!-- Category sức khỏe -->
     <div class="container-fluid" id="article_tour">
         <div class="pt-3">
-            <h5 class="font-weight-bold">DU LỊCH</h5>
+            <h5 class="font-weight-bold">Sức khỏe</h5>
         </div>
         <div id="article_outer">
             <div class="article-title">
-                <div class="article-title-content">
-                    <h3>Suôi Thầu vào mùa tam giác mạch</h3>
-                    <p>Hà Giang Thảo nguyên Suôi Thầu được ví như "Thụy Sĩ thu nhỏ", thu hút khách du lịch khi hoa tam
-                        giác
-                        mạch bung nở.</p>
+                {{#if firstNewsRecentHealthNews}}
+                <div class="article-title-content" href="/news/{{firstNewsRecentHealthNews.Id_News}}">
+                    <h3>{{truncateText firstNewsRecentHealthNews.Meta_title 30}}</h3>
+                    <p>{{truncateText firstNewsRecentHealthNews.Meta_description 100}}</p>
                     <p class="date">
-                        22/11/2024
+                        {{formatDate firstNewsRecentHealthNews.Date}}
                     </p>
                 </div>
+                {{/if}}
                 <div class="media position-relative" id="article-inner">
+                    {{#if SecondNewsRecentHealthNews}}
                     <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
-                    <div class="media-body article-inner-content-left">
-                        <h5>48 giờ nghỉ dưỡng ở vịnh Ninh Vân</h5>
-                        <p>Khánh Hòa-Du khách đến vịnh Ninh Vân có thể trải nghiệm ngắm bình minh, cắm trại, hoặc chọn
-                            nghỉ
-                            dưỡng tại một resort cao cấp để cảm nhận không khí yên bình.</p>
-                        <p class="date">22/11/2024</p>
+                    <div class="media-body article-inner-content-left"
+                        href="/news/{{SecondNewsRecentHealthNews.Id_News}}">
+                        <h5>{{truncateText SecondNewsRecentHealthNews.Meta_title 30}}</h5>
+                        <p>{{truncateText SecondNewsRecentHealthNews.Meta_description 100}}</p>
+                        <p class="date">{{formatDate SecondNewsRecentHealthNews.Date}}</p>
                     </div>
+                    {{/if}}
                 </div>
             </div>
+            {{#if firstNewsRecentHealthNews}}
             <img src="/imgs/home/suôi thầu.jpg">
+            {{/if}}
         </div>
     </div>
-    <!-- Bài viết liên quan -->
+
+
+
+    <!-- Top 12 bài viết mới nhất của chuyên mục nổi bật nhì -->
     <div class="container-fluid" id="article_related">
-        <h4>Top bài viết liên quan</h5>
+        <h4>Top 12 bài viết mới nhất của chuyên mục nổi bật nhì</h5>
             <div id="carouselExampleControls2" class="carousel slide " data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
+                        {{!-- <div class="item">
+                            <div class="card" style="width: 18rem;">
+                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
+                                            tháng tới'</h5>
+                                    </a>
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
+                                        Chính phủ Trần
+                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;">
+                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
+                                            tháng tới'</h5>
+                                    </a>
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
+                                        Chính phủ Trần
+                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;">
+                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
+                                            tháng tới'</h5>
+                                    </a>
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
+                                        Chính phủ Trần
+                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                </div>
+                            </div>
+                            <div class="card" style="width: 18rem;">
+                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
+                                            tháng tới'</h5>
+                                    </a>
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
+                                        Chính phủ Trần
+                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                </div>
+                            </div>
+                        </div> --}}
+
+                        <div class="item">
+                            {{#each firstNewsFromTop2Category}}
+                            <div class="card" style="width: 18rem;" href="/news/{{this.Id_News}}">
+                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="card-title">{{truncateText this.Meta_title 30}}</h5>
+                                        <!-- Tiêu đề bài viết -->
+                                    </a>
+                                    <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                                    <!-- Mô tả bài viết -->
+                                    {{!-- <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết --> --}}
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
+                    </div>
+                    {{!-- <div class="carousel-item">
                         <div class="item">
                             <div class="card" style="width: 18rem;">
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
@@ -638,10 +594,12 @@
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
@@ -650,10 +608,12 @@
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
@@ -662,26 +622,51 @@
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
                             </div>
                         </div>
+                    </div> --}}
+
+                    <div class="carousel-item">
+                        <div class="item">
+                            {{#each secondNewsFromTop2Category}}
+                            <div class="card" style="width: 18rem;" href="/news/{{this.Id_News}}">
+                                <img src="/imgs/home/donal.jpg" class="card-img-top" alt="...">
+                                <div class="card-body">
+                                    <a href="#">
+                                        <h5 class="card-title">{{truncateText this.Meta_title 30}}</h5>
+                                        <!-- Tiêu đề bài viết -->
+                                    </a>
+                                    <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                                    <!-- Mô tả bài viết -->
+                                    {{!-- <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết --> --}}
+                                </div>
+                            </div>
+                            {{/each}}
+                        </div>
                     </div>
+
+                    {{!--
                     <div class="carousel-item">
                         <div class="item">
                             <div class="card" style="width: 18rem;">
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
@@ -690,10 +675,12 @@
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
@@ -702,10 +689,12 @@
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
@@ -714,68 +703,40 @@
                                 <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
+                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện
+                                            trong 6
                                             tháng tới'</h5>
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
+                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn
+                                        phòng
                                         Chính phủ Trần
                                         Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
+
                     <div class="carousel-item">
                         <div class="item">
-                            <div class="card" style="width: 18rem;">
-                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
+                            {{#each thirdNewsFromTop2Category}}
+                            <div class="card" style="width: 18rem;" href="/news/{{this.Id_News}}">
+                                <img src="/imgs/home/suôi thầu.jpg" class="card-img-top" alt="...">
                                 <div class="card-body">
                                     <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                            tháng tới'</h5>
+                                        <h5 class="card-title">{{truncateText this.Meta_title 30}}</h5>
+                                        <!-- Tiêu đề bài viết -->
                                     </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
-                                        Chính phủ Trần
-                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                                    <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                                    <!-- Mô tả bài viết -->
+                                    {{!-- <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết --> --}}
                                 </div>
                             </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                            tháng tới'</h5>
-                                    </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
-                                        Chính phủ Trần
-                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                            tháng tới'</h5>
-                                    </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
-                                        Chính phủ Trần
-                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                </div>
-                            </div>
-                            <div class="card" style="width: 18rem;">
-                                <img src="/imgs/home/bv.jpg" class="card-img-top" alt="...">
-                                <div class="card-body">
-                                    <a href="#">
-                                        <h5 class="card-title">Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6
-                                            tháng tới'</h5>
-                                    </a>
-                                    <p class="card-text">Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng
-                                        Chính phủ Trần
-                                        Văn Sơn thông báo tại họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                                </div>
-                            </div>
+                            {{/each}}
                         </div>
                     </div>
+
+
+
                 </div>
                 <button class="carousel-control-prev btn-secondary" type="button"
                     data-target="#carouselExampleControls2" data-slide="prev">
@@ -790,53 +751,74 @@
             </div>
 
     </div>
+
+
+
+
+
     <!-- Chuyên mục chính trị -->
     <div class="container-fluid">
         <div class="pt-3">
-            <h5 class="font-weight-bold">CHÍNH TRỊ</h5>
+            <h5 class="font-weight-bold">4 bài mới nhất chuyên mục nổi bật ba</h5>
         </div>
         <div class="border-danger">
             <div class="cata-politic">
-                <div class="politic-left">
+                <div class="politic-left" href="/news/{{firstNewsFromTop3Category.Id_News}}">
                     <img src="/imgs/home/donal.jpg">
                     <div class="content">
-                        <h4 class="font-weight-bold">Ukraine đối mặt tương lai bất định khi ông Trump nắm quyền</h4>
-                        <p>Dù tuyên bố sẽ nhanh chóng chấm dứt chiến sự, ông Trump chưa đề ra kế hoạch cụ thể
-                            và nếu có, chúng cũng khó đem lại nhiều lợi ích cho Ukraine.</p>
-                        <p class="date">22/11/2024</p>
+                        <h4 class="font-weight-bold">{{truncateText firstNewsFromTop3Category.Meta_title 30}}</h4>
+                        <p>{{truncateText firstNewsFromTop3Category.Meta_description 100}}</p>
+                        <p class="date">{{formatDate firstNewsFromTop3Category.Date}}</p>
                     </div>
                 </div>
+
+
+
+
+                {{!-- <div class="politic-right">
+                    <div class="politic-article">
+                        <div class="content">
+                            <h6>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới</h6>
+                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ Trần Văn Sơn
+                                thông báo tại
+                                họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                            <p class="date">22/11/2024</p>
+                        </div>
+                        <img src="/imgs/home/bv.jpg">
+                    </div>
+                    <div class="politic-article">
+                        <div class="content">
+                            <h6>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới</h6>
+                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ Trần Văn Sơn
+                                thông báo tại
+                                họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                            <p class="date">22/11/2024</p>
+                        </div>
+                        <img src="/imgs/home/bv.jpg">
+                    </div>
+                    <div class="politic-article">
+                        <div class="content">
+                            <h6>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới</h6>
+                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ Trần Văn Sơn
+                                thông báo tại
+                                họp báo Chính phủ thường kỳ chiều 9/11.</p>
+                            <p class="date">22/11/2024</p>
+                        </div>
+                        <img src="/imgs/home/bv.jpg">
+                    </div>
+                </div> --}}
+
                 <div class="politic-right">
-                    <div class="politic-article">
+                    {{#each secondNewsFromTop3Category}}
+                    <div class="politic-article" href="/news/{{this.Id_News}}">
                         <div class="content">
-                            <h6>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới</h6>
-                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ Trần Văn Sơn
-                                thông báo tại
-                                họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            <p class="date">22/11/2024</p>
+                            <h6>{{truncateText this.Meta_title 30}}</h6> <!-- Tiêu đề bài viết -->
+                            <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
+                            <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                         </div>
                         <img src="/imgs/home/bv.jpg">
                     </div>
-                    <div class="politic-article">
-                        <div class="content">
-                            <h6>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới</h6>
-                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ Trần Văn Sơn
-                                thông báo tại
-                                họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            <p class="date">22/11/2024</p>
-                        </div>
-                        <img src="/imgs/home/bv.jpg">
-                    </div>
-                    <div class="politic-article">
-                        <div class="content">
-                            <h6>Bệnh viện Bạch Mai và Việt Đức 2 'phải hoàn thiện trong 6 tháng tới</h6>
-                            <p>Chỉ đạo này của Thủ tướng được Bộ trưởng, Chủ nhiệm Văn phòng Chính phủ Trần Văn Sơn
-                                thông báo tại
-                                họp báo Chính phủ thường kỳ chiều 9/11.</p>
-                            <p class="date">22/11/2024</p>
-                        </div>
-                        <img src="/imgs/home/bv.jpg">
-                    </div>
+                    {{/each}}
                 </div>
             </div>
         </div>

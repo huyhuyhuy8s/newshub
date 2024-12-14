@@ -40,10 +40,9 @@ router.get('/:id', async function (req, res) {
 
 // Route để thêm bình luận
 router.post('/comments', async (req, res) => {
-    const { newsId, userId, comment, commentId } = req.body;
-    console.log({ newsId, userId, comment, commentId });
+    const { newsId, userId, comment } = req.body;
     try {
-        await newsService.addComment({ newsId, userId, comment, commentId });
+        await newsService.addComment({ newsId, userId, comment });
         res.json({ message: 'Bình luận đã được gửi thành công!' });
     } catch (error) {
         console.error('Error saving comment:', error);
