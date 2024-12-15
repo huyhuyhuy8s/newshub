@@ -54,13 +54,22 @@ const newsService = {
 
     async addComment({ newsId, userId, comment }) {
         try {
-            console.log('Adding comment:', { newsId, userId, comment });
-            const commentId = `CMT${Date.now()}`; // Tạo ID bình luận (có thể thay đổi cách tạo ID)
+            // Lấy ID bình luận lớn nhất hiện tại
+            const maxCommentId = await db('Comment')
+                .max('Id_Comment as maxId')
+                .first();
+
+            // Tạo ID bình luận mới
+            const newCommentId = maxCommentId.maxId ? 
+                `CMT${String(parseInt(maxCommentId.maxId.replace('CMT', '')) + 1).padStart(6, '0')}` : 
+                'CMT0000001'; // Nếu không có bình luận nào, bắt đầu từ CMT00001
+
+            // Thêm bình luận mới vào cơ sở dữ liệu
             await db('Comment').insert({
-                Id_Comment: commentId,
                 Id_News: newsId,
                 Id_User: userId,
                 Comment: comment,
+                Id_Comment: newCommentId,
                 Time: new Date()
             });
         } catch (error) {

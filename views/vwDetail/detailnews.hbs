@@ -83,12 +83,17 @@
             {{/each}}
         </div>
     </div>
-
+    <p>{{userName}}</p>
+    <p>{{userId}}</p>
     <!-- Bình luận -->
     <div id="cmt">
         <h3>Ý kiến</h3>
-        <div class="your-comment">
+        <div class="your-comment" id="your-comment">
             <textarea id="commentInput" placeholder="Thêm bình luận mới...."></textarea>
+            <input type="hidden" id="newsId" value="{{news.Id_News}}">
+            <input type="hidden" id="userId" value="{{userId}}">
+            <input type="hidden" id="userName" value="{{userName}}">
+            
             <button type="button" id="submitComment">Gửi</button>
         </div>
         <div class="cmts">
@@ -122,17 +127,17 @@
         </div>
         <div class="top-article" id="bai-viet-lien-quan">
             {{#each relatedNews}}
-                <div class="articles">
-                    <img src="/imgs/detail/bv.jpg" alt="...">
-                    <div class="card-body">
-                        <a href="/news/{{this.Id_News}}">
-                            <h5 class="card-title">{{this.Meta_title}}</h5>
-                        </a>
-                        <p class="card-text">{{this.Meta_description}}</p>
-                    </div>
+            <div class="articles">
+                <img src="/imgs/detail/bv.jpg" alt="...">
+                <div class="card-body">
+                    <a href="/news/{{this.Id_News}}">
+                        <h5 class="card-title">{{this.Meta_title}}</h5>
+                    </a>
+                    <p class="card-text">{{this.Meta_description}}</p>
                 </div>
+            </div>
             {{else}}
-                <p>Không có bài viết liên quan nào.</p>
+            <p>Không có bài viết liên quan nào.</p>
             {{/each}}
         </div>
     </div>
@@ -151,17 +156,17 @@
         </div>
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedNews}}
-                <div class="articles">
-                    <img src="/imgs/detail/suôi thầu.jpg" alt="...">
-                    <div class="card-body">
-                        <a href="/news/{{this.Id_News}}">
-                            <h5 class="card-title">{{this.Meta_title}}</h5>
-                        </a>
-                        <p class="card-text">{{this.Meta_description}}</p>
-                    </div>
+            <div class="articles">
+                <img src="/imgs/detail/suôi thầu.jpg" alt="...">
+                <div class="card-body">
+                    <a href="/news/{{this.Id_News}}">
+                        <h5 class="card-title">{{this.Meta_title}}</h5>
+                    </a>
+                    <p class="card-text">{{this.Meta_description}}</p>
                 </div>
+            </div>
             {{else}}
-                <p>Không có bài viết nào.</p>
+            <p>Không có bài viết nào.</p>
             {{/each}}
         </div>
     </div>
@@ -174,17 +179,23 @@
         <h3>3 bài viết nổi bật (nhiều view nhất) trong 1 tuần vừa qua của mọi chuyên mục</h3>
         <div id="article_list">
             {{#each topViewedLastWeek}}
-                <a href="/news/{{this.Id_News}}">
-                    <img src="/imgs/detail/suôi thầu2.jpg" alt="">
-                    <div>
-                        <h5>{{this.Meta_title}}</h5>
-                        <p class="font-italic">{{this.Meta_description}}</p>
-                    </div>
-                </a>
+            <a href="/news/{{this.Id_News}}">
+                <img src="/imgs/detail/suôi thầu2.jpg" alt="">
+                <div>
+                    <h5>{{this.Meta_title}}</h5>
+                    <p class="font-italic">{{this.Meta_description}}</p>
+                </div>
+            </a>
             {{else}}
-                <p>Không có bài viết nào.</p>
+            <p>Không có bài viết nào.</p>
             {{/each}}
         </div>
     </div>
+
+    <p>{{news.Id_News}}</p>
+    <p>{{userId}}</p>
 </div>
+
+<script src="/js/detailnews.js"></script>
+{{{_sections.js}}}
 

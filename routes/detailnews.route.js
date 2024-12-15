@@ -22,6 +22,9 @@ router.get('/:id', async function (req, res) {
         const topViewedLastWeek = await newsService.getTopViewedNewsLastWeek();
 
         const userId = req.session.authUser ? req.session.authUser.Id_User : null;
+        const userName = req.session.authUser ? req.session.authUser.Name : null;
+        // console.log('userId:', userId);
+        // console.log('news:', news);
 
         res.render('vwDetail/detailnews', {
             news: news,
@@ -30,8 +33,11 @@ router.get('/:id', async function (req, res) {
             relatedNews: relatedNews,
             topViewedNews: topViewedNews,
             topViewedLastWeek: topViewedLastWeek,
-            userId: userId
+            userId: userId,
+            userName: userName
         });
+
+      
     } catch (err) {
         console.error('Error in news detail route:', err);
         res.status(500).send('Internal Server Error');
@@ -45,8 +51,9 @@ router.post('/comments', async (req, res) => {
         await newsService.addComment({ newsId, userId, comment });
         res.json({ message: 'Bình luận đã được gửi thành công!' });
     } catch (error) {
+        console.log('lỗi ở route');
         console.error('Error saving comment:', error);
-        res.status(500).json({ message: 'Có lỗi xảy ra khi gửi bình luận!' });
+        res.status(500).json({ message: 'Có lỗi xảy ra khi gửi bình luận! (route)' });
     }
 });
 

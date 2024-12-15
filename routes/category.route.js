@@ -47,7 +47,7 @@ router.get('/:id', async function (req, res) {
 
 
 
-//syb_Category
+//sub_Category
 router.get('/:categoryId/:subCategoryId', async function (req, res) {
     try {
         // const categoryId = req.params.categoryId;

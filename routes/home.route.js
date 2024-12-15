@@ -81,9 +81,11 @@ router.get('/', async (req, res) => {
             firstNewsFromTop2Category,
             secondNewsFromTop2Category,
             thirdNewsFromTop2Category,
+            top2Category,
 
             firstNewsFromTop3Category,
             secondNewsFromTop3Category,
+            top3Category,
 
             isHome: true,
         });

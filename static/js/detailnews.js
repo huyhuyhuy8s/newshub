@@ -1,41 +1,42 @@
-
-console.log('Detail news script loaded');
+// console.log('Detail news script loaded');
 function scrollNext(scroller, value, para = 1) {
     document.getElementById(scroller).scrollBy(para * document.getElementById(value).offsetWidth + 16, 0);
 }
 
+
+
 document.getElementById('submitComment').addEventListener('click', async () => {
-    console.log('Submit button clicked');
     const commentInput = document.getElementById('commentInput');
     const comment = commentInput.value;
-    const newsId = '{{news.Id_News}}'; // Lấy ID bài viết
-    const userId = '{{userId}}'; // Sử dụng userId từ template
-    console.log('News ID:', newsId);
-    console.log('User ID:', userId);
-    console.log('Comment:', comment);
+    const newsId = document.getElementById('newsId').value;
+    const userId = document.getElementById('userId').value;
+    const userName = document.getElementById('userName').value;
+
+
     if (comment.trim() === '') {
         alert('Vui lòng nhập bình luận!');
         return;
     }
 
-    const commentId = `CMT${String(Date.now()).slice(-5)}`; // Tạo ID bình luận
+
 
     try {
-        console.log('Sending comment:', { newsId, userId, comment });
-        const response = await fetch('/detailnews/comments', {
+        const response = await fetch('/news/comments', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify({ newsId, userId, comment, commentId }),
+            body: JSON.stringify({ newsId, userId, comment }),
         });
 
-        if (response.ok) {
-            const result = await response.json();
-            alert(result.message);
+        console.log('Response status:', response.status); // Log mã trạng thái
+        const responseBody = await response.json(); // Chỉ đọc body một lần
+        console.log('Response body:', responseBody); // Log nội dung phản hồi
 
+        if (response.ok) {
+            alert(responseBody.message);
             // Cập nhật danh sách bình luận mà không tải lại trang
-            const commentsContainer = document.querySelector('.ours-comment'); // ID của phần chứa bình luận
+            const commentsContainer = document.querySelector('.ours-comment');
             const newComment = document.createElement('div');
             newComment.classList.add('comment');
             newComment.innerHTML = `
@@ -43,19 +44,19 @@ document.getElementById('submitComment').addEventListener('click', async () => {
                     <div class="image">
                         <img src="/imgs/detail/biden.jpg" alt="Avatar">
                     </div>
-                    <h6>${userId}</h6>
+                    <h6>${userName}</h6>
                 </div>
                 <p>${comment}</p>
-                <small>${new Date().toLocaleString()}</small>
+                <small>${"Ngày đăng: " + new Date().toLocaleDateString()}</small>
             `;
+            // chỗ ngày đăng này không dùng formatDate được, nó sẽ bị lỗi
             commentsContainer.appendChild(newComment);
             commentInput.value = ''; // Xóa nội dung ô nhập
         } else {
-            const error = await response.json();
-            alert(error.message);
+            alert(responseBody.message);
         }
     } catch (error) {
         console.error('Error:', error);
-        alert('Có lỗi xảy ra khi gửi bình luận!');
+        alert('Có lỗi xảy ra khi gửi bình luận! (js)');
     }
 });

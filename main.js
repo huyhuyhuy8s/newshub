@@ -8,7 +8,7 @@ import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
 import categoryService from './services/category.service.js';
 import categoryRouter from './routes/category.route.js';
-import newsRouter from './routes/detailnews.route.js';
+import detailNewsRouter from './routes/detailnews.route.js';
 import homeRouter from './routes/home.route.js';
 import moment from 'moment';
 
@@ -28,6 +28,7 @@ app.use(session({
 }));
 
 // Middleware
+app.use(express.json()); // hỗ trợ phần comment
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/static'));
 app.use('/imgs', express.static(join(__dirname, 'imgs')));
@@ -185,7 +186,7 @@ app.get('/test-categories', (req, res) => {
 app.use('/', homeRouter);
 app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
-app.use('/news', newsRouter);
+app.use('/news', detailNewsRouter);
 
 
 
