@@ -1,0 +1,151 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f9f9f9;
+}
+
+.header {
+    display: flex;
+    background-color: #ffffff;
+    border-bottom: 2px solid #800000; /* Đường kẻ màu đỏ */
+    padding: 10px 20px;
+}
+
+.header-item {
+    text-decoration: none;
+    color: #800000; /* Màu chữ */
+    padding: 10px 15px;
+    border-right: 1px solid #800000; /* Đường phân cách */
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-item:last-child {
+    border-right: none; /* Bỏ đường kẻ cuối */
+}
+
+.header-item:hover {
+    background-color: #ffe6e6; /* Màu nền khi hover */
+    color: #000000;
+}
+
+.writer-info, .user-info {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+h2, h3 {
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.writer-stats {
+    display: flex;
+    gap: 10px; /* Khoảng cách giữa các ô */
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd; /* Viền */
+    border-radius: 8px;
+    width: 300px; /* Chiều rộng cho từng ô */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+.stat-icon img {
+    width: 32px; /* Kích thước icon */
+    height: 32px;
+}
+
+
+
+.stat-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.stat-content .number {
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+}
+
+.stat-arrow span {
+    font-size: 16px;
+    color: #333;
+}
+
+.stop-work {
+    text-align: center;
+    background: #ffc107;
+    color: #333;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.email-verification {
+    display: block;
+    align-items: center;
+    margin-bottom: 20px;
+
+    p {
+        background-color: #28a745;
+        text-align:center;
+        color: white;
+        padding: 10px;
+    }
+}
+
+.verify {
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+}
+
