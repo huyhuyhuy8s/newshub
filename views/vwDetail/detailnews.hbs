@@ -1,3 +1,7 @@
+{{#fillHtmlContent 'css'}}    
+<link rel="stylesheet" href="/css/detailnews.css">
+{{/fillHtmlContent}}
+
 <div class="card-body pr-0 pl-0" id="body">
 
     <!-- Bài viết -->
@@ -83,8 +87,6 @@
             {{/each}}
         </div>
     </div>
-    <p>{{userName}}</p>
-    <p>{{userId}}</p>
     <!-- Bình luận -->
     <div id="cmt">
         <h3>Ý kiến</h3>
@@ -93,6 +95,7 @@
             <input type="hidden" id="newsId" value="{{news.Id_News}}">
             <input type="hidden" id="userId" value="{{userId}}">
             <input type="hidden" id="userName" value="{{userName}}">
+
             
             <button type="button" id="submitComment">Gửi</button>
         </div>
@@ -196,6 +199,9 @@
     <p>{{userId}}</p>
 </div>
 
+
+{{#fillHtmlContent 'js'}}
 <script src="/js/detailnews.js"></script>
-{{{_sections.js}}}
+{{/fillHtmlContent}}
+
 

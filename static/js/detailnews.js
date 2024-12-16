@@ -11,6 +11,7 @@ document.getElementById('submitComment').addEventListener('click', async () => {
     const newsId = document.getElementById('newsId').value;
     const userId = document.getElementById('userId').value;
     const userName = document.getElementById('userName').value;
+    
 
 
     if (comment.trim() === '') {

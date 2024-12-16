@@ -15,6 +15,9 @@ try {
 catch { }
 
 
+
+
+
 // Sticky navbar
 try {
     let navbar = document.getElementById("nav")
@@ -55,6 +58,7 @@ try {
         console.log(2);
         const input = document.createElement("input");
         input.type = "text";
+        input.id = "searchInput";
 
         const li = document.createElement("li");
         li.appendChild(input);

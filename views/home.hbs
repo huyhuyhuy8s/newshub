@@ -1,3 +1,7 @@
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/home.css">
+{{/fillHtmlContent}}
+
 <div class="card-body pr-0 pl-0" id="body">
     <!-- Tin tức nổi bật & top 10 categories -->
     <div class="container-fluid">
@@ -5,7 +9,7 @@
             <div class="col-sm-8">
                 <div class="row">
                     {{#if firstNewstopViewedNews}}
-                    <div class="grid-head" href="/news/{{firstNewstopViewedNews.Id_News}}">
+                    <a class="grid-head" href="/news/{{firstNewstopViewedNews.Id_News}}">
                         <img src="/imgs/home/donal.jpg"
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
@@ -18,13 +22,13 @@
                                 {{formatDate firstNewstopViewedNews.Date}} <!-- Ngày bài viết đầu tiên -->
                             </p>
                         </div>
-                    </div>
+                    </a>
                     {{/if}}
                 </div>
                 <div id="article_list">
                     <!-- Hiển thị 3 bài viết tiếp theo -->
                     {{#each News234stopViewedNews}}
-                    <div class="article-list-element" href="/news/{{this.Id_News}}">
+                    <a class="article-list-element" href="/news/{{this.Id_News}}">
                         <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
                         <div class="article-list-content">
                             <a href="#">
@@ -35,7 +39,7 @@
                                 {{formatDate this.Date}} <!-- Ngày bài viết -->
                             </p>
                         </div>
-                    </div>
+                    </a>
                     {{/each}}
                 </div>
             </div>

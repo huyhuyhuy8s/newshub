@@ -1,0 +1,17 @@
+<div class="body">
+    <div class="parent3">
+        {{#each recentNews}}
+        <a href="/news/{{Id_News}}" class="post">
+            <p>{{timeAgo Date}}</p>
+            <div class="content">
+                <h4>{{truncateText Meta_title 30}}</h4>
+                <p>
+                    {{truncateText Meta_description 200}}
+                </p>
+                <div class="content-after">{{SubCategoryName}}</div>
+            </div>
+            <img src="/imgs/detail/suôi thầu3.jpg" alt="{{Meta_title}}" class="image">
+        </a>
+        {{/each}}
+    </div>
+</div>
