@@ -1,0 +1,198 @@
+@import "../ChuyenMuc/styleMain.css";
+
+:root {
+    --bred: #ffe6e6;
+}
+
+img {
+    border-radius: 50%;
+    height: 2.5em;
+    width: 2.5em;
+
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* Header */
+header {
+    background-color: var(--white);
+    border-bottom: 2px solid var(--red);
+    padding: 10px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+
+
+    ul {
+        display: flex;
+        gap: 0em;
+        padding: 10px;
+    }
+
+    button {
+        background-color: var(--white);
+        border: none;
+        /* margin-bottom: 10px; */
+    }
+
+    img {
+        width: 2.5em;
+    }
+
+    li {
+        color: var(--red);
+        display: flex;
+        align-items: center;
+        border-right: 1px solid var(--red);
+        /* Đường phân cách */
+        transition: background-color 0.3s, color 0.3s;
+    }
+}
+
+li:hover {
+    background-color: var(--bred);
+    text-decoration: none;
+    /* Màu nền khi hover */
+    color: var(--black);
+}
+
+#ChangeAccount-Div {
+    position: absolute;
+    border: 1px solid var(--grey);
+    border-radius: 10px;
+    width: 15%;
+    display: grid;
+    grid-template-columns: 1fr;
+    box-shadow: 1px 1px 1px 1px var(--grey);
+    background-color: var(--white);
+    padding: 10px;
+    z-index: 1;
+
+
+    .avt {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    ul {
+        display: grid;
+        grid-template-columns: 1fr;
+        border-top: 1px solid var(--grey);
+    }
+
+    .btn-sign-out {
+        background-color: var(--red);
+        color: var(--white);
+        border-radius: 15px;
+        border: none;
+    }
+
+}
+
+
+
+/* Thanh các chức năng phụ của trang */
+
+nav {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    border-bottom: 1px solid var(--grey);
+    padding: 15px 75px;
+    background-color: var(--white);
+
+    .btn {
+        height: 2.5em;
+        background-color: var(--red);
+        color: var(--white);
+        border-color: var(--red);
+        border-radius: 15px;
+        width: 100px;
+    }
+
+    .btn:hover {
+        background-color: #F6E6E6;
+        color: var(--red);
+    }
+
+    .search-day {
+        display: flex;
+        gap: 1em;
+
+        .day {
+            border-radius: 15px;
+            width: 150px;
+        }
+    }
+
+    .filter {
+        display: flex;
+        justify-content: flex-end;
+        gap: 2em;
+    }
+}
+
+#body {
+    margin: 0 75px;
+
+    .title {
+        font-size: 35px;
+        color: var(--red);
+        font-weight: bold;
+        font-style: var(--text-fam);
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2em;
+
+        .graph {
+            grid-column: 1 / span 4;
+            width: 100%;
+        }
+
+
+        .figure {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2em;
+
+            .data-article {
+                padding: 10px;
+                border-radius: 15px;
+                border: 1px solid var(--grey);
+
+                .center {
+                    display: flex;
+                    gap: 8em;
+                    font-size: 38px;
+                    color: var(--red);
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+
+                    i {
+                        color: var(--black);
+                        border: 1px solid var(--grey);
+                        border-radius: 10px;
+                        padding: 3px;
+
+                    }
+                }
+
+                .date-from::after {
+                    content: " - ";
+                }
+            }
+
+        }
+    }
+
+}

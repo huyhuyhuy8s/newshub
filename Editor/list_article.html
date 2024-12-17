@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Editor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+        integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="style_list_article.css">
+</head>
+
+<body>
+    <header>
+        <ul>
+            <li>
+                <button onclick="ChangeAccount()">
+                    <img src="./imgs/avt.png">
+                </button>
+            </li>
+            <li><a href="" class="header-item">Tổng quan</a></li>
+            <li><a href="" class="header-item">
+                    <i class="bi bi-file-earmark"></i>Bài viết</a></li>
+            <li><a href="" class="header-item">
+                    <i class="bi bi-list-nested"></i>Danh sách bài viết</a></li>
+        </ul>
+    </header>
+    <div id="ChangeAccount-Div" hidden>
+        <div class="avt">
+            <img src="./imgs/avt.png">
+            <a>John Doe</a>
+        </div>
+        <ul>
+            <li><a href="">Thông tin của tôi</a></li>
+            <li><a href="">Chuyển tài khoản</a></li>
+        </ul>
+        <button class="btn-sign-out" type="submit">Đăng xuất</button>
+
+    </div>
+    <nav>
+        <div class="search-day">
+            <input class="day" type="date" placeholder="Từ ngày">
+            <input class="day" type="date" placeholder="Đến ngày">
+            <input class="btn" type="button" value="Tìm kiếm">
+        </div>
+        <div class="filter">
+            <input class="btn" type="button" value="Trong 1 tuần">
+            <input class="btn" type="button" value="Trong 1 tháng">
+            <input class="btn" type="button" value="Trong 1 năm">
+
+        </div>
+    </nav>
+    <div id="body">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tiêu đề</th>
+                    <th>Tác giả</th>
+                    <th>Bài viết nổi bật</th>
+                    <th>Trạng thái</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
+                    <td>Võ Hải</td>
+                    <td>
+                        <input type="checkbox" name="check_articles">
+                    </td>
+                    <td>
+                        <span class="badge badge-pill tags ">Du lịch</span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function ChangeAccount() {
+            var x = document.getElementById("ChangeAccount-Div");
+            if (x.style.display === "none") {
+                x.style.display = "grid";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5./dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.3/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+    <script src="../ChuyenMuc/scriptMain.js"></script>
+</body>
+
+</html>
