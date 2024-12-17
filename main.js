@@ -45,7 +45,7 @@ app.engine('hbs', engine({
         },
         fillHtmlContent: hbs_section(),
 
-        
+
 
 
         toLowerCase(str) {
@@ -84,7 +84,7 @@ app.engine('hbs', engine({
             const postDate = new Date(date);
             const diffTime = Math.abs(now - postDate);
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            
+
             if (diffDays === 0) {
                 const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
                 if (diffHours === 0) {
@@ -93,7 +93,7 @@ app.engine('hbs', engine({
                 }
                 return `${diffHours} giờ trước`;
             }
-            
+
             // Thêm logic xử lý tháng
             if (diffDays >= 30) {
                 const diffMonths = Math.floor(diffDays / 30);
@@ -110,7 +110,7 @@ app.engine('hbs', engine({
                 }
                 return `${diffYears} năm trước`;
             }
-            
+
             return `${diffDays} ngày trước`;
         },
     },
@@ -153,50 +153,47 @@ app.use(function (req, res, next) {
 app.set('view engine', 'hbs');
 app.set('views', join(__dirname, 'views'));
 
+// Cấu hình views
+app.set('views', __dirname + '/views');
 
-app.get('/test-categories', (req, res) => {
-    console.log('lcCategories in test route:', res.locals.lcCategories);
-    res.json(res.locals.lcCategories);
+// Cấu hình static files
+app.use('/Login', express.static(__dirname + '/views/Login'));
+app.use('/Home', express.static(__dirname + '/views/Home'));
+app.use('/ChuyenMuc', express.static(__dirname + '/views/ChuyenMuc'));
+
+
+// Middleware
+
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+// Gắn route login
+app.use('/api', LoginRoute);
+
+// Gắn route cho đăng ký
+app.use('/api/register', RegisterRoute);
+
+
+app.use(express.static(path.join(__dirname, 'views'))); // Thêm views vào thư mục tĩnh
+
+app.get('/register', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/Login/register.html'));
 });
 
 
-// Routes
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/Login/login.html'));
+});
 
-// app.get('/', function (req, res) {
-//     if (!req.session.auth) {
-//         return res.redirect('/account/login');
-//     }
-//     res.render('home', {
-//         layout: 'main',
-//         user: req.session.authUser
-//     });
-// });
+app.get('/register/otp', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/Login/otp.html'))
+})
 
-//test thử vào category
-// app.get('/', function (req, res) {
-//     if (!req.session.auth) {
-//         return res.redirect('/account/login');
-//     }
-//     res.render('vwCategory/category', {
-//         layout: 'main',
-//         user: req.session.authUser
-//     });
-// });
+app.get('/home', (req, res) => {
+    res.sendFile(path.join(__dirname, 'views/Home/home.html'));
+});
 
-
-
-// Routes
-app.use('/', homeRouter);
-app.use('/category', categoryRouter);
-app.use('/account', accountRouter);
-app.use('/news', detailNewsRouter);
-app.use('/search', searchRouter);
-
-
-// Server setup
-app.listen(3000, () => {
+// Khởi động server
+app.listen(3000, function () {
     console.log('Server started on http://localhost:3000');
 });
-
-
-
