@@ -1,50 +1,147 @@
-{{!--
-<!DOCTYPE html>
-<html lang="en">
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" crossorigin="anonymous"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Get the OTP form
+    const otpForm = document.getElementById('otpForm');
+    
+    // Add event listener for form submission
+    otpForm.addEventListener('submit', function(event) {
+        // Prevent the default form submission
+        event.preventDefault();
+        
+        // Gather the OTP from all 6 input fields
+        const otp1 = document.getElementById('otp1').value;
+        const otp2 = document.getElementById('otp2').value;
+        const otp3 = document.getElementById('otp3').value;
+        const otp4 = document.getElementById('otp4').value;
+        const otp5 = document.getElementById('otp5').value;
+        const otp6 = document.getElementById('otp6').value;
+        
+        // Combine the OTP digits
+        const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+        
+        // Get the email from the hidden input
+        const email = document.querySelector('input[name="email"]').value;
+        
+        // Send the OTP verification request
+        fetch('/account/verifyOTP', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ 
+                email: email, 
+                otp: otp 
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data === true) {
+                // OTP is correct
+                alert('OTP verified successfully!');
+                // You can redirect to the next page or perform further actions
+                window.location.href = '/account/register-success';
+            } else {
+                // OTP is incorrect
+                alert('Invalid OTP. Please try again.');
+                // Optionally clear the OTP input fields
+                ['otp1', 'otp2', 'otp3', 'otp4', 'otp5', 'otp6'].forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+                // Focus on the first input
+                document.getElementById('otp1').focus();
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('An error occurred. Please try again.');
+        });
+    });
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./account.css">
-    <title>Xác thực bằng OTP</title>
-</head>
+    // Optional: Auto-focus and auto-tab between OTP inputs
+    const otpInputs = document.querySelectorAll('.input');
+    otpInputs.forEach((input, index) => {
+        input.addEventListener('input', function() {
+            // Automatically move to next input when a digit is entered
+            if (this.value.length === 1 && index < otpInputs.length - 1) {
+                otpInputs[index + 1].focus();
+            }
+            
+            // Prevent non-numeric input
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
 
-<body>
-    <div id="center-form">
-        <div class="container">
-            <div class="wrap"> --}}
-                <form action="#" method="get">
-                    <h2>Xác thực bằng OTP</h2>
-                    <h3>Vui lòng nhập mã 6 chữ số đã gửi đến email contact.newshub@gmail.com của bạn để xác minh.</h3>
-                    <!-- <img src="./hinhanh/logokonen2.png" alt="" class="logo"> -->
-                    <div class="information i-rows">
-                        <input class="input" type="text" inputmode="numeric" maxlength="1" />
-                        <input class="input" type="text" inputmode="numeric" maxlength="1" />
-                        <input class="input" type="text" inputmode="numeric" maxlength="1" />
-                        <input class="input" type="text" inputmode="numeric" maxlength="1" />
-                        <input class="input" type="text" inputmode="numeric" maxlength="1" />
-                        <input class="input" type="text" inputmode="numeric" maxlength="1" />
-                    </div>
-                    <div class="forgot-remember-me">
-                        <p>Gửi lại mã sau: 15s</p>
-                        <a href="#"><strong>Gửi lại OTP </strong></a>
-                    </div>
-                    <div class="active-button">
-                        <button type="submit">
-                            <p>Xác nhận OTP</p>
-                        </button>
+        // Allow moving back with backspace
+        input.addEventListener('keydown', function(e) {
+            if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                otpInputs[index - 1].focus();
+            }
+        });
+    });
+});
 
-                    </div>
-                    <a href="/account/login" class="login"><strong>Trở về đăng nhập</strong></a>
-                </form>
-                <script src="js/account.js"></script>
-                {{!--
-            </div>
-        </div>
+
+</script>
+{{!-- <form action="" method="post" id="otpForm">
+    <h2>Xác thực bằng OTP</h2>
+    <h3>Vui lòng nhập mã 6 chữ số đã gửi đến email {{email}} của bạn để xác minh.</h3>
+    <input type="hidden" name="email" value="{{email}}" />
+    <div class="information i-rows">
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp1" id="otp1" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp2" id="otp2" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp3" id="otp3" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp4" id="otp4" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp5" id="otp5" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp6" id="otp6" />
     </div>
-    <script src="./account.js"></script>
+
+    <div class="forgot-remember-me">
+        <p>Gửi lại mã sau: 15s</p>
+        <a href="#"><strong>Gửi lại OTP </strong></a>
+    </div>
+
+    <div class="active-button">
+        <button type="submit"  id="otpSubmit">
+            <p>Xác nhận OTP</p>
+        </button>
+
+    </div>
+
+    <a href="/account/login" class="login"><strong>Trở về đăng nhập</strong></a>
+</form> --}}
+<form action="" method="post" id="otpForm">
+    <h2>Xác thực bằng OTP</h2>
+    <h3>Vui lòng nhập mã 6 chữ số đã gửi đến email {{email}} của bạn để xác minh.</h3>
+    <input type="hidden" name="email" value="{{email}}" /> <!-- Trường ẩn chứa email -->
+    <div class="information i-rows">
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp1" id="otp1" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp2" id="otp2" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp3" id="otp3" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp4" id="otp4" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp5" id="otp5" />
+        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp6" id="otp6" />
+    </div>
+
+    <div class="forgot-remember-me">
+        <p>Gửi lại mã sau: 15s</p>
+        <a href="#"><strong>Gửi lại OTP </strong></a>
+    </div>
+
+    <div class="active-button">
+        <button type="submit"  id="otpSubmit">
+            <p>Xác nhận OTP</p>
+        </button>
+    </div>
+
+    <a href="/account/login" class="login"><strong>Trở về đăng nhập</strong></a>
+</form>
+
+<script src="/js/account.js"></script>
+{{!--
+</div>
+</div>
+</div>
+<script src="./account.js"></script>
 </body>
 
 </html> --}}

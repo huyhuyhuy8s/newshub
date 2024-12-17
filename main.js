@@ -13,6 +13,7 @@ import homeRouter from './routes/home.route.js';
 import searchRouter from './routes/search.route.js';
 import moment from 'moment';
 
+
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Session configuration
@@ -27,7 +28,7 @@ app.use(session({
         maxAge: 3600000,
     },
 }));
-
+app.use(express.json()); // This allows Express to parse JSON request bodies
 // Middleware
 app.use(express.json()); // hỗ trợ phần comment
 app.use(express.urlencoded({ extended: true }));
