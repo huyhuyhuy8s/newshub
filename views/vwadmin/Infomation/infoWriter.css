@@ -6,68 +6,60 @@ body {
     background-color: #f9f9f9;
 }
 
+/* Header */
 .header {
     display: flex;
-    background-color: #ffffff;
-    border-bottom: 2px solid #800000; /* Đường kẻ màu đỏ */
+    background-color: #fff;
+    border-bottom: 2px solid #800000;
     padding: 10px 20px;
 }
 
 .header-item {
     text-decoration: none;
-    color: #800000; /* Màu chữ */
+    color: #800000;
     padding: 10px 15px;
-    border-right: 1px solid #800000; /* Đường phân cách */
+    border-right: 1px solid #800000;
     transition: background-color 0.3s, color 0.3s;
 }
 
-.header-item:last-child {
-    border-right: none; /* Bỏ đường kẻ cuối */
-}
-
+.header-item:last-child { border-right: none; }
 .header-item:hover {
-    background-color: #ffe6e6; /* Màu nền khi hover */
-    color: #000000;
+    background-color: #ffe6e6;
+    color: #000;
 }
 
-.writer-info, .user-info {
-    max-width: 800px;
-    margin: 20px auto;
+/* Common Box Styles */
+.writer-info, .user-info, .stat {
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-h2, h3 {
-    margin: 0 0 20px;
-    color: #333;
+.writer-info, .user-info {
+    max-width: 800px;
+    margin: 20px auto;
 }
 
+/* Stats */
 .writer-stats {
     display: flex;
-    gap: 10px; /* Khoảng cách giữa các ô */
+    gap: 10px;
 }
 
 .stat {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border: 1px solid #ddd; /* Viền */
-    border-radius: 8px;
-    width: 300px; /* Chiều rộng cho từng ô */
-    padding: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    font-family: Arial, sans-serif;
+    border: 1px solid #ddd;
+    width: 300px;
     margin-bottom: 20px;
 }
 
 .stat-icon img {
-    width: 32px; /* Kích thước icon */
+    width: 32px;
     height: 32px;
 }
-
-
 
 .stat-content p {
     margin: 0;
@@ -81,24 +73,25 @@ h2, h3 {
     color: #000;
 }
 
-.stat-arrow span {
-    font-size: 16px;
-    color: #333;
-}
+.stat-arrow span { font-size: 16px; color: #333; }
 
-.stop-work {
-    text-align: center;
-    background: #ffc107;
-    color: #333;
-    color: white;
-    padding: 10px 20px;
+/* Buttons */
+.stop-work, .verify, .save-btn {
+    color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
     font-size: 16px;
+    width: 100%;
+    text-align: center;
 }
 
+.stop-work { background: #ffc107; }
+.verify { background: #28a745; margin-left: 10px; }
+.save-btn { background: #007bff; }
+
+/* Inputs and Labels */
 label {
     display: block;
     margin: 10px 0 5px;
@@ -115,37 +108,11 @@ input {
     box-sizing: border-box;
 }
 
-.email-verification {
-    display: block;
-    align-items: center;
+/* Email Verification */
+.email-verification p {
+    background: #28a745;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
     margin-bottom: 20px;
-
-    p {
-        background-color: #28a745;
-        text-align:center;
-        color: white;
-        padding: 10px;
-    }
 }
-
-.verify {
-    margin-left: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.save-btn {
-    background-color: #007bff;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-}
-
