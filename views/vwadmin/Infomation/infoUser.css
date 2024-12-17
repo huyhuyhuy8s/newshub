@@ -16,6 +16,7 @@ body {
     padding: 0;
 }
 
+/* Header */
 .header {
     display: flex;
     background-color: var(--white);
@@ -112,20 +113,33 @@ h3 {
     color: #333;
 }
 
-.stop-work {
-    text-align: center;
-    background: #ffc107;
-    color: #333;
-    color: white;
-    padding: 10px 20px;
+/* Buttons */
+.stop-work,
+.verify,
+.save-btn {
+    color: #fff;
     border: none;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    width: 100%;
     font-size: 16px;
     font-weight: bold;
 }
 
+.stop-work {
+    background: #ffc107;
+}
+
+.verify {
+    background: #28a745;
+    margin-left: 10px;
+}
+
+.save-btn {
+    background: #007bff;
+}
+
+/* Inputs and Labels */
 label {
     display: block;
     margin: 10px 0 5px;
@@ -144,9 +158,12 @@ select {
     box-sizing: border-box;
 }
 
-.email-verification {
-    display: block;
-    align-items: center;
+/* Email Verification */
+.email-verification p {
+    background: #28a745;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
     margin-bottom: 20px;
 
     p {

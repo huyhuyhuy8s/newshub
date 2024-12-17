@@ -35,7 +35,7 @@ body {
 .dashboard {
     max-width: 1200px;
     margin: 20px auto;
-    padding: 20px;
+    padding: 10px;
 }
 
 /* Tiêu đề chính */
@@ -50,7 +50,7 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
-    gap: 20px; /* Khoảng cách giữa các card */
+    gap: 10px; /* Khoảng cách giữa các card */
     margin-bottom: 40px;
 }
 
@@ -59,8 +59,8 @@ h1 {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    width: 200px;
-    height: 100px;
+    width: 250px;
+    height: 125px;
     margin: 10px;
     border-radius: 8px;
     text-decoration: none;
