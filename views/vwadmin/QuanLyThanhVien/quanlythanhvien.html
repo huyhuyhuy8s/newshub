@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản lý thành viên</title>
+    <link rel="stylesheet" href="quanlythanhvien.css">
+    <script src="quanlythanhvien.js" defer></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+
+<body>
+    <div class="header">
+        <a href="/views/vwadmin/Dashboard/dashboard.html" class="header-item">Bảng điều khiển</a>
+        <a href="/views/vwadmin/QuanLyThanhVien/quanlythanhvien.html" class="header-item">Quản lý thành viên</a>
+        <a href="/views/vwadmin/QuanLyBaiViet/quanlybaiviet.html" class="header-item">Quản lý bài viết</a>
+    </div>
+
+    <div class="container">
+        <h1>Quản lý thành viên</h1>
+        <div class="filter-section">
+            <!-- Tìm kiếm -->
+            <div class="filter-item">
+                <label for="search-input">Tìm kiếm</label>
+                <input type="text" id="search-input" placeholder="Tìm kiếm thành viên" class="filter-input">
+            </div>
+
+            <!-- Vai trò thành viên -->
+            <div class="filter-item">
+                <label for="role-type">Vai trò</label>
+                <select id="role-type" class="filter-select">
+                    <option value="" disabled selected>Chọn vai trò</option>
+                    <option value="editor">Editor</option>
+                    <option value="writer">Nhà Báo</option>
+                    <option value="member">Thành viên</option>
+                    <option value="membership">Thành viên premium</option>
+                </select>
+            </div>
+
+            <!-- Trạng thái tài khoản -->
+            <div class="filter-item">
+                <label for="status-input">Trạng thái</label>
+                <select id="status-input" class="filter-select">
+                    <option value="" disabled selected>Chọn trạng thái</option>
+                    <option value="active">Hoạt động</option>
+                    <option value="inactive">Không hoạt động</option>
+                    <option value="suspended">Đã bị khóa</option>
+                </select>
+            </div>
+
+            <!-- Nút lọc -->
+            <div class="filter-item">
+                <button class="filter-button">
+                    <i class="bi bi-filter"></i>
+                    Lọc
+                </button>
+            </div>
+
+            <div class="filter-item">
+                <button class="filter-button">
+                    <i class="bi bi-person-add"></i>
+                    Thêm thành viên
+                </button>
+            </div>
+        </div>
+
+        <table class="report-table">
+            <thead>
+                <tr>
+                    <th>Họ và tên</th>
+                    <th>Ngày sinh</th>
+                    <th>Email</th>
+                    <th>Công việc</th>
+                    <th>Trạng thái tài khoản</th>
+                    <th>Hoạt Động</th>
+                    <th>Chi Tiết</th>
+                </tr>
+            </thead>
+            <tbody id="member-table-body">
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>20/11/2000</td>
+                    <td>user@email.com</td>
+                    <td>Editor</td>
+                    <td>Còn hoạt động</td>
+                    <td>2 days ago</td>
+                    <td>
+                        <a href="#" class="detail-btn">Xem chi tiết</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>20/11/2000</td>
+                    <td>user@email.com</td>
+                    <td>Thành Viên Premium</td>
+                    <td>Còn hoạt động</td>
+                    <td>2 days ago</td>
+                    <td>
+                        <a href="#" class="detail-btn">Xem chi tiết</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>20/11/2000</td>
+                    <td>user@email.com</td>
+                    <td>Nhà Báo</td>
+                    <td>Còn hoạt động</td>
+                    <td>2 days ago</td>
+                    <td>
+                        <a href="#" class="detail-btn">Xem chi tiết</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>20/11/2000</td>
+                    <td>user@email.com</td>
+                    <td>Editor</td>
+                    <td>Còn hoạt động</td>
+                    <td>2 days ago</td>
+                    <td>
+                        <a href="#" class="detail-btn">Xem chi tiết</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>20/11/2000</td>
+                    <td>user@email.com</td>
+                    <td>Thành Viên</td>
+                    <td>Còn hoạt động</td>
+                    <td>2 days ago</td>
+                    <td>
+                        <a href="#" class="detail-btn">Xem chi tiết</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Nguyễn Văn A</td>
+                    <td>20/11/2000</td>
+                    <td>user@email.com</td>
+                    <td>Editor</td>
+                    <td>Còn hoạt động</td>
+                    <td>2 days ago</td>
+                    <td>
+                        <a href="#" class="detail-btn">Xem chi tiết</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="pagination" id="pagination">
+            <button class="prev">Prev</button>
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="next">Next</button>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div id="confirmation-modal" class="modal">
+        <div class="modal-content">
+            <p>Bạn có chắc chắn muốn thay đổi trạng thái tài khoản này?</p>
+            <button id="confirm-btn" class="modal-button">Xác nhận</button>
+            <button id="cancel-btn" class="modal-button">Hủy</button>
+        </div>
+    </div>
+</body>
+
+</html>
