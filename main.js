@@ -10,7 +10,7 @@ import categoryService from './services/category.service.js';
 import categoryRouter from './routes/category.route.js';
 import detailNewsRouter from './routes/detailnews.route.js';
 import homeRouter from './routes/home.route.js';
-import searchRouter from './routes/search.route.js';
+import searchnewsRouter from './routes/searchnews.route.js';
 import moment from 'moment';
 
 const app = express();
@@ -190,8 +190,7 @@ app.use('/', homeRouter);
 app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
 app.use('/news', detailNewsRouter);
-app.use('/search', searchRouter);
-
+app.use('/search', searchnewsRouter);
 
 // Server setup
 app.listen(3000, () => {
