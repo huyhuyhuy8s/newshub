@@ -6,15 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="dashboard.css">
-    <script src="chart.js" defer></script> 
+    <script src="chart.js" defer></script>
 </head>
 
 <body>
     <div class="header">
-        <a href="/views/vwadmin/Dashboard/dashboard.html" class="header-item">Dashboard</a>
+        <a href="/views/vwadmin/Dashboard/dashboard.html" class="header-item">Bảng điều khiển</a>
         <a href="/views/vwadmin/QuanLyThanhVien/quanlythanhvien.html" class="header-item">Quản lý thành viên</a>
         <a href="/views/vwadmin/QuanLyBaiViet/quanlybaiviet.html" class="header-item">Quản lý bài viết</a>
-        <a href="/views/vwadmin/QuanLyReport/quanlyreport.html" class="header-item">Quản lý report</a>
     </div>
     <div class="dashboard">
         <h1>Dashboard</h1>
@@ -109,59 +108,59 @@
         // Biểu đồ tròn (Pie Chart)
         const ctxPie = document.getElementById('categoryPieChart').getContext('2d');
         const categoryPieChart = new Chart(ctxPie, {
-                type: 'pie',
-                data: {
-                    labels: [
-                        'Kinh doanh',
-                        'Khoa học',
-                        'Thể thao',
-                        'Giáo dục',
-                        'Đời sống',
-                        'Thế giới',
-                        'Bất động sản',
-                        'Giải trí',
-                        'Pháp luật',
-                        'Sức khỏe'
+            type: 'pie',
+            data: {
+                labels: [
+                    'Kinh doanh',
+                    'Khoa học',
+                    'Thể thao',
+                    'Giáo dục',
+                    'Đời sống',
+                    'Thế giới',
+                    'Bất động sản',
+                    'Giải trí',
+                    'Pháp luật',
+                    'Sức khỏe'
+                ],
+                datasets: [{
+                    data: [1500, 800, 900, 1800, 1300, 1400, 1700, 1600, 800, 1700],
+                    backgroundColor: [
+                        '#8e44ad', // Kinh doanh
+                        '#e74c3c', // Khoa học
+                        '#3498db', // Thể thao
+                        '#f1c40f', // Giáo dục
+                        '#1abc9c', // Đời sống
+                        '#2ecc71', // Thế giới
+                        '#f39c12', // Bất động sản
+                        '#d35400', // Giải trí
+                        '#34495e', // Pháp luật
+                        '#9b59b6'  // Sức khỏe
                     ],
-                    datasets: [{
-                        data: [1500, 800, 900, 1800, 1300, 1400, 1700, 1600, 800, 1700],
-                        backgroundColor: [
-                            '#8e44ad', // Kinh doanh
-                            '#e74c3c', // Khoa học
-                            '#3498db', // Thể thao
-                            '#f1c40f', // Giáo dục
-                            '#1abc9c', // Đời sống
-                            '#2ecc71', // Thế giới
-                            '#f39c12', // Bất động sản
-                            '#d35400', // Giải trí
-                            '#34495e', // Pháp luật
-                            '#9b59b6'  // Sức khỏe
-                        ],
-                        borderWidth: 1,
-                        borderColor: '#fff',
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                font: {
-                                    size: 14
-                                }
+                    borderWidth: 1,
+                    borderColor: '#fff',
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            font: {
+                                size: 14
                             }
-                        },
-                        tooltip: {
-                            callbacks: {
-                                label: function (tooltipItem) {
-                                    return tooltipItem.label + ': ' + tooltipItem.raw;
-                                }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function (tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
                             }
                         }
                     }
                 }
-            });
+            }
+        });
     </script>
 </body>
 
