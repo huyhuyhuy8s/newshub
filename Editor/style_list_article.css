@@ -2,6 +2,7 @@
 
 :root {
     --bred: #ffe6e6;
+    --green: #0BDA51;
 }
 
 img {
@@ -46,14 +47,27 @@ header {
     }
 
     li {
-
         color: var(--red);
         display: flex;
         align-items: center;
-        border-right: 1px solid var(--red);
+        box-shadow: 1px 1px 1px 1px var(--grey);
+        /* border-right: 1px solid var(--red); */
         /* Đường phân cách */
         transition: background-color 0.3s, color 0.3s;
+        padding: 0 10px;
     }
+
+    .active {
+        background-color: var(--red);
+        color: var(--white);
+    }
+
+}
+
+li:first-child {
+    padding: 0;
+    box-shadow: none;
+    border-right: 1px solid var(--grey);
 }
 
 li:hover {
@@ -67,13 +81,14 @@ li:hover {
     position: absolute;
     border: 1px solid var(--grey);
     border-radius: 10px;
-    width: 15%;
+    width: 10%;
     display: grid;
     grid-template-columns: 1fr;
     box-shadow: 1px 1px 1px 1px var(--grey);
     background-color: var(--white);
     padding: 10px;
     z-index: 1;
+    display: none;
 
 
     .avt {
@@ -86,7 +101,15 @@ li:hover {
         display: grid;
         grid-template-columns: 1fr;
         border-top: 1px solid var(--grey);
+        padding-left: 0;
     }
+
+    li {
+        display: flex;
+        justify-content: center;
+    }
+
+
 
     .btn-sign-out {
         background-color: var(--red);
@@ -96,6 +119,7 @@ li:hover {
     }
 
 }
+
 
 
 
@@ -123,14 +147,16 @@ nav {
         color: var(--red);
     }
 
-    .search-day {
+    .search {
         display: flex;
         gap: 1em;
 
-        .day {
+        input {
             border-radius: 15px;
-            width: 150px;
+            width: 25%;
+            border-color: var(--grey);
         }
+
     }
 
     .filter {
@@ -144,8 +170,10 @@ nav {
     margin: 0 80px;
 
     table {
+
         border-collapse: collapse;
         border-spacing: 1em;
+        border-radius: 10px;
 
         thead {
             background-color: var(--grey);
@@ -176,6 +204,12 @@ nav {
             tr:hover {
                 background-color: var(--grey);
                 cursor: pointer;
+            }
+
+            span {
+                background-color: var(--green);
+                border-radius: 10px;
+                padding: 0 10px;
             }
 
         }

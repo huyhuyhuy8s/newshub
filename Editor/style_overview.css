@@ -49,10 +49,24 @@ header {
         color: var(--red);
         display: flex;
         align-items: center;
-        border-right: 1px solid var(--red);
+        box-shadow: 1px 1px 1px 1px var(--grey);
+        /* border-right: 1px solid var(--red); */
         /* Đường phân cách */
         transition: background-color 0.3s, color 0.3s;
+        padding: 0 10px;
     }
+
+    .active {
+        background-color: var(--red);
+        color: var(--white);
+    }
+
+}
+
+li:first-child {
+    padding: 0;
+    box-shadow: none;
+    border-right: 1px solid var(--grey);
 }
 
 li:hover {
@@ -66,13 +80,14 @@ li:hover {
     position: absolute;
     border: 1px solid var(--grey);
     border-radius: 10px;
-    width: 15%;
+    width: 10%;
     display: grid;
     grid-template-columns: 1fr;
     box-shadow: 1px 1px 1px 1px var(--grey);
     background-color: var(--white);
     padding: 10px;
     z-index: 1;
+    display: none;
 
 
     .avt {
@@ -85,7 +100,15 @@ li:hover {
         display: grid;
         grid-template-columns: 1fr;
         border-top: 1px solid var(--grey);
+        padding-left: 0;
     }
+
+    li {
+        display: flex;
+        justify-content: center;
+    }
+
+
 
     .btn-sign-out {
         background-color: var(--red);

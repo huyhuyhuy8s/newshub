@@ -11,21 +11,21 @@
 </head>
 
 <body>
-    <header>
+    <header id="menu">
         <ul>
             <li>
-                <button onclick="ChangeAccount()">
+                <button id="btn-change-acc" onclick="ChangeAccount()">
                     <img src="./imgs/avt.png">
                 </button>
             </li>
-            <li><a href="" class="header-item">Tổng quan</a></li>
-            <li><a href="" class="header-item">
+            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
+            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
                     <i class="bi bi-file-earmark"></i>Bài viết</a></li>
-            <li><a href="" class="header-item">
+            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
                     <i class="bi bi-list-nested"></i>Danh sách bài viết</a></li>
         </ul>
     </header>
-    <div id="ChangeAccount-Div" hidden>
+    <div id="ChangeAccount-Div">
         <div class="avt">
             <img src="./imgs/avt.png">
             <a>John Doe</a>
@@ -156,7 +156,18 @@
             }
         }
 
+
     </script>
+    <script>
+        function ChangeColorBtn(elem) {
+            var a = document.getElementsByTagName('li')
+            for (i = 0; i < a.length; i++) {
+                a[i].classList.remove('active');
+            }
+            elem.classList.add('active');
+        }
+    </script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

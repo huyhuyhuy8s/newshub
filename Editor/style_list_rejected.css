@@ -1,0 +1,19 @@
+@import "../Editor/style_list_article.css";
+
+
+:root {
+    --btngrey: #a9a9a9;
+}
+
+
+#body {
+
+    .btn-cancel {
+        background-color: var(--btngrey);
+    }
+
+    td:last-child {
+        text-align: left;
+    }
+
+}
