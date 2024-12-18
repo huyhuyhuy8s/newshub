@@ -160,6 +160,10 @@ nav {
 
     .creat {
         grid-area: 1 / span 4;
+
+        texarea {
+            height: 100%;
+        }
     }
 
     .nav {

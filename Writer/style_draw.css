@@ -1,0 +1,35 @@
+:root {
+    --red: #6e071a;
+    --white: #ffffff;
+}
+
+body {
+    margin: 0 200px;
+}
+
+
+
+#article {
+    h5 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .b_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px 25px;
+    }
+
+    img {
+        width: 100%;
+        height: 700px;
+
+    }
+
+    .content {
+        margin: 0 170px 0 170px;
+    }
+}
