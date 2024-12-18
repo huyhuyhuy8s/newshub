@@ -202,6 +202,10 @@ nav {
             display: flex;
             flex-direction: column;
             align-items: flex-end;
+
+            textarea {
+                border-radius: 10px;
+            }
         }
 
 
