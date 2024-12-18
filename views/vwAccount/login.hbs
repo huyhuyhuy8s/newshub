@@ -1,4 +1,4 @@
-<form action="/account/login" method="post" id="loginForm">
+<form action="/account/login" method="post">
     <h2>Đăng nhập</h2>
     <div class="information">
         <h3>Email</h3>
@@ -16,7 +16,7 @@
             <input type="checkbox" name="remember" id="remember-cb">
             <label for="remember-cb">Remember me</label>
         </div>
-        <a href="/account/otp" class="forgot-password-link">Forgot password</a>
+        <a href="/account/otp">Forgot password</a>
     </div>
 
     <!-- Button ẩn -->
@@ -37,7 +37,3 @@
     </div>
     <a href="/account/register" class="register"><strong>Tạo tài khoản!</strong></a>
 </form>
-
-{{!-- {{#section 'js'}}
-<script src="/static/js/account.js"></script>
-{{/section}} --}}

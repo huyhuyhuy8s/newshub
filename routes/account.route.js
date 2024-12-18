@@ -3,10 +3,6 @@ import express from 'express';
 import moment from 'moment';
 import session from 'express-session';
 
-import nodemailer from 'nodemailer';
-
-
-import userService from '../services/user.service.js';
 import accountService from '../services/account.service.js';
 
 const router = express.Router();

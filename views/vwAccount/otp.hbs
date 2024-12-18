@@ -1,84 +1,84 @@
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" crossorigin="anonymous"></script>
 <script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Get the OTP form
-    const otpForm = document.getElementById('otpForm');
-    
-    // Add event listener for form submission
-    otpForm.addEventListener('submit', function(event) {
-        // Prevent the default form submission
-        event.preventDefault();
-        
-        // Gather the OTP from all 6 input fields
-        const otp1 = document.getElementById('otp1').value;
-        const otp2 = document.getElementById('otp2').value;
-        const otp3 = document.getElementById('otp3').value;
-        const otp4 = document.getElementById('otp4').value;
-        const otp5 = document.getElementById('otp5').value;
-        const otp6 = document.getElementById('otp6').value;
-        
-        // Combine the OTP digits
-        const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
-        
-        // Get the email from the hidden input
-        const email = document.querySelector('input[name="email"]').value;
-        
-        // Send the OTP verification request
-        fetch('/account/verifyOTP', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ 
-                email: email, 
-                otp: otp 
+    document.addEventListener('DOMContentLoaded', function () {
+        // Get the OTP form
+        const otpForm = document.getElementById('otpForm');
+
+        // Add event listener for form submission
+        otpForm.addEventListener('submit', function (event) {
+            // Prevent the default form submission
+            event.preventDefault();
+
+            // Gather the OTP from all 6 input fields
+            const otp1 = document.getElementById('otp1').value;
+            const otp2 = document.getElementById('otp2').value;
+            const otp3 = document.getElementById('otp3').value;
+            const otp4 = document.getElementById('otp4').value;
+            const otp5 = document.getElementById('otp5').value;
+            const otp6 = document.getElementById('otp6').value;
+
+            // Combine the OTP digits
+            const otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6;
+
+            // Get the email from the hidden input
+            const email = document.querySelector('input[name="email"]').value;
+
+            // Send the OTP verification request
+            fetch('/account/verifyOTP', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email: email,
+                    otp: otp
+                })
             })
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data === true) {
-                // OTP is correct
-                alert('OTP verified successfully!');
-                // You can redirect to the next page or perform further actions
-                window.location.href = '/account/register-success';
-            } else {
-                // OTP is incorrect
-                alert('Invalid OTP. Please try again.');
-                // Optionally clear the OTP input fields
-                ['otp1', 'otp2', 'otp3', 'otp4', 'otp5', 'otp6'].forEach(id => {
-                    document.getElementById(id).value = '';
+                .then(response => response.json())
+                .then(data => {
+                    if (data === true) {
+                        // OTP is correct
+                        alert('OTP verified successfully!');
+                        // You can redirect to the next page or perform further actions
+                        window.location.href = '/account/register-success';
+                    } else {
+                        // OTP is incorrect
+                        alert('Invalid OTP. Please try again.');
+                        // Optionally clear the OTP input fields
+                        ['otp1', 'otp2', 'otp3', 'otp4', 'otp5', 'otp6'].forEach(id => {
+                            document.getElementById(id).value = '';
+                        });
+                        // Focus on the first input
+                        document.getElementById('otp1').focus();
+                    }
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('An error occurred. Please try again.');
                 });
-                // Focus on the first input
-                document.getElementById('otp1').focus();
-            }
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            alert('An error occurred. Please try again.');
-        });
-    });
-
-    // Optional: Auto-focus and auto-tab between OTP inputs
-    const otpInputs = document.querySelectorAll('.input');
-    otpInputs.forEach((input, index) => {
-        input.addEventListener('input', function() {
-            // Automatically move to next input when a digit is entered
-            if (this.value.length === 1 && index < otpInputs.length - 1) {
-                otpInputs[index + 1].focus();
-            }
-            
-            // Prevent non-numeric input
-            this.value = this.value.replace(/[^0-9]/g, '');
         });
 
-        // Allow moving back with backspace
-        input.addEventListener('keydown', function(e) {
-            if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
-                otpInputs[index - 1].focus();
-            }
+        // Optional: Auto-focus and auto-tab between OTP inputs
+        const otpInputs = document.querySelectorAll('.input');
+        otpInputs.forEach((input, index) => {
+            input.addEventListener('input', function () {
+                // Automatically move to next input when a digit is entered
+                if (this.value.length === 1 && index < otpInputs.length - 1) {
+                    otpInputs[index + 1].focus();
+                }
+
+                // Prevent non-numeric input
+                this.value = this.value.replace(/[^0-9]/g, '');
+            });
+
+            // Allow moving back with backspace
+            input.addEventListener('keydown', function (e) {
+                if (e.key === 'Backspace' && this.value.length === 0 && index > 0) {
+                    otpInputs[index - 1].focus();
+                }
+            });
         });
     });
-});
 
 
 </script>
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
     </div>
 
     <div class="active-button">
-        <button type="submit"  id="otpSubmit">
+        <button type="submit" id="otpSubmit">
             <p>Xác nhận OTP</p>
         </button>
 
@@ -124,11 +124,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
     <div class="forgot-remember-me">
         <p>Gửi lại mã sau: 15s</p>
-        <a href="#"><strong>Gửi lại OTP </strong></a>
+        <a href="#"><strong>Gửi lại OTP</strong></a>
     </div>
 
     <div class="active-button">
-        <button type="submit"  id="otpSubmit">
+        <button type="submit" id="otpSubmit">
             <p>Xác nhận OTP</p>
         </button>
     </div>

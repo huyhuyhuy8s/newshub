@@ -10,7 +10,7 @@ import categoryService from './services/category.service.js';
 import categoryRouter from './routes/category.route.js';
 import detailNewsRouter from './routes/detailnews.route.js';
 import homeRouter from './routes/home.route.js';
-import searchRouter from './routes/search.route.js';
+// import searchnewsRouter from './routes/searchnews.route.js';
 import moment from 'moment';
 
 
@@ -30,7 +30,6 @@ app.use(session({
 }));
 app.use(express.json()); // This allows Express to parse JSON request bodies
 // Middleware
-app.use(express.json()); // hỗ trợ phần comment
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/static'));
 app.use('/imgs', express.static(join(__dirname, 'imgs')));
@@ -75,8 +74,10 @@ app.engine('hbs', engine({
 
         // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
         truncateText: (text, length) => {
-            if (text.length <= length) return text;
-            return text.substring(0, length) + '...';
+            if (text.length !== null) {
+                if (text.length <= length) return text;
+                return text.substring(0, length) + '...';
+            }
         },
 
         // helper mới để tính thời gian
@@ -144,6 +145,9 @@ app.use(async function (req, res, next) {
     }
 });
 
+app.set('view engine', 'hbs');
+app.set('views', join(__dirname, 'views'));
+
 //  middleware để xử lý auth cho toàn bộ ứng dụng
 app.use(function (req, res, next) {
     res.locals.auth = req.session.auth;
@@ -151,50 +155,19 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.set('view engine', 'hbs');
-app.set('views', join(__dirname, 'views'));
-
-// Cấu hình views
-app.set('views', __dirname + '/views');
-
-// Cấu hình static files
-app.use('/Login', express.static(__dirname + '/views/Login'));
-app.use('/Home', express.static(__dirname + '/views/Home'));
-app.use('/ChuyenMuc', express.static(__dirname + '/views/ChuyenMuc'));
-
-
-// Middleware
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Gắn route login
-app.use('/api', LoginRoute);
+app.use('/account', accountRouter);
 
-// Gắn route cho đăng ký
-app.use('/api/register', RegisterRoute);
+app.use('/', homeRouter);
+app.use('/category', categoryRouter);
+app.use('/account', accountRouter);
+app.use('/news', detailNewsRouter);
+// app.use('/search', searchnewsRouter);
 
-
-app.use(express.static(path.join(__dirname, 'views'))); // Thêm views vào thư mục tĩnh
-
-app.get('/register', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Login/register.html'));
-});
-
-
-app.get('/login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Login/login.html'));
-});
-
-app.get('/register/otp', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Login/otp.html'))
-})
-
-app.get('/home', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views/Home/home.html'));
-});
-
-// Khởi động server
-app.listen(3000, function () {
+// Server setup
+app.listen(3000, () => {
     console.log('Server started on http://localhost:3000');
 });

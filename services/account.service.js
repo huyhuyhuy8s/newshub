@@ -53,38 +53,38 @@ export default {
             throw error;
         }
     },
-    generateOTP(){
-        return randomstring.generate({length:6,charset:'numeric'})
+    generateOTP() {
+        return randomstring.generate({ length: 6, charset: 'numeric' })
     },
-    
-    sendOTP(email,otp){
+
+    sendOTP(email, otp) {
         const mailOptions = {
-            from:'bacviplata123@gmail.com',
+            from: 'bacviplata123@gmail.com',
             to: email,
             subject: 'OTP Verification',
-            text:`Your OTP  for verification is:${otp}`
+            text: `Your OTP  for verification is:${otp}`
         };
 
         let transporter = nodemailer.createTransport({
-            service: 'gmail',   
-            auth:{
-                user:'bacviplata123@gmail.com',
-                pass:'hfbx xjjm dblz nlli'
+            service: 'gmail',
+            auth: {
+                user: 'bacviplata123@gmail.com',
+                pass: 'hfbx xjjm dblz nlli'
             }
-          
+
         })
 
-        transporter.sendMail(mailOptions, (error,info)=>{
-            if(error){
-                console.log('Error is:',error)
+        transporter.sendMail(mailOptions, (error, info) => {
+            if (error) {
+                console.log('Error is:', error)
             }
-            else{
-                console.log('OTP email sent succesfully',info.respone)
+            else {
+                console.log('OTP email sent succesfully', info.respone)
             }
         })
     }
 
 
-    
+
 
 }
