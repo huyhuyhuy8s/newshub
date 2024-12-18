@@ -1,20 +1,23 @@
 import express from 'express';
-
+import bcrypt from 'bcryptjs';
 import moment from 'moment';
 import session from 'express-session';
+import loginService from '../services/login.service.js';
+import registerService from '../services/register.service.js';
 
-import accountService from '../services/account.service.js';
+import nodemailer from 'nodemailer';
+
+
+import userService from '../services/user.service.js';
 
 const router = express.Router();
-
-var otpCache = {}
 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url));
 router.use(express.static(join(__dirname, '../static')));
 router.use(express.static(join(__dirname, '../imgs')));
-
+// console.log(join(__dirname, '../static'));
 
 
 router.get('/login', function (req, res) {
@@ -35,7 +38,7 @@ router.post('/login', async function (req, res) {
     console.log('Login attempt:', { email, password });
 
     try {
-        const result = await accountService.validateUser(email, password);
+        const result = await loginService.validateUser(email, password);
         // console.log('Login result:', result);
 
         if (result.error) {
@@ -82,7 +85,7 @@ router.post('/register', async function (req, res) {
         };
 
         // Lưu vào database
-        await accountService.add(entity);
+        await registerService.add(entity);
 
         // Chuyển đến trang đăng nhập sau khi đăng ký thành công
         res.redirect('/account/login');
@@ -96,46 +99,20 @@ router.post('/register', async function (req, res) {
     }
 });
 
-router.post('/otp', (req, res) => {
-    const { email } = req.body;
-
-    // Tạo OTP
-    const otp = accountService.generateOTP();
-
-    // Lưu OTP vào cache
-    otpCache[email] = otp;
-
-    // Gửi OTP qua email
-    accountService.sendOTP(email, otp);
-
-    // Render trang nhập OTP và gửi email tới người dùng
-    res.render('vwAccount/otp', {
-        layout: 'account',
-        email: email
+router.get('/logout', function (req, res) {
+    req.session.auth = false;
+    req.session.authUser = null;
+    req.session.destroy(function (err) {
+        res.redirect('/account/login');
     });
-
-    // Cài đặt thời gian hết hạn cho cookie OTP
-    res.cookie('otpCache', otpCache, { maxAge: 300000, httpOnly: true });
 });
 
+// router.get('/otp', function (req, res) {
+//     res.render('vwAccount/otp');
+// });
 
-router.post('/verifyOTP', (req, res) => {
-    // Extract email and otp from the JSON request body
-    const { email, otp } = req.body;
 
-    // Kiểm tra xem email có trong cache OTP không
-    if (!otpCache.hasOwnProperty(email)) {
-        return res.json(false);  // Trả về false nếu không tìm thấy email trong cache
-    }
 
-    // Kiểm tra OTP
-    if (otpCache[email] === otp.trim()) {
-        delete otpCache[email];  // Xóa OTP sau khi xác minh thành công
-        return res.json(true);  // Trả về true nếu OTP hợp lệ
-    } else {
-        return res.json(false);  // Trả về false nếu OTP không hợp lệ
-    }
-});
 
 // router.get('/login', function (req, res) {
 //   res.render('vwAccount/login');

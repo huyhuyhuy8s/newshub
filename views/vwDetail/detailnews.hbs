@@ -10,11 +10,10 @@
         <div class="b_title">
             <div class="date">
                 {{!-- <a>Ngày đăng:</a> --}}
-                <a>{{formatDate news.Date}}</a>
+                <p>{{formatDate news.Date}}</p>
             </div>
             <div class="author">
-                <a>Tác giả:</a>
-                <a href="#">{{news.WriterName}}</a>
+                <p>Lượt xem: {{news.Views}}</p>
             </div>
         </div>
         <img src="/imgs/detail/suôi thầu.jpg">
@@ -79,15 +78,18 @@
 
     </div>
     <!-- tag -->
+
+
     <div id="nav-article">
         <div class="tag">
-            <a>Tags:</a>
+            Tags:
             {{#each tags}}
             <span class="badge badge-pill tags">{{this.TagName}}</span>
             {{/each}}
         </div>
+        <p>Tác giả: {{news.WriterName}}</p>
     </div>
-    <p>Lượt xem: {{news.Views}}</p>
+
     <!-- Bình luận -->
     <div id="cmt">
         <h3>Ý kiến</h3>
@@ -131,15 +133,14 @@
         </div>
         <div class="top-article" id="bai-viet-lien-quan">
             {{#each relatedNews}}
-            <div class="articles" id="very-first">
+            <a class="articles" id="very-first" href="/news/{{this.Id_News}}">
                 <img src="/imgs/detail/bv.jpg" alt="...">
                 <div class="card-body">
-                    <a href="/news/{{this.Id_News}}">
-                        <h5 class="card-title">{{this.Meta_title}}</h5>
-                    </a>
+                    <h5 class="card-title">{{this.Meta_title}}</h5>
                     <p class="card-text">{{this.Meta_description}}</p>
+                    <p class="card-text">{{formatDate this.Date}}</p>
                 </div>
-            </div>
+            </a>
             {{else}}
             <p>Không có bài viết liên quan nào.</p>
             {{/each}}
@@ -160,15 +161,14 @@
         </div>
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedNews}}
-            <div class="articles" id="very-second">
+            <a class="articles" id="very-second" href="/news/{{this.Id_News}}">
                 <img src="/imgs/detail/suôi thầu.jpg" alt="...">
                 <div class="card-body">
-                    <a href="/news/{{this.Id_News}}">
-                        <h5 class="card-title">{{this.Meta_title}}</h5>
-                    </a>
+                    <h5 class="card-title">{{this.Meta_title}}</h5>
                     <p class="card-text">{{this.Meta_description}}</p>
+                    <p class="card-text">{{formatDate this.Date}}</p>
                 </div>
-            </div>
+            </a>
             {{else}}
             <p>Không có bài viết nào.</p>
             {{/each}}
@@ -188,6 +188,7 @@
                 <div>
                     <h5>{{this.Meta_title}}</h5>
                     <p class="font-italic">{{this.Meta_description}}</p>
+                    <p class="card-text">{{formatDate this.Date}}</p>
                 </div>
             </a>
             {{else}}
