@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Creat article of Writer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <!-- Place the first <script> tag in your HTML's <head> -->
+    <script src="https://cdn.tiny.cloud/1/5o2hhgemqy0axvklkkh20ria6cf801vvy0t4bgmwk5t69m2c/tinymce/7/tinymce.min.js"
+        referrerpolicy="origin"></script>
+    <link rel="stylesheet" href="style_creat.css">
+</head>
+
+<body>
+    <header id="menu">
+        <ul>
+            <li>
+                <button id="btn-change-acc" onclick="ChangeAccount()">
+                    <img src="../Editor/imgs/avt.png">
+                </button>
+            </li>
+            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
+            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
+                    Tạo bài viết</a></li>
+            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
+                    Danh sách bài viết</a></li>
+        </ul>
+    </header>
+    <div id="ChangeAccount-Div">
+        <div class="avt">
+            <img src="../Editor/imgs/avt.png">
+            <a>John Doe</a>
+        </div>
+        <ul>
+            <li><a href="">Thông tin của tôi</a></li>
+            <li><a href="">Chuyển tài khoản</a></li>
+        </ul>
+        <button class="btn-sign-out" type="submit">Đăng xuất</button>
+
+    </div>
+    <nav>
+        <div class="filter">
+            <button class="btn">
+                Lưu bản nháp</button>
+            <button class="btn">
+                Xem bài viết</button>
+            <button class="btn">
+                <i class="bi bi-floppy"></i>
+                Lưu</button>
+
+        </div>
+    </nav>
+    <div id="body">
+        <div class="creat">
+            <textarea id="article">
+                Welcome to TinyMCE!
+              </textarea>
+        </div>
+        <div class="nav">
+            <div class="state">
+                <h3>Trạng thái và Nổi bật</h3>
+                <div class="inner-state">
+                    <div>
+                        <label for="state">Trạng thái:</label>
+                        <select name="state" id="state">
+                            <option value="Công khai">Công khai</option>
+                            <option value="Riêng tư">Riêng tư</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="hot">Bài viết nổi bật</label>
+                        <input type="checkbox" id="hot" name="hot" value="hot">
+                    </div>
+                    <div>
+                        <a class="author">Võ Hải</a>
+                    </div>
+                </div>
+            </div>
+            <div class="category">
+                <h3>Chuyên mục</h3>
+                <div class="choice-cata">
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="du lich" name="du lich" value="Du lịch">
+                        <label for="du lich"> Du lịch</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="" name="" value="Thời sự">
+                        <label for=""> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="" name="" value="Thời sự">
+                        <label for=""> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                    <div>
+                        <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                        <label for="thoi su"> Thời sự</label>
+                    </div>
+                </div>
+            </div>
+            <div class="tags">
+                <h3>Tags</h3>
+                <div class="inner">
+                    <textarea id="tags" name="tag" cols="42" rows="4" placeholder="Nhập tên tag..."></textarea>
+                    <button class="btn-add">Thêm</button>
+                </div>
+
+            </div>
+            <div>
+                <h3>Tóm tắt</h3>
+                <div class="inner">
+                    <textarea id="tags" name="tag" cols="42" rows="5" placeholder="Nhập tóm tắt..."></textarea>
+                    <button class="btn-add">Thêm</button>
+                </div>
+
+            </div>
+            <div>
+                <h3>Link youtube (nếu có)</h3>
+                <div class="inner">
+                    <textarea id="tags" name="tag" cols="42" rows="4" placeholder="Thêm link đính kèm..."></textarea>
+                    <button class="btn-add">Thêm</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function ChangeAccount() {
+            var x = document.getElementById("ChangeAccount-Div");
+            if (x.style.display === "none") {
+                x.style.display = "grid";
+            } else {
+                x.style.display = "none";
+            }
+        }
+    </script>
+    <script>
+        function ChangeColorBtn(elem) {
+            var a = document.getElementsByTagName('li')
+            for (i = 0; i < a.length; i++) {
+                a[i].classList.remove('active');
+            }
+            elem.classList.add('active');
+        }
+    </script>
+    <script>
+        tinymce.init({
+            selector: '#article',
+            plugins: [
+                // Core editing features
+                'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+                // Your account includes a free trial of TinyMCE premium features
+                // Try the most popular premium features until Dec 21, 2024:
+                'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
+            ],
+            toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+            tinycomments_mode: 'embedded',
+            tinycomments_author: 'Author name',
+            mergetags_list: [
+                { value: 'First.Name', title: 'First Name' },
+                { value: 'Email', title: 'Email' },
+            ],
+            ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+        });
+    </script>
+</body>
+
+</html>
