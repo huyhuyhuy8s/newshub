@@ -38,100 +38,84 @@ const adminService = {
                 .where('Id_Status', 'STS0004')
                 .count('Id_News as total');
 
-           //console.log(`Tổng số lượng bản ghi có Id_Status = 'STS0004': ${result[0].total}`);
-           return result[0].total
+            //console.log(`Tổng số lượng bản ghi có Id_Status = 'STS0004': ${result[0].total}`);
+            return result[0].total
         } catch (error) {
             console.error("Lỗi khi đếm số lượng:", error);
         }
     },
-    async getTotalAcceptNewsCount() {
-        try {
-            const result = await db('News')
-                .where('Id_Status', 'STS0004')
-                .count('Id_News as total');
-
-         
-           return result[0].total
-        } catch (error) {
-            console.error("Lỗi khi đếm số lượng:", error);
-        }
-    },
-    async getTotalNotAcceptNewCount(){
+    async getTotalNotAcceptNewCount() {
         try {
             const result = await db('News')
                 .where('Id_Status', 'STS0001')
                 .count('Id_News as total');
-           return result[0].total
+            return result[0].total
         } catch (error) {
             console.error("Lỗi khi đếm số lượng:", error);
         }
     },
-    async getTotalNotRefuseNewCount(){
-        try { 
+    async getTotalNotRefuseNewCount() {
+        try {
             const result = await db('News')
                 .where('Id_Status', 'STS0003')
                 .count('Id_News as total');
-           return result[0].total
+            return result[0].total
         } catch (error) {
             console.error("Lỗi khi đếm số lượng:", error);
         }
     },
     async getTotalViewsByCategory() {
         try {
-          const result = await db('Category')
-            .leftJoin('SubCategory', 'Category.Id_Category', 'SubCategory.Id_Category')
-            .leftJoin('News', 'SubCategory.Id_SubCategory', 'News.Id_SubCategory')
-            .select('Category.Name')
-            .sum('News.Views as totalViews')
-            .groupBy('Category.Id_Category');
-      
-          //console.log("Tổng Views theo Category:", result);
-          return result
-        } catch (error) {
-          console.error("Lỗi khi lấy tổng Views:", error);
-        } 
-      },
-      async getViewsByCategory() {
-        const fourQuartersAgo = new Date();
-        fourQuartersAgo.setMonth(fourQuartersAgo.getMonth() - 12);
-        try{
             const result = await db('Category')
-              .select('Category.Name as CategoryName')
-              .leftJoin('SubCategory', 'Category.Id_Category', 'SubCategory.Id_Category')
-              .leftJoin('News', 'SubCategory.Id_SubCategory', 'News.Id_SubCategory')
-              .select(
-                db.raw(`
-                  SUM(CASE 
-                    WHEN QUARTER(News.Date) = QUARTER(?) AND YEAR(News.Date) = YEAR(?)
-                    THEN COALESCE(News.Views, 0) ELSE 0 END) as Quarter1Views
-                `, [fourQuartersAgo, fourQuartersAgo]),
-                db.raw(`
-                  SUM(CASE 
-                    WHEN QUARTER(News.Date) = QUARTER(DATE_ADD(?, INTERVAL 3 MONTH)) 
-                    AND YEAR(News.Date) = YEAR(DATE_ADD(?, INTERVAL 3 MONTH))
-                    THEN COALESCE(News.Views, 0) ELSE 0 END) as Quarter2Views
-                `, [fourQuartersAgo, fourQuartersAgo]),
-                db.raw(`
-                  SUM(CASE 
-                    WHEN QUARTER(News.Date) = QUARTER(DATE_ADD(?, INTERVAL 6 MONTH)) 
-                    AND YEAR(News.Date) = YEAR(DATE_ADD(?, INTERVAL 6 MONTH))
-                    THEN COALESCE(News.Views, 0) ELSE 0 END) as Quarter3Views
-                `, [fourQuartersAgo, fourQuartersAgo]),
-                db.raw(`
-                  SUM(CASE 
-                    WHEN QUARTER(News.Date) = QUARTER(DATE_ADD(?, INTERVAL 9 MONTH)) 
-                    AND YEAR(News.Date) = YEAR(DATE_ADD(?, INTERVAL 9 MONTH))
-                    THEN COALESCE(News.Views, 0) ELSE 0 END) as Quarter4Views
-                `, [fourQuartersAgo, fourQuartersAgo])
-              )
-              .groupBy('Category.Name')
-              .orderBy('Category.Name');
-              return result
+                .leftJoin('SubCategory', 'Category.Id_Category', 'SubCategory.Id_Category')
+                .leftJoin('News', 'SubCategory.Id_SubCategory', 'News.Id_SubCategory')
+                .select('Category.Name')
+                .sum('News.Views as totalViews')
+                .groupBy('Category.Id_Category');
+
+            //console.log("Tổng Views theo Category:", result);
+            return result
+        } catch (error) {
+            console.error("Lỗi khi lấy tổng Views:", error);
+        }
+    },
+    async getViewsByCategoryAndQuater() {
+
+        try {
+
+            return db('Category')
+                .leftJoin('SubCategory', 'Category.Id_Category', 'SubCategory.Id_Category')
+                .leftJoin('News', 'SubCategory.Id_SubCategory', 'News.Id_SubCategory')
+                .select('Category.Name as CategoryName')
+                .sum({
+                    Q1: db.raw(`CASE WHEN QUARTER(News.Date) = 1 THEN News.Views ELSE 0 END`),
+                    Q2: db.raw(`CASE WHEN QUARTER(News.Date) = 2 THEN News.Views ELSE 0 END`),
+                    Q3: db.raw(`CASE WHEN QUARTER(News.Date) = 3 THEN News.Views ELSE 0 END`),
+                    Q4: db.raw(`CASE WHEN QUARTER(News.Date) = 4 THEN News.Views ELSE 0 END`)
+                })
+                .where('Category.Status', 1)
+                .groupBy('Category.Id_Category', 'Category.Name');
         }
         catch (error) {
-            console.error("Lỗi khi lấy tổng Views:", error);
-      }
-      
+            console.error("Lỗi khi lấy tổng Views theo quý:", error);
+        }
+
+    },
+    async getViewsbyCategory() {
+        try {
+            const result = await db('Category')
+                .leftJoin('SubCategory', 'Category.Id_Category', 'SubCategory.Id_Category')
+                .leftJoin('News', 'SubCategory.Id_SubCategory', 'News.Id_SubCategory')
+                .select('Category.Name as CategoryName')
+                .sum('News.Views as TotalViews')
+                .where('Category.Status', 1)
+                .groupBy('Category.Id_Category', 'Category.Name');
+
+            return result
+        } catch (error) {
+            console.error("Lỗi khi lấy tổng Views theo Category:", error);
+          
+        }
     }
 
 }

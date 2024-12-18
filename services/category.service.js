@@ -1,6 +1,5 @@
 import db from '../utils/db.js';
 
-
 export default {
     // Thêm hàm findById
     async findById(categoryId) {
