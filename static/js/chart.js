@@ -1,7 +1,7 @@
-// Biểu đồ cột (Bar Chart)
+// Biểu đồ cột (Bar  Chart)
 const ctxBar = document.getElementById('categoryChart').getContext('2d');
 const categoryChart = new Chart(ctxBar, {
-    type: 'bar',
+    type:'bar',
     data: {
         labels: ['Thời sự', 'Kinh doanh', 'Khoa học', 'Thể thao', 'Giáo dục', 'Âm nhạc', 'Phim ảnh', 'Sức khỏe', 'Du lịch'],
         datasets: [
@@ -19,7 +19,12 @@ const categoryChart = new Chart(ctxBar, {
                 label: 'Quý 3',
                 data: [70, 55, 75, 65, 95, 50, 60, 80, 85],
                 backgroundColor: 'rgba(75, 192, 192, 0.5)'
-            }
+            },
+            {
+                label: 'Quý 4',
+                data: [70, 55, 75, 65, 95, 50, 60, 80, 85],
+                backgroundColor: 'rgba(75, 192, 192, 0.5)'
+            },
         ]
     },
     options: {
