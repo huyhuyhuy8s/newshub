@@ -4,10 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>List cancel of Editor</title>
+    <title>List of Writer</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="stylesheet" href="style_list_rejected.css">
+    <link rel="stylesheet" href="style_list.css">
 </head>
 
 <body>
@@ -15,19 +15,19 @@
         <ul>
             <li>
                 <button id="btn-change-acc" onclick="ChangeAccount()">
-                    <img src="./imgs/avt.png">
+                    <img src="../Editor/imgs/avt.png">
                 </button>
             </li>
             <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
             <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-file-earmark"></i>Bài viết</a></li>
+                    Tạo bài viết</a></li>
             <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-list-nested"></i>Danh sách bài viết</a></li>
+                    Danh sách bài viết</a></li>
         </ul>
     </header>
     <div id="ChangeAccount-Div">
         <div class="avt">
-            <img src="./imgs/avt.png">
+            <img src="../Editor/imgs/avt.png">
             <a>John Doe</a>
         </div>
         <ul>
@@ -64,24 +64,26 @@
                 <tr>
                     <th>STT</th>
                     <th>Tiêu đề</th>
-                    <th>Tác giả</th>
-                    <th>Bài viết nổi bật</th>
+                    <th>Ngày update gần đây</th>
+                    <th>Bài viết Premium</th>
                     <th>Trạng thái</th>
-                    <th class="reason">Lí do</th>
+                    <th>Sửa đổi</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
                     <td>1</td>
                     <td class="title">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà NộiNội</td>
-                    <td>Võ Hải</td>
+                    <td>22/11/2024</td>
                     <td>
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Kiến thức sai lệch</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>2</td>
@@ -91,9 +93,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Tin không đúng sự thật</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>3</td>
@@ -103,9 +107,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="pending">Chờ duyệt</span>
                     </td>
-                    <td>Tiêu đề chưa đủ thu hút</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>4</td>
@@ -115,9 +121,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Ảnh không đúng với chủ đề bài viết</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>5</td>
@@ -127,9 +135,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="pending">Chờ duyệt</span>
                     </td>
-                    <td>Bài viết sai lỗi chính tả</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>6</td>
@@ -139,10 +149,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Bố cục bài viết không rõ ràng, mạch lạc</td>
-                    </td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>7</td>
@@ -152,9 +163,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
-                    <td>Bài viết sai lỗi chính tả</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>8</td>
@@ -164,9 +177,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Ảnh không đúng với chủ đề bài viết</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>9</td>
@@ -176,9 +191,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Bài viết sai lỗi chính tả</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>10</td>
@@ -188,9 +205,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Bài viết sai lỗi chính tả</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
                 <tr>
                     <td>11</td>
@@ -200,9 +219,11 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span>Đã đăng</span>
                     </td>
-                    <td>Ảnh không đúng với chủ đề bài viết</td>
+                    <td><a href="">
+                            <i class="bi bi-pencil-square"></i>
+                        </a></td>
                 </tr>
             </tbody>
         </table>
