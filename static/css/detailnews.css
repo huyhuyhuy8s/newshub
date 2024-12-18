@@ -120,7 +120,7 @@ p {
 
 #article-related,
 #article-highlight {
-    padding-top: 4em;
+    margin-top: 4em;
 
     .button-flex {
         display: flex;

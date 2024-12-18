@@ -16,21 +16,16 @@ router.get('/', async (req, res) => {
         const firstNewstopViewedNews = topViewedNews[0] || null;
         const News234stopViewedNews = topViewedNews.slice(1, 4);
 
-        // Cắt 12 bài viết thành 3 phần
-        const firstNewsget12TopViewedNews = topViewedAllTime.slice(0, 4); // Lấy 4 bài viết đầu tiên
-        const secondNewsget12TopViewedNews = topViewedAllTime.slice(4, 8); // Lấy 4 bài viết tiếp theo
-        const thirdNewsget12TopViewedNews = topViewedAllTime.slice(8, 12); // Lấy 4 bài viết cuối cùng
-
         const firstNewsgetTopNewsFromTopCategory = topNewsFromTopCategory[0] || null;
         const News234getTopNewsFromTopCategory = topNewsFromTopCategory.slice(1, 4);
         const topCategory = topCategoriesWithLatestNews[0] || null; // Lấy chuyên mục nổi bật nhất
 
         const firstNewsRecentTravelNews = RecentTravelNews[0] || null;
-        const SecondNewsRecentTravelNews = RecentTravelNews[1] || null; 
+        const SecondNewsRecentTravelNews = RecentTravelNews[1] || null;
 
         const firstNewsRecentHealthNews = RecentHealthNews[0] || null;
-        const SecondNewsRecentHealthNews = RecentHealthNews[1] || null; 
-    
+        const SecondNewsRecentHealthNews = RecentHealthNews[1] || null;
+
 
         const top2Category = topCategoriesWithLatestNews[1] || null; // Lấy chuyên mục nổi bật nhì
 
@@ -38,10 +33,6 @@ router.get('/', async (req, res) => {
         if (top2Category) {
             latestNewsFromTop2Category = await homeService.get12RecentNewsFromCategory(top2Category.Id_Category); // Lấy 12 bài viết mới nhất từ chuyên mục nổi bật nhì
         }
-
-        const firstNewsFromTop2Category = latestNewsFromTop2Category.slice(0, 4); // Lấy 4 bài viết đầu tiên
-        const secondNewsFromTop2Category = latestNewsFromTop2Category.slice(4, 8); // Lấy 4 bài viết tiếp theo
-        const thirdNewsFromTop2Category = latestNewsFromTop2Category.slice(8, 12); // Lấy 4 bài viết cuối cùng
 
 
 
@@ -59,9 +50,7 @@ router.get('/', async (req, res) => {
             firstNewstopViewedNews,
             News234stopViewedNews,
 
-            firstNewsget12TopViewedNews,
-            secondNewsget12TopViewedNews,
-            thirdNewsget12TopViewedNews,
+            topViewedAllTime,
 
             topCategories: topCategoriesWithLatestNews,
             topViewedAllTime,
@@ -78,10 +67,9 @@ router.get('/', async (req, res) => {
             firstNewsRecentHealthNews,
             SecondNewsRecentHealthNews,
 
-            firstNewsFromTop2Category,
-            secondNewsFromTop2Category,
-            thirdNewsFromTop2Category,
+
             top2Category,
+            latestNewsFromTop2Category,
 
             firstNewsFromTop3Category,
             secondNewsFromTop3Category,
