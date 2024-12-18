@@ -38,4 +38,10 @@ router.get("/dashboard", async (req, res) => {
 
     })
 })
+router.get("/usermanagement",  (req,res)=>{
+    res.render('vwAdmin/usermanagement',{
+        layout:'admin'
+    })
+    
+})
 export default router;
