@@ -114,7 +114,34 @@ const adminService = {
             return result
         } catch (error) {
             console.error("Lỗi khi lấy tổng Views theo Category:", error);
-          
+
+        }
+    },
+    async getUserInfo() {
+        try { 
+            const result= await db('User')
+                .select(
+                    'User.Name',
+                    'User.Birthday',
+                    'User.Email',
+                    db.raw(`
+      CASE 
+        WHEN Administrator.Id_Administrator IS NOT NULL THEN 'Administrator'
+        WHEN Editor.Id_Editor IS NOT NULL THEN 'Editor'
+        WHEN Writer.Id_Writer IS NOT NULL THEN 'Writer'
+        WHEN Subcriber.Id_Subcriber IS NOT NULL THEN 'Subscriber'
+        ELSE 'User'
+      END AS Role
+    `)
+                )
+                .leftJoin('Administrator', 'User.Id_User', 'Administrator.Id_User')
+                .leftJoin('Editor', 'User.Id_User', 'Editor.Id_User')
+                .leftJoin('Writer', 'User.Id_User', 'Writer.Id_User')
+                .leftJoin('Subcriber', 'User.Id_User', 'Subcriber.Id_User')
+                return result;
+        }
+        catch (error) {
+            console.error("Lỗi khi lấy tổng Infor User:", error);
         }
     }
 

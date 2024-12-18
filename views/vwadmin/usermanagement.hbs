@@ -67,72 +67,20 @@
             </tr>
         </thead>
         <tbody id="member-table-body">
-            <tr>
-                <td>Nguyễn Văn A</td>
-                <td>20/11/2000</td>
-                <td>user@email.com</td>
-                <td>Editor</td>
+            {{#each infoUser}}
+             <tr>
+                <td>{{this.Name}}</td>
+                <td>{{formateBirthday this.Birthday}}</td>
+                <td>{{this.Email}}</td>
+                <td>{{this.Role}}</td>
                 <td>Còn hoạt động</td>
                 <td>2 days ago</td>
                 <td>
                     <a href="#" class="detail-btn">Xem chi tiết</a>
                 </td>
             </tr>
-            <tr>
-                <td>Nguyễn Văn A</td>
-                <td>20/11/2000</td>
-                <td>user@email.com</td>
-                <td>Thành Viên Premium</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
-                <td>
-                    <a href="#" class="detail-btn">Xem chi tiết</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Nguyễn Văn A</td>
-                <td>20/11/2000</td>
-                <td>user@email.com</td>
-                <td>Nhà Báo</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
-                <td>
-                    <a href="#" class="detail-btn">Xem chi tiết</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Nguyễn Văn A</td>
-                <td>20/11/2000</td>
-                <td>user@email.com</td>
-                <td>Editor</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
-                <td>
-                    <a href="#" class="detail-btn">Xem chi tiết</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Nguyễn Văn A</td>
-                <td>20/11/2000</td>
-                <td>user@email.com</td>
-                <td>Thành Viên</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
-                <td>
-                    <a href="#" class="detail-btn">Xem chi tiết</a>
-                </td>
-            </tr>
-            <tr>
-                <td>Nguyễn Văn A</td>
-                <td>20/11/2000</td>
-                <td>user@email.com</td>
-                <td>Editor</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
-                <td>
-                    <a href="#" class="detail-btn">Xem chi tiết</a>
-                </td>
-            </tr>
+            {{/each}}
+           
         </tbody>
     </table>
 

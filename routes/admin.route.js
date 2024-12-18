@@ -38,8 +38,11 @@ router.get("/dashboard", async (req, res) => {
 
     })
 })
-router.get("/usermanagement",  (req,res)=>{
+router.get("/usermanagement",  async(req,res)=>{
+    const infoUser= await adminService.getUserInfo()
+    //console.log(infoUser)
     res.render('vwAdmin/usermanagement',{
+        infoUser:infoUser,
         layout:'admin'
     })
     
