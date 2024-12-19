@@ -1,0 +1,123 @@
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/editor/style_overview.css">
+{{/fillHtmlContent}}
+
+{{> headerEditor}}
+
+<nav>
+    <div class="search">
+        <input class="day" type="date" placeholder="Từ ngày">
+        <input class="day" type="date" placeholder="Đến ngày">
+        <button>
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+    <div class="filter">
+        <button type="button">
+            Trong 1 tuần
+        </button>
+        <button type="button">
+            Trong 1 tháng
+        </button>
+        <button type="button">
+            Trong 1 năm
+        </button>
+    </div>
+</nav>
+
+<div id="body">
+    <div class="title">Tổng quan bài viết</div>
+    <div class="content">
+        <div class="graph">
+            <canvas id="line-chart"></canvas>
+        </div>
+        <div class="figure">
+            <div class="data-article">
+                <h3>Bài viết đã đăng</h3>
+                <div class="center">
+                    <data>15</data>
+                    <i class="bi bi-check2-all"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">1/12/2024</p>
+                    7/12/2024
+                </div>
+            </div>
+            <div class="data-article">
+                <h3>Bài viết từ chối</h3>
+                <div class="center">
+                    <data>15</data>
+                    <i class="bi bi-x-circle"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">1/12/2024</p>
+                    77/12/2024
+                </div>
+            </div>
+            <div class="data-article">
+                <h3>Bài viết chờ duyệt</h3>
+                <div class="center">
+                    <data>15</data>
+                    <i class="bi bi-arrow-clockwise"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">1/12/2024</p>
+                    7/12/2024
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: [1, 2, 3, 4, 5, 6, 7],
+            datasets: [
+                {
+                    data: [20, 5, 8, 17, 3, 8, 23],
+                    label: "Bài viết đã đăng",
+                    borderColor: "#3cba9f",
+                    fill: false
+                },
+                {
+                    data: [12, 5, 9, 18, 25, 16, 4],
+                    label: "Bài viết từ chối",
+                    borderColor: "#808080",
+                    fill: false
+                },
+                {
+                    data: [4, 9, 7, 15, 13, 21, 27],
+                    label: "Bài viết chờ duyệt",
+                    borderColor: "#e43202",
+                    fill: false
+                }]
+        },
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Biểu đồ thể hiện số bài viết trong tháng 12',
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Số bài viết'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Ngày'
+                    }
+                }
+            }
+        }
+    });
+</script>

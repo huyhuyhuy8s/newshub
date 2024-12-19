@@ -1,29 +1,24 @@
-<!DOCTYPE html>
-<html lang="en">
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/detailnews.css">
+{{/fillHtmlContent}}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articles</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="style_draw.css">
-</head>
+{{> headerWriter}}
 
-<body>
+<div class="card-body pr-0 pl-0" id="body">
 
+    <!-- Bài viết -->
     <div id="article">
-        <h5>Tensions rise in Beirut after influx of displaced people</h5>
+        <h5>{{news.Title}}</h5>
         <div class="b_title">
             <div class="date">
-                <a>Ngày đăng:</a>
-                <a>22/11/2024</a>
+                {{!-- <a>Ngày đăng:</a> --}}
+                <p>{{formatDate news.Date}}</p>
             </div>
             <div class="author">
-                <a>Tác giả:</a>
-                <a href="#">Hồng Ân</a>
+                <p>Lượt xem: {{news.Views}}</p>
             </div>
         </div>
-        <img src="../Home/imgs/suôi thầu.jpg">
+        <img src="/imgs/detail/suôi thầu.jpg">
         <div class="content">
             <p>The sound of war is loud at night in Beirut’s eastern Achrafieh neighbourhood.
                 Residents can hear Israeli air strikes hitting the Lebanese capital’s southern suburbs, known as
@@ -48,7 +43,7 @@
                 A strike on 14 October in the northern town of Aitou, which killed 23 displaced people, shook
                 the Christian community.
             </p>
-            <img src="../Home/imgs/suôi thầu3.jpg">
+            <img src="/imgs/detail/suôi thầu3.jpg">
             <p>
                 The sound of war is loud at night in Beirut’s eastern Achrafieh neighbourhood.
                 Residents can hear Israeli air strikes hitting the Lebanese capital’s southern suburbs, known as
@@ -73,7 +68,7 @@
                 A strike on 14 October in the northern town of Aitou, which killed 23 displaced people, shook
                 the Christian community.
             </p>
-            <img src="../Home/imgs/suôi thầu2.jpg">
+            <img src="/imgs/detail/suôi thầu2.jpg">
             <p>
                 Many here believe that Israel won’t stop until Hezbollah is completely disarmed.
                 "Either all Lebanon will be destroyed by Israel which will be catastrophic, or they [Hezbollah]
@@ -84,20 +79,55 @@
 
 
     </div>
-    <script>
-        function RejectedArticle() {
-            var x = document.getElementById("RejectedArticle-Div");
-            if (x.style.display === "none") {
-                x.style.display = "flex";
-            } else {
-                x.style.display = "none";
-            }
-        }
+    <!-- tag -->
 
 
-    </script>
+    <div id="nav-article">
+        <div class="tag">
+            Tags:
+            {{#each tags}}
+            <span class="badge badge-pill tags">{{this.TagName}}</span>
+            {{/each}}
+        </div>
+        <p>Tác giả: {{news.WriterName}}</p>
+    </div>
+
+    <!-- Bình luận -->
+    <div id="cmt">
+        <h3>Ý kiến</h3>
+        <div class="your-comment" id="your-comment">
+            <textarea id="commentInput" placeholder="Thêm bình luận mới...."></textarea>
+            <input type="hidden" id="newsId" value="{{news.Id_News}}">
+            <input type="hidden" id="userId" value="{{userId}}">
+            <input type="hidden" id="userName" value="{{userName}}">
 
 
-</body>
+            <button type="button" id="submitComment">Gửi</button>
+        </div>
+        <div class="cmts">
+            <a class="font-weight-bold ml-4 text-center">{{comments.length}} bình luận</a>
+        </div>
+        <div class="ours-comment">
+            {{#each comments}}
+            <div class="comment">
+                <div class="img-container">
+                    <div class="image">
+                        <img src="/imgs/detail/biden.jpg" alt="Avatar">
+                    </div>
+                    <h6>{{this.UserName}}</h6>
+                </div>
+                <p>{{this.Comment}}</p>
+                <small>{{formatDate this.Time}}</small>
+            </div>
+            {{/each}}
+        </div>
+    </div>
 
-</html>
+    <p>{{news.Id_News}}</p>
+    <p>{{userId}}</p>
+</div>
+
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/detailnews.js"></script>
+{{/fillHtmlContent}}

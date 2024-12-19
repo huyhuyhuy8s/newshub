@@ -13,6 +13,8 @@ import homeRouter from './routes/home.route.js';
 import searchnewsRouter from './routes/searchnews.route.js';
 import inforUserRouter from './routes/inforuser.route.js';
 import adminRouter from './routes/admin.route.js';
+import editorRouter from './routes/editor.route.js';
+import writerRouter from './routes/writer.route.js';
 import moment from 'moment';
 
 
@@ -150,9 +152,9 @@ app.engine('hbs', engine({
             const dateRegister = new Date(dateRegisterString);
             const dateExpired = new Date(dateExpiredString);
             const today = new Date();
-        
+
             let diffDays;
-        
+
             if (dateExpired > today) {
                 // Nếu ngày hết hạn sau ngày hiện tại
                 const diffTime = Math.abs(today - dateRegister);
@@ -162,10 +164,10 @@ app.engine('hbs', engine({
                 const diffTime = Math.abs(dateExpired - dateRegister);
                 diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Tính số ngày từ ngày đăng ký đến ngày hết hạn
             }
-        
+
             return diffDays;
         },
-        formatDayExpiredAccount: function(dateString) {
+        formatDayExpiredAccount: function (dateString) {
             const d = new Date(dateString);
             const day = d.getDate().toString().padStart(2, '0');
             const month = (d.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
@@ -228,6 +230,9 @@ app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
 app.use('/admin', adminRouter);
 
+app.use('/dashboard', adminRouter);
+app.use('/editor', editorRouter);
+app.use('/writer', writerRouter);
 
 
 // Server setup
