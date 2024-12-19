@@ -14,6 +14,7 @@ import searchnewsRouter from './routes/searchnews.route.js';
 import inforUserRouter from './routes/inforuser.route.js';
 import moment from 'moment';
 
+
 const app = express();
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Session configuration
@@ -28,9 +29,8 @@ app.use(session({
         maxAge: 3600000,
     },
 }));
-
+app.use(express.json()); // This allows Express to parse JSON request bodies
 // Middleware
-app.use(express.json()); // hỗ trợ phần comment
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/static'));
 app.use('/imgs', express.static(join(__dirname, 'imgs')));
@@ -46,7 +46,7 @@ app.engine('hbs', engine({
         },
         fillHtmlContent: hbs_section(),
 
-        
+
 
 
         toLowerCase(str) {
@@ -83,8 +83,10 @@ app.engine('hbs', engine({
 
         // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
         truncateText: (text, length) => {
-            if (text.length <= length) return text;
-            return text.substring(0, length) + '...';
+            if (text.length !== null) {
+                if (text.length <= length) return text;
+                return text.substring(0, length) + '...';
+            }
         },
 
         // helper mới để tính thời gian
@@ -93,7 +95,7 @@ app.engine('hbs', engine({
             const postDate = new Date(date);
             const diffTime = Math.abs(now - postDate);
             const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            
+
             if (diffDays === 0) {
                 const diffHours = Math.floor(diffTime / (1000 * 60 * 60));
                 if (diffHours === 0) {
@@ -102,7 +104,7 @@ app.engine('hbs', engine({
                 }
                 return `${diffHours} giờ trước`;
             }
-            
+
             // Thêm logic xử lý tháng
             if (diffDays >= 30) {
                 const diffMonths = Math.floor(diffDays / 30);
@@ -119,7 +121,7 @@ app.engine('hbs', engine({
                 }
                 return `${diffYears} năm trước`;
             }
-            
+
             return `${diffDays} ngày trước`;
         },
         // formatCountDaysRegisterAccount: function(dateString) {
@@ -187,6 +189,9 @@ app.use(async function (req, res, next) {
     }
 });
 
+app.set('view engine', 'hbs');
+app.set('views', join(__dirname, 'views'));
+
 //  middleware để xử lý auth cho toàn bộ ứng dụng
 app.use(function (req, res, next) {
     res.locals.auth = req.session.auth;
@@ -194,42 +199,12 @@ app.use(function (req, res, next) {
     next();
 });
 
-app.set('view engine', 'hbs');
-app.set('views', join(__dirname, 'views'));
 
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.get('/test-categories', (req, res) => {
-    console.log('lcCategories in test route:', res.locals.lcCategories);
-    res.json(res.locals.lcCategories);
-});
+app.use('/account', accountRouter);
 
-
-// Routes
-
-// app.get('/', function (req, res) {
-//     if (!req.session.auth) {
-//         return res.redirect('/account/login');
-//     }
-//     res.render('home', {
-//         layout: 'main',
-//         user: req.session.authUser
-//     });
-// });
-
-//test thử vào category
-// app.get('/', function (req, res) {
-//     if (!req.session.auth) {
-//         return res.redirect('/account/login');
-//     }
-//     res.render('vwCategory/category', {
-//         layout: 'main',
-//         user: req.session.authUser
-//     });
-// });
-
-
-
-// Routes
 app.use('/', homeRouter);
 app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
@@ -241,6 +216,3 @@ app.use('/inforuser', inforUserRouter);
 app.listen(3000, () => {
     console.log('Server started on http://localhost:3000');
 });
-
-
-
