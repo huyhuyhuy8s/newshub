@@ -1,4 +1,5 @@
 import db from '../utils/db.js';
+import editorService from '../services/editor.service.js';
 import express from 'express';
 
 const router = express.Router();
