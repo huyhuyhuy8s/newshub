@@ -85,7 +85,7 @@ export default {
                     'c.Status': 1,
                     'n.Id_Status': 'STS0001'
                 })
-                // .andWhere('n.Date', '>=', oneMonthAgo) // Thêm điều kiện lọc theo thời gian
+
                 .andWhere('n.Date', '>=', sevenDaysAgo) // Thêm điều kiện lọc theo thời gian
                 .select(
                     'n.Id_News',
@@ -94,7 +94,9 @@ export default {
                     'n.Meta_description',
                     'n.Date',
                     'n.Image',
-                    'n.Views'
+                    'n.Views',
+                    's.Id_SubCategory',
+                    'c.Id_Category'
                 )
                 .orderBy('n.Views', 'desc');
 
@@ -119,8 +121,9 @@ export default {
                 .where('s.Id_Category', categoryId)
                 .andWhere('n.Id_Status', 'STS0001')
                 .andWhere('n.Date', '>=', oneMonthAgo)
-                .groupBy('s.Id_SubCategory', 's.Name')
+                .groupBy('s.Id_SubCategory', 's.Name', 's.Id_Category')
                 .select(
+                    's.Id_Category',
                     's.Id_SubCategory',
                     's.Name as SubCategoryName',
                     db.raw('SUM(n.Views) as TotalViews')
@@ -153,6 +156,18 @@ export default {
                     .offset(1)
                     .limit(3);
 
+
+                // Thêm Id_Category vào bài viết nổi bật
+                if (highlightPost) {
+                    highlightPost.Id_Category = sub.Id_Category; // Gán Id_Category cho bài viết nổi bật
+                }
+
+                // Thêm Id_Category vào các bài viết tiếp theo
+                for (let post of otherPosts) {
+                    post.Id_Category = sub.Id_Category; // Gán Id_Category cho các bài viết tiếp theo
+                }
+
+
                 sub.highlightPost = highlightPost;
                 sub.otherPosts = otherPosts;
             }
@@ -176,7 +191,8 @@ export default {
                 })
                 .select(
                     'n.*',
-                    's.Name as SubCategoryName'
+                    's.Name as SubCategoryName',
+                    'c.Id_Category'
                 )
                 .orderBy('n.Date', 'desc');
 
@@ -207,12 +223,13 @@ export default {
             const date = new Date();
             date.setDate(date.getDate() - days); // Lấy ngày 7 ngày trước
 
-            const news = await db('News')
-                .where('Id_SubCategory', subCategoryId)
-                .where('Date', '>=', date)
-                .where('Id_Status', 'STS0001')
-                .orderBy('Views', 'desc')
-                .select('*');
+            const news = await db('News as n')
+                .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory') // Thực hiện join với bảng SubCategory
+                .where('n.Id_SubCategory', subCategoryId)
+                .where('n.Date', '>=', date)
+                .where('n.Id_Status', 'STS0001') 
+                .orderBy('n.Views', 'desc')
+                .select('n.*', 's.Id_Category');
 
             return news;
         } catch (error) {
@@ -230,7 +247,8 @@ export default {
                 .orderBy('n.Date', 'desc')
                 .select(
                     'n.*',
-                    's.Name as SubCategoryName'
+                    's.Name as SubCategoryName',
+                    's.Id_Category'
                 )
                 .limit(10); // Giới hạn 10 bài viết mới nhất
 
