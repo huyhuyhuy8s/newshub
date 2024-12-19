@@ -1,5 +1,4 @@
-@import "./styleModerator.css";
-
+@import url(./styleModerator.css);
 
 #body {
     margin: 0 75px;
@@ -13,41 +12,41 @@
 
     .content {
         display: grid;
-        grid-template-columns: repeat(5, 1fr);
+        grid-template-columns: 4fr 1fr;
         gap: 2em;
 
         .graph {
-            grid-column: 1 / span 4;
             width: 100%;
         }
 
-
         .figure {
             display: grid;
-            grid-template-columns: 1fr;
+            grid-template-rows: repeat(3, 1fr);
             gap: 2em;
 
             .data-article {
-                padding: 10px;
-                border-radius: 15px;
                 border: 1px solid var(--grey);
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                border-radius: 15px;
+                padding: 1.5em 2em;
+
+                h3 {
+                    font-size: 20pt;
+                }
 
                 .center {
                     display: flex;
-                    gap: 8em;
                     font-size: 38px;
                     color: var(--red);
                     font-weight: bold;
                     display: flex;
                     justify-content: space-between;
+                }
 
-                    i {
-                        color: var(--black);
-                        border: 1px solid var(--grey);
-                        border-radius: 10px;
-                        padding: 3px;
-
-                    }
+                .date-from {
+                    display: inline;
                 }
 
                 .date-from::after {

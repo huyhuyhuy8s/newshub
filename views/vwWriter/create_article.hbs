@@ -1,0 +1,160 @@
+{{#fillHtmlContent 'css'}}
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/5o2hhgemqy0axvklkkh20ria6cf801vvy0t4bgmwk5t69m2c/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<link rel="stylesheet" href="/css/writer/style_create.css">
+{{/fillHtmlContent}}
+
+{{> headerWriter}}
+
+<nav>
+    <div class="filter">
+
+    </div>
+    <div class="filter">
+        <button class="btn">
+            Lưu bản nháp</button>
+        <button class="btn">
+            Xem bài viết</button>
+        <button class="btn">
+            <i class="bi bi-floppy"></i>
+            Lưu</button>
+    </div>
+</nav>
+<div id="body">
+    <div class="creat">
+        <textarea id="article" placeholder="Thêm nội dung vào đây..."></textarea>
+    </div>
+    <div class="nav">
+        <div class="state">
+            <h3>Trạng thái và Nổi bật</h3>
+            <div>
+                <label for="state">Trạng thái:</label>
+                <select name="state" id="state">
+                    <option value="Công khai">Công khai</option>
+                    <option value="Riêng tư">Riêng tư</option>
+                </select>
+            </div>
+            <div>
+                <label for="hot">Bài viết nổi bật</label>
+                <input type="checkbox" id="hot" name="hot" value="hot">
+            </div>
+            <p>
+                <a class="author">Võ Hải</a>
+            </p>
+        </div>
+        <div class="category">
+            <h3>Chuyên mục</h3>
+            <div>
+                <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
+                <label for="thoi su">Thời sự</label>
+            </div>
+            <div>
+                <input type="checkbox" id="du lich" name="du lich" value="Du lịch">
+                <label for="du lich"> Du lịch</label>
+            </div>
+            <div>
+                <input type="checkbox" id="kinh te" name="kinh te" value="Thời sự">
+                <label for="kinh te"> Kinh tế</label>
+            </div>
+            <div>
+                <input type="checkbox" id="khoa hoc" name="khoa hoc" value="Thời sự">
+                <label for="khoa hoc"> Khoa học</label>
+            </div>
+            <div>
+                <input type="checkbox" id="the thao" name="the thao" value="Thời sự">
+                <label for="the thao"> Thể thao</label>
+            </div>
+            <div>
+                <input type="checkbox" id="giao duc" name="giao duc" value="Thời sự">
+                <label for="giao duc"> Giáo dục</label>
+            </div>
+            <div>
+                <input type="checkbox" id="doi song" name="doi song" value="Thời sự">
+                <label for="doi song"> Đời sống</label>
+            </div>
+            <div>
+                <input type="checkbox" id="the gioi" name="the gioi" value="Thời sự">
+                <label for="the gioi"> Thế giới</label>
+            </div>
+            <div>
+                <input type="checkbox" id="bat dong san" name="bat dong san" value="Thời sự">
+                <label for="bat dong san"> Bất động sản</label>
+            </div>
+            <div>
+                <input type="checkbox" id="giai tri" name="giai tri" value="Thời sự">
+                <label for="giai tri"> Giải trí</label>
+            </div>
+            <div>
+                <input type="checkbox" id="phap luat" name="phap luat" value="Thời sự">
+                <label for="phap luat"> Pháp luật</label>
+            </div>
+            <div>
+                <input type="checkbox" id="suc khoe" name="suc khoe" value="Thời sự">
+                <label for="suc khoe"> Sức khỏe</label>
+            </div>
+        </div>
+        <div class="tags">
+            <h3>Tags</h3>
+            <input type="text" name="" id="" placeholder="#tags">
+            <button class="btn-add">Thêm</button>
+        </div>
+        <div class="meta-title">
+            <h3>Tóm tắt tiêu đề</h3>
+            <input type="text" name="" id="" placeholder="meta-title">
+            <button class="btn-add">Thêm</button>
+        </div>
+        <div class="meta-description">
+            <h3>Tóm tắt nội dung</h3>
+            <input type="text" name="" id="" placeholder="meta-description">
+            <button class="btn-add">Thêm</button>
+        </div>
+        <div class="link">
+            <h3>Link youtube (nếu có)</h3>
+            <input type="text" name="" id="" placeholder="link youtube">
+            <button class="btn-add">Thêm</button>
+        </div>
+    </div>
+</div>
+<script>
+    function ChangeAccount() {
+        var x = document.getElementById("ChangeAccount-Div");
+        if (x.style.display === "none") {
+            x.style.display = "grid";
+        } else {
+            x.style.display = "none";
+        }
+    }
+</script>
+<script>
+    function ChangeColorBtn(elem) {
+        var a = document.getElementsByTagName('li')
+        for (i = 0; i < a.length; i++) {
+            a[i].classList.remove('active');
+        }
+        elem.classList.add('active');
+    }
+</script>
+<script>
+    tinymce.init({
+        selector: '#article',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+            // Your account includes a free trial of TinyMCE premium features
+            // Try the most popular premium features until Dec 21, 2024:
+            'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+        ],
+        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+    });
+</script>
+</body>
+
+</html>
