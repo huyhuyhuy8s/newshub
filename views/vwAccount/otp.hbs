@@ -22,7 +22,9 @@
 
             // Get the email from the hidden input
             const email = document.querySelector('input[name="email"]').value;
-
+            const name = "{{name}}"
+            const password = "{{password}}"
+            const dob = "{{dob}}"
             // Send the OTP verification request
             fetch('/account/verifyOTP', {
                 method: 'POST',
@@ -38,9 +40,25 @@
                 .then(data => {
                     if (data === true) {
                         // OTP is correct
-                        alert('OTP verified successfully!');
-                        // You can redirect to the next page or perform further actions
-                        window.location.href = '/account/register-success';
+                        fetch('/account/register', {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                name: name,
+                                email: email,
+                                password: password,
+                                dob: dob
+                            })
+                        })
+                            .then(response => {
+                                if (response.redirected) {
+                                    window.location.href = response.url;
+                                } else {
+                                    alert('Đăng ký thất bại. Vui lòng thử lại.');
+                                }
+                            });
                     } else {
                         // OTP is incorrect
                         alert('Invalid OTP. Please try again.');
@@ -82,33 +100,6 @@
 
 
 </script>
-{{!-- <form action="" method="post" id="otpForm">
-    <h2>Xác thực bằng OTP</h2>
-    <h3>Vui lòng nhập mã 6 chữ số đã gửi đến email {{email}} của bạn để xác minh.</h3>
-    <input type="hidden" name="email" value="{{email}}" />
-    <div class="information i-rows">
-        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp1" id="otp1" />
-        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp2" id="otp2" />
-        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp3" id="otp3" />
-        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp4" id="otp4" />
-        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp5" id="otp5" />
-        <input class="input" type="text" inputmode="numeric" maxlength="1" name="otp6" id="otp6" />
-    </div>
-
-    <div class="forgot-remember-me">
-        <p>Gửi lại mã sau: 15s</p>
-        <a href="#"><strong>Gửi lại OTP </strong></a>
-    </div>
-
-    <div class="active-button">
-        <button type="submit" id="otpSubmit">
-            <p>Xác nhận OTP</p>
-        </button>
-
-    </div>
-
-    <a href="/account/login" class="login"><strong>Trở về đăng nhập</strong></a>
-</form> --}}
 <form action="" method="post" id="otpForm">
     <h2>Xác thực bằng OTP</h2>
     <h3>Vui lòng nhập mã 6 chữ số đã gửi đến email {{email}} của bạn để xác minh.</h3>
@@ -137,11 +128,3 @@
 </form>
 
 <script src="/js/account.js"></script>
-{{!--
-</div>
-</div>
-</div>
-<script src="./account.js"></script>
-</body>
-
-</html> --}}
