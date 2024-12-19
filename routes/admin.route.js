@@ -37,7 +37,7 @@ router.get("/dashboard", async (req, res) => {
         layout: 'admin'
 
     })
-})
+});
 
 router.get("/usermanagement",  async(req,res)=>{
     const inforUser= await adminService.getUserInfor()
@@ -47,17 +47,28 @@ router.get("/usermanagement",  async(req,res)=>{
         layout:'admin'
     })
     
-})
-router.get("/inforuser",async(req,res)=>{
+});
+
+
+
+router.get("/admininforuser",async(req,res)=>{
     const {id_user}=req.query;
     const inforUser= await adminService.getUserInforById(id_user)
-    //const Birthday= inforUser.Birthday
-    //console.log(inforUser)
-    res.render('vwAdmin/inforUser',{
+    console.log('inforUser:',inforUser)
+
+    let newsCount = 0;
+    if (inforUser.Id_Writer ) {
+        newsCount = await adminService.getNewsCountByWriterId(inforUser.Id_Writer); 
+    }
+    console.log('inforUser id writer:',inforUser.Id_Writer)
+    console.log('inforUser id editor:',inforUser.Id_Editor)
+    console.log('inforUser id user:',inforUser.Id_User)
+    console.log('newsCount:',newsCount)
+    res.render('vwAdmin/admininforuser',{
         layout:'admin',
         inforUser:inforUser,
-        
+        newsCount: newsCount,
     })
-})
+});
 
 export default router;

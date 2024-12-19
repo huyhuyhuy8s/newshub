@@ -127,14 +127,28 @@ app.engine('hbs', engine({
 
             return `${diffDays} ngày trước`;
         },
-        // formatCountDaysRegisterAccount: function(dateString) {
-        //     const dateRegister = new Date(dateString);
-        //     const today = new Date();
-        //     const diffTime = Math.abs(today - dateRegister);
-        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        //     return diffDays;
-        // },
-        formatCountDaysRegisterAccount: function (dateRegisterString, dateExpiredString) {
+        formatCountDaysRegisterAccountEditorAndWriter: function(dateString) {
+            const dateRegister = new Date(dateString);
+            const today = new Date();
+            const diffTime = Math.abs(today - dateRegister);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        },
+
+        formatCountDaysExpiredAccountEditorAndWriter: function(dateString) {
+            const dateRegister = new Date(dateString);
+            const expirationDate = new Date(dateRegister);
+            expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cộng thêm 1 năm
+        
+            // Định dạng ngày theo dd/mm/yyyy
+            const day = expirationDate.getDate().toString().padStart(2, '0');
+            const month = (expirationDate.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
+            const year = expirationDate.getFullYear();
+        
+            return `${day}/${month}/${year}`; // Trả về định dạng ngày hết hạn
+        },
+
+        formatCountDaysRegisterAccount: function(dateRegisterString, dateExpiredString) {
             const dateRegister = new Date(dateRegisterString);
             const dateExpired = new Date(dateExpiredString);
             const today = new Date();
@@ -214,6 +228,8 @@ app.use('/account', accountRouter);
 app.use('/news', detailNewsRouter);
 app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
+app.use('/admin', adminRouter);
+
 app.use('/dashboard', adminRouter);
 app.use('/editor', editorRouter);
 app.use('/writer', writerRouter);
