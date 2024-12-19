@@ -67,20 +67,20 @@
             </tr>
         </thead>
         <tbody id="member-table-body">
-            {{#each infoUser}}
-             <tr>
+            {{#each inforUser}}
+            <tr>
                 <td>{{this.Name}}</td>
-                <td>{{formateBirthday this.Birthday}}</td>
+                <td>{{formatDateInfor this.Birthday}}</td>
                 <td>{{this.Email}}</td>
                 <td>{{this.Role}}</td>
                 <td>Còn hoạt động</td>
                 <td>2 days ago</td>
                 <td>
-                    <a href="#" class="detail-btn">Xem chi tiết</a>
+                    <a href="/admin/inforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
                 </td>
             </tr>
             {{/each}}
-           
+
         </tbody>
     </table>
 

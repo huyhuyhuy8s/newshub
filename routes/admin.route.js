@@ -38,13 +38,26 @@ router.get("/dashboard", async (req, res) => {
 
     })
 })
+
 router.get("/usermanagement",  async(req,res)=>{
-    const infoUser= await adminService.getUserInfo()
-    //console.log(infoUser)
+    const inforUser= await adminService.getUserInfor()
+    
     res.render('vwAdmin/usermanagement',{
-        infoUser:infoUser,
+        inforUser:inforUser,
         layout:'admin'
     })
     
 })
+router.get("/inforuser",async(req,res)=>{
+    const {id_user}=req.query;
+    const inforUser= await adminService.getUserInforById(id_user)
+    //const Birthday= inforUser.Birthday
+    //console.log(inforUser)
+    res.render('vwAdmin/inforUser',{
+        layout:'admin',
+        inforUser:inforUser,
+        
+    })
+})
+
 export default router;

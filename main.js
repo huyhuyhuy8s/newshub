@@ -6,8 +6,8 @@ import session from 'express-session';
 import numeral from 'numeral';
 import hbs_section from 'express-handlebars-sections';
 import accountRouter from './routes/account.route.js';
-import categoryService from './services/category.service.js';
-import categoryRouter from './routes/category.route.js';
+//import categoryService from './services/category.service.js';
+//import categoryRouter from './routes/category.route.js';
 import detailNewsRouter from './routes/detailnews.route.js';
 import homeRouter from './routes/home.route.js';
 import adminRouter from './routes/admin.route.js' 
@@ -70,12 +70,12 @@ app.engine('hbs', engine({
             const year = d.getFullYear();
             return `Ngày đăng: ${day}/${month}/${year}`;
         },
-        formateBirthday: (date)=>{
+        formatDateInfor: (date) => {
             const d = new Date(date);
-            const day = d.getDate().toString().padStart(2, '0');
-            const month = (d.getMonth() + 1).toString().padStart(2, '0');
             const year = d.getFullYear();
-            return `${day}/${month}/${year}`;
+            const month = (d.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
+            const day = d.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`; // Định dạng theo YYYY-MM-DD
         },
         // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
         truncateText: (text, length) => {
@@ -118,35 +118,44 @@ app.engine('hbs', engine({
             
             return `${diffDays} ngày trước`;
         },
+        //helper chọn role
+        if_eq: function(a, b, options) {
+            if (a == b) {
+                return options.fn(this);  // Nếu giá trị của a và b bằng nhau, render block của helper
+            } else {
+                return options.inverse(this);  // Nếu không, render block ngược lại
+            }
+        }
+      
     },
 }));
 
 // Thêm middleware để load categories
-app.use(async function (req, res, next) {
-    try {
-        const categories = await categoryService.findAllActive();
+// app.use(async function (req, res, next) {
+//     try {
+//         const categories = await categoryService.findAllActive();
 
-        // // Tạo một bản sao của categories để xử lý log
-        // const categoriesForLog = categories.map(category => ({
-        //     Name: category.Name,
-        //     Status: category.Status[0],
-        //     // Chuyển SubCategories thành string trên cùng một hàng
-        //     SubCategories: `[${category.SubCategories.map(sub =>
-        //         `{${sub.Name}}`
-        //     ).join(', ')}]`
-        // }));
-        // console.log('Categories loadedddd:', categoriesForLog);
+//         // // Tạo một bản sao của categories để xử lý log
+//         // const categoriesForLog = categories.map(category => ({
+//         //     Name: category.Name,
+//         //     Status: category.Status[0],
+//         //     // Chuyển SubCategories thành string trên cùng một hàng
+//         //     SubCategories: `[${category.SubCategories.map(sub =>
+//         //         `{${sub.Name}}`
+//         //     ).join(', ')}]`
+//         // }));
+//         // console.log('Categories loadedddd:', categoriesForLog);
 
-        if (!categories || categories.length === 0) {
-            console.log('No categories found');
-        }
-        res.locals.lcCategories = categories;
-        next();
-    } catch (err) {
-        console.error('Failed to load categories:', err);
-        next(err);
-    }
-});
+//         if (!categories || categories.length === 0) {
+//             console.log('No categories found');
+//         }
+//         res.locals.lcCategories = categories;
+//         next();
+//     } catch (err) {
+//         console.error('Failed to load categories:', err);
+//         next(err);
+//     }
+// });
 
 //  middleware để xử lý auth cho toàn bộ ứng dụng
 app.use(function (req, res, next) {
@@ -159,10 +168,10 @@ app.set('view engine', 'hbs');
 app.set('views', join(__dirname, 'views'));
 
 
-app.get('/test-categories', (req, res) => {
-    console.log('lcCategories in test route:', res.locals.lcCategories);
-    res.json(res.locals.lcCategories);
-});
+// app.get('/test-categories', (req, res) => {
+//     console.log('lcCategories in test route:', res.locals.lcCategories);
+//     res.json(res.locals.lcCategories);
+// });
 
 
 // Routes
@@ -191,11 +200,11 @@ app.get('/test-categories', (req, res) => {
 
 
 // Routes
-app.use('/', homeRouter);
-app.use('/category', categoryRouter);
-app.use('/account', accountRouter);
-app.use('/news', detailNewsRouter);
-//app.use('/search', searchnewsRouter);
+// app.use('/', homeRouter);
+// app.use('/category', categoryRouter);
+// app.use('/account', accountRouter);
+// app.use('/news', detailNewsRouter);
+// //app.use('/search', searchnewsRouter);
 
 app.use('/admin',adminRouter)
 // Server setup
