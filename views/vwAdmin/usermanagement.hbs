@@ -1,11 +1,9 @@
 {{#fillHtmlContent 'css'}}
-<link rel="stylesheet" href="/css/quanlythanhvien.css">
+<link rel="stylesheet" href="/css/admin/usermanagement.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 {{/fillHtmlContent}}
 
-{{#fillHtmlContent 'js'}}
-<script src="/js/quanlythanhvien.js" defer></script>
-{{/fillHtmlContent}}
+
 <div class="container">
     <h1>Quản lý thành viên</h1>
     <div class="filter-section">
@@ -76,7 +74,7 @@
                 <td>Còn hoạt động</td>
                 <td>2 days ago</td>
                 <td>
-                    <a href="/admin/inforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
+                    <a href="/admin/admininforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
                 </td>
             </tr>
             {{/each}}
@@ -102,3 +100,7 @@
         <button id="cancel-btn" class="modal-button">Hủy</button>
     </div>
 </div>
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/quanlythanhvien.js" defer></script>
+{{/fillHtmlContent}}
