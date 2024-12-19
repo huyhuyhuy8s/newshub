@@ -1,6 +1,6 @@
 import db from '../utils/db.js';
 
-const writerService = {
+const editorService = {
     async findPostPerMonth() {
         try {
             const result = await db('editor').count('Id_News as total');
@@ -11,4 +11,4 @@ const writerService = {
         }
     },
 }
-export default writerService
+export default editorService

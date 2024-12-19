@@ -45,6 +45,13 @@
             border-radius: 10px;
             padding: 0.5em;
 
+            select {
+                width: 100%;
+                background-color: var(--white);
+                height: 3em;
+                border-radius: 5px;
+            }
+
             .inner-state {
                 display: grid;
                 grid-template-rows: repeat(3, 1fr);
@@ -55,7 +62,8 @@
             }
 
             input[type=text] {
-                height: 4em;
+                padding: 0 0.5em;
+                height: 3.5em;
             }
 
             button {

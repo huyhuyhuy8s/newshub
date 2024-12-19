@@ -8,8 +8,8 @@
 {{> headerWriter}}
 
 <nav>
-    <div class="filter">
-
+    <div class="search">
+        <input type="text" name="" id="" placeholder="Tiêu đề bài viết">
     </div>
     <div class="filter">
         <button class="btn">
@@ -27,71 +27,19 @@
     </div>
     <div class="nav">
         <div class="state">
-            <h3>Trạng thái và Nổi bật</h3>
+            <h3>Premium</h3>
             <div>
-                <label for="state">Trạng thái:</label>
-                <select name="state" id="state">
-                    <option value="Công khai">Công khai</option>
-                    <option value="Riêng tư">Riêng tư</option>
-                </select>
-            </div>
-            <div>
-                <label for="hot">Bài viết nổi bật</label>
+                <label for="hot" style="user-select: none;">Bài viết Premium</label>
                 <input type="checkbox" id="hot" name="hot" value="hot">
             </div>
-            <p>
-                <a class="author">Võ Hải</a>
-            </p>
         </div>
         <div class="category">
             <h3>Chuyên mục</h3>
             <div>
-                <input type="checkbox" id="thoi su" name="thoi su" value="Thời sự">
-                <label for="thoi su">Thời sự</label>
-            </div>
-            <div>
-                <input type="checkbox" id="du lich" name="du lich" value="Du lịch">
-                <label for="du lich"> Du lịch</label>
-            </div>
-            <div>
-                <input type="checkbox" id="kinh te" name="kinh te" value="Thời sự">
-                <label for="kinh te"> Kinh tế</label>
-            </div>
-            <div>
-                <input type="checkbox" id="khoa hoc" name="khoa hoc" value="Thời sự">
-                <label for="khoa hoc"> Khoa học</label>
-            </div>
-            <div>
-                <input type="checkbox" id="the thao" name="the thao" value="Thời sự">
-                <label for="the thao"> Thể thao</label>
-            </div>
-            <div>
-                <input type="checkbox" id="giao duc" name="giao duc" value="Thời sự">
-                <label for="giao duc"> Giáo dục</label>
-            </div>
-            <div>
-                <input type="checkbox" id="doi song" name="doi song" value="Thời sự">
-                <label for="doi song"> Đời sống</label>
-            </div>
-            <div>
-                <input type="checkbox" id="the gioi" name="the gioi" value="Thời sự">
-                <label for="the gioi"> Thế giới</label>
-            </div>
-            <div>
-                <input type="checkbox" id="bat dong san" name="bat dong san" value="Thời sự">
-                <label for="bat dong san"> Bất động sản</label>
-            </div>
-            <div>
-                <input type="checkbox" id="giai tri" name="giai tri" value="Thời sự">
-                <label for="giai tri"> Giải trí</label>
-            </div>
-            <div>
-                <input type="checkbox" id="phap luat" name="phap luat" value="Thời sự">
-                <label for="phap luat"> Pháp luật</label>
-            </div>
-            <div>
-                <input type="checkbox" id="suc khoe" name="suc khoe" value="Thời sự">
-                <label for="suc khoe"> Sức khỏe</label>
+                <select name="category" id="">
+                    <option value="" disabled selected>Chọn chuyên mục</option>
+                    <option value="">Thời sự</option>
+                </select>
             </div>
         </div>
         <div class="tags">
