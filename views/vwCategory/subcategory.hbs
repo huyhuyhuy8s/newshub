@@ -11,8 +11,8 @@
             {{#with firstNews}}
             <a class="div1" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                 <img alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                <h4>{{truncateText Meta_title 30}}</h4>
-                <p>{{truncateText Meta_description 100}}</p>
+                <h4>{{truncateText Meta_title 50}}</h4>
+                <p>{{truncateText Meta_description 200}}</p>
                 <p>{{formatDate Date}}</p>
             </a>
             {{/with}}
@@ -21,7 +21,7 @@
                 {{#each topNews}}
                 <a class="highlight-element" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                    <p>{{truncateText Meta_title 30}}</p>
+                    <p>{{truncateText Meta_title 35}}</p>
                     <h6>{{formatDate Date}}</h6>
                 </a>
                 {{/each}}
@@ -33,8 +33,8 @@
             <a class="div2" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                 <div class="infor">
                     <h4>{{formatDate Date}}</h4>
-                    <h6>{{truncateText Meta_title 30}}</h6>
-                    <p>{{truncateText Meta_description 100}}</p>
+                    <h6>{{truncateText Meta_title 50}}</h6>
+                    <p>{{truncateText Meta_description 120}}</p>
                 </div>
                 <img src="/imgs/category/mancity1.png" alt="{{Meta_title}}" class="image-container">
             </a>
@@ -47,9 +47,9 @@
         <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{timeAgo Date}}</p>
             <div class="content">
-                <h4>{{truncateText Meta_title 30}}</h4>
+                <h4>{{truncateText Meta_title 45}}</h4>
                 <p>
-                    {{truncateText Meta_description 200}}
+                    {{truncateText Meta_description 130}}
                 </p>
                 <div class="content-after">{{SubCategoryName}}</div>
             </div>

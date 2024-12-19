@@ -12,6 +12,7 @@ import detailNewsRouter from './routes/detailnews.route.js';
 import homeRouter from './routes/home.route.js';
 import searchnewsRouter from './routes/searchnews.route.js';
 import inforUserRouter from './routes/inforuser.route.js';
+import adminRouter from './routes/admin.route.js';
 import moment from 'moment';
 
 
@@ -211,6 +212,9 @@ app.use('/account', accountRouter);
 app.use('/news', detailNewsRouter);
 app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
+app.use('/dashboard', adminRouter);
+
+
 
 // Server setup
 app.listen(3000, () => {

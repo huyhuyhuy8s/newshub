@@ -19,9 +19,9 @@
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
                         <div class="content-grid-head">
-                            <h4>{{truncateText firstNewstopViewedNews.Meta_title 30}}</h4>
+                            <h4>{{truncateText firstNewstopViewedNews.Meta_title 50}}</h4>
                             <!-- Tiêu đề bài viết đầu tiên -->
-                            <p>{{truncateText firstNewstopViewedNews.Meta_description 100}}</p>
+                            <p>{{truncateText firstNewstopViewedNews.Meta_description 200}}</p>
                             <!-- Mô tả bài viết đầu tiên -->
                             <p class="date">
                                 {{formatDate firstNewstopViewedNews.Date}} <!-- Ngày bài viết đầu tiên -->
@@ -34,11 +34,11 @@
                     <!-- Hiển thị 3 bài viết tiếp theo -->
                     {{#each News234stopViewedNews}}
                     <div class="article-list-element">
-                        <a href="/news/{{this.Id_News}}">
+                        <a href="/news/news?id={{this.Id_News}}">
                             <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
                             <div class="article-list-content">
-                                <h5>{{truncateText this.Meta_title 30}}</h5> <!-- Tiêu đề bài viết -->
-                                <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
+                                <h5>{{truncateText this.Meta_title 50}}</h5> <!-- Tiêu đề bài viết -->
+                                <p>{{truncateText this.Meta_description 200}}</p> <!-- Mô tả bài viết -->
                                 <p class="date">
                                     {{formatDate this.Date}} <!-- Ngày bài viết -->
                                 </p>
@@ -54,15 +54,13 @@
                 <div class="card mb-3 shadow-sm" id="article_top10">
                     <div class="list-group list-group-flush">
                         {{#each topCategories}}
-                        <a class="card-body" href="/news/{{this.latestNews.Id_News}}">
+                        <a class="card-body" href="/news/news?id={{this.latestNews.Id_News}}">
                             <div class="category">{{this.CategoryName}}</div>
-                            <h6 class="card-title">{{truncateText this.latestNews.Meta_title 30}}</h6>
+                            <h6>{{truncateText this.latestNews.Meta_title 50}}</h6>
                             <!-- Tiêu đề bài viết mới nhất -->
-                            <p class="card-text">{{truncateText this.latestNews.Meta_description 100}}</p>
+                            <p>{{truncateText this.latestNews.Meta_description 200}}</p>
                             <!-- Mô tả bài viết -->
-                            <div class="date">
-                                <div>{{formatDate this.latestNews.Date}}</div> <!-- Ngày bài viết -->
-                            </div>
+                            <div class="date">{{formatDate this.latestNews.Date}}</div> <!-- Ngày bài viết -->
                         </a>
                         {{/each}}
                     </div>
@@ -84,11 +82,11 @@
         </div>
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedAllTime}}
-            <a class="articles" id="very-first" href="/news/{{this.Id_News}}">
+            <a class="articles" id="very-first" href="/news/news?id={{this.Id_News}}">
                 <img src="/imgs/detail/suôi thầu.jpg" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{this.Meta_title}}</h5>
-                    <p class="card-text">{{this.Meta_description}}</p>
+                    <h5>{{truncateText this.Meta_title 50}}</h5>
+                    <p>{{truncateText this.Meta_description 150}}</p>
                 </div>
             </a>
             {{else}}
@@ -109,10 +107,10 @@
                 <div class="card shadow-sm">
                     <div class="article-small">
                         {{#each News234getTopNewsFromTopCategory}}
-                        <a class="article" href="/news/{{this.Id_News}}">
+                        <a class="article" href="/news/news?id={{this.Id_News}}">
                             <div class="content">
-                                <h5>{{truncateText this.Meta_title 30}}</h5> <!-- Tiêu đề bài viết -->
-                                <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
+                                <h5>{{truncateText this.Meta_title 50}}</h5> <!-- Tiêu đề bài viết -->
+                                <p>{{truncateText this.Meta_description 200}}</p> <!-- Mô tả bài viết -->
                                 <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                             </div>
                         </a>
@@ -124,11 +122,11 @@
             <div class="col-sm-4">
                 <div class="card shadow-sm">
                     {{#if firstNewsgetTopNewsFromTopCategory}} <!-- Kiểm tra xem có bài viết đầu tiên không -->
-                    <a class="article-big" href="/news/{{this.Id_News}}">
+                    <a class="article-big" href="/news/news?id={{firstNewsgetTopNewsFromTopCategory.Id_News}}">
                         <img src="/imgs/home/donal.jpg">
                         <div class="article-big-content">
-                            <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 30}}</h4>
-                            <p>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_description 100}}</p>
+                            <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 50}}</h4>
+                            <p>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_description 200}}</p>
                             <p class="date">{{formatDate firstNewsgetTopNewsFromTopCategory.Date}}</p>
 
                         </div>
@@ -143,10 +141,10 @@
                 <div class="card mb-3 shadow-sm" id="article_top10_2">
                     <div class="list-group list-group-flush">
                         {{#each top10NewsRecent}}
-                        <a class="card-body" href="#">
+                        <a class="card-body" href="/news/news?id={{this.Id_News}}">
                             <div class="category">{{this.CategoryName}}</div>
-                            <h6 class="card-title">{{truncateText this.Meta_title 30}}</h6>
-                            <p class="card-text">{{truncateText this.Meta_description 100}}</p>
+                            <h6 class="card-title">{{truncateText this.Meta_title 50}}</h6>
+                            <p class="card-text">{{truncateText this.Meta_description 150}}</p>
                             <div class="date">
                                 <div>{{formatDate this.Date}}</div>
                             </div>
@@ -164,15 +162,15 @@
         <h5 class="title font-weight-bold">Du lịch</h5>
         <div id="article_outer">
             {{#if firstNewsRecentTravelNews}}
-            <a href="/news/{{firstNewsRecentTravelNews.Id_News}}">
+            <a href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}">
                 <img src="/imgs/home/suôi thầu.jpg">
             </a>
             {{/if}}
             <div class="article-title">
                 {{#if firstNewsRecentTravelNews}}
-                <a class="article-title-content" href="/news/{{firstNewsRecentTravelNews.Id_News}}">
-                    <h3>{{truncateText firstNewsRecentTravelNews.Meta_title 30}}</h3>
-                    <p>{{truncateText firstNewsRecentTravelNews.Meta_description 100}}</p>
+                <a class="article-title-content" href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}">
+                    <h3>{{truncateText firstNewsRecentTravelNews.Meta_title 70}}</h3>
+                    <p>{{truncateText firstNewsRecentTravelNews.Meta_description 130}}</p>
                     <p class="date">
                         {{formatDate firstNewsRecentTravelNews.Date}}
                     </p>
@@ -180,13 +178,15 @@
                 {{/if}}
 
                 <a class="media position-relative" id="article-inner"
-                    href="/news/{{SecondNewsRecentTravelNews.Id_News}}">
+                    href="/news/news?id={{SecondNewsRecentTravelNews.Id_News}}">
                     {{#if SecondNewsRecentTravelNews}}
                     <div class="media-body article-inner-content-right">
-                        <h5>{{truncateText SecondNewsRecentTravelNews.Meta_title 30}}</h5>
-                        <p>{{truncateText SecondNewsRecentTravelNews.Meta_description 100}}</p>
+                        <h5>{{truncateText SecondNewsRecentTravelNews.Meta_title 40}}</h5>
+                        <p>{{truncateText SecondNewsRecentTravelNews.Meta_description 120}}</p>
                         <p class="date">{{formatDate SecondNewsRecentTravelNews.Date}}</p>
-                    </div>
+                        </div>
+                            
+
                     <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
                     {{/if}}
                 </a>
@@ -202,28 +202,28 @@
         <div id="article_outer">
             <div class="article-title">
                 {{#if firstNewsRecentHealthNews}}
-                <a class="article-title-content" href="/news/{{firstNewsRecentHealthNews.Id_News}}">
-                    <h3>{{truncateText firstNewsRecentHealthNews.Meta_title 30}}</h3>
-                    <p>{{truncateText firstNewsRecentHealthNews.Meta_description 100}}</p>
+                <a class="article-title-content" href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}">
+                    <h3>{{truncateText firstNewsRecentHealthNews.Meta_title 70}}</h3>
+                    <p>{{truncateText firstNewsRecentHealthNews.Meta_description 130}}</p>
                     <p class="date">
                         {{formatDate firstNewsRecentHealthNews.Date}}
                     </p>
                 </a>
                 {{/if}}
                 <a class="media position-relative" id="article-inner"
-                    href="/news/{{SecondNewsRecentHealthNews.Id_News}}">
+                    href="/news/news?id={{SecondNewsRecentHealthNews.Id_News}}">
                     {{#if SecondNewsRecentHealthNews}}
                     <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
                     <div class="media-body article-inner-content-left">
-                        <h5>{{truncateText SecondNewsRecentHealthNews.Meta_title 30}}</h5>
-                        <p>{{truncateText SecondNewsRecentHealthNews.Meta_description 100}}</p>
+                        <h5>{{truncateText SecondNewsRecentHealthNews.Meta_title 40}}</h5>
+                        <p>{{truncateText SecondNewsRecentHealthNews.Meta_description 120}}</p>
                         <p class="date">{{formatDate SecondNewsRecentHealthNews.Date}}</p>
                     </div>
                     {{/if}}
                 </a>
             </div>
             {{#if firstNewsRecentHealthNews}}
-            <a href="/news/{{firstNewsRecentHealthNews.Id_News}}">
+            <a href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}">
                 <img src="/imgs/home/suôi thầu.jpg">
             </a>
             {{/if}}
@@ -244,12 +244,12 @@
             </div>
             <div class="top-article" id="bai-viet-moi-nhat">
                 {{#each latestNewsFromTop2Category}}
-                <a href="/news/{{this.Id_News}}">
+                <a href="/news/news?id={{this.Id_News}}">
                     <div class="articles" id="very-second">
                         <img src="/imgs/detail/suôi thầu.jpg" alt="...">
                         <div class="card-body">
-                            <h5 class="card-title">{{this.Meta_title}}</h5>
-                            <p class="card-text">{{this.Meta_description}}</p>
+                            <h5 class="card-title">{{truncateText this.Meta_title 50}}</h5>
+                            <p class="card-text">{{truncateText this.Meta_description 120}}</p>
                         </div>
                     </div>
                 </a>
@@ -265,20 +265,20 @@
             <h5 class="title font-weight-bold">{{top3Category.CategoryName}}</h5>
             <div class="border-danger">
                 <div class="cata-politic">
-                    <a class="politic-left" href="/news/{{firstNewsFromTop3Category.Id_News}}">
+                    <a class="politic-left" href="/news/news?id={{firstNewsFromTop3Category.Id_News}}">
                         <img src="/imgs/home/donal.jpg">
                         <div class="content">
-                            <h4 class="font-weight-bold">{{truncateText firstNewsFromTop3Category.Meta_title 30}}</h4>
-                            <p>{{truncateText firstNewsFromTop3Category.Meta_description 100}}</p>
+                            <h4 class="font-weight-bold">{{truncateText firstNewsFromTop3Category.Meta_title 100}}</h4>
+                            <p>{{truncateText firstNewsFromTop3Category.Meta_description 200}}</p>
                             <p class="date">{{formatDate firstNewsFromTop3Category.Date}}</p>
                         </div>
                     </a>
 
                     <div class="politic-right">
                         {{#each secondNewsFromTop3Category}}
-                        <a class="politic-article" href="/news/{{this.Id_News}}">
+                        <a class="politic-article" href="/news/news?id={{this.Id_News}}">
                             <div class="content">
-                                <h6>{{truncateText this.Meta_title 30}}</h6> <!-- Tiêu đề bài viết -->
+                                <h6>{{truncateText this.Meta_title 60}}</h6> <!-- Tiêu đề bài viết -->
                                 <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
                                 <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                             </div>
