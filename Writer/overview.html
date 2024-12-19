@@ -12,17 +12,28 @@
 
 <body>
     <header id="menu">
+        <button id="btn-change-acc" onclick="ChangeAccount()">
+            <img src="../Editor/imgs/avt.png">
+        </button>
         <ul>
-            <li>
-                <button id="btn-change-acc" onclick="ChangeAccount()">
-                    <img src="../Editor/imgs/avt.png">
-                </button>
+            <li onclick="ChangeColorBtn(this)" class="active">
+                <a href="#" class="header-item">
+                    <i class="bi bi-graph-up"></i>
+                    Tổng quan
+                </a>
             </li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-file-earmark"></i>Bài viết</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-list-nested"></i>Danh sách bài viết</a></li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-list-ul"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-plus-square"></i>
+                    Tạo bài viết
+                </a>
+            </li>
         </ul>
     </header>
     <div id="ChangeAccount-Div">

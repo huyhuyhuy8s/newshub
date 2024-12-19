@@ -12,27 +12,48 @@
 
 <body>
     <header id="menu">
+        <button id="btn-change-acc" onclick="ChangeAccount()">
+            <img src="./imgs/avt.png">
+        </button>
         <ul>
-            <li>
-                <button id="btn-change-acc" onclick="ChangeAccount()">
-                    <img src="./imgs/avt.png">
-                </button>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-graph-up"></i>
+                    Tổng quan
+                </a>
             </li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-file-earmark"></i>Bài viết</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-list-nested"></i>Danh sách bài viết</a></li>
+            <li onclick="ChangeColorBtn(this)" class="active">
+                <a href="#" class="header-item">
+                    <i class="bi bi-list-ul"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-person-lines-fill"></i>
+                    Danh sách Nhà báo
+                </a>
+            </li>
         </ul>
     </header>
     <div id="ChangeAccount-Div">
         <div class="avt">
             <img src="./imgs/avt.png">
-            <a>John Doe</a>
+            John Doe
         </div>
         <ul>
-            <li><a href="">Thông tin của tôi</a></li>
-            <li><a href="">Chuyển tài khoản</a></li>
+            <li>
+                <a href="">
+                    <i class="bi bi-info-lg"></i>
+                    Thông tin của tôi
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Chuyển tài khoản
+                </a>
+            </li>
         </ul>
         <button class="btn-sign-out" type="submit">Đăng xuất</button>
 
@@ -53,9 +74,6 @@
             <button class="btn">
                 <i class="bi bi-x-circle"></i>
                 Từ chối</button>
-
-
-
         </div>
     </nav>
     <div id="body">
@@ -79,7 +97,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Kiến thức sai lệch</td>
                 </tr>
@@ -91,7 +109,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Tin không đúng sự thật</td>
                 </tr>
@@ -103,7 +121,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Tiêu đề chưa đủ thu hút</td>
                 </tr>
@@ -115,7 +133,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Ảnh không đúng với chủ đề bài viết</td>
                 </tr>
@@ -127,7 +145,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Bài viết sai lỗi chính tả</td>
                 </tr>
@@ -139,7 +157,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Bố cục bài viết không rõ ràng, mạch lạc</td>
                     </td>
@@ -152,7 +170,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Bài viết sai lỗi chính tả</td>
                 </tr>
@@ -164,7 +182,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Ảnh không đúng với chủ đề bài viết</td>
                 </tr>
@@ -176,7 +194,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Bài viết sai lỗi chính tả</td>
                 </tr>
@@ -188,7 +206,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Bài viết sai lỗi chính tả</td>
                 </tr>
@@ -200,7 +218,7 @@
                         <input type="checkbox" name="check_articles">
                     </td>
                     <td>
-                        <span class="btn-cancel">Từ chối</span>
+                        <span class="rejected">Từ chối</span>
                     </td>
                     <td>Ảnh không đúng với chủ đề bài viết</td>
                 </tr>

@@ -12,44 +12,76 @@
 
 <body>
     <header id="menu">
+        <button id="btn-change-acc" onclick="ChangeAccount()">
+            <img src="./imgs/avt.png">
+        </button>
         <ul>
-            <li>
-                <button id="btn-change-acc" onclick="ChangeAccount()">
-                    <img src="./imgs/avt.png">
-                </button>
+            <li onclick="ChangeColorBtn(this)" class="active">
+                <a href="#" class="header-item">
+                    <i class="bi bi-graph-up"></i>
+                    Tổng quan
+                </a>
             </li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    Tạo bài viết</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    Danh sách bài viết</a></li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-list-ul"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-person-lines-fill"></i>
+                    Danh sách Nhà báo
+                </a>
+            </li>
         </ul>
     </header>
+
     <div id="ChangeAccount-Div">
         <div class="avt">
             <img src="./imgs/avt.png">
-            <a>John Doe</a>
+            John Doe
         </div>
         <ul>
-            <li><a href="">Thông tin của tôi</a></li>
-            <li><a href="">Chuyển tài khoản</a></li>
+            <li>
+                <a href="">
+                    <i class="bi bi-info-lg"></i>
+                    Thông tin của tôi
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Chuyển tài khoản
+                </a>
+            </li>
         </ul>
         <button class="btn-sign-out" type="submit">Đăng xuất</button>
 
     </div>
+
     <nav>
-        <div class="search-day">
+        <div class="search">
             <input class="day" type="date" placeholder="Từ ngày">
             <input class="day" type="date" placeholder="Đến ngày">
-            <input class="btn" type="button" value="Tìm kiếm">
+            <button>
+                <i class="bi bi-search"></i>
+            </button>
         </div>
         <div class="filter">
-            <input class="btn" type="button" value="Trong 1 tuần">
-            <input class="btn" type="button" value="Trong 1 tháng">
-            <input class="btn" type="button" value="Trong 1 năm">
+            <button type="button">
+                Trong 1 tuần
+            </button>
+            <button type="button">
+                Trong 1 tháng
+            </button>
+            <button type="button">
+                Trong 1 năm
+            </button>
 
         </div>
     </nav>
+
     <div id="body">
         <div class="title">Tổng quan bài viết</div>
         <div class="content">
@@ -147,16 +179,14 @@
         });
     </script>
     <script>
+        var ChangeAccount_Div = document.getElementById("ChangeAccount-Div");
         function ChangeAccount() {
-            var x = document.getElementById("ChangeAccount-Div");
-            if (x.style.display === "none") {
-                x.style.display = "grid";
+            if (ChangeAccount_Div.style.display === "none") {
+                ChangeAccount_Div.style.display = "grid";
             } else {
-                x.style.display = "none";
+                ChangeAccount_Div.style.display = "none";
             }
         }
-
-
     </script>
     <script>
         function ChangeColorBtn(elem) {

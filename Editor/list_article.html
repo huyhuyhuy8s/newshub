@@ -12,52 +12,78 @@
 
 <body>
     <header id="menu">
+        <button id="btn-change-acc" onclick="ChangeAccount()">
+            <img src="./imgs/avt.png">
+        </button>
         <ul>
-            <li>
-                <button id="btn-change-acc" onclick="ChangeAccount()">
-                    <img src="./imgs/avt.png">
-                </button>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-graph-up"></i>
+                    Tổng quan
+                </a>
             </li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-file-earmark"></i>Bài viết</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    <i class="bi bi-list-nested"></i>Danh sách bài viết</a></li>
+            <li onclick="ChangeColorBtn(this)" class="active">
+                <a href="#" class="header-item">
+                    <i class="bi bi-list-ul"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-person-lines-fill"></i>
+                    Danh sách Nhà báo
+                </a>
+            </li>
         </ul>
     </header>
+
+
     <div id="ChangeAccount-Div">
         <div class="avt">
             <img src="./imgs/avt.png">
-            <a>John Doe</a>
+            John Doe
         </div>
         <ul>
-            <li><a href="">Thông tin của tôi</a></li>
-            <li><a href="">Chuyển tài khoản</a></li>
+            <li>
+                <a href="">
+                    <i class="bi bi-info-lg"></i>
+                    Thông tin của tôi
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Chuyển tài khoản
+                </a>
+            </li>
         </ul>
         <button class="btn-sign-out" type="submit">Đăng xuất</button>
 
     </div>
+
     <nav>
         <div class="search">
             <input type="text" placeholder="Nhập tin cần tìm...">
             <button type="button">
-                <i class="bi bi-search"></i></button>
+                <i class="bi bi-search"></i>
+            </button>
         </div>
         <div class="filter">
-            <button class="btn">
+            <button>
                 <i class="bi bi-arrow-clockwise"></i>
-                Chờ duyệt</button>
-            <button class="btn">
+                Chờ duyệt
+            </button>
+            <button>
                 <i class="bi bi-check2-all"></i>
-                Đã đăng</button>
-            <button class="btn">
+                Đã đăng
+            </button>
+            <button>
                 <i class="bi bi-x-circle"></i>
-                Từ chối</button>
-
-
-
+                Từ chối
+            </button>
         </div>
     </nav>
+
     <div id="body">
         <table width="100%">
             <thead>

@@ -14,32 +14,56 @@
 
 <body>
     <header id="menu">
+        <button id="btn-change-acc" onclick="ChangeAccount()">
+            <img src="../Editor/imgs/avt.png">
+        </button>
         <ul>
-            <li>
-                <button id="btn-change-acc" onclick="ChangeAccount()">
-                    <img src="../Editor/imgs/avt.png">
-                </button>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-graph-up"></i>
+                    Tổng quan
+                </a>
             </li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">Tổng quan</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    Tạo bài viết</a></li>
-            <li onclick="ChangeColorBtn(this)"><a href="#" class="header-item">
-                    Danh sách bài viết</a></li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-list-ul"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)" class="active">
+                <a href="#" class="header-item">
+                    <i class="bi bi-plus-square"></i>
+                    Tạo bài viết
+                </a>
+            </li>
         </ul>
     </header>
     <div id="ChangeAccount-Div">
         <div class="avt">
             <img src="../Editor/imgs/avt.png">
-            <a>John Doe</a>
+            John Doe
         </div>
         <ul>
-            <li><a href="">Thông tin của tôi</a></li>
-            <li><a href="">Chuyển tài khoản</a></li>
+            <li>
+                <a href="">
+                    <i class="bi bi-info-lg"></i>
+                    Thông tin của tôi
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Chuyển tài khoản
+                </a>
+            </li>
         </ul>
         <button class="btn-sign-out" type="submit">Đăng xuất</button>
 
     </div>
     <nav>
+        <div class="filter">
+
+        </div>
         <div class="filter">
             <button class="btn">
                 Lưu bản nháp</button>
@@ -48,7 +72,6 @@
             <button class="btn">
                 <i class="bi bi-floppy"></i>
                 Lưu</button>
-
         </div>
     </nav>
     <div id="body">
