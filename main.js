@@ -230,7 +230,7 @@ app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
 app.use('/admin', adminRouter);
 
-app.use('/dashboard', adminRouter);
+// app.use('/dashboard', adminRouter);
 app.use('/editor', editorRouter);
 app.use('/writer', writerRouter);
 
