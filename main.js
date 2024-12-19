@@ -127,7 +127,7 @@ app.engine('hbs', engine({
 
             return `${diffDays} ngày trước`;
         },
-        formatCountDaysRegisterAccountEditorAndWriter: function(dateString) {
+        formatCountDaysRegisterAccountEditorAndWriter: function (dateString) {
             const dateRegister = new Date(dateString);
             const today = new Date();
             const diffTime = Math.abs(today - dateRegister);
@@ -135,20 +135,20 @@ app.engine('hbs', engine({
             return diffDays;
         },
 
-        formatCountDaysExpiredAccountEditorAndWriter: function(dateString) {
+        formatCountDaysExpiredAccountEditorAndWriter: function (dateString) {
             const dateRegister = new Date(dateString);
             const expirationDate = new Date(dateRegister);
             expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cộng thêm 1 năm
-        
+
             // Định dạng ngày theo dd/mm/yyyy
             const day = expirationDate.getDate().toString().padStart(2, '0');
             const month = (expirationDate.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
             const year = expirationDate.getFullYear();
-        
+
             return `${day}/${month}/${year}`; // Trả về định dạng ngày hết hạn
         },
 
-        formatCountDaysRegisterAccount: function(dateRegisterString, dateExpiredString) {
+        formatCountDaysRegisterAccount: function (dateRegisterString, dateExpiredString) {
             const dateRegister = new Date(dateRegisterString);
             const dateExpired = new Date(dateExpiredString);
             const today = new Date();
@@ -183,17 +183,6 @@ app.engine('hbs', engine({
 app.use(async function (req, res, next) {
     try {
         const categories = await categoryService.findAllActive();
-
-        // // Tạo một bản sao của categories để xử lý log
-        // const categoriesForLog = categories.map(category => ({
-        //     Name: category.Name,
-        //     Status: category.Status[0],
-        //     // Chuyển SubCategories thành string trên cùng một hàng
-        //     SubCategories: `[${category.SubCategories.map(sub =>
-        //         `{${sub.Name}}`
-        //     ).join(', ')}]`
-        // }));
-        // console.log('Categories loadedddd:', categoriesForLog);
 
         if (!categories || categories.length === 0) {
             console.log('No categories found');
