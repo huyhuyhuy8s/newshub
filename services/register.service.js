@@ -33,7 +33,7 @@ export default {
             const ids = await db('User').insert(entity);
 
             // Tạo Subcriber
-            await this.addSubcriber(newId);
+            // await this.addSubcriber(newId);
             return ids[0];
         } catch (error) {
             console.error('Registration error:', error);
@@ -42,35 +42,35 @@ export default {
     },
 
 
-    async addSubcriber(userId) {
-        try {
-            // Lấy ID Subcriber lớn nhất hiện tại
-            const lastSubcriber = await db('Subcriber')
-                .orderBy('Id_Subcriber', 'desc')
-                .first();
+    // async addSubcriber(userId) {
+    //     try {
+    //         // Lấy ID Subcriber lớn nhất hiện tại
+    //         const lastSubcriber = await db('Subcriber')
+    //             .orderBy('Id_Subcriber', 'desc')
+    //             .first();
 
-            let newSubcriberId;
-            if (!lastSubcriber) {
-                newSubcriberId = 'SUBC0001';
-            } else {
-                const lastNumber = parseInt(lastSubcriber.Id_Subcriber.slice(4));
-                newSubcriberId = `SUBC${String(lastNumber + 1).padStart(4, '0')}`;
-            }
+    //         let newSubcriberId;
+    //         if (!lastSubcriber) {
+    //             newSubcriberId = 'SUBC0001';
+    //         } else {
+    //             const lastNumber = parseInt(lastSubcriber.Id_Subcriber.slice(4));
+    //             newSubcriberId = `SUBC${String(lastNumber + 1).padStart(4, '0')}`;
+    //         }
 
-            const dateRegister = new Date();
-            const dateExpired = new Date(dateRegister);
-            dateExpired.setDate(dateExpired.getDate() + 7); // Ngày hết hạn là 7 ngày sau
+    //         const dateRegister = new Date();
+    //         const dateExpired = new Date(dateRegister);
+    //         dateExpired.setDate(dateExpired.getDate() + 7); // Ngày hết hạn là 7 ngày sau
 
-            // Thêm Subcriber vào database
-            await db('Subcriber').insert({
-                Id_Subcriber: newSubcriberId,
-                Id_User: userId,
-                Date_register: dateRegister,
-                Date_expired: dateExpired
-            });
-        } catch (error) {
-            console.error('Error adding subcriber:', error);
-            throw error;
-        }
-    }
+    //         // Thêm Subcriber vào database
+    //         await db('Subcriber').insert({
+    //             Id_Subcriber: newSubcriberId,
+    //             Id_User: userId,
+    //             Date_register: dateRegister,
+    //             Date_expired: dateExpired
+    //         });
+    //     } catch (error) {
+    //         console.error('Error adding subcriber:', error);
+    //         throw error;
+    //     }
+    // }
 }

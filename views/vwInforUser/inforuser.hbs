@@ -61,7 +61,7 @@
                             <p>Đã là thành viên trong</p>
                             <span class="number">
                                 {{#if userInfo.subcriber.Date_register}}
-                                {{formatCountDaysRegisterAccount userInfo.subcriber.Date_register}} ngày
+                                {{formatCountDaysRegisterAccount userInfo.subcriber.Date_register userInfo.subcriber.Date_expired}} ngày
                                 {{else}}
                                 0 ngày
                                 {{/if}}

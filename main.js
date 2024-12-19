@@ -122,11 +122,30 @@ app.engine('hbs', engine({
             
             return `${diffDays} ngày trước`;
         },
-        formatCountDaysRegisterAccount: function(dateString) {
-            const dateRegister = new Date(dateString);
+        // formatCountDaysRegisterAccount: function(dateString) {
+        //     const dateRegister = new Date(dateString);
+        //     const today = new Date();
+        //     const diffTime = Math.abs(today - dateRegister);
+        //     const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        //     return diffDays;
+        // },
+        formatCountDaysRegisterAccount: function(dateRegisterString, dateExpiredString) {
+            const dateRegister = new Date(dateRegisterString);
+            const dateExpired = new Date(dateExpiredString);
             const today = new Date();
-            const diffTime = Math.abs(today - dateRegister);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        
+            let diffDays;
+        
+            if (dateExpired > today) {
+                // Nếu ngày hết hạn sau ngày hiện tại
+                const diffTime = Math.abs(today - dateRegister);
+                diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Tính số ngày từ ngày đăng ký đến hôm nay
+            } else {
+                // Nếu ngày hết hạn trước ngày hiện tại
+                const diffTime = Math.abs(dateExpired - dateRegister);
+                diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Tính số ngày từ ngày đăng ký đến ngày hết hạn
+            }
+        
             return diffDays;
         },
         formatDayExpiredAccount: function(dateString) {

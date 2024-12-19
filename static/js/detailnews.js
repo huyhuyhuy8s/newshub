@@ -13,7 +13,6 @@ document.getElementById('submitComment').addEventListener('click', async () => {
     const userName = document.getElementById('userName').value;
     
 
-
     if (comment.trim() === '') {
         alert('Vui lòng nhập bình luận!');
         return;
