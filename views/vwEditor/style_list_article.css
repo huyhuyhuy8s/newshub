@@ -1,0 +1,75 @@
+@import "./styleModerator.css";
+
+#body {
+    margin: 0 80px;
+
+    table {
+
+        border-collapse: collapse;
+        border-spacing: 1em;
+        border-radius: 5px;
+
+        thead {
+            background-color: var(--grey);
+
+            th {
+                padding: 10px;
+            }
+
+        }
+
+        tbody {
+            border: 1px solid var(--grey);
+
+            td {
+                text-align: center;
+                padding: 10px;
+            }
+
+            .title {
+                text-align: left;
+                margin: 10px;
+            }
+
+            tr {
+                border-bottom: 1px solid var(--grey);
+            }
+
+            tr:hover {
+                background-color: var(--alternate-grey);
+                color: var(--white);
+                cursor: pointer;
+            }
+
+            span {
+                background-color: var(--green);
+                border-radius: 5px;
+                padding: 0 10px;
+                display: inline-block;
+                width: 75px;
+                color: var(--white);
+                height: 2em;
+                line-height: 2em;
+            }
+
+            input[type='checkbox'] {
+                width: 2em;
+                height: 2em;
+            }
+
+            .pending {
+                background-color: var(--grey);
+                color: var(--black);
+            }
+
+            .rejected {
+                background-color: var(--crimson);
+            }
+
+        }
+
+
+    }
+
+
+}

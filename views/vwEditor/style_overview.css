@@ -1,0 +1,61 @@
+@import "./styleModerator.css";
+
+
+#body {
+    margin: 0 75px;
+
+    .title {
+        font-size: 35px;
+        color: var(--red);
+        font-weight: bold;
+        font-style: var(--text-fam);
+    }
+
+    .content {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 2em;
+
+        .graph {
+            grid-column: 1 / span 4;
+            width: 100%;
+        }
+
+
+        .figure {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2em;
+
+            .data-article {
+                padding: 10px;
+                border-radius: 15px;
+                border: 1px solid var(--grey);
+
+                .center {
+                    display: flex;
+                    gap: 8em;
+                    font-size: 38px;
+                    color: var(--red);
+                    font-weight: bold;
+                    display: flex;
+                    justify-content: space-between;
+
+                    i {
+                        color: var(--black);
+                        border: 1px solid var(--grey);
+                        border-radius: 10px;
+                        padding: 3px;
+
+                    }
+                }
+
+                .date-from::after {
+                    content: " - ";
+                }
+            }
+
+        }
+    }
+
+}

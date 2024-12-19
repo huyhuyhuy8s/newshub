@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>List of Editor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style_list_writer.css">
+</head>
+
+<body>
+    <header id="menu">
+        <button id="btn-change-acc" onclick="ChangeAccount()">
+            <img src="./imgs/avt.png">
+        </button>
+        <ul>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-graph-up"></i>
+                    Tổng quan
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)">
+                <a href="#" class="header-item">
+                    <i class="bi bi-list-ul"></i>
+                    Danh sách bài viết
+                </a>
+            </li>
+            <li onclick="ChangeColorBtn(this)" class="active">
+                <a href="#" class="header-item">
+                    <i class="bi bi-person-lines-fill"></i>
+                    Danh sách Nhà báo
+                </a>
+            </li>
+        </ul>
+    </header>
+    <div id="ChangeAccount-Div">
+        <div class="avt">
+            <img src="./imgs/avt.png">
+            John Doe
+        </div>
+        <ul>
+            <li>
+                <a href="">
+                    <i class="bi bi-info-lg"></i>
+                    Thông tin của tôi
+                </a>
+            </li>
+            <li>
+                <a href="">
+                    <i class="bi bi-arrow-left-right"></i>
+                    Chuyển tài khoản
+                </a>
+            </li>
+        </ul>
+        <button class="btn-sign-out" type="submit">Đăng xuất</button>
+
+    </div>
+    <nav>
+        <div class="search">
+            <input type="text" placeholder="Nhập tác giả cần tìm...">
+            <button type="button">
+                <i class="bi bi-search"></i></button>
+        </div>
+    </nav>
+    <div id="body" class="moderator-list">
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tác giả</th>
+                    <th>Bài viết đã duyệt</th>
+                    <th>Tổng số bình luận</th>
+                    <th>Hoạt động gần đây</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>Võ Hải</td>
+                    <td>4/10</td>
+                    <td>15</td>
+                    <td>12/11/2024</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script>
+        function ChangeAccount() {
+            var x = document.getElementById("ChangeAccount-Div");
+            if (x.style.display === "none") {
+                x.style.display = "grid";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+
+    </script>
+    <script>
+        function ChangeColorBtn(elem) {
+            var a = document.getElementsByTagName('li')
+            for (i = 0; i < a.length; i++) {
+                a[i].classList.remove('active');
+            }
+            elem.classList.add('active');
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5./dist/jquery.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
+        integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.3/dist/js/bootstrap.min.js"
+        integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+"
+        crossorigin="anonymous"></script>
+    <script src="../ChuyenMuc/scriptMain.js"></script>
+</body>
+
+</html>
