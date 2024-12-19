@@ -53,6 +53,7 @@ router.get('/:categoryId/:subCategoryId', async function (req, res) {
         // const categoryId = req.params.categoryId;
         const subCategoryId = req.params.subCategoryId;
         
+        
         // Lấy thông tin subcategory
         const subcategory = await categoryService.findSubCategoryById(subCategoryId);
         if (!subcategory) {

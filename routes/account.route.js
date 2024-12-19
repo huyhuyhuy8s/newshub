@@ -4,11 +4,9 @@ import moment from 'moment';
 import session from 'express-session';
 import loginService from '../services/login.service.js';
 import registerService from '../services/register.service.js';
-
 import nodemailer from 'nodemailer';
 
 
-import userService from '../services/user.service.js';
 
 const router = express.Router();
 
@@ -33,14 +31,11 @@ router.get('/otp', function (req, res) {
 });
 
 
-router.post('/login', async function (req, res) {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    console.log('Login attempt:', { email, password });
 
     try {
-        const result = await loginService.validateUser(email, password);
-        // console.log('Login result:', result);
-
+        const result = await loginService.validateUser(email, password); // Sử dụng loginService để xác thực
         if (result.error) {
             return res.render('vwAccount/login', {
                 layout: 'account',
@@ -48,18 +43,19 @@ router.post('/login', async function (req, res) {
             });
         }
 
-        req.session.auth = true;
-        req.session.authUser = result.user;
-        res.redirect('/');
-
-    } catch (err) {
-        console.error('Login error:', err);
-        res.render('vwAccount/login', {
+        req.session.auth = true; // Đánh dấu người dùng đã đăng nhập
+        req.session.authUser = result.user; // Lưu thông tin người dùng vào session
+        //console.log('User logged in:', req.session.authUser); // Log thông tin người dùng
+        return res.redirect('/'); // Chuyển hướng đến trang chính
+    } catch (error) {
+        console.error('Login error:', error);
+        return res.render('vwAccount/login', {
             layout: 'account',
             error_message: 'Có lỗi xảy ra, vui lòng thử lại!'
         });
     }
 });
+
 
 
 
@@ -107,67 +103,8 @@ router.get('/logout', function (req, res) {
     });
 });
 
-// router.get('/otp', function (req, res) {
-//     res.render('vwAccount/otp');
-// });
 
 
-
-
-// router.get('/login', function (req, res) {
-//   res.render('vwAccount/login');
-// });
-
-// router.post('/login', async function (req, res) {
-//   const user = await userService.findByUsername(req.body.username);
-//   if (!user) {
-//     return res.render('vwAccount/login', {
-//       has_errors: true
-//     });
-//   }
-
-//   if (!bcrypt.compareSync(req.body.password, user.password)) {
-//     return res.render('vwAccount/login', {
-//       has_errors: true
-//     });
-//   }
-
-//   req.session.authUser = user;
-//   req.session.auth = true;
-//   const retUrl = req.session.retUrl || '/';
-//   req.session.retUrl = null;
-//   res.redirect(retUrl);
-// });
-
-// router.get('/is-available', async function (req, res) {
-//   const username = req.query.username;
-//   const ret = await userService.findByUsername(username);
-//   if (!ret) {
-//     return res.json(true);
-//   }
-//   res.json(false);
-// });
-
-// import { isAuth } from '../middleware/auth.node.js';
-
-// router.get('/profile', isAuth, function (req, res) {
-//   res.render('vwAccount/profile', {
-//     user: req.session.authUser,
-//   });
-// });
-
-// router.get('/update-password', isAuth, function (req, res) {
-//   res.render('vwAccount/update-password', {
-//     user: req.session.authUser,
-//   });
-// });
-
-// router.post('/logout', isAuth, function (req, res) {
-//   req.session.auth = false;
-//   req.session.authUser = null;
-//   req.session.retUrl = null;
-//   res.redirect('/');
-// })
 
 
 export default router;

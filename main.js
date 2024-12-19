@@ -11,6 +11,7 @@ import categoryRouter from './routes/category.route.js';
 import detailNewsRouter from './routes/detailnews.route.js';
 import homeRouter from './routes/home.route.js';
 import searchnewsRouter from './routes/searchnews.route.js';
+import inforUserRouter from './routes/inforuser.route.js';
 import moment from 'moment';
 
 const app = express();
@@ -72,6 +73,14 @@ app.engine('hbs', engine({
             return `Ngày đăng: ${day}/${month}/${year}`;
         },
 
+        formatDateInfor: (date) => {
+            const d = new Date(date);
+            const year = d.getFullYear();
+            const month = (d.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
+            const day = d.getDate().toString().padStart(2, '0');
+            return `${year}-${month}-${day}`; // Định dạng theo YYYY-MM-DD
+        },
+
         // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
         truncateText: (text, length) => {
             if (text.length <= length) return text;
@@ -113,6 +122,22 @@ app.engine('hbs', engine({
             
             return `${diffDays} ngày trước`;
         },
+        formatCountDaysRegisterAccount: function(dateString) {
+            const dateRegister = new Date(dateString);
+            const today = new Date();
+            const diffTime = Math.abs(today - dateRegister);
+            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        },
+        formatDayExpiredAccount: function(dateString) {
+            const d = new Date(dateString);
+            const day = d.getDate().toString().padStart(2, '0');
+            const month = (d.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
+            const year = d.getFullYear();
+            const hours = d.getHours().toString().padStart(2, '0');
+            const minutes = d.getMinutes().toString().padStart(2, '0');
+            return `${day}/${month}/${year} ${hours}:${minutes}`; // Định dạng theo dd/mm/yyyy hh:mm
+        }
     },
 }));
 
@@ -191,6 +216,7 @@ app.use('/category', categoryRouter);
 app.use('/account', accountRouter);
 app.use('/news', detailNewsRouter);
 app.use('/search', searchnewsRouter);
+app.use('/inforuser', inforUserRouter);
 
 // Server setup
 app.listen(3000, () => {

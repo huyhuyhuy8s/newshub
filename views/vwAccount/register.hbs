@@ -1,61 +1,37 @@
-{{!--
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link rel="stylesheet" href="./account.css">
-    <title>Đăng ký</title>
-</head>
-
-<body>
-    <div id="center-form">
-        <div class="container">
-            <div class="wrap"> --}}
-                <form action="/account/register" method="post">
-                    <h2>Đăng ký</h2>
-                    <!-- <img src="./hinhanh/logokonen2.png" alt="" class="logo"> -->
-                    <div class="information">
-                        <input type="text" name="name" maxlength="10" placeholder="Họ và tên" required>
-                        <input type="email" name="email" placeholder="Email" required>
-                        <input placeholder="Ngày sinh" name="dob" class="textbox-n" type="text"
-                            onfocus="(this.type='date')" onblur="(this.type='text')" required />
-                        <input type="password" name="password" placeholder="Mật khẩu" required>
-                        <input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
-                    </div>
-                    {{#if error_message}}
-                    <div class="error-message">
-                        {{error_message}}
-                    </div>
-                    {{/if}}
-                    {{!-- <div class="active-button">
-                        <p>Tạo tài khoản</p>
-                    </div> --}}
-
-                    <button type="submit" style="display: none;" id="submitBtn"></button>
-                    <!-- Div gốc kích hoạt submit -->
-                    <div class="active-button" onclick="document.getElementById('submitBtn').click()">
-                        <p>Tạo tài khoản</p>
-                    </div>
-
-                    </button>
-                    <div class="active-button google">
-                        <img src="../../imgs/account/Google__G__logo.svg.webp" alt="">
-                        <p>Tạo tài khoản bằng Google</p>
-                    </div>
-                    <div class="active-button facebook">
-                        <img src="../../imgs/account/Facebook_Logo_Secondary.png" alt="">
-                        <p>Tạo tài khoản bằng Facebook</p>
-                    </div>
-                    <a href="/account/login" class="login"><strong>Đăng nhập!</strong></a>
-                </form>
-                {{!--
-            </div>
-        </div>
+<form action="/account/register" method="post">
+    <h2>Đăng ký</h2>
+    <!-- <img src="./hinhanh/logokonen2.png" alt="" class="logo"> -->
+    <div class="information">
+        <input type="text" name="name" maxlength="10" placeholder="Họ và tên" required>
+        <input type="email" name="email" placeholder="Email" required>
+        <input placeholder="Ngày sinh" name="dob" class="textbox-n" type="text" onfocus="(this.type='date')"
+            onblur="(this.type='text')" required />
+        <input type="password" name="password" placeholder="Mật khẩu" required>
+        <input type="password" name="confirm_password" placeholder="Nhập lại mật khẩu" required>
     </div>
-</body>
+    {{#if error_message}}
+    <div class="error-message">
+        {{error_message}}
+    </div>
+    {{/if}}
+    {{!-- <div class="active-button">
+        <p>Tạo tài khoản</p>
+    </div> --}}
 
-</html> --}}
+    <button type="submit" style="display: none;" id="submitBtn"></button>
+    <!-- Div gốc kích hoạt submit -->
+    <div class="active-button" onclick="document.getElementById('submitBtn').click()">
+        <p>Tạo tài khoản</p>
+    </div>
+
+    </button>
+    <div class="active-button google">
+        <img src="../../imgs/account/Google__G__logo.svg.webp" alt="">
+        <p>Tạo tài khoản bằng Google</p>
+    </div>
+    <div class="active-button facebook">
+        <img src="../../imgs/account/Facebook_Logo_Secondary.png" alt="">
+        <p>Tạo tài khoản bằng Facebook</p>
+    </div>
+    <a href="/account/login" class="login"><strong>Đăng nhập!</strong></a>
+</form>

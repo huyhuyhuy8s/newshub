@@ -17,34 +17,10 @@ const searchService = {
             throw error;
         }
     },
-    async searchNewsByTagAndDate(tag, startDate, endDate) {
-        try {
-            // Bắt đầu truy vấn
-            const query = db('News as n')
-                .join('News_Tag as nt', 'n.Id_News', 'nt.Id_News')
-                .join('Tag as t', 'nt.Id_Tag', 't.Id_Tag');
+   
 
-            // Lọc theo tag nếu có
-            if (tag) {
-                query.where('t.Id_Tag', tag);
-            }
 
-            // Lọc theo ngày nếu có
-            if (startDate) {
-                query.where('n.Date', '>=', startDate);
-            }
-            if (endDate) {
-                query.where('n.Date', '<=', endDate);
-            }
 
-            // Thực thi truy vấn và trả về kết quả
-            const results = await query.select('n.*'); // Chọn các trường cần thiết từ bảng News
-            return results;
-        } catch (error) {
-            console.error('Database error:', error);
-            throw error;
-        }
-    },
     async getAllCategories() {
         return await db('Category')
             .where('Status', 1) // Lấy tất cả các category có Status = 1
@@ -110,16 +86,17 @@ const searchService = {
             if (endDate) {
                 query.where('n.Date', '<=', endDate);
             }
-
+            query.where('n.Id_Status', 'STS0001'); // Điều kiện Status
             // Thực thi truy vấn và trả về kết quả
-            const results = await query.select('n.*').distinct(); // Thêm distinct để loại bỏ bản sao
-            console.log('Query Results:', results); // Log kết quả
+            const results = await query.select('n.*').distinct().limit(15); // Thêm distinct để loại bỏ bản sao
+            //console.log('Query Results:', results); // Log kết quả
             return results;
         } catch (error) {
             console.error('Error searching news by filters:', error);
             throw error; // Ném lại lỗi để xử lý ở nơi gọi phương thức này
         }
-    }
+    },
+
 };
 
 export default searchService;

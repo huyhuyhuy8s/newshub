@@ -2,9 +2,9 @@ import express from 'express';
 import newsService from '../services/detailnews.service.js';
 const router = express.Router();
 
-router.get('/:id', async function (req, res) {
+router.get('/news', async function (req, res) {
     try {
-        const newsId = req.params.id;
+        const newsId = req.query.id;
 
         // Tăng lượt xem cho bài viết
         await newsService.incrementViewCount(newsId);

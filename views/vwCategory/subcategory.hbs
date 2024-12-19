@@ -9,7 +9,7 @@
     <div class="parent1">
         <div class="child1">
             {{#with firstNews}}
-            <a class="div1" href="/news/{{Id_News}}">
+            <a class="div1" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                 <img alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
                 <h4>{{truncateText Meta_title 30}}</h4>
                 <p>{{truncateText Meta_description 100}}</p>
@@ -19,7 +19,7 @@
 
             <div class="triple-highlight">
                 {{#each topNews}}
-                <a class="highlight-element" href="/news/{{Id_News}}">
+                <a class="highlight-element" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
                     <p>{{truncateText Meta_title 30}}</p>
                     <h6>{{formatDate Date}}</h6>
@@ -30,7 +30,7 @@
 
         <div class="child2">
             {{#each otherNews}}
-            <a class="div2" href="/news/{{Id_News}}">
+            <a class="div2" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                 <div class="infor">
                     <h4>{{formatDate Date}}</h4>
                     <h6>{{truncateText Meta_title 30}}</h6>
@@ -44,7 +44,7 @@
 
     <div class="parent3">
         {{#each recentNews}}
-        <a href="/news/{{Id_News}}" class="post">
+        <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{timeAgo Date}}</p>
             <div class="content">
                 <h4>{{truncateText Meta_title 30}}</h4>
