@@ -7,7 +7,7 @@ const router = express.Router();
 
 // Route để lấy thông tin người dùng
 router.get('/inforuser', async (req, res) => {
-    const { id_user, name, email, birthday } = req.query; 
+    const { id_user, name, email, birthday } = req.query;
     if (!req.session.auth) {
         return res.redirect('/account/login');
     }
@@ -17,6 +17,9 @@ router.get('/inforuser', async (req, res) => {
         if (!userInfo) {
             return res.status(404).send('User not found');
         }
+        console.log('email1:', email);
+        
+        // Truyền userInfo vào view
         res.render('vwInforUser/inforuser', { userInfo, layout: false, id_user, name, email, birthday });
     } catch (error) {
         console.error('Error fetching user info:', error);
@@ -27,6 +30,7 @@ router.get('/inforuser', async (req, res) => {
 // Route để cập nhật thông tin người dùng
 router.post('/update', async (req, res) => {
     const { name, email, dob, password } = req.body;
+    console.log('email:', email);
 
     try {
         if (!req.session.auth) {
@@ -48,17 +52,38 @@ router.post('/update', async (req, res) => {
 
         // Kiểm tra xem có trường nào để cập nhật không
         if (Object.keys(updatedUser).length === 0) {
-            return;
+            return res.status(400).send('No fields to update');
         }
 
         await inforUserService.updateUser(userId, updatedUser);
         req.session.authUser = { ...req.session.authUser, ...updatedUser };
 
-
+        // Chuyển hướng về trang thông tin người dùng
         res.redirect(`/inforuser/inforuser?id_user=${userId}&name=${name}&email=${email}&birthday=${dob}`);
     } catch (error) {
         console.error('Error updating user info:', error);
         res.status(500).send('Có lỗi xảy ra, vui lòng thử lại! (route)'); // Trả về lỗi
+    }
+});
+
+// Route để gia hạn thành viên
+router.post('/renew', async (req, res) => {
+    if (!req.session.auth) {
+        return res.status(401).send('Unauthorized');
+    }
+
+    const userId = req.session.authUser.Id_User;
+
+
+    try {
+        // Cập nhật thuộc tính Request thành 1
+        await inforUserService.renewSubscription(userId);
+        const userInfo = await inforUserService.getUserInfo(userId);
+        res.redirect(`/inforuser/inforuser?id_user=${userId}&name=${userInfo.Name}&email=${userInfo.Email}&birthday=${userInfo.Birthday}`);
+       
+    } catch (error) {
+        console.error('Error renewing subscription:', error);
+        res.status(500).send('Có lỗi xảy ra khi gia hạn!');
     }
 });
 

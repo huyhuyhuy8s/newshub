@@ -1,22 +1,51 @@
 import db from '../utils/db.js';
 
 const newsService = {
-    async findById(newsId) {
+    // async findById(newsId) {
+    //     try {
+    //         const news = await db('News as n')
+    //             .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
+    //             .join('Category as c', 's.Id_Category', 'c.Id_Category')
+    //             .join('Writer as w', 'n.Id_Writer', 'w.Id_Writer')
+    //             .join('User as u', 'w.Id_User', 'u.Id_User')
+    //             .where('n.Id_News', newsId)
+    //             .andWhere('n.Id_Status', 'STS0001')
+    //             .select(
+    //                 'n.*',
+    //                 's.Name as SubCategoryName',
+    //                 'c.Name as CategoryName',
+    //                 'u.Name as WriterName'
+    //             )
+    //             .first();
+            
+    //         return news;
+    //     } catch (error) {
+    //         console.error('Database error:', error);
+    //         throw error;
+    //     }
+    // },
+
+    async findById(newsId, isSubscriber) {
         try {
-            const news = await db('News as n')
+            const query = db('News as n')
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
                 .join('Category as c', 's.Id_Category', 'c.Id_Category')
                 .join('Writer as w', 'n.Id_Writer', 'w.Id_Writer')
                 .join('User as u', 'w.Id_User', 'u.Id_User')
                 .where('n.Id_News', newsId)
-                .andWhere('n.Id_Status', 'STS0001')
-                .select(
-                    'n.*',
-                    's.Name as SubCategoryName',
-                    'c.Name as CategoryName',
-                    'u.Name as WriterName'
-                )
-                .first();
+                .andWhere('n.Id_Status', 'STS0001');
+    
+            // Nếu không phải là subscriber, chỉ lấy bài viết không phải Premium
+            if (!isSubscriber) {
+                query.andWhere('n.Premium', 0);
+            }
+    
+            const news = await query.select(
+                'n.*',
+                's.Name as SubCategoryName',
+                'c.Name as CategoryName',
+                'u.Name as WriterName'
+            ).first();
             
             return news;
         } catch (error) {

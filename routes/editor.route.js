@@ -1,9 +1,11 @@
 import db from '../utils/db.js';
+import editorService from '../services/editor.service.js';
 import express from 'express';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/home', async (req, res) => {
+    const id_user = req.query;
     res.render('vwEditor/overview', { layout: 'moderator' });
 });
 

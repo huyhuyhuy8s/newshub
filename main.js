@@ -15,6 +15,10 @@ import inforUserRouter from './routes/inforuser.route.js';
 import adminRouter from './routes/admin.route.js';
 import editorRouter from './routes/editor.route.js';
 import writerRouter from './routes/writer.route.js';
+import { isAdmin, isEditor, isWriter } from './auth/auth.js'; 
+
+import writerService from './services/writer.service.js';
+
 import moment from 'moment';
 
 
@@ -76,6 +80,20 @@ app.engine('hbs', engine({
             return `Ngày đăng: ${day}/${month}/${year}`;
         },
 
+        formatDateAndTime: (date) => {
+            const d = new Date(date);
+            const day = d.getDate().toString().padStart(2, '0');
+            const month = (d.getMonth() + 1).toString().padStart(2, '0');
+            const year = d.getFullYear();
+            const hours = d.getHours().toString().padStart(2, '0');
+            const minutes = d.getMinutes().toString().padStart(2, '0');
+            return `${day}/${month}/${year} ${hours}:${minutes}`; // Định dạng theo dd/mm/yyyy hh:mm
+        },
+
+        formatTitleStatus: (id_status) => {
+            return writerService.findStatus(id_status).Title_Status;
+        },
+
         formatDateInfor: (date) => {
             const d = new Date(date);
             const year = d.getFullYear();
@@ -127,7 +145,7 @@ app.engine('hbs', engine({
 
             return `${diffDays} ngày trước`;
         },
-        formatCountDaysRegisterAccountEditorAndWriter: function(dateString) {
+        formatCountDaysRegisterAccountEditorAndWriter: function (dateString) {
             const dateRegister = new Date(dateString);
             const today = new Date();
             const diffTime = Math.abs(today - dateRegister);
@@ -135,37 +153,36 @@ app.engine('hbs', engine({
             return diffDays;
         },
 
-        formatCountDaysExpiredAccountEditorAndWriter: function(dateString) {
+        formatCountDaysExpiredAccountEditorAndWriter: function (dateString) {
             const dateRegister = new Date(dateString);
             const expirationDate = new Date(dateRegister);
             expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Cộng thêm 1 năm
-        
+
             // Định dạng ngày theo dd/mm/yyyy
             const day = expirationDate.getDate().toString().padStart(2, '0');
             const month = (expirationDate.getMonth() + 1).toString().padStart(2, '0'); // Thêm 1 vì tháng bắt đầu từ 0
             const year = expirationDate.getFullYear();
-        
+
             return `${day}/${month}/${year}`; // Trả về định dạng ngày hết hạn
         },
 
-        formatCountDaysRegisterAccount: function(dateRegisterString, dateExpiredString) {
+
+        formatCountDaysRegisterAndExpirationSubcriber: function (dateRegisterString, dateExpiredString) {
             const dateRegister = new Date(dateRegisterString);
             const dateExpired = new Date(dateExpiredString);
             const today = new Date();
 
-            let diffDays;
+            // Tính số ngày giữa ngày đăng ký và ngày hết hạn
+            const diffTime = Math.abs(dateExpired - dateRegister);
+            const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
 
-            if (dateExpired > today) {
-                // Nếu ngày hết hạn sau ngày hiện tại
-                const diffTime = Math.abs(today - dateRegister);
-                diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Tính số ngày từ ngày đăng ký đến hôm nay
-            } else {
-                // Nếu ngày hết hạn trước ngày hiện tại
-                const diffTime = Math.abs(dateExpired - dateRegister);
-                diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); // Tính số ngày từ ngày đăng ký đến ngày hết hạn
+            // Kiểm tra nếu ngày hiện tại nằm giữa ngày đăng ký và ngày hết hạn
+            if (today >= dateRegister && today <= dateExpired) {
+                const diffCurrentToRegister = Math.ceil(Math.abs(today - dateRegister) / (1000 * 60 * 60 * 24));
+                return diffCurrentToRegister; // Trả về số ngày từ ngày đăng ký đến ngày hiện tại
             }
 
-            return diffDays;
+            return totalDays; // Trả về tổng số ngày giữa ngày đăng ký và ngày hết hạn
         },
         formatDayExpiredAccount: function (dateString) {
             const d = new Date(dateString);
@@ -175,7 +192,14 @@ app.engine('hbs', engine({
             const hours = d.getHours().toString().padStart(2, '0');
             const minutes = d.getMinutes().toString().padStart(2, '0');
             return `${day}/${month}/${year} ${hours}:${minutes}`; // Định dạng theo dd/mm/yyyy hh:mm
-        }
+        },
+        formatDateNewsManagementAdmin: (date) => {
+            const d = new Date(date);
+            const day = d.getDate().toString().padStart(2, '0');
+            const month = (d.getMonth() + 1).toString().padStart(2, '0');
+            const year = d.getFullYear();
+            return `${day}/${month}/${year}`;
+        },
     },
 }));
 
@@ -183,17 +207,6 @@ app.engine('hbs', engine({
 app.use(async function (req, res, next) {
     try {
         const categories = await categoryService.findAllActive();
-
-        // // Tạo một bản sao của categories để xử lý log
-        // const categoriesForLog = categories.map(category => ({
-        //     Name: category.Name,
-        //     Status: category.Status[0],
-        //     // Chuyển SubCategories thành string trên cùng một hàng
-        //     SubCategories: `[${category.SubCategories.map(sub =>
-        //         `{${sub.Name}}`
-        //     ).join(', ')}]`
-        // }));
-        // console.log('Categories loadedddd:', categoriesForLog);
 
         if (!categories || categories.length === 0) {
             console.log('No categories found');
@@ -217,6 +230,8 @@ app.use(function (req, res, next) {
 });
 
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -228,11 +243,11 @@ app.use('/account', accountRouter);
 app.use('/news', detailNewsRouter);
 app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
-app.use('/admin', adminRouter);
 
-app.use('/dashboard', adminRouter);
-app.use('/editor', editorRouter);
-app.use('/writer', writerRouter);
+// app.use('/admin', adminRouter);
+app.use('/admin', isAdmin, adminRouter); // 20/12
+app.use('/editor', isEditor, editorRouter);
+app.use('/writer', isWriter, writerRouter);
 
 
 // Server setup

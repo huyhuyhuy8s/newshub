@@ -6,10 +6,25 @@ router.get('/news', async function (req, res) {
     try {
         const newsId = req.query.id;
 
+        const isSubscriber = req.session.isSubscriber;
+
         // Tăng lượt xem cho bài viết
         await newsService.incrementViewCount(newsId);
 
-        const news = await newsService.findById(newsId);
+        // const news = await newsService.findById(newsId);
+        // Tìm bài viết với thông tin về subscriber
+        const news = await newsService.findById(newsId, isSubscriber);
+        if (!news) {
+            //return res.status(404).send('Bài viết nay không có quyền truy cập.');
+            return res.render('vwDetail/defaultnews', {
+                layout: 'main',
+                message: 'Để xem được bài viết, vui lòng đăng ký thành viên.'
+            });
+        }
+
+     
+
+
         const tags = await newsService.getNewsTags(newsId);
         const comments = await newsService.getCommentsByNewsId(newsId);
         const relatedNews = await newsService.getRelatedNewsByTag(newsId);
@@ -34,7 +49,9 @@ router.get('/news', async function (req, res) {
             topViewedNews: topViewedNews,
             topViewedLastWeek: topViewedLastWeek,
             userId: userId,
-            userName: userName
+            userName: userName,
+            
+            isSubscriber: isSubscriber
         });
 
       
