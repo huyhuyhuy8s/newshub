@@ -4,7 +4,8 @@ import express from 'express';
 
 const router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/home', async (req, res) => {
+    const id_user = req.query;
     res.render('vwEditor/overview', { layout: 'moderator' });
 });
 

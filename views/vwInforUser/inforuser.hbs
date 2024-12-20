@@ -42,7 +42,7 @@
 
                 <button type="submit" class="save-btn">Lưu thông tin</button>
             </form>
-            <p></p>
+            <br>
             <button id="back-btn" class="back-btn">Trở về trang chủ</button>
         </div>
 
@@ -61,7 +61,8 @@
                             <p>Đã là thành viên trong</p>
                             <span class="number">
                                 {{#if userInfo.subcriber.Date_register}}
-                                {{formatCountDaysRegisterAccount userInfo.subcriber.Date_register userInfo.subcriber.Date_expired}} ngày
+                                {{formatCountDaysRegisterAccount userInfo.subcriber.Date_register
+                                userInfo.subcriber.Date_expired}} ngày
                                 {{else}}
                                 0 ngày
                                 {{/if}}
