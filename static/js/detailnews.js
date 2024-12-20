@@ -29,9 +29,9 @@ document.getElementById('submitComment').addEventListener('click', async () => {
             body: JSON.stringify({ newsId, userId, comment }),
         });
 
-        console.log('Response status:', response.status); // Log mã trạng thái
+       // console.log('Response status:', response.status); // Log mã trạng thái
         const responseBody = await response.json(); // Chỉ đọc body một lần
-        console.log('Response body:', responseBody); // Log nội dung phản hồi
+        // console.log('Response body:', responseBody); // Log nội dung phản hồi
 
         if (response.ok) {
             alert(responseBody.message);

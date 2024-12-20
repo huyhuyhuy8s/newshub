@@ -27,6 +27,7 @@ router.get('/inforuser', async (req, res) => {
 // Route để cập nhật thông tin người dùng
 router.post('/update', async (req, res) => {
     const { name, email, dob, password } = req.body;
+    console.log('name:', name)
 
     try {
         if (!req.session.auth) {
