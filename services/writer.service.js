@@ -4,9 +4,11 @@ import moment from 'moment';
 const writerService = {
     async findStatus(id_status) {
         try {
-            return db('status_of_news').where('Id_Status', id_status).first();
+            return await db('status_of_news').where('Id_Status', id_status).first();
         }
-        catch { }
+        catch (error) {
+            console.error("status not found", error);
+        }
     },
     async findWriter(id_user) {
         try {
@@ -39,6 +41,7 @@ const writerService = {
 
             // console.log(news);
             const ret = await db('News').insert(news);
+            console.log(ret.Content);
             console.log(ret, 'succ');
         }
         catch (error) {

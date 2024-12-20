@@ -13,7 +13,6 @@ router.get('/home', async (req, res) => {
 
 router.get('/list-post', async (req, res) => {
     const posts = await writerService.findAllPost(await writerService.findWriter(id_user));
-    console.log(posts);
     res.render('vwWriter/list_post', { layout: 'moderator', posts: posts });
 });
 
@@ -23,7 +22,7 @@ router.get('/create-article', async (req, res) => {
 
 router.post('/create-article', async (req, res) => {
     let news = {
-        Id_Writer: await writerService.findWriter(id_user),
+        Id_Writer: writerService.findWriter(id_user),
         Id_Status: "STS0001",
         Content: req.body.save,
         Title: req.body.title,

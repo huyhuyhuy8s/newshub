@@ -14,11 +14,59 @@
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
             // Your account includes a free trial of TinyMCE premium features
             // Try the most popular premium features until Dec 21, 2024:
-            'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf'
+            'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf', 'textpattern',
         ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | image ',
         tinycomments_mode: 'embedded',
         tinycomments_author: 'Author name',
+        //image field
+        images_file_types: 'jpg,svg,webp,png', //choose type of image extension
+        file_picker_types: 'file image media', //type of media picker
+        block_unsupported_drop: true, //block all unsupported type image
+        file_picker_types: 'image',
+        /* and here's our custom image picker*/
+        file_picker_callback: (cb, value, meta) => {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            input.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    /*
+                      Note: Now we need to register the blob in TinyMCEs image blob
+                      registry. In the next release this part hopefully won't be
+                      necessary, as we are looking to handle it internally.
+                    */
+                    const id = 'blobid' + (new Date()).getTime();
+                    const blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                    const base64 = reader.result.split(',')[1];
+                    const blobInfo = blobCache.create(id, file, base64);
+                    blobCache.add(blobInfo);
+
+                    /* call the callback and populate the Title field with the file name */
+                    cb(blobInfo.blobUri(), { title: file.name });
+                });
+                reader.readAsDataURL(file);
+            });
+
+            input.click();
+        },
+        textpattern_patterns: [
+            { start: '*', end: '*', format: 'italic' },
+            { start: '**', end: '**', format: 'bold' },
+            { start: '#', format: 'h1' },
+            { start: '##', format: 'h2' },
+            { start: '###', format: 'h3' },
+            { start: '####', format: 'h4' },
+            { start: '#####', format: 'h5' },
+            { start: '######', format: 'h6' },
+            { start: '1. ', cmd: 'InsertOrderedList' },
+            { start: '* ', cmd: 'InsertUnorderedList' },
+            { start: '- ', cmd: 'InsertUnorderedList' }
+        ],
         mergetags_list: [
             { value: 'First.Name', title: 'First Name' },
             { value: 'Email', title: 'Email' },
@@ -52,7 +100,30 @@
     </nav>
     <div id="body">
         <div class="creat">
-            <textarea id="article" placeholder="Thêm nội dung vào đây..."></textarea>
+            <textarea id="article" placeholder="Thêm nội dung vào đây...">
+# OS Security
+
+1. Trusted Computer Base (TCB):
+
+- Complete mediation:
+
+- Tamper-proof: Chống bị xâm phạm
+	- Protect-mode
+	- Filesystem
+	- User mode | System mode
+- Correctness: Đảm bảo sai thì cũng không ảnh hưởng gì tới máy (Defensive Coding, Secure coding)
+2. Linux known OS vulnerabilities:
+- Environment variables: Biến môi trường là các biến mà máy sẽ sử dụng trong các chương trình (Ex: Path là địa chỉ dẫn tới user, %appdata% là địa chỉ dẫ tới local roaming etc...) thường thì sẽ được viết hoa\
+Trường hợp trong linux thì có thể dùng các lệnh như `whereis` để tìm được đỉa chỉ lưu của câu lệnh / biến của hệ thống.
+- Vị trí của các biến môi trường: phía trước stack frame của hàm main sẽ là nơi lưu trữ của các biến môi trường.\
+![screenshot](stack.png)\
+Khai báo biến trong linux bằng [tên biến]=[giá trị biến]\
+Ex: `MYVAR=/bin/sh`\
+Nhưng biến này sẽ không xuất hiện trong chương trình khi chạy\
+Và biến được khai báo trong chương trình sẽ không xuất hiện trong linux\
+Để biến có thể xuất hiện thì dùng lệnh (trong gdb)\
+`Export MYVAR = /bin/sh`\
+            </textarea>
             <textarea name="save" id="save"></textarea>
         </div>
         <div class="nav">
