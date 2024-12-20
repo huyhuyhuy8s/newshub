@@ -272,6 +272,10 @@ nav {
             .rejected {
                 background-color: var(--crimson);
             }
+
+            .check-later {
+                background-color: var(--blue);
+            }
         }
     }
 }

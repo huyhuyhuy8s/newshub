@@ -1,15 +1,15 @@
 import db from '../utils/db.js';
+import moment from 'moment';
 
 const writerService = {
-    // async findPostPerMonth() {
-    //     try {
-    //         const result = await db('Editor').count('Id_News as total');
-    //         return result[0].total
-    //     }
-    //     catch (error) {
-    //         console.error("Lỗi khi đếm số lượng bản ghi:", error);
-    //     }
-    // },
+    async findStatus(id_status) {
+        try {
+            return await db('status_of_news').where('Id_Status', id_status).first();
+        }
+        catch (error) {
+            console.error("status not found", error);
+        }
+    },
     async findWriter(id_user) {
         try {
             const writer = await db('writer').where('Id_User', id_user).first();
@@ -19,16 +19,38 @@ const writerService = {
             console.error("Khong tim thay writer");
         }
     },
-    // async addData(news) {
-    //     try {
-    //         let value = {
-    //             a: news,
+    async addData(news) {
+        try {
+            const lastNews = await db('News')
+                .orderBy('Id_News', 'desc')
+                .first();
 
-    //         }
-    //         db('news').insert()
-    //         return "add data successed";
-    //     }
-    //     catch { }
-    // }
+            // Tạo ID mới
+            let newId;
+            if (!lastNews) {
+                newId = 'NEWS0001';
+            } else {
+                const lastNumber = parseInt(lastNews.Id_News.slice(4));
+                newId = `NEWS${String(lastNumber + 1).padStart(4, '0')}`;
+            }
+
+            news.Id_News = newId;
+            const currentDate = moment();
+            news.Date = currentDate.toDate();
+            news.Views = 0;
+
+            // console.log(news);
+            const ret = await db('News').insert(news);
+            console.log(ret.Content);
+            console.log(ret, 'succ');
+        }
+        catch (error) {
+            console.error(error);
+        }
+    },
+    async findAllPost(id_writer) {
+        console.log(id_writer);
+        return await db("News").where('Id_Writer', id_writer);
+    }
 }
 export default writerService

@@ -16,6 +16,9 @@ import adminRouter from './routes/admin.route.js';
 import editorRouter from './routes/editor.route.js';
 import writerRouter from './routes/writer.route.js';
 import { isAdmin, isEditor, isWriter } from './auth/auth.js'; 
+
+import writerService from './services/writer.service.js';
+
 import moment from 'moment';
 
 
@@ -76,7 +79,7 @@ app.engine('hbs', engine({
             const year = d.getFullYear();
             return `Ngày đăng: ${day}/${month}/${year}`;
         },
-        
+
         formatDateAndTime: (date) => {
             const d = new Date(date);
             const day = d.getDate().toString().padStart(2, '0');
@@ -85,6 +88,10 @@ app.engine('hbs', engine({
             const hours = d.getHours().toString().padStart(2, '0');
             const minutes = d.getMinutes().toString().padStart(2, '0');
             return `${day}/${month}/${year} ${hours}:${minutes}`; // Định dạng theo dd/mm/yyyy hh:mm
+        },
+
+        formatTitleStatus: (id_status) => {
+            return writerService.findStatus(id_status).Title_Status;
         },
 
         formatDateInfor: (date) => {
@@ -160,21 +167,21 @@ app.engine('hbs', engine({
         },
 
 
-        formatCountDaysRegisterAndExpirationSubcriber: function(dateRegisterString, dateExpiredString) {
+        formatCountDaysRegisterAndExpirationSubcriber: function (dateRegisterString, dateExpiredString) {
             const dateRegister = new Date(dateRegisterString);
             const dateExpired = new Date(dateExpiredString);
             const today = new Date();
-        
+
             // Tính số ngày giữa ngày đăng ký và ngày hết hạn
             const diffTime = Math.abs(dateExpired - dateRegister);
             const totalDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-        
+
             // Kiểm tra nếu ngày hiện tại nằm giữa ngày đăng ký và ngày hết hạn
             if (today >= dateRegister && today <= dateExpired) {
                 const diffCurrentToRegister = Math.ceil(Math.abs(today - dateRegister) / (1000 * 60 * 60 * 24));
                 return diffCurrentToRegister; // Trả về số ngày từ ngày đăng ký đến ngày hiện tại
             }
-        
+
             return totalDays; // Trả về tổng số ngày giữa ngày đăng ký và ngày hết hạn
         },
         formatDayExpiredAccount: function (dateString) {
