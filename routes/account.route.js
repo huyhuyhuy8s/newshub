@@ -4,6 +4,9 @@ import moment from 'moment';
 import session from 'express-session';
 import loginService from '../services/login.service.js';
 import registerService from '../services/register.service.js';
+import accountService from '../services/account.service.js';
+
+import randomstring from 'randomstring';
 import nodemailer from 'nodemailer';
 
 
@@ -42,10 +45,25 @@ router.post('/login', async (req, res) => {
                 error_message: result.message
             });
         }
-
+        const user = result.user; // 20/12
         req.session.auth = true; // Đánh dấu người dùng đã đăng nhập
         req.session.authUser = result.user; // Lưu thông tin người dùng vào session
-        //console.log('User logged in:', req.session.authUser); // Log thông tin người dùng
+
+
+        const roles = await accountService.getUserRoles(user.Id_User);
+        
+        req.session.auth = true;
+        req.session.authUser = {
+            ...user,
+            ...roles // Thêm các quyền vào authUser
+        };
+
+        // Kiểm tra xem User có Subscriber không 20/12
+        const subscriber = await accountService.getSubscriberInfoByUserId(user.Id_User);
+        req.session.isSubscriber = !!subscriber; // true nếu có subscriber, false nếu không
+ 
+
+
         return res.redirect('/'); // Chuyển hướng đến trang chính
     } catch (error) {
         console.error('Login error:', error);
@@ -98,7 +116,7 @@ router.post('/register', async function (req, res) {
 router.get('/logout', function (req, res) {
     req.session.auth = false;
     req.session.authUser = null;
-    req.session.destroy(function(err) {
+    req.session.destroy(function (err) {
         res.redirect('/account/login');
     });
 });

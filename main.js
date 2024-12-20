@@ -15,7 +15,7 @@ import inforUserRouter from './routes/inforuser.route.js';
 import adminRouter from './routes/admin.route.js';
 import editorRouter from './routes/editor.route.js';
 import writerRouter from './routes/writer.route.js';
-
+import { isAdmin, isEditor, isWriter } from './auth/auth.js'; 
 import moment from 'moment';
 
 
@@ -223,6 +223,8 @@ app.use(function (req, res, next) {
 });
 
 
+
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -234,10 +236,11 @@ app.use('/account', accountRouter);
 app.use('/news', detailNewsRouter);
 app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
-app.use('/admin', adminRouter);
 
-app.use('/editor', editorRouter);
-app.use('/writer', writerRouter);
+// app.use('/admin', adminRouter);
+app.use('/admin', isAdmin, adminRouter); // 20/12
+app.use('/editor', isEditor, editorRouter);
+app.use('/writer', isWriter, writerRouter);
 
 
 // Server setup
