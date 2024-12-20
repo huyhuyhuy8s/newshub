@@ -5,88 +5,7 @@
 <link rel="stylesheet" href="/css/writer/style_create.css">
 {{/fillHtmlContent}}
 
-{{> headerWriter}}
-
-<nav>
-    <div class="search">
-        <h2>Tiêu đề bài viết</h2>
-        <input type="text" name="" id="title" placeholder="Tiêu đề bài viết">
-    </div>
-    <div class="filter">
-        <button class="btn">
-            <i class="bi bi-floppy"></i>
-            Lưu bản nháp</button>
-        <button class="btn">
-            <i class="bi bi-eye"></i>
-            Xem bài viết</button>
-        <button class="btn">
-            <i class="bi bi-cloud-upload"></i>
-            Đăng tải</button>
-    </div>
-</nav>
-<div id="body">
-    <div class="creat">
-        <textarea id="article" placeholder="Thêm nội dung vào đây..."></textarea>
-    </div>
-    <div class="nav">
-        <div class="state">
-            <h3>Thuộc tính bài viết</h3>
-            <div>
-                <label for="hot" style="user-select: none;">Bài viết Premium</label>
-                <input type="checkbox" id="premium" name="hot" value="true">
-            </div>
-        </div>
-        <div class="category">
-            <h3>Chuyên mục</h3>
-            <div>
-                <select name="category" id="category">
-                    <option value="none" disabled selected>Chọn chuyên mục</option>
-                    <option value="CAT0001">Thời sự</option>
-                </select>
-            </div>
-
-            <h3>Chuyên mục cấp 2</h3>
-            <select name="category" id="category">
-                <option value="none" disabled selected>Chọn chuyên mục</option>
-                <option value="SUB0001">SUB0001</option>
-            </select>
-        </div>
-        <div class="tags">
-            <h3>Tags</h3>
-            <input type="text" name="" id="tags" placeholder="#tags">
-            <button class="btn-add">Thêm</button>
-        </div>
-        <div class="meta-title">
-            <h3>Tóm tắt tiêu đề</h3>
-            <input type="text" name="" id="meta-title" placeholder="meta-title">
-            <button class="btn-add">Thêm</button>
-        </div>
-        <div class="meta-description">
-            <h3>Tóm tắt nội dung</h3>
-            <input type="text" name="" id="meta-description" placeholder="meta-description">
-            <button class="btn-add">Thêm</button>
-        </div>
-    </div>
-</div>
-<script>
-    function ChangeAccount() {
-        var x = document.getElementById("ChangeAccount-Div");
-        if (x.style.display === "none") {
-            x.style.display = "grid";
-        } else {
-            x.style.display = "none";
-        }
-    }
-</script>
-<script>
-    function ChangeColorBtn(elem) {
-        var a = document.getElementsByTagName('li')
-        for (i = 0; i < a.length; i++) {
-            a[i].classList.remove('active');
-        }
-        elem.classList.add('active');
-    }
-</script>
+{{#fillHtmlContent 'js'}}
 <script>
     tinymce.init({
         selector: '#article',
@@ -107,6 +26,71 @@
         ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
     });
 </script>
-</body>
+<script src="/js/create_article.js"></script>
+{{/fillHtmlContent}}
 
-</html>
+{{> headerWriter}}
+
+<form action="" method="post">
+
+    <nav>
+        <div class="search">
+            <h2>Tiêu đề bài viết</h2>
+            <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết">
+        </div>
+        <div class="filter">
+            <button class="btn" type="submit" onclick="submitPost()">
+                <i class="bi bi-floppy"></i>
+                Lưu bản nháp</button>
+            <button class="btn" type="submit" onclick="submitPost()">
+                <i class="bi bi-eye"></i>
+                Xem bài viết</button>
+            <button class="btn" type="submit" onclick="submitPost()">
+                <i class="bi bi-cloud-upload"></i>
+                Đăng tải</button>
+        </div>
+    </nav>
+    <div id="body">
+        <div class="creat">
+            <textarea id="article" placeholder="Thêm nội dung vào đây..."></textarea>
+            <textarea name="save" id="save"></textarea>
+        </div>
+        <div class="nav">
+            <div class="state">
+                <h3>Thuộc tính bài viết</h3>
+                <div>
+                    <label for="premium" style="user-select: none;">Bài viết Premium</label>
+                    <input type="checkbox" id="premium" name="premium" value="true">
+                </div>
+            </div>
+            <div class="category">
+                <h3>Chuyên mục</h3>
+                <div>
+                    <select name="category" id="category">
+                        <option value="none" disabled selected>Chọn chuyên mục</option>
+                        <option value="CAT0001">Thời sự</option>
+                    </select>
+                </div>
+
+                <h3>Chuyên mục cấp 2</h3>
+                <select name="sub_category" id="sub-category">
+                    <option value="none" disabled selected>Chọn chuyên mục</option>
+                    <option value="SUB0001">SUB0001</option>
+                </select>
+            </div>
+            <div class="tags">
+                <h3>Tags</h3>
+                <input type="text" name="tags" id="tags" placeholder="#tags">
+            </div>
+            <div class="meta-title">
+                <h3>Tóm tắt tiêu đề</h3>
+                <input type="text" name="meta_title" id="meta-title" placeholder="meta-title">
+            </div>
+            <div class="meta-description">
+                <h3>Tóm tắt nội dung</h3>
+                <input type="text" name="meta_description" id="meta-description" placeholder="meta-description">
+            </div>
+        </div>
+    </div>
+
+</form>
