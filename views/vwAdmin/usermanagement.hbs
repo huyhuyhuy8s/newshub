@@ -6,7 +6,7 @@
 
 <div class="container">
     <h1>Quản lý thành viên</h1>
-    <div class="filter-section">
+    {{!-- <div class="filter-section">
         <!-- Tìm kiếm -->
         <div class="filter-item">
             <label for="search-input">Tìm kiếm</label>
@@ -50,7 +50,7 @@
                 Thêm thành viên
             </button>
         </div>
-    </div>
+    </div> --}}
 
     <table class="report-table">
         <thead>
@@ -60,7 +60,7 @@
                 <th>Email</th>
                 <th>Công việc</th>
                 <th>Trạng thái tài khoản</th>
-                <th>Hoạt Động</th>
+        
                 <th>Chi Tiết</th>
             </tr>
         </thead>
@@ -71,8 +71,22 @@
                 <td>{{formatDateInfor this.Birthday}}</td>
                 <td>{{this.Email}}</td>
                 <td>{{this.Role}}</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
+                <td>
+                    {{#if (eq this.Role 'Biên tập viên')}}
+                    Còn hoạt động
+                    {{else if (eq this.Role 'Nhà báo')}}
+                    Còn hoạt động
+                    {{else if (eq this.Role 'Thành viên')}}
+                    Còn hoạt động
+                    {{else if (eq this.Role 'Quản trị viên')}}
+                    Còn hoạt động
+                    {{else if (eq this.Role 'Chưa cấp quyền')}}
+                    Không hoạt động
+
+                    {{/if}}
+
+                </td>
+             
                 <td>
                     <a href="/admin/admininforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
                 </td>
@@ -83,13 +97,13 @@
     </table>
 
 
-    <div class="pagination" id="pagination">
+    {{!-- <div class="pagination" id="pagination">
         <button class="prev">Prev</button>
         <button class="active">1</button>
         <button>2</button>
         <button>3</button>
         <button class="next">Next</button>
-    </div>
+    </div> --}}
 </div>
 
 <!-- Modal -->

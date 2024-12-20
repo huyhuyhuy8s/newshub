@@ -24,7 +24,7 @@
 
 <div class="container">
     <h1>Quản lý tất cả bài viết</h1>
-    <div class="filter-section">
+    {{!-- <div class="filter-section">
         <!-- Tìm kiếm -->
         <div class="filter-item">
             <label for="search-input">Tìm kiếm</label>
@@ -71,7 +71,7 @@
                 <i class="bi bi-filter"></i>
             </button>
         </div>
-    </div>
+    </div> --}}
     <table class="article-table">
         <thead>
             <tr>
@@ -87,74 +87,70 @@
             </tr>
         </thead>
         <tbody>
+            {{#each newsDetails}}
             <tr>
-                <td>Tháng 5, 2024</td>
-                <td>Lê Minh Huy<br>@johndoe123</td>
-                <td>Thể thao</td>
-                <td>Bóng đá</td>
-                <td>Ronaldo lập kỷ lục hattrick cùng với Messi</td>
-                <td>#ronaldo #messi</td>
-                <td>9999</td>
-                <td><span class="status published" onclick="toggleStatus(this)">Xuất bản</span></td>
-                <td><button class="edit-button">Sửa</button></td>
+                <td>{{formatDateNewsManagementAdmin this.Date}}</td>
+                <!-- Giả sử bạn có helper formatDate để định dạng ngày -->
+                <td>{{this.Pen_Name}}</td>
+                <td>{{this.CategoryName}}</td>
+                <td>{{this.SubCategoryName}}</td>
+                <td>{{this.Title}}</td>
+                <td>
+                    {{#if this.Tags}}
+                    {{this.Tags}} <!-- Hiển thị tên Tag -->
+                    {{else}}
+                    Không có Tag
+                    {{/if}}
+                </td>
+                <td>{{this.Views}}</td>
+             
+                <td>
+                    <select class="status-select" data-id="{{this.Id_News}}">
+                        <option value="" disabled>Chọn trạng thái</option>
+                        <option value="STS0001" {{#if (eq this.Id_Status 'STS0001' )}}selected{{/if}}>Đồng ý</option>
+                        <option value="STS0002" {{#if (eq this.Id_Status 'STS0002' )}}selected{{/if}}>Chưa duyệt</option>
+                        <option value="STS0003" {{#if (eq this.Id_Status 'STS0003' )}}selected{{/if}}>Chưa đạt</option>
+                        <option value="STS0004" {{#if (eq this.Id_Status 'STS0004' )}}selected{{/if}}>Từ chối</option>
+                    </select>
+                </td>
+                <td>
+
+                    <button class="edit-button" data-id="{{this.Id_News}}">Cập nhật</button>
+                </td>
             </tr>
-            <tr>
-                <td>Tháng 5, 2024</td>
-                <td>Lê Minh Huy<br>@johndoe123</td>
-                <td>Thể thao</td>
-                <td>Bóng đá</td>
-                <td>Ronaldo lập kỷ lục hattrick cùng với Messi</td>
-                <td>#ronaldo #worldcup</td>
-                <td>0</td>
-                <td><span class="status draft" onclick="toggleStatus(this)">Draft</span></td>
-                <td><button class="edit-button">Sửa</button></td>
-            </tr>
-            <tr>
-                <td>Tháng 5, 2024</td>
-                <td>Lê Minh Huy<br>@johndoe123</td>
-                <td>Thể thao</td>
-                <td>Bóng đá</td>
-                <td>Ronaldo lập kỷ lục hattrick cùng với Messi</td>
-                <td>#ronaldo #worldcup</td>
-                <td>0</td>
-                <td><span class="status draft" onclick="toggleStatus(this)">Draft</span></td>
-                <td><button class="edit-button">Sửa</button></td>
-            </tr>
-            <tr>
-                <td>Tháng 5, 2024</td>
-                <td>Lê Minh Huy<br>@johndoe123</td>
-                <td>Thể thao</td>
-                <td>Bóng đá</td>
-                <td>Ronaldo lập kỷ lục hattrick cùng với Messi</td>
-                <td>#ronaldo #worldcup</td>
-                <td>0</td>
-                <td><span class="status draft" onclick="toggleStatus(this)">Draft</span></td>
-                <td><button class="edit-button">Sửa</button></td>
-            </tr>
-            <!-- Thêm các hàng khác -->
+            {{/each}}
+
+
+
+
+
         </tbody>
 
     </table>
-    <div class="pagination" id="pagination">
+    {{!-- <div class="pagination" id="pagination">
         <button>1</button>
         <button class="active">2</button>
         <button>3</button>
         <button>4</button>
         <!-- Thêm các nút phân trang -->
-    </div>
+    </div> --}}
 </div>
 
-<!-- Modal -->
+{{!-- <!-- Modal -->
 <div id="confirmation-modal" class="modal">
     <div class="modal-content">
         <p>Bạn chắc chắn có muốn thay đổi?</p>
         <button id="confirm-btn" class="modal-button">Đồng ý</button>
         <button id="cancel-btn" class="modal-button">Hủy</button>
     </div>
-</div>
+</div> --}}
 
 
 <!-- 
 </body>
 
 </html> -->
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/newsmanagement.js"></script>
+{{/fillHtmlContent}}

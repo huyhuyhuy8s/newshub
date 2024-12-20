@@ -26,11 +26,15 @@
         </a>
         <a href="#" class="card" style="background-color: #ffebb8;">
             <span class="card-icon">⏳</span>
-            <span class="card-value">Chờ phê duyệt: {{totalNotAcceptNewCount}}</span>
+            <span class="card-value">Chờ phê duyệt: {{totalPendingNewsCount}}</span>
+        </a>
+        <a href="#" class="card" style="background-color: #eeccf4;">
+            <span class="card-icon">🚫</span>
+            <span class="card-value">Chưa đạt: {{totalNotAcceptNewsCount}}</span>
         </a>
         <a href="#" class="card" style="background-color: #f4cccc;">
             <span class="card-icon">🚫</span>
-            <span class="card-value">Bị từ chối: {{totalNotRefuseNewCount}}</span>
+            <span class="card-value">Bị từ chối: {{totalRefuseNewCount}}</span>
         </a>
     </div>
 
@@ -106,7 +110,7 @@
             labels: labelsPie,
             datasets: [{
                 data: dataPie,
-                backgroundColor:backgroundColors,
+                backgroundColor: backgroundColors,
                 borderWidth: 1,
                 borderColor: '#fff',
             }]
