@@ -44,8 +44,8 @@
 
 #article_list {
     padding-top: 1em;
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     gap: 1em;
     border: 0.1px solid var(--grey);
 
@@ -185,6 +185,10 @@
                     font-size: 11pt;
                 }
             }
+
+            p {
+                padding-top: 0.5em;
+            }
         }
     }
 }
@@ -243,7 +247,7 @@ div.pt-3 h5.font-weight-bold {
                 justify-content: center;
                 gap: 0.5em;
 
-                p{
+                p {
                     padding: 0;
                 }
             }
@@ -263,7 +267,7 @@ div.pt-3 h5.font-weight-bold {
             flex-direction: column;
             gap: 0.5em;
 
-            p{
+            p {
                 padding: 0;
             }
         }
