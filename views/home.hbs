@@ -109,8 +109,8 @@
                         {{#each News234getTopNewsFromTopCategory}}
                         <a class="article" href="/news/news?id={{this.Id_News}}">
                             <div class="content">
-                                <h5>{{truncateText this.Meta_title 50}}</h5> <!-- Tiêu đề bài viết -->
-                                <p>{{truncateText this.Meta_description 200}}</p> <!-- Mô tả bài viết -->
+                                <h5>{{truncateText this.Meta_title 70}}</h5> <!-- Tiêu đề bài viết -->
+                                <p>{{truncateText this.Meta_description 180}}</p> <!-- Mô tả bài viết -->
                                 <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                             </div>
                         </a>
@@ -125,7 +125,7 @@
                     <a class="article-big" href="/news/news?id={{firstNewsgetTopNewsFromTopCategory.Id_News}}">
                         <img src="/imgs/home/donal.jpg">
                         <div class="article-big-content">
-                            <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 50}}</h4>
+                            <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 65}}</h4>
                             <p>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_description 200}}</p>
                             <p class="date">{{formatDate firstNewsgetTopNewsFromTopCategory.Date}}</p>
 
@@ -184,8 +184,8 @@
                         <h5>{{truncateText SecondNewsRecentTravelNews.Meta_title 40}}</h5>
                         <p>{{truncateText SecondNewsRecentTravelNews.Meta_description 120}}</p>
                         <p class="date">{{formatDate SecondNewsRecentTravelNews.Date}}</p>
-                        </div>
-                            
+                    </div>
+
 
                     <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
                     {{/if}}

@@ -2,12 +2,11 @@ import express from 'express';
 import moment from 'moment';
 import adminService from '../services/admin.service.js';
 
+
 const router = express.Router();
 
 router.get("/dashboard", async (req, res) => {
     const { id_user } = req.query;
-
-
 
     const getTotalNewsCount = await adminService.getTotalNewsCount()
     const getTotalUserCount = await adminService.getTotalUserCount()
@@ -136,6 +135,7 @@ router.post("/subcriber/update", async (req, res) => {
                 newExpirationDate.setDate(newExpirationDate.getDate() + 7); // Cộng thêm 7 ngày
 
                 // Cập nhật ngày hết hạn trong database
+                await adminService.updateSubscriberRequest(id_user, 0);
                 await adminService.updateSubscriberExpirationDate(subscriberInfo.Id_Subcriber, newExpirationDate);
                 // console.log('Cập nhật ngày hết hạn thành công:', newExpirationDate);
                 res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng về trang thông tin của Subscriber

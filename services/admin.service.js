@@ -469,6 +469,16 @@ const adminService = {
             console.error("Lỗi khi cập nhật trạng thái bài viết:", error);
             throw error;
         }
+    },
+    async updateSubscriberRequest(id_user, requestValue) {
+        try {
+            await db('Subcriber')
+                .where('Id_User', id_user)
+                .update({ Request: requestValue }); // Cập nhật Request
+        } catch (error) {
+            console.error("Lỗi khi cập nhật thuộc tính Request của Subscriber:", error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
     }
 
 }

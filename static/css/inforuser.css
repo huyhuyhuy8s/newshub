@@ -139,6 +139,11 @@ h3 {
 .stop-work {
     background: #ffc107;
 }
+.stop-work:disabled {
+    background-color: #cccccc; /* Màu nền khi bị vô hiệu hóa */
+    color: #666666; /* Màu chữ khi bị vô hiệu hóa */
+    cursor: not-allowed; /* Thay đổi con trỏ khi không thể nhấn */
+}
 
 .verify {
     background: #28a745;
