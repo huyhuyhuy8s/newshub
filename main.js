@@ -18,10 +18,42 @@ import writerRouter from './routes/writer.route.js';
 
 import writerService from './services/writer.service.js';
 
+import jwt from 'jsonwebtoken';
+import cors from 'cors';
 import moment from 'moment';
 
+const privateKey = `
+-----BEGIN RSA PRIVATE KEY-----
+MIIEpAIBAAKCAQEAtHNFkvSd+v/lKkep+4eQJlJsqnAU/3F9DRZW+7oUGPbvUXsH
+M5RIP6vdDOobbMp3vBqUqxA7zQC+v9007jfFSSVu4CMPgocSymAem2oWtGysrZh9
+GHNWVZn92UqjRnc0A3UHBbdwhm4tEmzABRw64HApZ9wGw7Qb+UoUN9vCMnQv8zMd
+p6cSTlWI7SLH/nrrRZK3aIzeGUyGXTa6QmJbf873zsFLLdthPQgh+2npK/oSpI33
+wgZJYjXLuxbHPzXLWwWqpfZ+9ebPSAiekFpQdKmBygMRdkRI0x3PfxTmkP1KUwGX
+9CMT+RuIE8k3T8Mrp9TtH0+esV0a2i9heutazwIDAQABAoIBABiiB7muNNwCZKkn
+NpgZ2F6y2mylzOgAo7POpznJHAc7EPj21MkrZnVyo5lTYpew8olguNy6junxk8Mj
+PPTWnigvDk9V2enVQIZpz/kikU44lkCYVAirbfn/gdH7c1siLfKEM4eJ6WLLKtHy
+EIBiFdN03Dd2Ugy9yyJ2WgOKDJzQWOMrlBT5JFGebVahntcg3amQQJx0zOWph7s7
+Pmt85pn7LAFbDmg/22SlsMrisGtyqPOiBPsWCvXK1VL8S/yd7FKr6dZM9hDzVnEp
+kOFGBSQ6NnBWA29xl0CuB3TCPU8Ul57X5T6hvof5PJgZiIRx9Ibcpc5CBOXi0ze+
+mTpN+jECgYEA+QtBmIX5AM8LQPUTtbPUsuFkFL7uuEyL0Id+rXrXcQDYPQ4jzMoE
+0KQvLp5UOItoI7A87XYiXwLnH0taLLuqUgeDWqChUHS1RoEwidE9cO+iKLWcaA4a
+yIg2g78VzXC+Q2DFb2PoS12GR5vwYgFK1Q3ztBzS7uhgPwMDxu/aDmkCgYEAuX2M
+ffi3QUWtG/n1S3syywWS2ZVO8Mgr8sXPRrke+jWBfnICAZTUQdpfo4VGbogygBAE
+S82I9Ncw+jLHRKvMnPQ7r4DSdR6hsbN4r8wRmLC0Sbd+d2weqirzk9F/oCa+oVwb
+BQl41eSpu8erfUIwskxuz2AGdEmcYoPvMEKUaHcCgYEA41h+OjFbHXzkhhj0NDSF
+IAMXrMScAgyGugdnAhEY6WTfAeWNkt58xMaM9967fZ7to164UAI+4EMzH+NW3201
+z4piQ/JNMLhJ36IB4F3t29I2UzlvHaJ6msOWGHDxA0k/txx5P/WRUnN/KJHXQHBz
+kskYxzxk5omliwBCi3HburkCgYBqXyxFRW9Z+CoYxBQ+UA1FzhFzw6L8g95oH7YJ
+ObohBLQZHio2W/IJPcDg1loYovRK6mR8UAb9WbaVlK8fm2IAlDLyJ28JiSJy9Jf+
+QInKxXLuX1MgCxnevjjnCRombnGduWMpVVA9YR9RN2UJtP6WESzusYOiBmCvQjfV
+tijDawKBgQCpId0OKSgRjrbM79pwsMEfhfZGk1zFLf1CvAGqYjxjlWVNOgzs8Mhp
+NYpOyFPIsHstn+wNcAedSES+Q50WQtOT4LHMd2ArXI/uu+4pKgi5n1bGHNxkX78g
+MIgteUmfJCOYOd5AG5tBYusSO8AvxqUCAckh/jt5q8TJ4sojjds24A==
+-----END RSA PRIVATE KEY-----
+`;
 
 const app = express();
+app.use(cors());
 const __dirname = dirname(fileURLToPath(import.meta.url));
 // Session configuration
 app.set('trust proxy', 1);
@@ -35,9 +67,11 @@ app.use(session({
         maxAge: 3600000,
     },
 }));
-app.use(express.json()); // This allows Express to parse JSON request bodies
+// This allows Express to parse JSON request bodies
+app.use(express.json({ limit: '50mb' }));
+app.use(express.urlencoded({ limit: '50mb', extended: true }));
 // Middleware
-app.use(express.urlencoded({ extended: true }));
+// app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + '/static'));
 app.use('/imgs', express.static(join(__dirname, 'imgs')));
 // Handlebars configuration
@@ -201,6 +235,32 @@ app.engine('hbs', engine({
         },
     },
 }));
+
+
+app.post('/jwt', (req, res) => {
+    // NOTE: Before you proceed with the TOKEN, verify your users' session or access.
+    const payload = {
+        sub: '123', // Unique user id string
+        name: 'John Doe', // Full name of user
+
+        // Optional custom user root path
+        // 'https://claims.tiny.cloud/drive/root': '/johndoe',
+
+        exp: Math.floor(Date.now() / 1000) + (60 * 10) // 10 minutes expiration
+    };
+
+    try {
+        const token = jwt.sign(payload, privateKey, { algorithm: 'RS256' });
+        res.set('content-type', 'application/json');
+        res.status(200);
+        res.send(JSON.stringify({
+            token: token
+        }));
+    } catch (e) {
+        res.status(500);
+        res.send(e.message);
+    }
+});
 
 // Thêm middleware để load categories
 app.use(async function (req, res, next) {

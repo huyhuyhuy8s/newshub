@@ -40,9 +40,10 @@ const writerService = {
             news.Views = 0;
 
             // console.log(news);
+            // console.log(news.Content);
             const ret = await db('News').insert(news);
-            console.log(ret.Content);
-            console.log(ret, 'succ');
+            // console.log(ret.Content);
+            // console.log(ret, 'succ');
         }
         catch (error) {
             console.error(error);

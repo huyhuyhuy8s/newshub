@@ -21,17 +21,22 @@ router.get('/create-article', async (req, res) => {
 });
 
 router.post('/create-article', async (req, res) => {
-    let news = {
-        Id_Writer: writerService.findWriter(id_user),
-        Id_Status: "STS0001",
-        Content: req.body.save,
-        Title: req.body.title,
-        Premium: req.body.premium ? true : false,
-        Id_SubCategory: req.body.sub_category,
-        Meta_title: req.body.meta_title,
-        Meta_description: req.body.meta_description,
-    }
-    writerService.addData(news);
+    const content = req.body.save;
+
+    
+
+    // let news = {
+    //     Id_Writer: writerService.findWriter(id_user),
+    //     Id_Status: "STS0001",
+    //     Content: req.body.save,
+    //     Image: '',
+    //     Title: req.body.title,
+    //     Premium: req.body.premium ? true : false,
+    //     Id_SubCategory: req.body.sub_category,
+    //     Meta_title: req.body.meta_title,
+    //     Meta_description: req.body.meta_description,
+    // }
+    // writerService.addData(news);
 })
 
 router.get('/preview', async (req, res) => {
