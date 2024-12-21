@@ -19,7 +19,7 @@
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
                         <div class="content-grid-head">
-                            <h4>{{truncateText firstNewstopViewedNews.Meta_title 30}}</h4>
+                            <h4>{{truncateText firstNewstopViewedNews.Meta_title 45}}</h4>
                             <!-- Tiêu đề bài viết đầu tiên -->
                             <p>{{truncateText firstNewstopViewedNews.Meta_description 100}}</p>
                             <!-- Mô tả bài viết đầu tiên -->
@@ -37,7 +37,7 @@
                         <a href="/news/{{this.Id_News}}">
                             <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
                             <div class="article-list-content">
-                                <h5>{{truncateText this.Meta_title 30}}</h5> <!-- Tiêu đề bài viết -->
+                                <h5>{{truncateText this.Meta_title 45}}</h5> <!-- Tiêu đề bài viết -->
                                 <p>{{truncateText this.Meta_description 100}}</p> <!-- Mô tả bài viết -->
                                 <p class="date">
                                     {{formatDate this.Date}} <!-- Ngày bài viết -->
@@ -56,7 +56,7 @@
                         {{#each topCategories}}
                         <a class="card-body" href="/news/{{this.latestNews.Id_News}}">
                             <div class="category">{{this.CategoryName}}</div>
-                            <h6 class="card-title">{{truncateText this.latestNews.Meta_title 30}}</h6>
+                            <h6 class="card-title">{{truncateText this.latestNews.Meta_title 45}}</h6>
                             <!-- Tiêu đề bài viết mới nhất -->
                             <p class="card-text">{{truncateText this.latestNews.Meta_description 100}}</p>
                             <!-- Mô tả bài viết -->

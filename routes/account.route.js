@@ -64,7 +64,7 @@ router.post('/register', async function (req, res) {
     const { name, email, password, dob } = req.body;
 
     try {
-     // Chuẩn bị dữ liệu để lưu
+        // Chuẩn bị dữ liệu để lưu
         const entity = {
             Name: name,
             Email: email,
@@ -77,6 +77,7 @@ router.post('/register', async function (req, res) {
         await accountService.add(entity);
 
         // Chuyển đến trang đăng nhập sau khi đăng ký thành công
+        alert('đăng ký thành công');
         res.redirect('/account/login');
 
     } catch (err) {
@@ -90,29 +91,29 @@ router.post('/register', async function (req, res) {
 
 router.post('/otp', (req, res) => {
     const { name, email, password, confirm_password, dob } = req.body;
-        // Kiểm tra password match
-        if (password !== confirm_password) {
-            return res.render('vwAccount/register', {
-                layout: 'account',
-                error_message: 'Mật khẩu nhập lại không khớp!'
-            });
-        }
+    // Kiểm tra password match
+    if (password !== confirm_password) {
+        return res.render('vwAccount/register', {
+            layout: 'account',
+            error_message: 'Mật khẩu nhập lại không khớp!'
+        });
+    }
     // Tạo OTP
     const otp = accountService.generateOTP();
-    
+
     // Lưu OTP vào cache
     otpCache[email] = otp;
 
     // Gửi OTP qua email
     accountService.sendOTP(email, otp);
-    
+
     // Render trang nhập OTP và gửi email tới người dùng
     res.render('vwAccount/otp', {
         layout: 'account',
-        name:name, 
-        email:email,
-        password:password, 
-        dob:dob, 
+        name: name,
+        email: email,
+        password: password,
+        dob: dob,
     });
 
     // Cài đặt thời gian hết hạn cho cookie OTP

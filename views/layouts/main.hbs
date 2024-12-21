@@ -17,9 +17,9 @@
     <div class="card border">
         <header>
             <ul class="left">
-                <li>
+                {{!-- <li>
                     <a href="#"><i class="bi bi-list"></i></a>
-                </li>
+                </li> --}}
 
                 <li>
                     <button type="button" class="search-icon" onclick="searchClick()">
@@ -32,13 +32,17 @@
             </div>
             <ul class="right">
                 {{#if auth}}
-                <li>
-                    <a>Xin chào, {{authUser.Name}}</a>
-                </li>
-                <li>
-                    {{!-- <a href="/account/logout">Đăng xuất</a> --}}
-                    <a href="/account/logout" onclick="handleLogout(event)">Đăng xuất</a>
-                </li>
+                <a href="#">
+                    <li>
+                        Xin chào, {{authUser.Name}}
+                    </li>
+                </a>
+                <a href="/account/logout" onclick="handleLogout(event)">
+                    <li>
+                        Đăng xuất
+                        {{!-- <a href="/account/logout">Đăng xuất</a> --}}
+                    </li>
+                </a>
                 {{else}}
                 <a href="/account/login">
                     <li>

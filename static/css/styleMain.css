@@ -88,7 +88,9 @@ header {
             li {
                 background-color: var(--red);
                 height: var(--signup-signin-lineheight);
-                width: 8em;
+                width: fit-content;
+                padding: 0 1em;
+                border-radius: 5px;
             }
         }
 
@@ -96,7 +98,7 @@ header {
             color: var(--red);
 
             li {
-                background-color: var(--grey);
+                background-color: var(--white);
             }
         }
 
