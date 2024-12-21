@@ -1,0 +1,212 @@
+
+:root {
+    --text-fam: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    --orange: #b1154a;
+    --red: #6e071a;
+    --green: #555;
+    --grey: #e6e8ea;
+    --white: #ffffff;
+    --black: #000000;
+    --border-radius: 15px;
+}
+
+body {
+    font-family: var(--text-fam);
+    background-color: var(--grey);
+    margin: 0;
+    padding: 0;
+}
+
+/* Header */
+.header {
+    display: flex;
+    background-color: var(--white);
+    border-bottom: 2px solid var(--red);
+    padding: 10px 20px;
+}
+
+.header-item {
+    text-decoration: none;
+    color: var(--red);
+    padding: 10px 15px;
+    border-right: 1px solid var(--red);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.header-item:last-child {
+    border-right: none;
+}
+
+.header-item:hover {
+    background-color: #ffe6e6;
+    color: var(--black);
+}
+
+.container {
+    display: flex;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.utility-container {
+    display: flex;
+}
+
+.user-info,
+.moderator-info {
+    display: flex;
+    flex-direction: column;
+    min-width: 750px;
+    margin: 20px auto;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+}
+
+h2,
+h3 {
+    margin: 0 0 20px;
+    color: #333;
+}
+
+.user-stats {
+    display: flex;
+    gap: 10px;
+    /* Khoảng cách giữa các ô */
+}
+
+.stat {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    /* Viền */
+    border-radius: 8px;
+    width: 50%;
+    /* Chiều rộng cho từng ô */
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    margin-bottom: 20px;
+}
+
+.stat-icon h1 {
+    padding: 0 0.2em;
+}
+
+
+.stat-content p {
+    margin: 0;
+    font-size: 14px;
+    color: #333;
+}
+
+.stat-content .number {
+    font-weight: bold;
+    font-size: 20px;
+    color: #000;
+}
+
+.stat-arrow span {
+    font-size: 16px;
+    color: #333;
+}
+
+/* Buttons */
+.stop-work,
+.verify,
+.save-btn {
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+.back-btn {
+    color: #000000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.stop-work {
+    background: #ffc107;
+}
+.stop-work:disabled {
+    background-color: #cccccc; /* Màu nền khi bị vô hiệu hóa */
+    color: #666666; /* Màu chữ khi bị vô hiệu hóa */
+    cursor: not-allowed; /* Thay đổi con trỏ khi không thể nhấn */
+}
+
+.verify {
+    background: #28a745;
+    margin-left: 10px;
+}
+
+.save-btn {
+    background: #007bff;
+}
+
+/* Inputs and Labels */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    color: #333;
+    font-weight: bold;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    background-color: transparent;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Email Verification */
+.email-verification p {
+    background: #28a745;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    p {
+        background-color: #28a745;
+        text-align: center;
+        color: white;
+        padding: 10px;
+    }
+}
+
+.verify {
+    margin-left: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.save-btn {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}

@@ -1,20 +1,24 @@
 import express from 'express';
-
+import bcrypt from 'bcryptjs';
 import moment from 'moment';
 import session from 'express-session';
-
+import loginService from '../services/login.service.js';
+import registerService from '../services/register.service.js';
 import accountService from '../services/account.service.js';
 
-const router = express.Router();
+import randomstring from 'randomstring';
+import nodemailer from 'nodemailer';
 
-var otpCache = {}
+
+
+const router = express.Router();
 
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path'
 const __dirname = dirname(fileURLToPath(import.meta.url));
 router.use(express.static(join(__dirname, '../static')));
 router.use(express.static(join(__dirname, '../imgs')));
-
+// console.log(join(__dirname, '../static'));
 
 
 router.get('/login', function (req, res) {
@@ -30,28 +34,40 @@ router.get('/otp', function (req, res) {
 });
 
 
-router.post('/login', async function (req, res) {
+router.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    console.log('Login attempt:', { email, password });
 
     try {
-        const result = await accountService.validateUser(email, password);
-        // console.log('Login result:', result);
-
+        const result = await loginService.validateUser(email, password); // Sử dụng loginService để xác thực
         if (result.error) {
             return res.render('vwAccount/login', {
                 layout: 'account',
                 error_message: result.message
             });
         }
+        const user = result.user; // 20/12
+        req.session.auth = true; // Đánh dấu người dùng đã đăng nhập
+        req.session.authUser = result.user; // Lưu thông tin người dùng vào session
+
+
+        const roles = await accountService.getUserRoles(user.Id_User);
 
         req.session.auth = true;
-        req.session.authUser = result.user;
-        res.redirect('/');
+        req.session.authUser = {
+            ...user,
+            ...roles // Thêm các quyền vào authUser
+        };
 
-    } catch (err) {
-        console.error('Login error:', err);
-        res.render('vwAccount/login', {
+        // Kiểm tra xem User có Subscriber không 20/12
+        const subscriber = await accountService.getSubscriberInfoByUserId(user.Id_User);
+        req.session.isSubscriber = !!subscriber; // true nếu có subscriber, false nếu không
+
+
+
+        return res.redirect('/'); // Chuyển hướng đến trang chính
+    } catch (error) {
+        console.error('Login error:', error);
+        return res.render('vwAccount/login', {
             layout: 'account',
             error_message: 'Có lỗi xảy ra, vui lòng thử lại!'
         });
@@ -60,8 +76,9 @@ router.post('/login', async function (req, res) {
 
 
 
+
 router.post('/register', async function (req, res) {
-    const { name, email, password, dob } = req.body;
+    const { name, email, password, confirm_password, dob } = req.body;
 
     try {
         // Chuẩn bị dữ liệu để lưu
@@ -74,7 +91,7 @@ router.post('/register', async function (req, res) {
         };
 
         // Lưu vào database
-        await accountService.add(entity);
+        await registerService.add(entity);
 
         // Chuyển đến trang đăng nhập sau khi đăng ký thành công
         alert('đăng ký thành công');
@@ -115,29 +132,10 @@ router.post('/otp', (req, res) => {
         password: password,
         dob: dob,
     });
-
-    // Cài đặt thời gian hết hạn cho cookie OTP
-    res.cookie('otpCache', otpCache, { maxAge: 300000, httpOnly: true });
 });
 
 
-router.post('/verifyOTP', (req, res) => {
-    // Extract email and otp from the JSON request body
-    const { email, otp } = req.body;
 
-    // Kiểm tra xem email có trong cache OTP không
-    if (!otpCache.hasOwnProperty(email)) {
-        return res.json(false);  // Trả về false nếu không tìm thấy email trong cache
-    }
-
-    // Kiểm tra OTP
-    if (otpCache[email] === otp.trim()) {
-        delete otpCache[email];  // Xóa OTP sau khi xác minh thành công
-        return res.json(true);  // Trả về true nếu OTP hợp lệ
-    } else {
-        return res.json(false);  // Trả về false nếu OTP không hợp lệ
-    }
-});
 
 
 export default router;

@@ -14,7 +14,6 @@ const homeService = {
                 .select('n.*')
                 .limit(4); // Lấy 4 bài viết
 
-            //console.log('Top viewed news in last week:', topNews);
             return topNews;
         } catch (error) {
             console.error('Database error:', error);

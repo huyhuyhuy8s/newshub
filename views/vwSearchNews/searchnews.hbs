@@ -1,17 +1,95 @@
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/searchnews.css">
+{{/fillHtmlContent}}
+
 <div class="body">
-    <div class="parent3">
-        {{#each recentNews}}
-        <a href="/news/{{Id_News}}" class="post">
-            <p>{{timeAgo Date}}</p>
-            <div class="content">
-                <h4>{{truncateText Meta_title 30}}</h4>
-                <p>
-                    {{truncateText Meta_description 200}}
-                </p>
-                <div class="content-after">{{SubCategoryName}}</div>
+    <h2>Tìm Kiếm</h2>
+    <div class="search-section">
+        <div class="search-bar">
+            <div class="input-container">
+                <input type="text" placeholder="Tìm kiếm tin tức" value="{{query}}" id="searchInput" />
+                <button id="searchButton">
+                    <img src="/imgs/search/search-icon.png" alt="Search" />
+                </button>
             </div>
-            <img src="/imgs/detail/suôi thầu3.jpg" alt="{{Meta_title}}" class="image">
+        </div>
+    </div>
+
+    <h4 class="result-count">{{recentnews.length}} bài viết liên quan</h4>
+
+    <div class="filter-section">
+        <div class="filter-group">
+            <label>Chuyên mục</label>
+            <select id="category">
+                <option value="">Chọn chuyên mục</option>
+                {{#each categories}}
+                <option value="{{Id_Category}}">{{Name}}</option>
+                {{/each}}
+            </select>
+
+            <select id="subcategory">
+                <option value="">Chọn chuyên mục cấp 2</option>
+                {{!-- {{#each subcategories}}
+                <option value="{{Id_SubCategory}}">{{Name}}</option>
+                {{/each}} --}}
+            </select>
+        </div>
+
+        <div class="filter-group">
+            <label>Tag</label>
+            {{!-- <input type="text" placeholder="#Tag" /> --}}
+            <select id="tag" size="6">
+                <option value="">Chọn tag</option>
+                {{#each tags}}
+                <option value="{{Id_Tag}}">{{Name}}</option>
+                {{/each}}
+            </select>
+
+        </div>
+
+
+        <div class="filter-group">
+            <label>Thời gian từ</label>
+            <input type="date" id="startDate" />
+            <label>Thời gian đến</label>
+            <input type="date" id="endDate" />
+        </div>
+
+        <button id="searchButtonCategory&Subcategory&Tag&Date">
+            <img src="/imgs/search/search-icon.png" alt="SearchbyTag&Date" />
+            {{!-- <a href="/search/searchByTagAndDate">Tìm kiếm</a> --}}
+        </button>
+    </div>
+
+    
+
+
+    <div class="parent3">
+
+        {{#each recentnews}}
+        <a href="/news/{{Id_News}}" class="post">
+            <p>{{formatDate Date}}</p>
+            <div class="content">
+                <h4>{{Meta_title}}</h4>
+                <p>
+                    {{Meta_description}}
+                </p>
+                <p> </p>
+                <p>
+                    {{#each tags}}
+                    <span class="tag">{{this.Name}}</span> <!-- Hiển thị tên tag -->
+                    {{/each}}
+                </p>
+            </div>
+            <img src="../../imgs/category/shintaeyong.webp" alt="" class="image">
         </a>
         {{/each}}
+
+       
+
     </div>
 </div>
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/searchnews.js"></script>
+{{/fillHtmlContent}}

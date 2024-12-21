@@ -31,10 +31,13 @@
                 <a href="/"><img src="/imgs/main/logokonen.png"></a>
             </div>
             <ul class="right">
+
                 {{#if auth}}
-                <a href="#">
+                <a
+                    href="/inforuser/inforuser?id_user={{authUser.Id_User}}&name={{authUser.Name}}&email={{authUser.Email}}&birthday={{formatDateInfor authUser.Birthday}}">
                     <li>
                         Xin chào, {{authUser.Name}}
+
                     </li>
                 </a>
                 <a href="/account/logout" onclick="handleLogout(event)">

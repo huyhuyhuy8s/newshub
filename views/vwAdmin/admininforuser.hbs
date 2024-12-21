@@ -1,0 +1,366 @@
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/admin/admininforuser.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{{/fillHtmlContent}}
+
+
+<div class="container">
+    <div class="user-info">
+        <h2>Thông tin của {{inforUser.Name}}</h2>
+        <form action="/admin/admininforuser/update" method="post">
+            <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+            <label for="first-name">Tên</label>
+            <input type="text" id="name" name="name" value="{{inforUser.Name}}">
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{inforUser.Email}}" disabled>
+
+            <label for="dob">Ngày sinh</label>
+            <input type="date" id="dob" name="birthday" value="{{formatDateInfor inforUser.Birthday}}">
+
+            <label for="account-type">Loại tài khoản</label>
+
+            {{#if inforUser.Id_Editor}}
+            <input type="text" id="account-type" name="account-type" value="Biên tập viên" disabled>
+            {{else if inforUser.Id_Writer}}
+            <input type="text" id="account-type" name="account-type" value="Nhà báo" disabled>
+            {{else if inforUser.Id_Subcriber}}
+            <input type="text" id="account-type" name="account-type" value="Thành viên" disabled>
+            {{else if inforUser.Id_Administrator}}
+            <input type="text" id="account-type" name="account-type" value="Quản trị viên" disabled>
+            {{else if inforUser.Id_User}}
+            <input type="text" id="account-type" name="account-type" value="Thành viên chưa được duyệt" disabled>
+            {{/if}}
+
+            {{#if inforUser.Id_Editor}}
+            <label for="Category">Duyệt bài cho chuyên mục</label>
+            <input type="text" id="category" name="category" value="{{inforUser.Name_Category_Editor}}" disabled>
+            {{/if}}
+
+            {{#if inforUser.Id_Writer}}
+            <label for="Category">Viết bài cho chuyên mục</label>
+            <input type="text" id="category" name="category" value="{{inforUser.Name_Category_Writer}}" disabled>
+
+
+            <label for="pen-name">Bút Danh</label>
+            <input type="text" id="pen-name" name="pen_name" value="{{inforUser.Pen_Name}}">
+            {{/if}}
+            <button type="submit" class="save-btn">Lưu thông tin</button>
+
+        </form>
+
+    </div>
+
+
+
+
+
+    <div class="utility-containter">
+        {{#if inforUser.Id_Writer}}
+        <div class="moderator-info">
+
+            <h2>Thông số các bài viết của {{inforUser.Name}}</h2>
+
+            <div class="user-stats">
+                <div class="stat">
+                    <h1><i class="bi bi-newspaper"></i></h1>
+                    <div class="stat-content">
+                        <p>Được duyệt</p>
+                        <span class="number">{{newsCountApproved}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+                <div class="stat approved">
+                    <h1><i class="bi bi-check-square"></i></h1>
+                    <div class="stat-content">
+                        <p>Chưa duyệt</p>
+                        <span class="number">{{newsCountPending}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+                <div class="stat pending">
+                    <h1><i class="bi bi-hourglass-split"></i></h1>
+                    <div class="stat-content">
+                        <p>Chưa đạt</p>
+                        <span class="number">{{newsCountNotAccepted}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+                <div class="stat rejected">
+                    <h1><i class="bi bi-x-square"></i></h1>
+                    <div class="stat-content">
+                        <p>Bị từ chối</p>
+                        <span class="number">{{newsCountRejected}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+            </div>
+            <form action="/admin/writer/delete" method="post">
+                <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+                <button type="submit" class="stop-work">Dừng công việc</button>
+            </form>
+        </div>
+
+        <div class="user-info">
+            <h2>Thông tin của Nhà báo - {{inforUser.Name}}</h2>
+            <div class="user-stats">
+                <div class="stat pending">
+                    <div class="stat-icon">
+                        <h1><i class="bi bi-calendar-heart"></i></h1>
+                    </div>
+                    <div class="stat-content">
+                        <p>Đã là thành viên trong</p>
+                        <span class="number">
+                            {{#if inforUser.Date_register}}
+                            {{formatCountDaysRegisterAccountEditorAndWriter inforUser.Date_register}} ngày
+                            {{else}}
+                            0 ngày
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+
+                <div class="stat pending">
+                    <div class="stat-icon">
+                        <h1><i class="bi bi-calendar-x"></i></h1>
+                    </div>
+                    <div class="stat-content">
+                        <p>Ngày hết hạn</p>
+                        <span class="number">
+                            {{#if inforUser.Date_register}}
+                            {{formatCountDaysExpiredAccountEditorAndWriter inforUser.Date_register}}
+                            {{else}}
+                            0 ngày
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+
+        {{#if inforUser.Id_Editor}}
+        <div class="moderator-info">
+
+            <h2>Thông số các bài viết phê duyệt của {{inforUser.Name}}</h2>
+
+            <div class="user-stats">
+                <div class="stat">
+                    <h1><i class="bi bi-newspaper"></i></h1>
+                    <div class="stat-content">
+                        <p>Đánh giá được duyệt</p>
+                        <span class="number">{{newsCounts.approvedCount}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+                <div class="stat approved">
+                    <h1><i class="bi bi-check-square"></i></h1>
+                    <div class="stat-content">
+                        <p>Bài viết chưa duyệt</p>
+                        <span class="number">{{newsCounts.pendingCount}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+                <div class="stat pending">
+                    <h1><i class="bi bi-hourglass-split"></i></h1>
+                    <div class="stat-content">
+                        <p>Đánh giá chưa đạt</p>
+                        <span class="number">{{newsCounts.notAcceptedCount}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+                <div class="stat rejected">
+                    <h1><i class="bi bi-x-square"></i></h1>
+                    <div class="stat-content">
+                        <p>Từ chối</p>
+                        <span class="number">{{newsCounts.rejectedCount}}</span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+            </div>
+            <form action="/admin/editor/delete" method="post">
+                <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+                <button type="submit" class="stop-work">Dừng công việc</button>
+            </form>
+        </div>
+
+
+        <div class="user-info">
+            <h2>Thông tin của Biên tập viên - {{inforUser.Name}}</h2>
+            <div class="user-stats">
+                <div class="stat pending">
+                    <div class="stat-icon">
+                        <h1><i class="bi bi-calendar-heart"></i></h1>
+                    </div>
+                    <div class="stat-content">
+                        <p>Đã là thành viên trong</p>
+                        <span class="number">
+                            {{#if inforUser.Date_register}}
+                            {{formatCountDaysRegisterAccountEditorAndWriter inforUser.Date_register}} ngày
+                            {{else}}
+                            0 ngày
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+
+
+                <div class="stat pending">
+                    <div class="stat-icon">
+                        <h1><i class="bi bi-calendar-x"></i></h1>
+                    </div>
+                    <div class="stat-content">
+                        <p>Ngày hết hạn</p>
+                        <span class="number">
+                            {{#if inforUser.Date_register}}
+                            {{formatCountDaysExpiredAccountEditorAndWriter inforUser.Date_register}}
+                            {{else}}
+                            0 ngày
+                            {{/if}}
+                        </span>
+                    </div>
+                    <div class="stat-arrow">
+                        <span>&#x25B6;</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {{/if}}
+
+
+        {{#if inforUser.Id_Subcriber}}
+        <div class="user-info">
+            <h2>Thông tin của Thành viên - {{inforUser.Name}}</h2>
+            <form action="/admin/subcriber/update" method="post">
+                <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+                <div class="user-stats">
+                    <div class="stat pending">
+                        <div class="stat-icon">
+                            <h1><i class="bi bi-calendar-heart"></i></h1>
+                        </div>
+                        <div class="stat-content">
+                            <p>Đã là thành viên trong</p>
+                            <span class="number">
+                                {{#if subscriberInfo.Date_register}}
+                                {{formatCountDaysRegisterAndExpirationSubcriber subscriberInfo.Date_register subscriberInfo.Date_expired}} ngày
+                                {{else}}
+                                0 ngày!
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="stat-arrow">
+                            <span>&#x25B6;</span>
+                        </div>
+                    </div>
+
+
+                    <div class="stat pending">
+                        <div class="stat-icon">
+                            <h1><i class="bi bi-calendar-x"></i></h1>
+                        </div>
+                        <div class="stat-content">
+                            <p>Ngày hết hạn</p>
+                            <span class="number">
+                                {{#if subscriberInfo.Date_expired}}
+                                {{formatDateAndTime subscriberInfo.Date_expired}}
+                                {{else}}
+                                0 ngày!
+                                {{/if}}
+                            </span>
+                        </div>
+                        <div class="stat-arrow">
+                            <span>&#x25B6;</span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="stop-work">Gia hạn</button>
+            </form>
+        </div>
+
+        {{/if}}
+
+
+
+        {{#if inforUser.Id_Writer}}
+        {{else if inforUser.Id_Editor}}
+        {{else if inforUser.Id_Subcriber}}
+        {{else if inforUser.Id_Administrator}}
+        {{else if inforUser.Id_User}}
+        <div class="user-info">
+            <h2>Thông tin của Thành viên - {{inforUser.Name}}</h2>
+            <form action="/admin/subcriber/create" method="post">
+                <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+                <div class="user-stats">
+                    <div class="stat pending">
+                        <div class="stat-icon">
+                            <h1><i class="bi bi-calendar-heart"></i></h1>
+                        </div>
+                        <div class="stat-content">
+                            <p>Đã là thành viên trong</p>
+                            <span class="number">
+                                0 ngày
+                            </span>
+                        </div>
+                        <div class="stat-arrow">
+                            <span>&#x25B6;</span>
+                        </div>
+                    </div>
+
+
+                    <div class="stat pending">
+                        <div class="stat-icon">
+                            <h1><i class="bi bi-calendar-x"></i></h1>
+                        </div>
+                        <div class="stat-content">
+                            <p>Ngày hết hạn</p>
+                            <span class="number">
+                                0 ngày
+                            </span>
+                        </div>
+                        <div class="stat-arrow">
+                            <span>&#x25B6;</span>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="stop-work">Duyệt</button>
+            </form>
+        </div>
+
+        {{/if}}
+
+    </div>
+</div>

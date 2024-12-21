@@ -44,31 +44,47 @@ try {
     let searchClickVar = false;
     // click and show on search icon
     function searchClick() {
-        if (searchClickVar) {
-            const li = document.getElementsByClassName("left-input")[0];
-            const ul = document.getElementsByClassName("left")[0];
-
-            console.log(1);
-
-            ul.removeChild(li);
-            searchClickVar = !searchClickVar;
-            return;
-        }
-        searchClickVar = !searchClickVar;
-        console.log(2);
         const input = document.createElement("input");
         input.type = "text";
         input.id = "searchInput";
+        input.placeholder = "Tìm kiếm tin tức"; // Thêm placeholder nếu cần
 
         const li = document.createElement("li");
         li.appendChild(input);
         li.className = "left-input";
 
         const ul = document.getElementsByClassName("left")[0];
+
+        if (searchClickVar) {
+            // Nếu ô nhập đã tồn tại, xóa nó
+            const existingInput = document.getElementById("searchInput");
+            if (existingInput) {
+                ul.removeChild(existingInput.parentElement); // Xóa li chứa input
+            }
+            searchClickVar = false;
+            return;
+        }
+
+        // Thêm ô nhập vào danh sách
         ul.appendChild(li);
+        searchClickVar = true;
+
+        // Thêm sự kiện keydown cho ô nhập
+        input.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                const query = input.value.trim(); // Lấy giá trị từ ô nhập
+                if (query) {
+                    window.location.href = `/search/search?q=${encodeURIComponent(query)}`; // Chuyển hướng đến trang tìm kiếm
+
+                } else {
+                    alert('Vui lòng nhập từ khóa tìm kiếm.'); // Thông báo nếu ô nhập rỗng
+                }
+            }
+        });
+        // Tùy chọn: Tự động focus vào ô nhập khi nó được tạo
+        input.focus();
     }
-}
-catch { }
+} catch { }
 
 // subnav
 try {
@@ -119,7 +135,7 @@ try {
         event.preventDefault();
         // Xóa session hoặc localStorage nếu có
         // localStorage.removeItem('user');
-        
+
         // Chuyển hướng về trang login
         window.location.href = '/account/logout';
     }
@@ -128,15 +144,15 @@ catch { }
 
 
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const navItems = document.querySelectorAll('#nav-ul li ');
     const subnavs = document.querySelectorAll('#subnav ul');
-    
+
     navItems.forEach(item => {
-        item.addEventListener('mouseenter', function() {
+        item.addEventListener('mouseenter', function () {
             // Ẩn tất cả submenu trước
             subnavs.forEach(subnav => subnav.hidden = true);
-            
+
             // Hiển thị submenu tương ứng
             const categoryClass = this.className;
             const subnav = document.getElementById(categoryClass);
@@ -145,9 +161,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
-    
+
     // Ẩn submenu khi rời khỏi nav area
-    document.getElementById('nav').addEventListener('mouseleave', function() {
+    document.getElementById('nav').addEventListener('mouseleave', function () {
         subnavs.forEach(subnav => subnav.hidden = true);
     });
 });

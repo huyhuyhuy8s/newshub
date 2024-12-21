@@ -1,6 +1,6 @@
-<form action="/account/otp" method="post">
+<form action="/account/register" method="post">
     <h2>Đăng ký</h2>
-
+    <!-- <img src="./hinhanh/logokonen2.png" alt="" class="logo"> -->
     <div class="information">
         <input type="text" name="name" maxlength="200" placeholder="Họ và tên" required>
         <input type="email" name="email" placeholder="Email" required>
@@ -14,6 +14,9 @@
         {{error_message}}
     </div>
     {{/if}}
+    {{!-- <div class="active-button">
+        <p>Tạo tài khoản</p>
+    </div> --}}
 
     <button type="submit" style="display: none;" id="submitBtn"></button>
     <!-- Div gốc kích hoạt submit -->

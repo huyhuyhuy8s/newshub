@@ -104,6 +104,65 @@ export default {
                 console.log('OTP email sent succesfully', info.respone)
             }
         })
+    },
+
+    // 20/12
+    async getSubscriberInfoByUserId(userId) {
+        try {
+            const subscriber = await db('Subcriber')
+                .where('Id_User', userId)
+                .first(); // Lấy thông tin subscriber đầu tiên
+
+            return subscriber; // Trả về thông tin subscriber nếu tồn tại, nếu không sẽ trả về null
+        } catch (error) {
+            console.error('Error fetching subscriber info:', error);
+            throw error;
+        }
+    },
+
+    async getUserRoles(userId) {
+        try {
+            const roles = {
+                isAdmin: false,
+                isEditor: false,
+                isWriter: false,
+                adminId: null,
+                editorId: null,
+                writerId: null,
+            };
+
+            // Kiểm tra Admin
+            const admin = await db('Administrator')
+                .where('Id_User', userId)
+                .first();
+            if (admin) {
+                roles.isAdmin = true;
+                roles.adminId = admin.Id_Administrator; // Lưu Id_Admin
+            }
+
+            // Kiểm tra Editor
+            const editor = await db('Editor')
+                .where('Id_User', userId)
+                .first();
+            if (editor) {
+                roles.isEditor = true;
+                roles.editorId = editor.Id_Editor; // Lưu Id_Editor
+            }
+
+            // Kiểm tra Writer
+            const writer = await db('Writer')
+                .where('Id_User', userId)
+                .first();
+            if (writer) {
+                roles.isWriter = true;
+                roles.writerId = writer.Id_Writer; // Lưu Id_Writer
+            }
+
+            return roles; // Trả về đối tượng chứa các quyền
+        } catch (error) {
+            console.error('Error fetching user roles:', error);
+            throw error;
+        }
     }
 
 

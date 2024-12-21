@@ -1,0 +1,77 @@
+@import './style_overview.css';
+
+:root {
+    --bred: #ffe6e6;
+    --blue: #00bfff;
+}
+
+#body {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 1em 1em;
+    gap: 2em;
+
+
+    .creat {
+        grid-area: 1 / span 4;
+
+        texarea {
+            height: 100%;
+        }
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--grey);
+        padding: 1em;
+        gap: 2em;
+        border-radius: 10px;
+        font-size: 12pt;
+
+        h3 {
+            font-size: 16pt;
+        }
+
+        .state,
+        .category,
+        .tags,
+        .meta-title,
+        .meta-description,
+        .link {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5em;
+            border-radius: 10px;
+            padding: 0.5em;
+
+            select {
+                width: 100%;
+                background-color: var(--white);
+                height: 3em;
+                border-radius: 5px;
+            }
+
+            .inner-state {
+                display: grid;
+                grid-template-rows: repeat(3, 1fr);
+            }
+
+            .author::before {
+                content: "Tác giả: ";
+            }
+
+            input[type=text] {
+                padding: 0 0.5em;
+                height: 3.5em;
+            }
+
+            button {
+                background-color: var(--red);
+                color: var(--white);
+                height: 2em;
+                border-radius: 5px;
+            }
+        }
+    }
+}
