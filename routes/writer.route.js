@@ -26,6 +26,27 @@ router.get('/list-post', async (req, res) => {
     res.render('vwWriter/list_post', { layout: 'moderator', posts: posts });
 });
 
+
+router.get('/updatenews', async (req, res) => {
+    const id_news = req.query.id_news; // Lấy Id_News từ query
+    console.log('user id writer:', id_user);
+  
+    try {
+        const news = await writerService.findNewsById(id_news); // Lấy thông tin bài viết
+     
+        if (!news) {
+            return res.status(404).send('Bài viết không tồn tại');
+        }
+        res.render('vwWriter/updatenews', { layout: 'moderator', news }); // Truyền thông tin bài viết vào view
+    } catch (error) {
+        console.error('Lỗi khi lấy thông tin bài viết:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
+
+
 router.get('/create-article', async (req, res) => {
     res.render('vwWriter/create_article', { layout: 'moderator' });
 });

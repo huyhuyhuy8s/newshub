@@ -2,7 +2,7 @@
 async function updatePremium(id_news, isPremium) {
     const newPremiumValue = isPremium ? 1 : 0; // Nếu checked thì 1, ngược lại 0
     try {
-        const response = await fetch('/editor/list-article/update-premium', {
+        const response = await fetch('/writer/list-article/update-premium', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -23,7 +23,7 @@ async function updatePremium(id_news, isPremium) {
 
 async function updateStatus(id_news, new_status) {
     try {
-        const response = await fetch('/editor/article/update-status', {
+        const response = await fetch('/writer/article/update-status', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,7 +56,7 @@ async function submitRejectionReason(id_news) {
 
     try {
         // Gửi yêu cầu để tạo bản ghi trong Editor_Check_News và cập nhật Id_Status
-        const response = await fetch('/editor/article/reject-article', {
+        const response = await fetch('/writer/article/reject-article', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -79,36 +79,4 @@ async function submitRejectionReason(id_news) {
     }
 }
 
-
-async function togglePremium(id_news) {
-    
-    const currentPremiumStatus = document.getElementById('premium-toggle').innerText.includes('Free') ? false : true;
-    const newPremiumValue = !currentPremiumStatus; // Đổi trạng thái
-
-    const updatedNews = newPremiumValue ? 0 : 1; 
-
-    console.log('ID News:', id_news);
-    console.log('New updatedNews Value:', updatedNews); // true nếu chuyển sang Premium, false nếu chuyển sang Free
-
-    try {
-        const response = await fetch('/editor/article/update-premium', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ id_news, updatedNews }),
-        });
-        if (response.ok) {
-         
-            location.reload();
-        } else {
-            alert('Có lỗi xảy ra khi cập nhật trạng thái Premium.');
-            location.reload();
-        }
-    } catch (error) {
-        location.reload();
-    }
-    location.reload();
-
-}
 

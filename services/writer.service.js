@@ -97,7 +97,25 @@ const writerService = {
             console.error("Lỗi khi lấy lý do từ chối:", error);
             throw error; // Ném lỗi để xử lý ở nơi khác
         }
-    }
+    },
+    async findNewsById(id_news) {
+        try {
+            const result = await db('News')
+                .join('Writer', 'News.Id_Writer', '=', 'Writer.Id_Writer')
+                .where('News.Id_News', id_news)
+                .select('News.*', 'Writer.Pen_Name')
+                .first();
+
+            if (result) {
+                result.Premium = result.Premium.equals(Buffer.from([1]));
+                return result;
+            } else {
+                return null;
+            }
+        } catch (error) {
+            console.error("Lỗi khi tìm kiếm bài viết:", error);
+        }
+    },
 
 }
 export default writerService

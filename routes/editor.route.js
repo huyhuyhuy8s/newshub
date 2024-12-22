@@ -84,6 +84,7 @@ router.get('/list-article', async (req, res) => {
 
 router.post('/list-article/update-premium', async (req, res) => {
     const { id_news, newPremiumValue } = req.body; // Lấy id_news và newPremiumValue từ body
+    console.log('sda  ', newPremiumValue );
     try {
         await editorService.updateNewsPremium(id_news, newPremiumValue); // Gọi hàm cập nhật Premium
         res.status(200).send('Cập nhật trạng thái Premium thành công');
@@ -125,6 +126,26 @@ router.post('/article/update-status', async (req, res) => {
     }
 });
 
+router.post('/article/update-premium', async (req, res) => {
+    const { id_news, updatedNews } = req.body; // Lấy id_news và newPremiumValue từ body
+    console.log('route');
+    console.log('id news', id_news);
+    console.log('newPremiumValue', updatedNews);
+ 
+
+
+    try {
+        console.log('try');
+        // const updatedNews = newPremiumValue ? 0 : 1; 
+        console.log('updatedNews route: ', updatedNews);
+        await editorService.updateNewsPremium(id_news, updatedNews); // Gọi hàm cập nhật Premium
+
+    } catch (error) {
+        console.log('catch');
+        console.error('Lỗi khi cập nhật trạng thái Premium:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
 
 
 

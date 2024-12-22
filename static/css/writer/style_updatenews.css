@@ -1,0 +1,100 @@
+body {
+    margin: 0 200px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--grey);
+    padding: 1em 0em;
+    background-color: var(--white);
+    margin-bottom: 1em;
+
+    .search {
+        display: flex;
+        gap: 0.5em;
+
+        input {
+            border-color: var(--light-red);
+            border-radius: 5px;
+            width: 20em;
+            box-shadow: none;
+            padding: 0 0.5em;
+            font-size: 12pt;
+        }
+
+        button {
+            width: 3em;
+            height: 3em;
+        }
+
+        button:hover {
+            transition: ease-in-out 0.2s;
+            border: 1px var(--light-red) solid;
+            background-color: #F6E6E6;
+            color: var(--red);
+            width: 3em;
+        }
+    }
+
+    .filter {
+        display: flex;
+        justify-content: flex-end;
+        gap: 1em;
+
+        button {
+            height: 3em;
+            background-color: var(--red);
+            color: var(--white);
+            border-color: var(--red);
+            border-radius: 5px;
+            width: 10em;
+        }
+
+        button:hover {
+            background-color: #F6E6E6;
+            color: var(--red);
+        }
+    }
+}
+
+#RejectedArticle-Div {
+
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    width: 10%;
+    gap: 10px;
+    border: 1px solid gray;
+    padding: 10px;
+    border-radius: 10px;
+    top: 60px;
+    display: none;
+
+}
+
+
+#article {
+    h5 {
+        text-align: center;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .b_title {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin: 10px 25px;
+    }
+
+    img {
+        width: 100%;
+        height: 700px;
+
+    }
+
+    .content {
+        margin: 0 170px 0 170px;
+    }
+}
