@@ -112,7 +112,7 @@ router.get('/article', async (req, res) => {
     }
 });
 
-
+// update prremium
 router.post('/article/update-status', async (req, res) => {
     const { id_news, new_status } = req.body; // Lấy id_news và new_status từ body
     try {

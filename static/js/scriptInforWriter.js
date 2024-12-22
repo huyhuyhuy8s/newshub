@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('/editor/inforeditor/update', {
+            const response = await fetch('/writer/inforeditor/update', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Đặt header cho JSON
@@ -46,9 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 document.getElementById('back-btn').addEventListener('click', function () {
-    window.location.href = '/editor/home'; // Chuyển hướng về trang chủ
+    window.location.href = '/writer/home'; // Chuyển hướng về trang chủ
 });
-
 
 
 
@@ -56,25 +55,6 @@ function logout() {
     window.location.href = '/account/logout'; // Chuyển hướng đến trang logout
 };
 
-
-
-function updatePremium(id_news, isChecked) {
-    const newPremiumValue = isChecked ? 1 : 0; // Nếu checked thì Premium = 1, ngược lại = 0
-    fetch('/editor/list-article/update-premium', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ id_news, newPremiumValue }), // Gửi id_news và newPremiumValue
-    })
-    .then(response => {
-        if (response.ok) {
-            console.log('Cập nhật thành công');
-        } else {
-            console.error('Có lỗi xảy ra khi cập nhật trạng thái Premium');
-        }
-    })
-    .catch(error => {
-        console.error('Lỗi khi gửi yêu cầu:', error);
-    });
-}
+// document.getElementById('btn-sign-out').addEventListener('click', function () {
+//     window.location.href = '/account/logout'; // Chuyển hướng về trang chủ
+// });

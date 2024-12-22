@@ -79,9 +79,4 @@ async function submitRejectionReason(id_news) {
     }
 }
 
-// Thêm sự kiện cho ô nhập lý do từ chối
-document.getElementById('rejectionReason').addEventListener('keypress', function (event) {
-    if (event.key === 'Enter') {
-        submitRejectionReason('{{news.Id_News}}');
-    }
-});
+

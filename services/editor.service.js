@@ -20,8 +20,9 @@ const editorService = {
             const subCategories = await db('SubCategory').where('Id_Category', Id_Category).select('Id_SubCategory');
 
             const posts = await db('News')
+                .join('Writer', 'News.Id_Writer', '=', 'Writer.Id_Writer')
                 .whereIn('Id_SubCategory', subCategories.map(sub => sub.Id_SubCategory))
-                .select('*');
+                .select('News.*', 'Writer.Pen_Name');
 
             const formattedPosts = posts.map(post => ({
                 ...post,

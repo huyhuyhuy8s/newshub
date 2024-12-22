@@ -1,6 +1,8 @@
 import writerService from '../services/writer.service.js';
 import session from 'express-session';
 import express from 'express';
+import bcrypt from 'bcryptjs';
+import moment from 'moment';
 
 const router = express.Router();
 
@@ -13,6 +15,14 @@ router.get('/home', async (req, res) => {
 
 router.get('/list-post', async (req, res) => {
     const posts = await writerService.findAllPost(await writerService.findWriter(id_user));
+
+    for (let post of posts) {
+        if (post.Id_Status === 'STS0004') { // Nếu trạng thái là "Từ chối"
+            const reason = await writerService.getRejectionReason(post.Id_News);
+            post.Reason = reason; // Gán lý do vào bài viết
+        }
+    }
+    
     res.render('vwWriter/list_post', { layout: 'moderator', posts: posts });
 });
 
@@ -42,5 +52,63 @@ router.post('/create-article', async (req, res) => {
 router.get('/preview', async (req, res) => {
     res.render('vwWriter/preview', { layout: 'moderator' });
 });
+
+
+
+
+
+
+
+
+
+
+
+router.get('/inforeditor', async (req, res) => {
+    const writer = await writerService.getUserById(id_user);
+
+
+    if (writer.Birthday) {
+        writer.Birthday = moment(writer.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
+    }
+
+ 
+    res.render('vwWriter/inforwriter', { layout: 'moderator', writer});
+});
+
+
+router.post('/inforeditor/update', async (req, res) => {
+    const { name, birthday, password, id_user } = req.body; // Lấy id_user từ body
+
+    try {
+        const updatedUser = {};
+
+        // Cập nhật các trường nếu có giá trị
+        if (name) updatedUser.Name = name;
+        if (birthday) updatedUser.Birthday = moment(birthday).format('YYYY-MM-DD');
+
+        // Chỉ mã hóa mật khẩu nếu có giá trị
+        if (password) {
+            const salt = bcrypt.genSaltSync(10);
+            updatedUser.Password = bcrypt.hashSync(password, salt); // Mã hóa mật khẩu
+        }
+
+        // Kiểm tra xem có trường nào để cập nhật không
+        if (Object.keys(updatedUser).length === 0) {
+            return res.status(400).send('No fields to update');
+        }
+
+        await writerService.updateUser(id_user, updatedUser); // Gọi hàm cập nhật với id_user
+  
+
+        // Chuyển hướng về trang thông tin người dùng
+        res.redirect('/writer/inforeditor');
+    } catch (error) {
+        console.error('Error updating user info:', error);
+        res.status(500).send('Có lỗi xảy ra, vui lòng thử lại! (route)'); // Trả về lỗi
+        console.log('ko Cập nhật thành công');
+    }
+});
+
+
 
 export default router;
