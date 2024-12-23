@@ -1,15 +1,15 @@
 @import "./styleMain.css";
 
 .container-fluid {
+    margin: 0;
+    padding: 0;
+
     .title {
         text-transform: uppercase;
         margin-top: 3em;
         margin-bottom: 1em;
         border-bottom: 0.2px solid var(--grey);
     }
-
-    margin: 0;
-    padding: 0;
 }
 
 .sticky {
@@ -43,7 +43,7 @@
 }
 
 #article_list {
-    padding-top: 1em;
+    margin-top: 1em;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 1em;
@@ -55,10 +55,13 @@
     }
 
     .article-list-content {
-        display: flex;
-        flex-direction: column;
-        gap: 0.2em;
+        display: grid;
+        grid-template-rows: repeat(3, 4em);
         padding: 0.8em;
+
+        .date {
+            align-items: end;
+        }
     }
 
     p {
@@ -105,20 +108,20 @@
         border: 0.1px solid var(--grey);
         display: flex;
         flex-direction: column;
-        gap: 0.em;
+        gap: 0.5em;
 
         .category {
             border-bottom: 2px solid var(--red);
         }
 
-        /* h6 {
-            margin: 0 0 5px 0;
-        } */
-
         p {
             padding: 0;
             font-weight: initial;
             font-size: small;
+        }
+
+        .date {
+            font-style: italic;
         }
     }
 }
@@ -286,38 +289,6 @@ div.pt-3 h5.font-weight-bold {
     }
 }
 
-#article_related {
-    margin-bottom: 10px;
-
-    h4 {
-        height: 50px;
-        border-top: 0.2px solid var(--grey);
-        margin-top: 20px;
-        padding-top: 10px;
-    }
-
-    h5 {
-        color: var(--white);
-    }
-
-    .item {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        background-color: var(--red);
-        padding: 20px 0 20px 0;
-
-        .card {
-            background-color: var(--red);
-            color: var(--white);
-            border: 0.2px solid var(--white);
-            text-align: center;
-            display: grid;
-        }
-    }
-
-}
-
 html body div.card.border div#body.card-body.pr-0.pl-0 div#article_top_high.container-fluid div#carouselExampleControls.carousel.slide div.carousel-inner div.carousel-item.active div.item div.card {
     display: grid;
 }
@@ -326,6 +297,10 @@ html body div.card.border div#body.card-body.pr-0.pl-0 div#article_top_high.cont
     display: grid;
     grid-template: 1fr / 1fr 1fr;
     gap: 2em;
+
+    .date {
+        font-style: italic;
+    }
 
     .politic-left {
         display: flex;

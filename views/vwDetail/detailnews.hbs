@@ -168,10 +168,10 @@
             {{#each topViewedNews}}
             <a class="articles" id="very-second" href="/news/{{this.Id_News}}">
                 <img src="/imgs/detail/suôi thầu.jpg" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">{{this.Meta_title}}</h5>
-                    <p class="card-text">{{this.Meta_description}}</p>
-                    <p class="card-text">{{formatDate this.Date}}</p>
+                <div class="card-body-3">
+                    <h5>{{truncateText this.Meta_title 100}}</h5>
+                    <p>{{truncateText this.Meta_description 100}}</p>
+                    <p class="date">{{formatDate this.Date}}</p>
                 </div>
             </a>
             {{else}}
@@ -192,8 +192,8 @@
                 <img src="/imgs/detail/suôi thầu2.jpg" alt="">
                 <div>
                     <h5>{{this.Meta_title}}</h5>
-                    <p class="font-italic">{{this.Meta_description}}</p>
-                    <p class="card-text">{{formatDate this.Date}}</p>
+                    <p>{{this.Meta_description}}</p>
+                    <p class="date">{{formatDate this.Date}}</p>
                 </div>
             </a>
             {{else}}
@@ -201,9 +201,6 @@
             {{/each}}
         </div>
     </div>
-
-    <p>{{news.Id_News}}</p>
-    <p>{{userId}}</p>
 </div>
 
 

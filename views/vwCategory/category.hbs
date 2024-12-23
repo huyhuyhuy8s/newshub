@@ -19,10 +19,13 @@
 
             <div class="triple-highlight">
                 {{#each topNews}}
-                <a class="highlight-element" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
+                <a class="highlight-element"
+                    href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                    <p>{{truncateText Meta_title 35}}</p>
-                    <h6>{{formatDate Date}}</h6>
+                    <div>
+                        <h5>{{truncateText Meta_title 35}}</h5>
+                        <p>{{formatDate Date}}</p>
+                    </div>
                 </a>
                 {{/each}}
             </div>
@@ -46,20 +49,21 @@
         {{#each topSubCategories}}
         <div class="highlight-section">
             <a href="/category/{{Id_Category}}/{{Id_SubCategory}}" class="title">
-                <h4>{{SubCategoryName}}</h4>
+                <h3>{{SubCategoryName}}</h3>
             </a>
             {{#with highlightPost}}
-            <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="highlight-post">
+            <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}"
+                class="highlight-post">
                 <img src="/imgs/category/pickball.webp" alt="{{Meta_title}}">
-                <h5>{{truncateText Meta_title 60}}</h5>
+                <h5>{{truncateText Meta_title 70}}</h5>
                 <p>{{formatDate Date}}</p>
             </a>
             {{/with}}
             <div class="other-section">
                 {{#each otherPosts}}
-                <a class="post-section" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
-                    <p>{{truncateText Meta_title 65}}</p>
-
+                <a class="post-section"
+                    href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
+                    <h5>{{truncateText Meta_title 100}}</h5>
                     <img src="/imgs/category/nhatban.webp" alt="{{Meta_title}}">
                     <p>{{formatDate Date}}</p>
                 </a>
@@ -74,9 +78,9 @@
         <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{timeAgo Date}}</p>
             <div class="content">
-                <h4>{{truncateText Meta_title 45}}</h4>
+                <h4>{{truncateText Meta_title 120}}</h4>
                 <p>
-                    {{truncateText Meta_description 130}}
+                    {{truncateText Meta_description 300}}
                 </p>
                 <div class="content-after">{{SubCategoryName}}</div>
             </div>

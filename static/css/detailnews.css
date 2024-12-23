@@ -19,7 +19,7 @@ a {
 
 
 p {
-    padding-top: 1em;
+    padding: 1em 0;
     text-align: justify;
 }
 
@@ -200,21 +200,36 @@ p {
             grid-template: 1fr 1fr / 1fr;
             color: var(--black);
             border: 0.2px solid var(--black);
-            margin: 1em 0;
             flex-shrink: 0;
+            margin: 0.2em 0;
 
             img {
                 object-fit: cover;
             }
 
             .card-body {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-between;
+                display: grid;
+                grid-template-rows: repeat(2, 4em);
 
                 p {
                     font-size: 15px;
                     padding: 0;
+                }
+            }
+
+            .card-body-3 {
+                display: grid;
+                grid-template-rows: repeat(2, 1fr) 1em;
+                padding: 1em;
+                gap: 1em;
+
+                p {
+                    font-size: 15px;
+                    padding: 0;
+                }
+
+                .date {
+                    align-self: end;
                 }
             }
         }
@@ -231,23 +246,28 @@ p {
     }
 
     #article_list {
-        display: flex;
-        flex-direction: row;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
         gap: 2em;
 
         a {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-rows: 1fr 1fr;
             border: 0.1px solid var(--grey);
+            height: fit-content;
 
             div {
-                display: flex;
-                flex-direction: column;
+                display: grid;
+                grid-template-rows: repeat(2, 4em) 3em;
                 justify-content: space-between;
                 padding: 1em;
 
-                h6 {
-                    font-weight: bold;
+                p {
+                    padding: 0;
+                }
+
+                .date {
+                    align-self: end;
                 }
             }
         }

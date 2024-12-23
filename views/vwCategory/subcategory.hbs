@@ -19,10 +19,11 @@
 
             <div class="triple-highlight">
                 {{#each topNews}}
-                <a class="highlight-element" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
+                <a class="highlight-element"
+                    href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
                     <p>{{truncateText Meta_title 35}}</p>
-                    <h6>{{formatDate Date}}</h6>
+                    <p>{{formatDate Date}}</p>
                 </a>
                 {{/each}}
             </div>
@@ -47,9 +48,9 @@
         <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{timeAgo Date}}</p>
             <div class="content">
-                <h4>{{truncateText Meta_title 45}}</h4>
+                <h4>{{truncateText Meta_title 120}}</h4>
                 <p>
-                    {{truncateText Meta_description 130}}
+                    {{truncateText Meta_description 300}}
                 </p>
                 <div class="content-after">{{SubCategoryName}}</div>
             </div>

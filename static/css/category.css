@@ -42,6 +42,7 @@
         display: flex;
         flex-direction: column;
         grid-area: 1 / 1 / 2 / 2;
+        outline: 1px solid var(--light-red);
 
         .div1 {
             display: flex;
@@ -63,16 +64,27 @@
             display: grid;
             grid-template: 1fr / repeat(3, 1fr);
             gap: 1em;
-            padding-top: 1em;
+            margin-top: 1em;
+            border-top: 2px solid var(--grey);
 
             .highlight-element {
                 display: flex;
+                padding: 1em 0;
                 flex-direction: column;
 
-                p {
-                    font-size: 11pt;
-                    font-weight: bold;
-                    padding: 0 1em;
+                div {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 0.5em;
+                    padding: 0 0.4em;
+
+                    h5 {
+                        font-size: 13pt;
+                    }
+
+                    p {
+                        font-size: 11pt;
+                    }
                 }
 
                 .hinhanh-div {
@@ -90,6 +102,7 @@
         flex-direction: column;
         overflow: scroll;
         overflow-x: hidden;
+        outline: 1px solid var(--light-red);
     }
 }
 
@@ -120,9 +133,6 @@
         }
     }
 
-    .image-container {
-        /* object-fit: cover; */
-    }
 }
 
 
@@ -133,25 +143,33 @@
     margin-top: 5em;
     padding-top: 2em;
     border-top: 2px solid var(--grey);
-    gap: 2em;
+    gap: 5em;
 
     .highlight-section {
+        /* display: grid;
+        grid-template-rows: 1fr 3fr; */
         display: flex;
         flex-direction: column;
+        gap: 1em;
 
-        .title h4 {
+        .title h3 {
             font-weight: bold;
             color: var(--red);
         }
 
         .highlight-post {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-rows: 1fr 4em 2em;
+            gap: 1em;
             border-bottom: 2px solid var(--grey);
             margin-bottom: 1em;
 
             h5 {
                 margin-bottom: 10px;
+            }
+
+            p {
+                padding: 0;
             }
 
         }
@@ -164,12 +182,20 @@
             .post-section {
                 display: grid;
                 grid-template: 1fr/ 1fr 1fr;
-                padding-bottom: 1em;
                 border-bottom: 2px solid var(--grey);
+                gap: 1em;
+
+                h5 {
+                    font-size: 12pt;
+                }
 
                 p {
-                    padding-right: 1em;
                     font-size: 11pt;
+                }
+
+                img {
+                    grid-area: 1/ 2 / 3 / 3;
+                    object-fit: cover;
                 }
             }
         }
