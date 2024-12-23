@@ -63,7 +63,7 @@ router.get("/admininforuser", async (req, res) => {
     const inforUser = await adminService.getUserInforById(id_user)
     const subscriberInfo = await adminService.getSubscriberInfoByUserId(id_user); // Lấy thông tin Subscriber
 
-    
+
 
     // Lấy id_Category của Editor
     const categoryId = await adminService.getCategoryIdByEditorId(inforUser.Id_Editor);
@@ -193,7 +193,7 @@ router.post("/editor/delete", async (req, res) => {
 router.get("/newsmanagement", async (req, res) => {
     try {
         const newsDetails = await adminService.getNewsDetails(); // Lấy thông tin bài viết
-  
+
         res.render('vwAdmin/newsmanagement', {
             layout: 'admin',
             newsDetails: newsDetails // Truyền thông tin bài viết vào template
@@ -206,7 +206,7 @@ router.get("/newsmanagement", async (req, res) => {
 
 router.post("/newsmanagement/update-status", async (req, res) => {
     const { id_news, status } = req.body;
-   
+
 
     try {
         await adminService.updateNewsStatus(id_news, status); // Gọi hàm cập nhật trạng thái
@@ -216,6 +216,10 @@ router.post("/newsmanagement/update-status", async (req, res) => {
         return res.status(500).send("Có lỗi xảy ra khi cập nhật trạng thái."); // Gửi phản hồi lỗi
     }
 });
+
+router.get('/tagsmanagement', async (req, res) => {
+    res.render('vwAdmin/tagsmanagement', { layout: 'admin' });
+})
 
 
 export default router;

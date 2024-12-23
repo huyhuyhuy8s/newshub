@@ -6,21 +6,18 @@
 
 <nav>
     <div class="search">
-        <input class="day" type="date" placeholder="Từ ngày">
-        <input class="day" type="date" placeholder="Đến ngày">
-        <button>
+        <input class="day" id="startDate" type="date" placeholder="Từ ngày">
+        <input class="day" id="endDate" type="date" placeholder="Đến ngày">
+        <button id="searchButton">
             <i class="bi bi-search"></i>
         </button>
     </div>
     <div class="filter">
-        <button type="button">
+        <button type="button" id="oneWeekButton">
             Trong 1 tuần
         </button>
-        <button type="button">
+        <button type="button" id="oneMonthButton">
             Trong 1 tháng
-        </button>
-        <button type="button">
-            Trong 1 năm
         </button>
     </div>
 </nav>
@@ -31,91 +28,153 @@
         <div class="graph">
             <canvas id="line-chart"></canvas>
         </div>
+
         <div class="figure">
             <div class="data-article">
                 <h3>Bài viết đã đăng</h3>
                 <div class="center">
-                    <data>15</data>
+                    <data>{{totalAccept}}</data>
                     <i class="bi bi-check2-all"></i>
                 </div>
                 <div class="datetime">
-                    <p class="date-from">1/12/2024</p>
-                    7/12/2024
+                    <p class="date-from">{{formatDateInfor startDate}}</p>
+                    {{formatDateInfor endDate}}
                 </div>
             </div>
             <div class="data-article">
-                <h3>Bài viết từ chối</h3>
+                <h3>Bài viết chưa duyệt</h3>
                 <div class="center">
-                    <data>15</data>
-                    <i class="bi bi-x-circle"></i>
-                </div>
-                <div class="datetime">
-                    <p class="date-from">1/12/2024</p>
-                    77/12/2024
-                </div>
-            </div>
-            <div class="data-article">
-                <h3>Bài viết chờ duyệt</h3>
-                <div class="center">
-                    <data>15</data>
+                    <data>{{totalNotAccept}}</data>
                     <i class="bi bi-arrow-clockwise"></i>
                 </div>
                 <div class="datetime">
-                    <p class="date-from">1/12/2024</p>
-                    7/12/2024
+                    <p class="date-from">{{formatDateInfor startDate}}</p>
+                    {{formatDateInfor endDate}}
                 </div>
             </div>
             <div class="data-article">
                 <h3>Bài viết chưa đạt</h3>
                 <div class="center">
-                    <data>15</data>
+                    <data>{{totalRefuse}}</data>
                     <i class="bi bi-arrow-clockwise"></i>
+
                 </div>
                 <div class="datetime">
-                    <a class="date-from">12/12/2024</a>
-                    <a>15/12/2024</a>
+                    <p class="date-from">{{formatDateInfor startDate}}</p>
+                    {{formatDateInfor endDate}}
+                </div>
+            </div>
+            <div class="data-article">
+                <h3>Bài viết đã xóa</h3>
+                <div class="center">
+                    <data>{{ totalDelete }}</data>
+
+                    <i class="bi bi-x-circle"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">{{formatDateInfor startDate}}</>
+                        {{formatDateInfor endDate}}
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
+    // Hàm lấy tham số từ URL
+    function getQueryParam(param) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(param); // Trả về giá trị của param, hoặc null nếu không có
+    }
+    // 1 tuần và 1 tháng
+    document.getElementById('oneWeekButton').addEventListener('click', async () => {
+        const idUser = getQueryParam('id_user'); // Lấy giá trị Id_user từ URL
+        //alert(idUser)
+        if (idUser) {
+            await fetchData('one_week', idUser);
+        } else {
+            console.error('Không tìm thấy Id_user trong URL');
+        }
+    });
+    document.getElementById('oneMonthButton').addEventListener('click', async () => {
+        const idUser = getQueryParam('id_user');
+        if (idUser) {
+            await fetchData('one_month', idUser);
+        } else {
+            console.error('Không tìm thấy Id_user trong URL');
+        }
+    });
+
+    //gửi custom
+    document.getElementById('searchButton').addEventListener('click', () => {
+        const idUser = getQueryParam('id_user');
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        // Kiểm tra nếu cả hai ngày đều có giá trị
+        if (startDate && endDate) {
+            // Điều hướng đến route với tham số từ và đến ngày
+            window.location.href = `/editor/home/typefilter?id_user=${idUser}&filter=custom&startDate=${startDate}&endDate=${endDate}`;
+        } else {
+            alert('Vui lòng chọn cả hai ngày!');
+        }
+    });
+
+
+    // Hàm gửi yêu cầu POST
+    async function fetchData(filter, idUser) {
+        try {
+            const idUser = getQueryParam('id_user');
+            window.location.href = `/editor/home/typefilter?id_user=${idUser}&filter=${filter}`;
+        } catch (error) {
+            console.error('Lỗi khi gửi yêu cầu GET:', error);
+        }
+    }
+
+
+</script>
+<script>
+    const data1 = JSON.parse('{{{ acceptCounts }}}');
+    const data2 = JSON.parse('{{{ notAcceptCounts }}}');
+    const data3 = JSON.parse('{{{ refuseCounts }}}');
+    const data4 = JSON.parse('{{{ deleteCounts }}}');
+    const labels = JSON.parse('{{{ dates }}}');
+
     new Chart(document.getElementById("line-chart"), {
         type: 'line',
         data: {
-            labels: [1, 2, 3, 4, 5, 6, 7],
+            labels: labels,
             datasets: [
                 {
-                    data: [20, 5, 8, 17, 3, 8, 23],
+                    data: data1,
                     label: "Bài viết đã đăng",
                     borderColor: "#3cba9f",
                     fill: false
                 },
                 {
-                    data: [12, 5, 9, 18, 25, 16, 4],
-                    label: "Bài viết từ chối",
+                    data: data2,
+                    label: "Bài viết chưa duyệt",
                     borderColor: "#808080",
                     fill: false
                 },
                 {
-                    data: [4, 9, 7, 15, 13, 21, 27],
-                    label: "Bài viết chờ duyệt",
+                    data: data3,
+                    label: "Bài viết chưa đạt",
                     borderColor: "#e43202",
                     fill: false
                 },
                 {
-                    data: [5, 10, 15, 15, 22, 24, 30],
-                    label: "Bài viết chưa đạt",
+                    data: data4,
+                    label: "Bài viết đã xóa",
                     borderColor: "#335dff",
                     fill: false
-
                 }]
         },
+
         options: {
             plugins: {
                 title: {
                     display: true,
-                    text: 'Biểu đồ thể hiện số bài viết trong tháng 12',
+                    text: 'Biểu đồ thể hiện số bài viết',
                 },
                 legend: {
                     display: true,

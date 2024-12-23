@@ -3,7 +3,7 @@
 {{/fillHtmlContent}}
 <nav>
     <div class="filter">
-         <button type="button" id="premium-toggle" onclick="togglePremium('{{news.Id_News}}')">
+        <button type="button" id="premium-toggle" onclick="togglePremium('{{news.Id_News}}')">
             {{#if news.Premium}}
             Chuyển sang Free
             {{else}}
@@ -90,7 +90,7 @@
     <h5>{{news.Title}}</h5>
     <div class="b_title">
         <div class="date">
-
+            <input type="date" name="date" id="date">
             <a>{{formatDate news.Date}}</a>
         </div>
         <div class="author">

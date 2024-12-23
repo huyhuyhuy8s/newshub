@@ -15,7 +15,7 @@ import inforUserRouter from './routes/inforuser.route.js';
 import adminRouter from './routes/admin.route.js';
 import editorRouter from './routes/editor.route.js';
 import writerRouter from './routes/writer.route.js';
-import { isAdmin, isEditor, isWriter } from './auth/auth.js'; 
+import { isAdmin, isEditor, isWriter } from './auth/auth.js';
 
 import writerService from './services/writer.service.js';
 
@@ -135,7 +135,6 @@ app.engine('hbs', engine({
             const day = d.getDate().toString().padStart(2, '0');
             return `${year}-${month}-${day}`; // Định dạng theo YYYY-MM-DD
         },
-
         // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
         truncateText: (text, length) => {
             if (text.length !== null) {
@@ -234,6 +233,15 @@ app.engine('hbs', engine({
             const year = d.getFullYear();
             return `${day}/${month}/${year}`;
         },
+        //helper chọn role
+        if_eq: function (a, b, options) {
+            if (a == b) {
+                return options.fn(this);  // Nếu giá trị của a và b bằng nhau, render block của helper
+            } else {
+                return options.inverse(this);  // Nếu không, render block ngược lại
+            }
+        }
+
     },
 }));
 
@@ -292,8 +300,15 @@ app.use(function (req, res, next) {
 
 
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.get('/', function (req, res) {
+//     if (!req.session.auth) {
+//         return res.redirect('/account/login');
+//     }
+//     res.render('home', {
+//         layout: 'main',
+//         user: req.session.authUser
+//     });
+// });
 
 app.use('/account', accountRouter);
 
@@ -306,8 +321,8 @@ app.use('/inforuser', inforUserRouter);
 
 // app.use('/admin', adminRouter);
 app.use('/admin', isAdmin, adminRouter); // 20/12
-app.use('/editor', isEditor, editorRouter);
 app.use('/writer', isWriter, writerRouter);
+app.use('/editor', isEditor, editorRouter);
 
 
 // Server setup

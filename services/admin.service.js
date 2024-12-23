@@ -174,7 +174,7 @@ const adminService = {
             const editor = await db('Editor').where('Id_User', id_user).first();
             const subcriber = await db('Subcriber').where('Id_User', id_user).first();
             const administrator = await db('Administrator').where('Id_User', id_user).first();
-           
+
             const categoryNameWriter = writer && writer.Id_Category ? await this.getCategoryNameById(writer.Id_Category) : null;
             const categoryNameEditor = editor && editor.Id_Category ? await this.getCategoryNameById(editor.Id_Category) : null;
             return {
@@ -184,7 +184,7 @@ const adminService = {
                 Id_Subcriber: subcriber ? subcriber.Id_Subcriber : null,
                 Id_Administrator: administrator ? administrator.Id_Administrator : null,
                 Pen_Name: writer ? writer.Pen_Name : null,
-               
+
                 Name_Category_Writer: categoryNameWriter,
                 Name_Category_Editor: categoryNameEditor,
             };
@@ -386,7 +386,7 @@ const adminService = {
                 .select('Id_Category')
                 .where('Id_Editor', editorId) // Giả sử Id_User là khóa chính của Editor
                 .first(); // Lấy một bản ghi đầu tiên
-    
+
             return editor ? editor.Id_Category : null; // Trả về Id_Category hoặc null nếu không tìm thấy
         } catch (error) {
             console.error("Lỗi khi lấy Id_Category của Editor:", error);
@@ -397,31 +397,31 @@ const adminService = {
         try {
             // Lấy danh sách SubCategory mà Editor quản lý
             const subCategories = await db('SubCategory')
-                    .where('Id_Category', categoryId); // Giả sử editorId là Id_Category
-    
+                .where('Id_Category', categoryId); // Giả sử editorId là Id_Category
+
             const subCategoryIds = subCategories.map(subCat => subCat.Id_SubCategory);
-    
+
             // Lấy số lượng bài viết theo trạng thái
             const approvedCount = await db('News')
                 .whereIn('Id_SubCategory', subCategoryIds)
                 .andWhere('Id_Status', 'STS0001') // Đã duyệt
                 .count('Id_News as count');
-    
+
             const pendingCount = await db('News')
                 .whereIn('Id_SubCategory', subCategoryIds)
                 .andWhere('Id_Status', 'STS0002') // Chưa duyệt
                 .count('Id_News as count');
-    
+
             const notAcceptedCount = await db('News')
                 .whereIn('Id_SubCategory', subCategoryIds)
                 .andWhere('Id_Status', 'STS0003') // Chưa đạt
                 .count('Id_News as count');
-    
+
             const rejectedCount = await db('News')
                 .whereIn('Id_SubCategory', subCategoryIds)
                 .andWhere('Id_Status', 'STS0004') // Đã xóa
                 .count('Id_News as count');
-    
+
             return {
                 approvedCount: approvedCount[0].count,
                 pendingCount: pendingCount[0].count,
@@ -479,7 +479,71 @@ const adminService = {
             console.error("Lỗi khi cập nhật thuộc tính Request của Subscriber:", error);
             throw error; // Ném lỗi để xử lý ở route
         }
-    }
+    },
 
+    async getUserInforById(id_user) {
+
+        try {
+            const result = await db('User')
+                .select(
+                    'User.Id_User',
+                    'User.Name',
+                    'User.Birthday',
+                    'User.Email',
+                    db.raw(`
+      CASE 
+        WHEN Editor.Id_Editor IS NOT NULL THEN 'Editor'
+        WHEN Writer.Id_Writer IS NOT NULL THEN 'Writer'
+        WHEN Subcriber.Id_Subcriber IS NOT NULL THEN 'Subscriber'
+        ELSE 'User'
+      END AS Role
+    `),
+                    db.raw(`
+        CASE 
+          WHEN Writer.Id_Writer IS NOT NULL THEN Writer.Pen_Name
+          ELSE NULL
+        END AS Pen_Name
+      `)
+                )
+                .leftJoin('Editor', 'User.Id_User', 'Editor.Id_User')
+                .leftJoin('Writer', 'User.Id_User', 'Writer.Id_User')
+                .leftJoin('Subcriber', 'User.Id_User', 'Subcriber.Id_User')
+                .where('User.Id_User', id_user) // Thêm điều kiện để lấy thông tin cho một người dùng cụ thể
+                .first(); // Sử dụng `.first()` để lấy kết quả đầu tiên (một bản ghi duy nhất)
+
+
+            return result;
+        } catch (err) {
+            console.error(err);
+        }
+
+    },
+    async addUsertoSubcriber(entity) {
+        try {
+            const lastSubcriber = await db('Subcriber')
+                .orderBy('Id_Subcriber', 'desc')
+                .first();
+
+            // Tạo ID mới
+            let newId;
+            if (!lastSubcriber) {
+                // Nếu chưa có user nào
+                newId = 'SUBC0001';
+            } else {
+                // Lấy số từ ID cuối cùng và tăng lên 1
+                const lastNumber = parseInt(lastSubcriber.Id_Subcriber.slice(4));
+                newId = `SUBC${String(lastNumber + 1).padStart(4, '0')}`;
+            }
+
+            // Gán ID mới vào entity
+
+            // Thêm user mới vào database
+            const ids = await db('Subcriber').insert(entity);
+            return ids[0];
+        } catch (error) {
+            console.error(' error:', error);
+            throw error;
+        }
+    }
 }
 export default adminService

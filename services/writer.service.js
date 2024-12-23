@@ -68,7 +68,7 @@ const writerService = {
     },
     async findAllPost(id_writer) {
         const posts = await db("News").where('Id_Writer', id_writer);
-    
+
         // Chuyển đổi giá trị Premium từ BIT sang boolean
         return posts.map(post => ({
             ...post,
@@ -91,7 +91,7 @@ const writerService = {
                 .select('Reason')
                 .where('Id_News', id_news)
                 .first(); // Lấy kết quả đầu tiên
-    
+
             return result ? result.Reason : null; // Trả về lý do nếu có
         } catch (error) {
             console.error("Lỗi khi lấy lý do từ chối:", error);
@@ -114,6 +114,39 @@ const writerService = {
             }
         } catch (error) {
             console.error("Lỗi khi tìm kiếm bài viết:", error);
+        }
+    },
+    async countNewsStatusByUserId(Id_user, date) {
+        try {
+
+            const result = await db('News')
+                .join('Writer', 'News.Id_Writer', 'Writer.Id_Writer')
+                .join('Status_Of_News', 'News.Id_Status', 'Status_Of_News.Id_Status')
+                .where('Writer.Id_User', Id_user)
+                .andWhere(db.raw('DATE(News.Date) = ?', [date]))  // filter by the specific date
+                .select('Status_Of_News.Title_Status as title_status')
+                .count('News.Id_News as count')
+                .groupBy('Status_Of_News.Title_Status')  // Group by status
+                .orderBy('title_status');  // Order by status or as needed
+            // If there are no results for a specific title_status, we manually return that as 0
+            const statusList = ['Đồng ý', 'Chưa duyệt', 'Chưa đạt', 'Đã xoá'];; // Example of all possible status values
+            const countMap = result.reduce((acc, row) => {
+                acc[row.title_status] = row.count;
+                return acc;
+            }, {});
+            const finalResult = statusList.map(status => ({
+                title_status: status,
+                count: countMap[status] || 0
+            }));
+            const entity = {
+                date: date,
+                statuses: finalResult
+            };
+            return entity;
+        }
+        catch (error) {
+            console.error('Error in countNewsStatusByUserId:', error);
+            throw error;
         }
     },
 

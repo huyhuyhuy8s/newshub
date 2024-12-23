@@ -167,4 +167,3 @@ document.addEventListener('DOMContentLoaded', function () {
         subnavs.forEach(subnav => subnav.hidden = true);
     });
 });
-

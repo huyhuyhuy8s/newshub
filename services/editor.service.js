@@ -1,6 +1,42 @@
 import db from '../utils/db.js';
 
 const editorService = {
+    async countNewsStatusByUserId(Id_user, date) {
+        try {
+
+            const result = await db('News')
+                .join('SubCategory', 'News.Id_SubCategory', 'SubCategory.Id_SubCategory')
+                .join('Category', 'SubCategory.Id_Category', 'Category.Id_Category')
+                .join('Editor', 'Category.Id_Category', 'Editor.Id_Category')
+                .join('Status_Of_News', 'News.Id_Status', 'Status_Of_News.Id_Status')
+                .where('Editor.Id_User', Id_user)
+                .andWhere(db.raw('DATE(News.Date) = ?', [date]))  // filter by the specific date
+                .select('Status_Of_News.Title_Status as title_status')
+                .count('News.Id_News as count')
+                .groupBy('Status_Of_News.Title_Status')  // Group by status
+                .orderBy('title_status');  // Order by status or as needed
+
+            // If there are no results for a specific title_status, we manually return that as 0
+            const statusList = ['Đồng ý', 'Chưa duyệt', 'Chưa đạt', 'Đã xoá'];; // Example of all possible status values
+            const countMap = result.reduce((acc, row) => {
+                acc[row.title_status] = row.count;
+                return acc;
+            }, {});
+            const finalResult = statusList.map(status => ({
+                title_status: status,
+                count: countMap[status] || 0
+            }));
+            const entity = {
+                date: date,
+                statuses: finalResult
+            };
+            return entity;
+        }
+        catch (error) {
+            console.error('Error in countNewsStatusByUserId:', error);
+            throw error;
+        }
+    },
     async findEditor(id_user) {
         try {
             const result = await db('Editor').where('Id_User', id_user).first();
@@ -58,7 +94,7 @@ const editorService = {
         try {
             await db('News')
                 .where('Id_News', id_news)
-                .update({ Premium: newPremiumValue }); 
+                .update({ Premium: newPremiumValue });
         } catch (error) {
             console.error("Lỗi khi cập nhật trạng thái Premium:", error);
         }
@@ -79,9 +115,9 @@ const editorService = {
         try {
             const result = await db('News')
                 .join('Editor_Check_News', 'News.Id_News', '=', 'Editor_Check_News.Id_News')
-                .join('Writer', 'News.Id_Writer', '=', 'Writer.Id_Writer') 
+                .join('Writer', 'News.Id_Writer', '=', 'Writer.Id_Writer')
                 .select('News.*', 'Editor_Check_News.Reason', 'Writer.Pen_Name')
-                .where('News.Id_Status', 'STS0004'); 
+                .where('News.Id_Status', 'STS0004');
             return result;
         } catch (error) {
             console.error("Lỗi khi lấy bài viết bị từ chối:", error);
@@ -101,12 +137,12 @@ const editorService = {
             throw error;
         }
     },
-    
+
     async updateNewsStatus(id_news, new_status) {
         try {
             await db('News')
                 .where('Id_News', id_news)
-                .update({ Id_Status: new_status }); 
+                .update({ Id_Status: new_status });
         } catch (error) {
             console.error("Lỗi khi cập nhật trạng thái bài viết:", error);
             throw error;
@@ -119,11 +155,11 @@ const editorService = {
     async getWritersWithStatusCount(editorId) {
         try {
             const editor = await db('Editor').select('Id_Category').where('Id_Editor', editorId).first();
-            
+
             if (!editor) {
                 throw new Error('Editor không tồn tại');
             }
-    
+
             const result = await db('Writer')
                 .leftJoin('News', 'Writer.Id_Writer', '=', 'News.Id_Writer')
                 .select('Writer.Id_Writer', 'Writer.Pen_Name')
@@ -133,7 +169,7 @@ const editorService = {
                 .count({ rejected: db.raw('CASE WHEN News.Id_Status = "STS0004" THEN 1 END') })
                 .where('Writer.Id_Category', editor.Id_Category) // Lọc Writer theo Id_Category của Editor
                 .groupBy('Writer.Id_Writer', 'Writer.Pen_Name');
-    
+
             return result;
         } catch (error) {
             console.error("Lỗi khi lấy thông tin Writer:", error);
@@ -144,29 +180,30 @@ const editorService = {
         try {
             const user = await db('User')
                 .where('Id_User', id_user)
-                .first(); 
+                .first();
 
             if (!user) {
                 throw new Error('Người dùng không tồn tại');
             }
 
-            return user; 
+            return user;
         } catch (error) {
             console.error("Lỗi khi lấy thông tin người dùng:", error);
-            throw error; 
+            throw error;
         }
     },
     async updateUser(id_user, updatedUser) {
         try {
             await db('User')
                 .where('Id_User', id_user)
-                .update(updatedUser); 
+                .update(updatedUser);
         } catch (error) {
             console.error("Lỗi khi cập nhật thông tin người dùng:", error);
-            throw error; 
+            throw error;
         }
     },
 
 
 }
+
 export default editorService

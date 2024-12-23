@@ -1,0 +1,63 @@
+<header id="menu">
+
+    <button id="btn-change-acc" onclick="ChangeAccount()">
+        <img src="/imgs/main/avt.png">
+    </button>
+    <ul>
+        <li onclick="ChangeColorBtn(this)">
+            <a href="/admin/dashboard" class="header-item">
+                <i class="bi bi-graph-up"></i>
+                Trang chủ
+            </a>
+        </li>
+        <li onclick="ChangeColorBtn(this)">
+            <a href="/admin/newsmanagement" class="header-item">
+                <i class="bi bi-list-ul"></i>
+                Quản lý bài viết
+            </a>
+        </li>
+        <li onclick="ChangeColorBtn(this)">
+            <a href="/admin/usermanagement" class="header-item">
+                <i class="bi bi-person-lines-fill"></i>
+                Quản lý người dùng
+            </a>
+        </li>
+        <li onclick="ChangeColorBtn(this)">
+            <a href="/admin/tagsmanagement" class="header-item">
+                <i class="bi bi-person-lines-fill"></i>
+                Quản lý nhãn
+            </a>
+        </li>
+    </ul>
+</header>
+
+
+<div id="ChangeAccount-Div">
+    <div class="avt">
+        <img src="/imgs/main/avt.png">
+        {{authUser.Name}}
+    </div>
+    <ul>
+        <li>
+            <a href="/editor/inforeditor">
+                <i class="bi bi-info-lg"></i>
+                Thông tin của tôi
+            </a>
+        </li>
+        <li>
+            <a href="/">
+                <i class="bi bi-arrow-left-right"></i>
+                Chuyển về tài khoản đọc báo
+            </a>
+        </li>
+    </ul>
+    <button class="btn-sign-out" type="submit" onclick="logout()">
+        Đăng xuất
+
+    </button>
+
+</div>
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/scriptInforEditor.js"></script>
+{{/fillHtmlContent}}

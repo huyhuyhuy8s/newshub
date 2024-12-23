@@ -52,8 +52,8 @@ router.get('/:categoryId/:subCategoryId', async function (req, res) {
     try {
         // const categoryId = req.params.categoryId;
         const subCategoryId = req.params.subCategoryId;
-        
-        
+
+
         // Lấy thông tin subcategory
         const subcategory = await categoryService.findSubCategoryById(subCategoryId);
         if (!subcategory) {
@@ -62,7 +62,7 @@ router.get('/:categoryId/:subCategoryId', async function (req, res) {
 
         // Lấy các bài viết nhiều view nhất trong 7 ngày
         const allNews = await categoryService.getTopViewedNewsBySubCategory(subCategoryId, 7);
-        
+
         // Lấy các bài viết mới nhất của subcategory
         const recentNews = await categoryService.getRecentNewsBySubCategory(subCategoryId);
 
