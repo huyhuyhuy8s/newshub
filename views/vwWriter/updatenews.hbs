@@ -1,80 +1,26 @@
 {{#fillHtmlContent 'css'}}
-<link rel="stylesheet" href="/css/editor/style_article.css">
+<link rel="stylesheet" href="/css/writer/style_updatenews.css">
 {{/fillHtmlContent}}
 <nav>
     <div class="filter">
-         <button type="button" id="premium-toggle" onclick="togglePremium('{{news.Id_News}}')">
+        <button type="button" readonly>
+
             {{#if news.Premium}}
-            Chuyển sang Free
+            Premium
             {{else}}
-            Chuyển sang Premium
+            Free
             {{/if}}
         </button>
     </div>
     <div class="filter">
-        {{#if (eq news.Id_Status 'STS0001')}}
-        <button type="button" onclick="updateStatus('{{news.Id_News}}', 'STS0003')">
+    
+        <button type="button">
             <i class="bi bi-check2-all"></i>
-            Chưa đạt
+            Cập nhật bài viết
         </button>
-        <button type="button" onclick="showRejectionInput()">
-            <i class="bi bi-check2-all"></i>
-            Từ chối
-        </button>
-        <div id="rejectionContainer" style="display: none;">
-            <input type="text" id="rejectionReason" placeholder="Nhập lý do từ chối" />
-            <button onclick="submitRejectionReason('{{news.Id_News}}')">Gửi</button>
-        </div>
+     
 
-
-
-        {{else if (eq news.Id_Status 'STS0002')}}
-        <button type="button" onclick="updateStatus('{{news.Id_News}}', 'STS0001')">
-            <i class="bi bi-check2-all"></i>
-            Đồng ý
-        </button>
-        <button type="button" onclick="updateStatus('{{news.Id_News}}', 'STS0003')">
-            <i class="bi bi-arrow-right"></i>
-            Chưa đạt
-        </button>
-        <button type="button" onclick="showRejectionInput()">
-            <i class="bi bi-x-circle"></i>
-            Từ chối
-        </button>
-        <div id="rejectionContainer" style="display: none;">
-            <input type="text" id="rejectionReason" placeholder="Nhập lý do từ chối" />
-            <button onclick="submitRejectionReason('{{news.Id_News}}')">Gửi</button>
-        </div>
-
-
-
-
-        {{else if (eq news.Id_Status 'STS0003')}}
-        <button type="button" onclick="updateStatus('{{news.Id_News}}', 'STS0001')">
-            <i class="bi bi-x-circle"></i>
-            Đồng ý
-        </button>
-        <button type="button" onclick="showRejectionInput()">
-            <i class="bi bi-arrow-right"></i>
-            Từ chối
-        </button>
-        <div id="rejectionContainer" style="display: none;">
-            <input type="text" id="rejectionReason" placeholder="Nhập lý do từ chối" />
-            <button onclick="submitRejectionReason('{{news.Id_News}}')">Gửi</button>
-        </div>
-
-
-
-
-        {{!-- {{else if (eq news.Id_Status 'STS0004')}}
-        <button type="button" onclick="updateStatus('{{news.Id_News}}', 'STS0004')">
-            <i class="bi bi-x-circle"></i>
-            Từ chối
-        </button> --}}
-
-
-        {{/if}}
-        <button type="button" onclick="window.location.href='/editor/list-article'">
+        <button type="button" onclick="window.location.href='/writer/list-post'">
             <i class="bi bi-arrow-right"></i>
             Quay lại
         </button>
@@ -180,5 +126,5 @@
 </html> --}}
 
 {{#fillHtmlContent 'js'}}
-<script src="/js/scriptEditor.js"></script>
+<script src="/js/scriptWriter.js"></script>
 {{/fillHtmlContent}}

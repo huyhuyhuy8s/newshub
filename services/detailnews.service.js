@@ -42,6 +42,7 @@ const newsService = {
     
             const news = await query.select(
                 'n.*',
+                'w.Pen_Name as NickNameWriter',
                 's.Name as SubCategoryName',
                 'c.Name as CategoryName',
                 'u.Name as WriterName'

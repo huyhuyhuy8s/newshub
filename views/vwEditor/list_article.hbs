@@ -1,27 +1,29 @@
 {{> headerEditor}}
 
 <nav>
-    <div class="search">
+    {{!-- <div class="search">
         <input type="text" placeholder="Nhập tin cần tìm...">
         <button type="button">
             <i class="bi bi-search"></i>
         </button>
-    </div>
+    </div> --}}
     <div class="filter">
-        <button>
+        {{!-- <button>
             <i class="bi bi-arrow-clockwise"></i>
             Chờ duyệt
         </button>
         <button>
             <i class="bi bi-check2-all"></i>
             Đã đăng
-        </button>
-        <button>
-            <i class="bi bi-x-circle"></i>
-            Từ chối
+        </button> --}}
+        <button onclick="window.location.href='/editor/list-article_reject'">
+            <i class="bi bi-x-circle" ></i>
+            Danh sách các bài viết từ chối & Lý do từ chối
         </button>
     </div>
 </nav>
+<br>
+
 
 <div id="body" class="moderator-list">
     <table width="100%">
@@ -30,132 +32,51 @@
                 <th>STT</th>
                 <th>Tiêu đề</th>
                 <th>Tác giả</th>
+                <th>Ngày đăng</th>
                 <th>Bài viết Premium</th>
                 <th>Trạng thái</th>
+                <th>Sửa đổi</th>
             </tr>
         </thead>
         <tbody>
+            {{#each posts}}
             <tr>
-                <td>1</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
+                <td>{{@index}}</td>
+                <td class="title"><a href="">{{truncateText this.Title 50}}</a></td>
+                <td>{{this.Pen_Name}}</td>
+                <td>{{formatDate this.Date}}</td>
+                {{!-- <td>
+                    <input type="checkbox" name="check_articles" {{#if this.Premium}}checked{{/if}}>
+                </td> --}}
                 <td>
-                    <input type="checkbox" name="check_articles">
+                    <input type="checkbox" name="check_articles" {{#if this.Premium}}checked{{/if}}
+                        onclick="updatePremium('{{this.Id_News}}', this.checked)">
                 </td>
                 <td>
+                    {{#if (eq this.Id_Status 'STS0001')}}
                     <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
+                    {{else if (eq this.Id_Status 'STS0002')}}
                     <span class="pending">Chờ duyệt</span>
-                </td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span class="pending">Chờ duyệt</span>
-                </td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
+                    {{else if (eq this.Id_Status 'STS0003')}}
+                    <span class="check-later">Chưa đạt</span>
+                    {{else if (eq this.Id_Status 'STS0004')}}
                     <span class="rejected">Từ chối</span>
+                    {{/if}}
+                </td>
+                <td>
+                    <a href="/editor/article?id_news={{this.Id_News}}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
                 </td>
             </tr>
-            <tr>
-                <td>8</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td class="title"><a href="">Bỏ đấu thầu giá sau khi trả 30 tỷ đồng cho một m2 ở Hà Nội</a></td>
-                <td>Võ Hải</td>
-                <td>
-                    <input type="checkbox" name="check_articles">
-                </td>
-                <td>
-                    <span>Đã đăng</span>
-                </td>
-            </tr>
+            {{/each}}
         </tbody>
+
     </table>
 </div>
+
+
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/scriptEditor.js"></script>
+{{/fillHtmlContent}}

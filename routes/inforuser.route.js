@@ -17,7 +17,7 @@ router.get('/inforuser', async (req, res) => {
         if (!userInfo) {
             return res.status(404).send('User not found');
         }
-        console.log('email1:', email);
+        
         
         // Truyền userInfo vào view
         res.render('vwInforUser/inforuser', { userInfo, layout: false, id_user, name, email, birthday });
@@ -30,7 +30,7 @@ router.get('/inforuser', async (req, res) => {
 // Route để cập nhật thông tin người dùng
 router.post('/update', async (req, res) => {
     const { name, email, dob, password } = req.body;
-    console.log('email:', email);
+    
 
     try {
         if (!req.session.auth) {

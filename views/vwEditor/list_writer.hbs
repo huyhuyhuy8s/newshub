@@ -12,90 +12,27 @@
         <thead>
             <tr>
                 <th>STT</th>
-                <th>Tác giả</th>
+                
+                <th>Bút danh</th>
                 <th>Bài viết đã duyệt</th>
-                <th>Tổng số bình luận</th>
-                <th>Hoạt động gần đây</th>
+                <th>Bài viết chờ phê duyệt</th>
+                <th>Bài viết chưa đạt</th>
+                <th>Bài viết bị từ chối</th>
             </tr>
         </thead>
         <tbody>
+            {{#each writers}}
             <tr>
-                <td>1</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
+                <td>{{@index}}</td>
+                
+                <td>{{this.Pen_Name}}</td>
+                <td>{{this.approved}}</td>
+                <td>{{this.pending}}</td>
+                <td>{{this.not_passed}}</td>
+                <td>{{this.rejected}}</td>
             </tr>
-            <tr>
-                <td>2</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>5</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>6</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>7</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>8</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>9</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>10</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
-            <tr>
-                <td>11</td>
-                <td>Võ Hải</td>
-                <td>4/10</td>
-                <td>15</td>
-                <td>12/11/2024</td>
-            </tr>
+            {{/each}}
+
         </tbody>
     </table>
 </div>

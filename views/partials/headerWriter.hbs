@@ -26,21 +26,30 @@
 <div id="ChangeAccount-Div">
     <div class="avt">
         <img src="/imgs/main/avt.png">
-        John Doe
+        {{authUser.Name}}
     </div>
     <ul>
         <li>
-            <a href="">
+            <a href="/writer/inforeditor">
                 <i class="bi bi-info-lg"></i>
                 Thông tin của tôi
             </a>
         </li>
         <li>
-            <a href="">
+            <a href="/">
                 <i class="bi bi-arrow-left-right"></i>
-                Chuyển tài khoản
+                Chuyển về tài khoản đọc báo
             </a>
         </li>
     </ul>
-    <button class="btn-sign-out" type="submit">Đăng xuất</button>
+    <button class="btn-sign-out" type="submit" onclick="logout()">Đăng xuất</button>
+ 
 </div>
+
+
+
+
+
+{{!-- {{#fillHtmlContent 'js'}} --}}
+<script src="/js/scriptInforWriter.js"></script>
+{{!-- {{/fillHtmlContent}} --}}
