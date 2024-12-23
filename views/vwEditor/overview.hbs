@@ -1,0 +1,200 @@
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/editor/style_overview.css">
+{{/fillHtmlContent}}
+
+{{> headerEditor}}
+
+<nav>
+    <div class="search">
+        <input class="day" id="startDate" type="date" placeholder="Từ ngày">
+        <input class="day" id="endDate" type="date" placeholder="Đến ngày">
+        <button id="searchButton">
+            <i class="bi bi-search"></i>
+        </button>
+    </div>
+    <div class="filter">
+        <button type="button" id="oneWeekButton">
+            Trong 1 tuần
+        </button>
+        <button type="button" id="oneMonthButton">
+            Trong 1 tháng
+        </button>
+    </div>
+</nav>
+
+<div id="body">
+    <div class="title">Tổng quan bài viết</div>
+    <div class="content">
+        <div class="graph">
+            <canvas id="line-chart"></canvas>
+        </div>
+
+        <div class="figure">
+            <div class="data-article">
+                <h3>Bài viết đã đăng</h3>
+                <div class="center">
+                    <data>{{totalAccept}}</data>
+                    <i class="bi bi-check2-all"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">{{formatDateInfor startDate}}</p>
+                    {{formatDateInfor endDate}}
+                </div>
+            </div>
+            <div class="data-article">
+                <h3>Bài viết chưa duyệt</h3>
+                <div class="center">
+                    <data>{{totalNotAccept}}</data>
+                    <i class="bi bi-arrow-clockwise"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">{{formatDateInfor startDate}}</p>
+                    {{formatDateInfor endDate}}
+                </div>
+            </div>
+            <div class="data-article">
+                <h3>Bài viết chưa đạt</h3>
+                <div class="center">
+                    <data>{{totalRefuse}}</data>
+                    <i class="bi bi-arrow-clockwise"></i>
+
+                </div>
+                <div class="datetime">
+                    <p class="date-from">{{formatDateInfor startDate}}</p>
+                    {{formatDateInfor endDate}}
+                </div>
+            </div>
+            <div class="data-article">
+                <h3>Bài viết đã xóa</h3>
+                <div class="center">
+                    <data>{{ totalDelete }}</data>
+
+                    <i class="bi bi-x-circle"></i>
+                </div>
+                <div class="datetime">
+                    <p class="date-from">{{formatDateInfor startDate}}</>
+                        {{formatDateInfor endDate}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    // Hàm lấy tham số từ URL
+    function getQueryParam(param) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(param); // Trả về giá trị của param, hoặc null nếu không có
+    }
+    // 1 tuần và 1 tháng
+    document.getElementById('oneWeekButton').addEventListener('click', async () => {
+        const idUser = getQueryParam('Id_user'); // Lấy giá trị Id_user từ URL
+        //alert(idUser)
+        if (idUser) {
+            await fetchData('one_week', idUser);
+        } else {
+            console.error('Không tìm thấy Id_user trong URL');
+        }
+    });
+    document.getElementById('oneMonthButton').addEventListener('click', async () => {
+        const idUser = getQueryParam('Id_user');
+        if (idUser) {
+            await fetchData('one_month', idUser);
+        } else {
+            console.error('Không tìm thấy Id_user trong URL');
+        }
+    });
+    
+    //gửi custom
+    document.getElementById('searchButton').addEventListener('click', () => {
+        const idUser = getQueryParam('Id_user');
+        const startDate = document.getElementById('startDate').value;
+        const endDate = document.getElementById('endDate').value;
+
+        // Kiểm tra nếu cả hai ngày đều có giá trị
+        if (startDate && endDate) {
+            // Điều hướng đến route với tham số từ và đến ngày
+            window.location.href = `/editor/home/typefilter?Id_user=${idUser}&filter=custom&startDate=${startDate}&endDate=${endDate}`;
+        } else {
+            alert('Vui lòng chọn cả hai ngày!');
+        }
+    });
+
+
+    // Hàm gửi yêu cầu POST
+    async function fetchData(filter, idUser) {
+        try {
+            const idUser = getQueryParam('Id_user');
+            window.location.href = `/editor/home/typefilter?Id_user=${idUser}&filter=${filter}`;
+        } catch (error) {
+            console.error('Lỗi khi gửi yêu cầu GET:', error);
+        }
+    }
+
+
+</script>
+<script>
+    const data1 = JSON.parse('{{{ acceptCounts }}}');
+    const data2 = JSON.parse('{{{ notAcceptCounts }}}');
+    const data3 = JSON.parse('{{{ refuseCounts }}}');
+    const data4 = JSON.parse('{{{ deleteCounts }}}');
+    const labels = JSON.parse('{{{ dates }}}');
+
+    new Chart(document.getElementById("line-chart"), {
+        type: 'line',
+        data: {
+            labels: labels,
+            datasets: [
+                {
+                    data: data1,
+                    label: "Bài viết đã đăng",
+                    borderColor: "#3cba9f",
+                    fill: false
+                },
+                {
+                    data: data2,
+                    label: "Bài viết chưa duyệt",
+                    borderColor: "#808080",
+                    fill: false
+                },
+                {
+                    data: data3,
+                    label: "Bài viết chưa đạt",
+                    borderColor: "#e43202",
+                    fill: false
+                },
+                {
+                    data: data4,
+                    label: "Bài viết đã xóa",
+                    borderColor: "#335dff",
+                    fill: false
+                }]
+        },
+        
+        options: {
+            plugins: {
+                title: {
+                    display: true,
+                    text: 'Biểu đồ thể hiện số bài viết',
+                },
+                legend: {
+                    display: true,
+                    position: 'bottom'
+                }
+            },
+            scales: {
+                y: {
+                    title: {
+                        display: true,
+                        text: 'Số bài viết'
+                    }
+                },
+                x: {
+                    title: {
+                        display: true,
+                        text: 'Ngày'
+                    }
+                }
+            }
+        }
+    });
+</script>
