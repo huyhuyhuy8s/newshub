@@ -100,9 +100,20 @@
     <div id="banner">
         <label class="custom-file-upload" id="custom_file_upload">
             <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png">
-            <h2>Chọn ảnh bìa của bài viết</h2>
+            <h2>Chọn ảnh bìa mới cho bài viết</h2>
         </label>
+
+        <div id="banner">
+            <h3>Hình ảnh hiện tại:</h3>
+            {{#if news.Image}} <!-- Kiểm tra xem có hình ảnh không -->
+            <img src="/imgs/uploads/{{news.Image}}" alt="Current Image" style="max-width: 200px;">
+            {{else}}
+            <p>Không có hình ảnh hiện tại.</p>
+            {{/if}}
+        </div>
+
     </div>
+
     <div id="body">
         <div class="creat">
             <textarea id="article" name="content" required>{{news.Content}}</textarea>
@@ -130,20 +141,20 @@
                 <h3>Chuyên mục cấp 2</h3>
 
                 <select name="sub_category" id="sub-category">
-                    <option value="none" disabled selected>Chọn chuyên mục</option>
+
                     {{#each subCategories}}
                     <option value="{{this.Id_SubCategory}}" {{#if (eq this.Id_SubCategory
                         news.Id_SubCategory)}}selected{{/if}}>{{this.Name}}</option>
                     {{/each}}
                 </select>
             </div>
-            <div class="tags">
+            {{!-- <div class="tags">
                 <h3>Tags</h3>
                 <input type="text" name="tags" id="tags" placeholder="#tags">
-            </div>
+            </div> --}}
             <div class="meta-title">
                 <h3>Tóm tắt tiêu đề</h3>
-                <input type="text" name="meta_title" id="meta-title"  value="{{news.Meta_title}}">
+                <input type="text" name="meta_title" id="meta-title" value="{{news.Meta_title}}">
             </div>
             <div class="meta-description">
                 <h3>Tóm tắt nội dung</h3>

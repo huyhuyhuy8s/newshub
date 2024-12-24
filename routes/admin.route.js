@@ -267,11 +267,13 @@ router.get('/tagsmanagement', async (req, res) => {
 
 router.get('/tagsmanagement', async (req, res) => {
     try {
+      
         const tags = await adminService.getTags(); // Lấy danh sách tag
         res.render('vwAdmin/tagsmanagement', {
             layout: 'admin',
             tags: tags // Truyền danh sách tag vào view
         });
+        console.log('cac tag ', tags);
     } catch (error) {
         console.error("Lỗi khi lấy danh sách tag:", error);
         res.status(500).send("Có lỗi xảy ra khi lấy danh sách tag.");
