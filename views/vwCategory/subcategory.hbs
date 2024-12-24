@@ -66,12 +66,12 @@
         {{else}}
         <a href="/category/{{categoryId}}/{{subCategoryId}}?page={{previousPage}}">Previous</a>
         {{/if}}
-       
+
 
         {{#each this.page_items}}
         {{#if isActive}}
         {{!-- Nếu là là chính trang đó thì không cho ấn --}}
-        <a href="#" >{{value}}</a>
+        <a href="#">{{value}}</a>
 
         {{else}}
 
@@ -79,7 +79,7 @@
 
         {{/if}}
         {{/each}}
-         {{#if isLastPage}}
+        {{#if isLastPage}}
         {{!-- Nếu là cuối trang thì không cho ấn --}}
         <a href="#">Next</a>
         {{else}}

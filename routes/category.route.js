@@ -50,7 +50,7 @@ router.get('/:id', async function (req, res) {
 //sub_Category
 router.get('/:categoryId/:subCategoryId', async function (req, res) {
     try {
-        // const categoryId = req.params.categoryId;
+        const categoryId = req.params.categoryId;
         const subCategoryId = req.params.subCategoryId;
 
 
@@ -63,13 +63,42 @@ router.get('/:categoryId/:subCategoryId', async function (req, res) {
         // Lấy các bài viết nhiều view nhất trong 7 ngày
         const allNews = await categoryService.getTopViewedNewsBySubCategory(subCategoryId, 7);
 
-        // Lấy các bài viết mới nhất của subcategory
-        const recentNews = await categoryService.getRecentNewsBySubCategory(subCategoryId);
+        // Pagnination
+        const limit = 5;
+        const page = parseInt(req.query.page) || 1
+        const offset = (page - 1) * limit
+        // Lấy các bài viết mới nhất của subcategory được giới hạn
+        const recentNews = await categoryService.getRecentNewsBySubCategory(subCategoryId, limit, offset);
 
+        // lấy số lượng nút nbaams của pagnination
+        const nRows = await categoryService.countNewsbySubCategory(subCategoryId)
+        const nPages = Math.ceil(nRows.total / limit)
+        const page_items = []
+        for (let i = 1; i <= nPages; i++) {
+            const item = {
+                value: i,
+                isActive: i === page,
+            }
+            page_items.push(item)
+        }
+        //check thử có phải là trang đầu và trang cuối không?
+        const isFirstPage = page === 1
+
+        let previousPage = 1
+        if (!isFirstPage) {
+            previousPage = page - 1
+        }
+        const isLastPage = page === nPages
+
+        let nextPage = page
+        if (!isLastPage) {
+            nextPage = page + 1
+        }
         // Phân chia tin tức cho parent1
         const firstNews = allNews[0] || null;
         const topNews = allNews.slice(1, 4);
         const otherNews = allNews.slice(4, 14);
+
 
         res.render('vwCategory/subcategory', {
             layout: 'main',
@@ -78,7 +107,14 @@ router.get('/:categoryId/:subCategoryId', async function (req, res) {
             topNews,
             otherNews,
             recentNews,
-            empty: allNews.length === 0
+            empty: allNews.length === 0,
+            page_items: page_items,
+            categoryId: categoryId,
+            subCategoryId: subCategoryId,
+            isFirstPage: isFirstPage,
+            isLastPage: isLastPage,
+            previousPage: previousPage,
+            nextPage: nextPage
         });
     } catch (err) {
         console.error('Error in subcategory route:', err);

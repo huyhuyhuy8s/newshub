@@ -1,4 +1,5 @@
 import db from '../utils/db.js';
+import moment from 'moment';
 
 
 export default {
@@ -76,6 +77,7 @@ export default {
             // Tính thời điểm 7 ngày trước
             const sevenDaysAgo = new Date();
             sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+            const now = new Date();
 
             const news = await db('News as n')
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
@@ -87,6 +89,7 @@ export default {
                 })
 
                 .andWhere('n.Date', '>=', sevenDaysAgo) // Thêm điều kiện lọc theo thời gian
+                .andWhere('n.Date', '<', now)
                 .select(
                     'n.Id_News',
                     'n.Title',
@@ -114,12 +117,14 @@ export default {
             // Tính thời điểm 1 tháng trước
             const oneMonthAgo = new Date();
             oneMonthAgo.setMonth(oneMonthAgo.getMonth() - 1);
+            const now = new Date();
 
             // Lấy top 3 subcategories
             const topSubcategories = await db('SubCategory as s')
                 .join('News as n', 's.Id_SubCategory', 'n.Id_SubCategory')
                 .where('s.Id_Category', categoryId)
                 .andWhere('n.Id_Status', 'STS0001')
+                .andWhere('n.Date', '<', now)
                 .andWhere('n.Date', '>=', oneMonthAgo)
                 .groupBy('s.Id_SubCategory', 's.Name', 's.Id_Category')
                 .select(
@@ -139,6 +144,7 @@ export default {
                         'Id_SubCategory': sub.Id_SubCategory,
                         'Id_Status': 'STS0001'
                     })
+                    .andWhere('Date', '<', now)
                     .andWhere('Date', '>=', oneMonthAgo)
                     .select('*')
                     .orderBy('Views', 'desc')
@@ -150,6 +156,7 @@ export default {
                         'Id_SubCategory': sub.Id_SubCategory,
                         'Id_Status': 'STS0001'
                     })
+                    .andWhere('Date', '<', now)
                     .andWhere('Date', '>=', oneMonthAgo)
                     .select('*')
                     .orderBy('Views', 'desc')
@@ -182,6 +189,7 @@ export default {
     // lấy bài viết mới nhất của category sắp xếp theo thời gian
     async getRecentNewsByCategory(categoryId) {
         try {
+            const now = new Date();
             const news = await db('News as n')
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
                 .join('Category as c', 's.Id_Category', 'c.Id_Category')
@@ -189,6 +197,7 @@ export default {
                     'c.Id_Category': categoryId,
                     'n.Id_Status': 'STS0001'
                 })
+                .andWhere('n.Date', '<', now)
                 .select(
                     'n.*',
                     's.Name as SubCategoryName',
@@ -223,11 +232,15 @@ export default {
             const date = new Date();
             date.setDate(date.getDate() - days); // Lấy ngày 7 ngày trước
 
+
+            const now = new Date();
+
             const news = await db('News as n')
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory') // Thực hiện join với bảng SubCategory
                 .where('n.Id_SubCategory', subCategoryId)
                 .where('n.Date', '>=', date)
-                .where('n.Id_Status', 'STS0001') 
+                .where('n.Id_Status', 'STS0001')
+                .andWhere('n.Date', '<', now)
                 .orderBy('n.Views', 'desc')
                 .select('n.*', 's.Id_Category');
 
@@ -238,19 +251,22 @@ export default {
         }
     },
 
-    async getRecentNewsBySubCategory(subCategoryId) {
+    async getRecentNewsBySubCategory(subCategoryId, limit, offset) {
         try {
+            const now = new Date();
             const news = await db('News as n')
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
                 .where('n.Id_SubCategory', subCategoryId)
                 .where('n.Id_Status', 'STS0001')
+                .andWhere('n.Date', '<', now)
                 .orderBy('n.Date', 'desc')
                 .select(
                     'n.*',
                     's.Name as SubCategoryName',
                     's.Id_Category'
                 )
-                .limit(10); // Giới hạn 10 bài viết mới nhất
+                .limit(limit)
+                .offset(offset); // Giới hạn 5 bài viết mới nhất
 
             return news;
         } catch (error) {
@@ -258,6 +274,18 @@ export default {
             throw error;
         }
     },
-
+    async countNewsbySubCategory(subCategoryId) {
+        try {
+            const countNews = await db('News as n')
+                .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
+                .where('n.Id_SubCategory', subCategoryId)
+                .where('n.Id_Status', 'STS0001')
+                .count('* as total').first();
+            return countNews;
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    }
 
 }
