@@ -22,12 +22,24 @@ let id_user;
 const router = express.Router();
 
 router.get('/home', async (req, res) => {
-    if (id_user === undefined) id_user = req.query.id_user;
+    const id = req.query.id_user;
+
+    id_user = id;
+
+    console.log('iduser1 o dau route: ', id_user);
+
     res.render('vwWriter/overview', { layout: 'moderator' });
 });
 
+
+
+
+
 router.get('/list-post', async (req, res) => {
     const posts = await writerService.findAllPost(await writerService.findWriter(id_user));
+
+    console.log('id user list_post ', id_user)
+    console.log('id writer list_post ', await writerService.findWriter(id_user));
 
     for (let post of posts) {
         if (post.Id_Status === 'STS0004') { // Nếu trạng thái là "Từ chối"
@@ -144,6 +156,22 @@ router.post('/inforeditor/update', async (req, res) => {
         console.error('Error updating user info:', error);
         res.status(500).send('Có lỗi xảy ra, vui lòng thử lại! (route)'); // Trả về lỗi
         console.log('ko Cập nhật thành công');
+    }
+});
+
+router.get('/list_post_reject', async (req, res) => {
+
+    console.log('+ id user :', id_user);
+    const t = await writerService.findWriter(id_user);
+    console.log('t :', t);
+
+    try {
+        const rejectedPost = await writerService.getRejectedPosts(await writerService.findWriter(id_user)); // Gọi hàm để lấy dữ liệu
+        console.log('rejectedPost: ', rejectedPost);
+        res.render('vwWriter/list_post_reject', { layout: 'moderator', posts: rejectedPost });
+    } catch (error) {
+        console.error('Lỗi khi lấy danh sách bài viết bị từ chối:', error);
+        res.status(500).send('Có lỗi xảy ra');
     }
 });
 

@@ -240,7 +240,14 @@ app.engine('hbs', engine({
             } else {
                 return options.inverse(this);  // Nếu không, render block ngược lại
             }
+        },
+
+
+        formatUpdateDateOfArticleInEditor: (date) => {
+            if (!date) return '';
+            return moment(date).format('YYYY-MM-DD'); // Định dạng ngày theo định dạng YYYY-MM-DD
         }
+
 
     },
 }));

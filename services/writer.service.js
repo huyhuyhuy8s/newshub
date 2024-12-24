@@ -147,5 +147,23 @@ const writerService = {
         }
     },
 
+
+
+
+
+    async getRejectedPosts(id_writer) {
+        try {
+            const result = await db('News')
+                .join('Editor_Check_News', 'News.Id_News', '=', 'Editor_Check_News.Id_News')
+                .select('News.*', 'Editor_Check_News.*') // Chỉ lấy thông tin từ bảng News
+                .where('News.Id_Status', 'STS0004') // Trạng thái "Từ chối"
+                .andWhere('News.Id_Writer', id_writer); // Lọc theo Id_Writer
+            return result;
+        } catch (error) {
+            console.error("Lỗi khi lấy bài viết bị từ chối:", error);
+            throw error;
+        }
+    }
+
 }
 export default writerService

@@ -7,54 +7,7 @@
 
 <div class="container">
     <h1>Quản lý tất cả bài viết</h1>
-    {{!-- <div class="filter-section">
-        <!-- Tìm kiếm -->
-        <div class="filter-item">
-            <label for="search-input">Tìm kiếm</label>
-            <input type="text" id="search-input" placeholder="Tìm kiếm" class="filter-input">
-        </div>
 
-        <!-- Chuyên mục và Chuyên mục cấp 2 -->
-        <div class="filter-item">
-            <label for="category-select">Chuyên mục</label>
-            <select id="category-select" class="filter-select">
-                <option value="">Chọn chuyên mục</option>
-                <option value="thethao">Thể thao</option>
-                <option value="giaitri">Giải trí</option>
-                <option value="kinhte">Kinh tế</option>
-            </select>
-        </div>
-
-        <div class="filter-item">
-            <label for="subcategory-select">Chuyên mục cấp 2</label>
-            <select id="subcategory-select" class="filter-select">
-                <option value="">Chọn chuyên mục cấp 2</option>
-                <option value="bongda">Bóng đá</option>
-                <option value="chungkhoan">Chứng khoán</option>
-                <option value="phimanh">Phim ảnh</option>
-            </select>
-        </div>
-
-        <!-- Tag -->
-        <div class="filter-item">
-            <label for="tag-input">Tag</label>
-            <input type="text" id="tag-input" placeholder="#Tag" class="filter-input">
-        </div>
-
-        <!-- Ngày bắt đầu - Ngày kết thúc -->
-        <div class="filter-item">
-            <label for="date-input">Thời gian</label>
-            <input type="text" id="date-input" placeholder="Ngày bắt đầu - Ngày kết thúc" class="filter-input">
-        </div>
-
-        <!-- Nút filter -->
-        <div class="filter-item">
-            <button class="filter-button">
-                Enter
-                <i class="bi bi-filter"></i>
-            </button>
-        </div>
-    </div> --}}
     <table class="article-table">
         <thead>
             <tr>
@@ -103,38 +56,6 @@
                 </td>
             </tr>
             {{/each}}
-
-
-
-
-
         </tbody>
-
     </table>
-    {{!-- <div class="pagination" id="pagination">
-        <button>1</button>
-        <button class="active">2</button>
-        <button>3</button>
-        <button>4</button>
-        <!-- Thêm các nút phân trang -->
-    </div> --}}
 </div>
-
-{{!-- <!-- Modal -->
-<div id="confirmation-modal" class="modal">
-    <div class="modal-content">
-        <p>Bạn chắc chắn có muốn thay đổi?</p>
-        <button id="confirm-btn" class="modal-button">Đồng ý</button>
-        <button id="cancel-btn" class="modal-button">Hủy</button>
-    </div>
-</div> --}}
-
-
-<!-- 
-</body>
-
-</html> -->
-
-{{#fillHtmlContent 'js'}}
-<script src="/js/newsmanagement.js"></script>
-{{/fillHtmlContent}}

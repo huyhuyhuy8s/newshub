@@ -1,0 +1,46 @@
+{{> headerWriter}}
+
+{{!-- <nav>
+    <div class="search">
+        <input type="text" placeholder="Nhập tin cần tìm...">
+        <button type="button">
+            <i class="bi bi-search"></i></button>
+    </div>
+    <div class="filter">
+        <button class="btn">
+            <i class="bi bi-arrow-clockwise"></i>
+            Chờ duyệt</button>
+        <button class="btn">
+            <i class="bi bi-check2-all"></i>
+            Đã đăng</button>
+        <button class="btn">
+            <i class="bi bi-x-circle"></i>
+            Từ chối</button>
+    </div>
+</nav> --}}
+<br>
+<div id="body" class="moderator-list">
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tiêu đề</th>
+                
+                <th>Ngày bị từ chối duyệt</th>
+                <th>Lý do từ chối</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <td>{{@index}}</td>
+                <td>{{this.Title}}</a></td>
+                
+                <td>{{formatDateAndTime this.Date_feedback}}</td>
+                <td>{{this.Reason}}</td> <!-- Hiển thị lý do từ chối -->
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>

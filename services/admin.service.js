@@ -481,6 +481,199 @@ const adminService = {
         }
     },
 
+
+    // 24/12/2024
+    async getCategories() {
+        try {
+            const categories = await db('Category').where('Status', 1).select('Id_Category', 'Name');
+            return categories;
+        } catch (error) {
+            console.error("Lỗi khi lấy danh sách category:", error);
+            throw error;
+        }
+    },
+    async createEditor(id_user, id_category) {
+        try {
+            // Lấy ID lớn nhất hiện có trong bảng Editor
+            const lastEditor = await db('Editor')
+                .orderBy('Id_Editor', 'desc')
+                .first();
+
+            // Tạo ID mới cho editor
+            let newId;
+            if (!lastEditor) {
+                // Nếu chưa có editor nào
+                newId = 'EDT0001';
+            } else {
+                // Lấy số từ ID cuối cùng và tăng lên 1
+                const lastNumber = parseInt(lastEditor.Id_Editor.slice(3));
+                newId = `EDT${String(lastNumber + 1).padStart(4, '0')}`;
+            }
+
+            // Tạo đối tượng editor mới
+            const newEditor = {
+                Id_Editor: newId,
+                Id_User: id_user,
+                Id_Category: id_category
+            };
+
+            // Thêm vào bảng Editor
+            await db('Editor').insert(newEditor);
+
+            // Cập nhật ngày đăng ký cho tài khoản user
+            await db('User')
+                .where('Id_User', id_user)
+                .update({ Date_register: moment().format('YYYY-MM-DD HH:mm:ss') }); // Cập nhật ngày hiện tại
+
+
+            return newEditor; // Trả về thông tin editor mới tạo
+        } catch (error) {
+            console.error('Lỗi khi tạo biên tập viên:', error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    },
+    async createWriter(id_user, id_category, penname) {
+        try {
+            // Lấy ID lớn nhất hiện có trong bảng writer
+            const lastWriter = await db('Writer')
+                .orderBy('Id_Writer', 'desc')
+                .first();
+
+            // Tạo ID mới cho 
+            let newId;
+            if (!lastWriter) {
+                // Nếu chưa có  nào
+                newId = 'WRT0001';
+            } else {
+                // Lấy số từ ID cuối cùng và tăng lên 1
+                const lastNumber = parseInt(lastWriter.Id_Writer.slice(3));
+                newId = `WRT${String(lastNumber + 1).padStart(4, '0')}`;
+            }
+
+            // Tạo đối tượng writer mới
+            const newWriter = {
+                Id_Writer: newId,
+                Id_User: id_user,
+                Id_Category: id_category,
+                Pen_Name: penname
+            };
+
+            // Thêm vào bảng 
+            await db('Writer').insert(newWriter);
+
+            // Cập nhật ngày đăng ký cho tài khoản user
+            await db('User')
+                .where('Id_User', id_user)
+                .update({ Date_register: moment().format('YYYY-MM-DD HH:mm:ss') }); // Cập nhật ngày hiện tại
+
+
+            return newWriter; // Trả về thông tin  mới tạo
+        } catch (error) {
+            console.error('Lỗi khi tạo nhà báo:', error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    },
+    async getTags() {
+        try {
+            const tags = await db('Tag').where('Status', 1).select('Id_Tag', 'Name');
+            return tags;
+        } catch (error) {
+            console.error("Lỗi khi lấy danh sách tag:", error);
+            throw error;
+        }
+    },
+    async addTag(tag_name) {
+        try {
+            // Thêm ký tự '#' vào đầu tên tag
+            const formattedTagName = `#${tag_name}`;
+
+            // Lấy ID lớn nhất hiện có trong bảng Tag
+            const lastTag = await db('Tag')
+                .orderBy('Id_Tag', 'desc')
+                .first();
+
+            // Tạo ID mới cho tag
+            let newId;
+            if (!lastTag) {
+                // Nếu chưa có tag nào
+                newId = 'TAG0001';
+            } else {
+                // Lấy số từ ID cuối cùng và tăng lên 1
+                const lastNumber = parseInt(lastTag.Id_Tag.slice(4));
+                newId = `TAG${String(lastNumber + 1).padStart(4, '0')}`;
+            }
+
+            const newTag = {
+                Id_Tag: newId, // Thêm Id_Tag vào đối tượng
+                Name: formattedTagName, // Sử dụng tên tag đã được định dạng
+                Status: 1
+            };
+
+            await db('Tag').insert(newTag); // Thêm tag vào bảng Tag
+        } catch (error) {
+            console.error("Lỗi khi thêm tag:", error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    },
+
+    // Thêm hàm xóa tag
+    async deleteTag(id_tag) {
+        try {
+            await db('Tag').where('Id_Tag', id_tag).del(); // Xóa tag theo Id_Tag
+        } catch (error) {
+            console.error("Lỗi khi xóa tag:", error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    },
+
+
+
+    async getSubCategoriesByCategoryId(id_category) {
+        try {
+            const subcategories = await db('SubCategory')
+                .where('Id_Category', id_category)
+                .select('Id_SubCategory', 'Name');
+            return subcategories;
+        } catch (error) {
+            console.error("Lỗi khi lấy subcategories:", error);
+            throw error;
+        }
+    },
+
+    async addSubCategory(id_category, name) {
+        try {
+            // Lấy ID lớn nhất hiện có trong bảng SubCategory
+            const lastSubCategory = await db('SubCategory')
+                .orderBy('Id_SubCategory', 'desc')
+                .first();
+
+            // Tạo ID mới cho subcategory
+            let newId;
+            if (!lastSubCategory) {
+                // Nếu chưa có subcategory nào
+                newId = 'SUB0001';
+            } else {
+                // Lấy số từ ID cuối cùng và tăng lên 1
+                const lastNumber = parseInt(lastSubCategory.Id_SubCategory.slice(3));
+                newId = `SUB${String(lastNumber + 1).padStart(4, '0')}`;
+            }
+
+            // Tạo đối tượng subcategory mới
+            const newSubCategory = {
+                Id_SubCategory: newId,
+                Id_Category: id_category, // Sử dụng id_category đã chọn
+                Name: name
+            };
+
+            // Thêm vào bảng SubCategory
+            await db('SubCategory').insert(newSubCategory);
+            return newSubCategory; // Trả về thông tin subcategory mới tạo
+        } catch (error) {
+            console.error('Lỗi khi thêm subcategory:', error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    },
+
     async getUserInforById(id_user) {
 
         try {

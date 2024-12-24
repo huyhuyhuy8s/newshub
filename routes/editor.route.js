@@ -12,7 +12,11 @@ let id_user;
 
 // mặc định là 1 tháng
 router.get('/home', async (req, res) => {
-    if (id_user === undefined) id_user = req.query.id_user;
+    const id = req.query.id_user;
+
+    id_user = id;
+
+
     let startDate = moment(moment().subtract(1, 'month').format('YYYY-MM-DD'));
     const endDate = moment(moment().format('YYYY-MM-DD'));
     let dates = [];
@@ -68,6 +72,8 @@ router.get('/home/typefilter', async (req, res) => {
     //console.log("Hi")
     const id_user = req.query.id_user;
     const filter = req.query.filter;
+    // if (id_user === undefined) id_user = req.query.id_user;
+
 
 
     let startDate
@@ -252,6 +258,7 @@ router.post('/article/update-premium', async (req, res) => {
 
         console.error('Lỗi khi cập nhật trạng thái Premium:', error);
         res.status(500).send('Có lỗi xảy ra');
+
     }
 });
 
@@ -259,7 +266,8 @@ router.post('/article/update-premium', async (req, res) => {
 
 
 
-router.get('/list-article_reject', async (req, res) => {
+
+router.get('/list_article_reject', async (req, res) => {
 
     try {
         const rejectedArticles = await editorService.getRejectedArticles(); // Gọi hàm để lấy dữ liệu
@@ -302,5 +310,23 @@ router.get('/list-writer', async (req, res) => {
         res.status(500).send('Có lỗi xảy ra');
     }
 });
+
+
+// 24/12/2024
+router.post('/article/update-date', async (req, res) => {
+    const { id_news, date } = req.body; // Lấy id_news và date từ body
+
+    try {
+        await editorService.updateNewsDate(id_news, date); // Gọi hàm cập nhật ngày
+        // res.status(200).send('Cập nhật ngày thành công');
+        res.redirect(`/editor/article?id_news=${id_news}`);
+    } catch (error) {
+        console.error('Lỗi khi cập nhật ngày:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
+
 
 export default router;

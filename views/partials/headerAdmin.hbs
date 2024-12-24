@@ -1,5 +1,4 @@
 <header id="menu">
-
     <button id="btn-change-acc" onclick="ChangeAccount()">
         <img src="/imgs/main/avt.png">
     </button>
@@ -28,10 +27,14 @@
                 Quản lý nhãn
             </a>
         </li>
+        <li onclick="ChangeColorBtn(this)">
+            <a href="/admin/subcategorymanagement" class="header-item">
+                <i class="bi bi-person-lines-fill"></i>
+                Quản lý chuyên mục cấp 2
+            </a>
+        </li>
     </ul>
 </header>
-
-
 <div id="ChangeAccount-Div">
     <div class="avt">
         <img src="/imgs/main/avt.png">
@@ -39,7 +42,7 @@
     </div>
     <ul>
         <li>
-            <a href="/editor/inforeditor">
+            <a href="/admin/inforadmin">
                 <i class="bi bi-info-lg"></i>
                 Thông tin của tôi
             </a>
@@ -53,11 +56,8 @@
     </ul>
     <button class="btn-sign-out" type="submit" onclick="logout()">
         Đăng xuất
-
     </button>
-
 </div>
-
 {{#fillHtmlContent 'js'}}
-<script src="/js/scriptInforEditor.js"></script>
+<script src="/js/scriptInforAdmin.js"></script>
 {{/fillHtmlContent}}

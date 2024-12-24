@@ -71,6 +71,8 @@ router.get("/admininforuser", async (req, res) => {
     // Lấy số lượng bài viết cho Editor dựa trên id_Category
     const newsCounts = await adminService.getNewsCountsForEditor(categoryId);
 
+    const categories = await adminService.getCategories();
+
 
     let newsCountApproved = 0;
     let newsCountPending = 0;
@@ -95,7 +97,9 @@ router.get("/admininforuser", async (req, res) => {
         newsCountRejected: newsCountRejected,
         subscriberInfo: subscriberInfo,
 
-        newsCounts: newsCounts
+        newsCounts: newsCounts,
+
+        categories: categories
     })
 });
 
@@ -164,6 +168,44 @@ router.post("/subcriber/create", async (req, res) => {
     }
 });
 
+// 24/12/2024
+router.post('/editor/create', async (req, res) => {
+    const { id_user, id_category } = req.body;
+
+
+    try {
+        await adminService.createEditor(id_user, id_category); // Gọi hàm tạo editor
+        res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng đến trang thành công
+    } catch (error) {
+        console.error('Lỗi khi tạo biên tập viên:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+router.post('/writer/create', async (req, res) => {
+    const { id_user, id_category, penname } = req.body;
+
+
+    try {
+        await adminService.createWriter(id_user, id_category, penname); // Gọi hàm tạo editor
+        res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng đến trang thành công
+    } catch (error) {
+        console.error('Lỗi khi tạo nhà báo:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
+
 router.post("/writer/delete", async (req, res) => {
     const { id_user } = req.body; // Lấy Id_User từ body
 
@@ -220,6 +262,93 @@ router.post("/newsmanagement/update-status", async (req, res) => {
 router.get('/tagsmanagement', async (req, res) => {
     res.render('vwAdmin/tagsmanagement', { layout: 'admin' });
 })
+
+
+
+router.get('/tagsmanagement', async (req, res) => {
+    try {
+        const tags = await adminService.getTags(); // Lấy danh sách tag
+        res.render('vwAdmin/tagsmanagement', {
+            layout: 'admin',
+            tags: tags // Truyền danh sách tag vào view
+        });
+    } catch (error) {
+        console.error("Lỗi khi lấy danh sách tag:", error);
+        res.status(500).send("Có lỗi xảy ra khi lấy danh sách tag.");
+    }
+});
+
+router.post('/tagsmanagement/add', async (req, res) => {
+    const { tag_name } = req.body; // Lấy tên tag từ body
+
+    try {
+        await adminService.addTag(tag_name); // Gọi hàm thêm tag
+        res.redirect('/admin/tagsmanagement'); // Chuyển hướng về trang quản lý tag
+    } catch (error) {
+        console.error('Lỗi khi thêm tag:', error);
+        res.status(500).send('Có lỗi xảy ra khi thêm tag.');
+    }
+});
+
+router.post('/tagsmanagement/delete', async (req, res) => {
+    const { id_tag } = req.body; // Lấy Id_Tag từ body
+
+    try {
+        await adminService.deleteTag(id_tag); // Gọi hàm xóa tag
+        res.redirect('/admin/tagsmanagement'); // Chuyển hướng về trang quản lý tag
+    } catch (error) {
+        console.error('Lỗi khi xóa tag:', error);
+        res.status(500).send('Có lỗi xảy ra khi xóa tag.');
+    }
+});
+
+
+
+
+router.get('/subcategorymanagement', async (req, res) => {
+    // const { id_category } = req.params;
+    const categories = await adminService.getCategories();
+
+
+    try {
+  
+        res.render('vwAdmin/subcategorymanagement', {
+            layout: 'admin',
+            categories: categories,
+        
+        });
+    } catch (error) {
+        console.error("Lỗi khi lấy danh sách chuyên mục:", error);
+        res.status(500).send("Có lỗi xảy ra khi lấy danh sách chuyên mục.");
+    }
+});
+
+router.get('/subcategorymanagement/:id_category', async (req, res) => {
+    const { id_category } = req.params;
+
+    try {
+        const subcategories = await adminService.getSubCategoriesByCategoryId(id_category);
+   
+        res.json(subcategories); // Trả về danh sách subcategories dưới dạng JSON
+    } catch (error) {
+        console.error("Lỗi khi lấy subcategories:", error);
+        res.status(500).send("Có lỗi xảy ra khi lấy subcategories.");
+    }
+});
+
+
+router.post('/subcategorymanagement/add', async (req, res) => {
+    const { id_category, name } = req.body; // Lấy thông tin từ body
+ 
+
+    try {
+        const newSubCategory = await adminService.addSubCategory(id_category, name); // Gọi hàm thêm subcategory
+        res.redirect('/admin/subcategorymanagement'); // Chuyển hướng về trang quản lý subcategory
+    } catch (error) {
+        console.error("Lỗi khi thêm subcategory:", error);
+        res.status(500).send("Có lỗi xảy ra khi thêm subcategory.");
+    }
+});
 
 
 export default router;

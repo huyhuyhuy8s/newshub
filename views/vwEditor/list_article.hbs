@@ -16,7 +16,7 @@
             <i class="bi bi-check2-all"></i>
             Đã đăng
         </button> --}}
-        <button onclick="window.location.href='/editor/list-article_reject'" style="width: fit-content;">
+        <button onclick="window.location.href='/editor/list_article_reject'">
             <i class="bi bi-x-circle"></i>
             Danh sách các bài viết từ chối & Lý do từ chối
         </button>
@@ -44,7 +44,7 @@
                 <td>{{@index}}</td>
                 <td class="title"><a href="">{{truncateText this.Title 50}}</a></td>
                 <td>{{this.Pen_Name}}</td>
-                <td>{{formatDate this.Date}}</td>
+                <td>{{formatDateAndTime this.Date}}</td>
                 {{!-- <td>
                     <input type="checkbox" name="check_articles" {{#if this.Premium}}checked{{/if}}>
                 </td> --}}
