@@ -16,7 +16,7 @@
                     {{#if firstNewstopViewedNews}}
                     <a class="grid-head" href="/news/news?id={{firstNewstopViewedNews.Id_News}}"
                         style="background-color: white;">
-                        <img src="/imgs/home/donal.jpg"
+                        <img src="/imgs/uploads/{{firstNewstopViewedNews.Image}}"
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
                         <div class="content-grid-head">
@@ -36,7 +36,7 @@
                     {{#each News234stopViewedNews}}
                     <div class="article-list-element">
                         <a href="/news/news?id={{this.Id_News}}">
-                            <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
+                            <img src="/imgs/uploads/{{this.Image}}" class="img-fluid" alt="">
                             <div class="article-list-content">
                                 <h5>{{truncateText this.Meta_title 45}}</h5> <!-- Tiêu đề bài viết -->
                                 <p>{{truncateText this.Meta_description 135}}</p> <!-- Mô tả bài viết -->
@@ -84,7 +84,7 @@
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedAllTime}}
             <a class="articles" id="very-first" href="/news/news?id={{this.Id_News}}">
-                <img src="/imgs/detail/suôi thầu.jpg" alt="...">
+                <img src="/imgs/uploads/{{this.Image}}" alt="...">
                 <div class="card-body">
                     <h5>{{truncateText this.Meta_title 50}}</h5>
                     <p>{{truncateText this.Meta_description 145}}</p>
@@ -127,7 +127,7 @@
                 <div class="card shadow-sm">
                     {{#if firstNewsgetTopNewsFromTopCategory}} <!-- Kiểm tra xem có bài viết đầu tiên không -->
                     <a class="article-big" href="/news/news?id={{firstNewsgetTopNewsFromTopCategory.Id_News}}">
-                        <img src="/imgs/home/donal.jpg">
+                        <img src="/imgs/uploads/{{firstNewsgetTopNewsFromTopCategory.Image}}">
                         <div class="article-big-content">
                             <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 65}}</h4>
                             <p>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_description 200}}</p>
@@ -167,7 +167,7 @@
         <div id="article_outer">
             {{#if firstNewsRecentTravelNews}}
             <a href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}">
-                <img src="/imgs/home/suôi thầu.jpg">
+                <img src="/imgs/uploads/{{firstNewsRecentTravelNews.Image}}">
             </a>
             {{/if}}
             <div class="article-title">
@@ -192,7 +192,7 @@
                     </div>
 
 
-                    <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
+                    <img class="article-inner-image" src="/imgs/uploads/{{SecondNewsRecentTravelNews.Image}}" alt="...">
                     {{/if}}
                 </a>
             </div>
@@ -219,7 +219,7 @@
                 <a class="media position-relative" id="article-inner"
                     href="/news/news?id={{SecondNewsRecentHealthNews.Id_News}}">
                     {{#if SecondNewsRecentHealthNews}}
-                    <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
+                    <img class="article-inner-image" src="/imgs/uploads/{{SecondNewsRecentHealthNews.Image}}" alt="...">
                     <div class="media-body article-inner-content-left">
                         <h5>{{truncateText SecondNewsRecentHealthNews.Meta_title 40}}</h5>
                         <p>{{truncateText SecondNewsRecentHealthNews.Meta_description 140}}</p>
@@ -230,7 +230,7 @@
             </div>
             {{#if firstNewsRecentHealthNews}}
             <a href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}">
-                <img src="/imgs/home/suôi thầu.jpg">
+                <img src="/imgs/uploads/{{firstNewsRecentHealthNews.Image}}">
             </a>
             {{/if}}
             </>
@@ -249,7 +249,7 @@
         <div class="top-article" id="bai-viet-moi-nhat">
             {{#each latestNewsFromTop2Category}}
             <a href="/news/news?id={{this.Id_News}}" class="articles" id="very-second">
-                <img src="/imgs/detail/suôi thầu.jpg" alt="...">
+                <img src="/imgs/uploads/{{this.Image}}" alt="...">
                 <div class="card-body">
                     <h5>{{truncateText this.Meta_title 50}}</h5>
                     <p>{{truncateText this.Meta_description 120}}</p>
@@ -269,7 +269,7 @@
         <div class="border-danger">
             <div class="cata-politic">
                 <a class="politic-left" href="/news/news?id={{firstNewsFromTop3Category.Id_News}}">
-                    <img src="/imgs/home/donal.jpg">
+                    <img src="/imgs/uploads/{{firstNewsFromTop3Category.Image}}">
                     <div class="content">
                         <h3 class="font-weight-bold">{{truncateText firstNewsFromTop3Category.Meta_title 100}}</h3>
                         <p>{{truncateText firstNewsFromTop3Category.Meta_description 200}}</p>
@@ -285,7 +285,7 @@
                             <p>{{truncateText this.Meta_description 200}}</p> <!-- Mô tả bài viết -->
                             <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                         </div>
-                        <img src="/imgs/home/bv.jpg">
+                        <img src="/imgs/uploads/{{this.secondNewsFromTop3Category}}">
                     </a>
                     {{/each}}
                 </div>
