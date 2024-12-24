@@ -84,4 +84,32 @@
         </a>
         {{/each}}
     </div>
+      <div class="pagination" id="pagination">
+        {{#if isFirstPage}}
+        {{!-- Nếu là đầu trang thì không cho ấn --}}
+        <a href="#">Previous</a>
+        {{else}}
+        <a href="/category/{{categoryId}}?page={{previousPage}}">Previous</a>
+        {{/if}}
+
+
+        {{#each this.page_items}}
+        {{#if isActive}}
+        {{!-- Nếu là là chính trang đó thì không cho ấn --}}
+        <a href="#">{{value}}</a>
+
+        {{else}}
+
+        <a href="/category/{{../categoryId}}?page={{value}}">{{value}}</a>
+
+        {{/if}}
+        {{/each}}
+        {{#if isLastPage}}
+        {{!-- Nếu là cuối trang thì không cho ấn --}}
+        <a href="#">Next</a>
+        {{else}}
+        <a href="/category/{{categoryId}}?page={{nextPage}}">Next</a>
+        {{/if}}
+        <!-- Thêm các nút phân trang -->
+    </div>
 </div>
