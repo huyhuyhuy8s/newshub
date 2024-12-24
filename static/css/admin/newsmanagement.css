@@ -148,6 +148,7 @@ h1 {
     padding: 5px 10px;
     cursor: pointer;
     border-radius: 5px;
+    width: fit-content;
 }
 
 .pagination {
@@ -223,4 +224,19 @@ h1 {
 
 .modal.show {
     display: flex;
+}
+
+
+table {
+    tr {
+        height: 5em;
+    }
+}
+
+.status-select {
+    height: 3.5em;
+    line-height: 3.5em;
+    background-color: var(--grey);
+    border-radius: 5px;
+    padding-left: 1em;
 }
