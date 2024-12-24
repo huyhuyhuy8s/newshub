@@ -46,6 +46,11 @@ p {
 }
 
 #article {
+    background-color: var(--white);
+    padding: 2em 0;
+    padding-bottom: 4em;
+    margin: 4em 0;
+
     h5 {
         text-align: center;
         font-weight: bold;
@@ -97,6 +102,7 @@ p {
             padding: 1em;
             justify-content: space-between;
             align-items: center;
+            background-color: var(--white);
 
             .img-container {
                 display: flex;
@@ -153,8 +159,9 @@ p {
 
         button {
             border: 1px solid var(--grey);
-            border-radius: var(--border-radius);
-            padding: 0.5em;
+            border-radius: 5px;
+            padding: 0.5em 1em;
+            background-color: var(--white);
         }
 
         button:hover {
@@ -182,9 +189,12 @@ p {
     }
 
     .title {
+        /* background-color: var(--white); */
+        padding: 0 1.5em;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        border: 2px solid var(--grey)
     }
 
     .top-article {
@@ -195,13 +205,15 @@ p {
         gap: 1em;
 
         .articles {
+            background-color: var(--white);
             width: 20em;
             display: grid;
             grid-template: 1fr 1fr / 1fr;
             color: var(--black);
-            border: 0.2px solid var(--black);
+            border: 0.2px solid var(--grey);
             flex-shrink: 0;
-            margin: 0.2em 0;
+            /* margin: 0.2em 0; */
+            margin-bottom: 0.2em;
 
             img {
                 object-fit: cover;
@@ -255,6 +267,7 @@ p {
             grid-template-rows: 1fr 1fr;
             border: 0.1px solid var(--grey);
             height: fit-content;
+            background-color: var(--white);
 
             div {
                 display: grid;

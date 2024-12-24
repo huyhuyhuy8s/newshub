@@ -11,9 +11,11 @@
             {{#with firstNews}}
             <a class="div1" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                 <img alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                <h4>{{truncateText Meta_title 50}}</h4>
-                <p>{{truncateText Meta_description 200}}</p>
-                <p>{{formatDate Date}}</p>
+                <div class="content-container">
+                    <h4>{{truncateText Meta_title 50}}</h4>
+                    <p>{{truncateText Meta_description 200}}</p>
+                    <p>{{formatDate Date}}</p>
+                </div>
             </a>
             {{/with}}
 
@@ -22,8 +24,10 @@
                 <a class="highlight-element"
                     href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                    <p>{{truncateText Meta_title 35}}</p>
-                    <p>{{formatDate Date}}</p>
+                    <div>
+                        <h5>{{truncateText Meta_title 35}}</h5>
+                        <p>{{formatDate Date}}</p>
+                    </div>
                 </a>
                 {{/each}}
             </div>

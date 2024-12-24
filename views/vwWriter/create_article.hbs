@@ -90,12 +90,6 @@
             <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết">
         </div>
         <div class="filter">
-            {{!-- <button class="btn" type="submit" onclick="submitPost()">
-                <i class="bi bi-floppy"></i>
-                Lưu bản nháp</button>
-            <button class="btn" type="submit" onclick="submitPost()">
-                <i class="bi bi-eye"></i>
-                Xem bài viết</button> --}}
             <button class="btn" type="submit" onclick="submitPost()">
                 <i class="bi bi-cloud-upload"></i>
                 Đăng tải</button>
@@ -119,8 +113,10 @@
             <div class="state">
                 <h3>Thuộc tính bài viết</h3>
                 <div>
-                    <label for="premium" style="user-select: none;">Bài viết Premium</label>
-                    <input type="checkbox" id="premium" name="premium" value="true">
+                    <label for="premium" style="user-select: none;" class="premium">
+                        <input type="checkbox" id="premium" name="premium" value="true">
+                        Bài viết Premium
+                    </label>
                 </div>
             </div>
             <div class="category">

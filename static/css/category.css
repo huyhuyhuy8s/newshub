@@ -35,19 +35,19 @@
     display: grid;
     grid-template: 1fr / 5.5fr 4.5fr;
     gap: 1em;
-    border-bottom: 1px solid #D4BFCB;
     /* height: 10em; */
 
     .child1 {
         display: flex;
         flex-direction: column;
         grid-area: 1 / 1 / 2 / 2;
-        outline: 1px solid var(--light-red);
+        gap: 0.5em;
+        /* outline: 1px solid var(--light-red); */
 
         .div1 {
             display: flex;
             flex-direction: column;
-            gap: 1em;
+            border: 2px solid var(--red);
 
             h4 {
                 font-weight: bold;
@@ -57,26 +57,36 @@
         a {
             display: flex;
             flex-direction: column;
+        }
+
+        .content-container {
+            padding: 2em 0;
+            padding-left: 1.5em;
+            display: flex;
+            flex-direction: column;
             gap: 1em;
+            background-color: white;
         }
 
         .triple-highlight {
             display: grid;
             grid-template: 1fr / repeat(3, 1fr);
-            gap: 1em;
             margin-top: 1em;
+            gap: 1em;
             border-top: 2px solid var(--grey);
 
             .highlight-element {
                 display: flex;
-                padding: 1em 0;
+                /* padding: 1em 0; */
                 flex-direction: column;
+                border: 2px solid var(--red);
 
                 div {
                     display: flex;
                     flex-direction: column;
-                    gap: 0.5em;
-                    padding: 0 0.4em;
+                    gap: 1em;
+                    padding: 2em 0.6em;
+                    background-color: var(--white);
 
                     h5 {
                         font-size: 13pt;
@@ -103,6 +113,7 @@
         overflow: scroll;
         overflow-x: hidden;
         outline: 1px solid var(--light-red);
+        background-color: var(--white);
     }
 }
 
@@ -117,6 +128,7 @@
         flex-direction: column;
         justify-content: space-between;
         padding-right: 1em;
+
 
         h4 {
             font-size: 12pt;
@@ -163,6 +175,12 @@
             gap: 1em;
             border-bottom: 2px solid var(--grey);
             margin-bottom: 1em;
+            background-color: var(--white);
+            border: 2px solid var(--red);
+
+            div {
+                padding: 0.4em 1em;
+            }
 
             h5 {
                 margin-bottom: 10px;
@@ -184,6 +202,9 @@
                 grid-template: 1fr/ 1fr 1fr;
                 border-bottom: 2px solid var(--grey);
                 gap: 1em;
+                background-color: var(--white);
+                padding: 1em;
+                border: 2px solid var(--red);
 
                 h5 {
                     font-size: 12pt;
@@ -261,6 +282,7 @@
         display: grid;
         width: 90%;
         border: 1px solid var(--grey);
+        background-color: var(--white);
 
         p {
             text-align: center;
