@@ -1,3 +1,4 @@
 node_modules/
 package-lock.json
 utils/db.js
+services/Category.service.js
