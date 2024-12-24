@@ -23,7 +23,9 @@ body {
         justify-content: center;
         align-items: center;
         /* background: #f2f2f2; */
+        background-color: var(--grey);
         background-image: url("/imgs/main/background.jpg");
+        /* background-blend-mode: luminosity; */
 
         .wrap {
             width: 25em;
@@ -136,4 +138,18 @@ form {
         content: "Đã có tài khoản?";
         padding-right: 0.5em;
     }
+}
+
+.home {
+    position: absolute;
+    left: 2em;
+    top: 1em;
+    z-index: 2;
+    padding: 1em 2em;
+    border-radius: 5px;
+    border: 2px solid var(--white);
+    background-color: transparent;
+    backdrop-filter: blur(20px);
+    background-color: rgba(51, 170, 51, .2);
+    background-blend-mode: multiply;
 }

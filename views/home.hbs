@@ -11,10 +11,11 @@
     <!-- Tin tức nổi bật & top 10 categories -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8" style="background-color: transparent;">
                 <div class="row">
                     {{#if firstNewstopViewedNews}}
-                    <a class="grid-head" href="/news/news?id={{firstNewstopViewedNews.Id_News}}">
+                    <a class="grid-head" href="/news/news?id={{firstNewstopViewedNews.Id_News}}"
+                        style="background-color: white;">
                         <img src="/imgs/home/donal.jpg"
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
@@ -101,7 +102,10 @@
 
     <!-- Category nổi bật nhất -->
     <div class="container-fluid">
-        <h5 class="title font-weight-bold">{{topCategory.CategoryName}}</h5>
+        <div class="title-parent">
+            <h5 class="title font-weight-bold">{{topCategory.CategoryName}}</h5>
+            <h5 class="title font-weight-bold">Top 10 danh sách bài viết mới nhất</h5>
+        </div>
         <div class="row">
             <div class="col-sm-4">
                 <div class="card shadow-sm">
@@ -168,7 +172,8 @@
             {{/if}}
             <div class="article-title">
                 {{#if firstNewsRecentTravelNews}}
-                <a class="article-title-content" href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}">
+                <a class="article-title-content" href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}"
+                    style="padding-right: 2em;">
                     <h3>{{truncateText firstNewsRecentTravelNews.Meta_title 70}}</h3>
                     <p>{{truncateText firstNewsRecentTravelNews.Meta_description 280}}</p>
                     <p class="date">
@@ -202,7 +207,8 @@
         <div id="article_outer">
             <div class="article-title">
                 {{#if firstNewsRecentHealthNews}}
-                <a class="article-title-content" href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}">
+                <a class="article-title-content" href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}"
+                    style="padding-left: 2em;">
                     <h3>{{truncateText firstNewsRecentHealthNews.Meta_title 70}}</h3>
                     <p>{{truncateText firstNewsRecentHealthNews.Meta_description 280}}</p>
                     <p class="date">

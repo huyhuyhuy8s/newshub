@@ -14,6 +14,7 @@
     --border-radius: 15px;
     --blue: #335dff;
     --signup-signin-lineheight: 3em;
+    --background: #fef1e4;
 }
 
 h1,
@@ -47,6 +48,8 @@ button {
 }
 
 header {
+    align-self: center;
+    background-color: var(--white);
     width: 75%;
     margin: 1em auto;
     display: grid;
@@ -188,9 +191,15 @@ a {
     text-align: justify;
 }
 
+.card.border {
+    background-color: var(--background);
+    padding-bottom: 4em;
+}
+
 /* Các nút Menu và Home */
 body {
     font-family: var(--text-fam);
+    /* background-color: var(--background); */
 
     a {
         color: inherit;
@@ -203,7 +212,6 @@ body {
 }
 
 footer {
-    margin-top: 4em;
     padding: 0 12.5%;
     display: flex;
     flex-direction: column;

@@ -1,5 +1,3 @@
-
-
 .container-fluid {
     margin: 0;
     padding: 0;
@@ -41,6 +39,7 @@
         display: grid;
         width: 90%;
         border: 1px solid var(--grey);
+        background-color: var(--white);
 
         p {
             text-align: center;
@@ -151,6 +150,8 @@
 
 
 .selected {
-    font-weight: bold; /* Tô đậm các tag đã chọn */
-    background-color: #e0e0e0; /* Thay đổi màu nền cho tag đã chọn */
+    font-weight: bold;
+    /* Tô đậm các tag đã chọn */
+    background-color: #e0e0e0;
+    /* Thay đổi màu nền cho tag đã chọn */
 }

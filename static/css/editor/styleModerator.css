@@ -6,6 +6,7 @@
 
 body {
     margin: 0;
+    background-color: var(--background);
 }
 
 ul {
@@ -20,14 +21,14 @@ a {
     position: fixed;
     top: 0;
     z-index: 5;
-    /* width: 100%; */
+    width: 100%;
 }
 
 .sticky2 {
     position: fixed;
     top: 2.8em;
     z-index: 5;
-    /* width: 100%; */
+    width: 92%;
 }
 
 /* Header */
@@ -104,14 +105,15 @@ nav {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid var(--grey);
+    /* border-bottom: 1px solid var(--grey); */
     padding: 1em 5em;
-    background-color: var(--white);
+    background-color: transparent;
     margin-bottom: 1em;
 
     .search {
         display: flex;
         gap: 0.5em;
+        width: 100%;
 
         input {
             border-color: var(--light-red);
@@ -136,7 +138,8 @@ nav {
         }
 
         #title {
-            width: 80em;
+            /* width: 85em; */
+            width: 100%;
             margin: 1em;
             height: 3em;
         }
@@ -231,6 +234,10 @@ nav {
 
 }
 
+form {
+    background-color: var(--background);
+}
+
 .moderator-list {
     margin: 0 80px;
 
@@ -239,6 +246,7 @@ nav {
         border-collapse: collapse;
         border-spacing: 1em;
         border-radius: 5px;
+        background-color: var(--white);
 
         td,
         th {
