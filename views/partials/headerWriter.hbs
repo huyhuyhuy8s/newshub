@@ -4,24 +4,25 @@
     </button>
     <ul>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/writer/home" class="header-item">
+            <a href="/writer/home?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-graph-up"></i>
                 Tổng quan
             </a>
         </li>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/writer/list-post" class="header-item">
+            <a href="/writer/list-post?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-list-ul"></i>
                 Danh sách bài viết
             </a>
         </li>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/writer/create-article" class="header-item">
+            <a href="/writer/create-article?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-plus-square"></i>
                 Tạo bài viết
             </a>
         </li>
     </ul>
+      
 </header>
 <div id="ChangeAccount-Div">
     <div class="avt">
@@ -43,6 +44,7 @@
         </li>
     </ul>
     <button class="btn-sign-out" type="submit" onclick="logout()">Đăng xuất</button>
+    
  
 </div>
 

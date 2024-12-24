@@ -63,7 +63,9 @@ router.get('/home', async (req, res) => {
         totalRefuse: totalRefuse,
         totalDelete: totalDelete,
         startDate: startDate,
-        endDate: endDate
+        endDate: endDate,
+
+        id_user
     });
 });
 
@@ -137,7 +139,9 @@ router.get('/home/typefilter', async (req, res) => {
         totalRefuse: totalRefuse,
         totalDelete: totalDelete,
         startDate: startDate,
-        endDate: endDate
+        endDate: endDate,
+
+        id_user
     });
 
 })
@@ -152,7 +156,7 @@ router.get('/inforeditor', async (req, res) => {
     }
 
 
-    res.render('vwEditor/inforeditor', { layout: 'moderator', editor });
+    res.render('vwEditor/inforeditor', { layout: 'moderator', editor, id_user });
 });
 
 router.post('/inforeditor/update', async (req, res) => {
@@ -198,7 +202,7 @@ router.get('/list-article', async (req, res) => {
 
     const posts = await editorService.findAllPost(id_editor);
 
-    res.render('vwEditor/list_article', { layout: 'moderator', posts });
+    res.render('vwEditor/list_article', { layout: 'moderator', posts, id_user });
 });
 
 
@@ -226,7 +230,7 @@ router.get('/article', async (req, res) => {
         if (!news) {
             return res.status(404).send('Bài viết không tồn tại');
         }
-        res.render('vwEditor/article', { layout: 'moderator', news }); // Truyền thông tin bài viết vào view
+        res.render('vwEditor/article', { layout: 'moderator', news, id_user }); // Truyền thông tin bài viết vào view
     } catch (error) {
         console.error('Lỗi khi lấy thông tin bài viết:', error);
         res.status(500).send('Có lỗi xảy ra');
@@ -271,7 +275,7 @@ router.get('/list_article_reject', async (req, res) => {
 
     try {
         const rejectedArticles = await editorService.getRejectedArticles(); // Gọi hàm để lấy dữ liệu
-        res.render('vwEditor/list_article_reject', { layout: 'moderator', posts: rejectedArticles });
+        res.render('vwEditor/list_article_reject', { layout: 'moderator', posts: rejectedArticles , id_user});
     } catch (error) {
         console.error('Lỗi khi lấy danh sách bài viết bị từ chối:', error);
         res.status(500).send('Có lỗi xảy ra');
@@ -304,7 +308,7 @@ router.get('/list-writer', async (req, res) => {
 
     try {
         const writersWithStatusCount = await editorService.getWritersWithStatusCount(id_editor);
-        res.render('vwEditor/list_writer', { layout: 'moderator', writers: writersWithStatusCount });
+        res.render('vwEditor/list_writer', { layout: 'moderator', writers: writersWithStatusCount, id_user });
     } catch (error) {
         console.error('Lỗi khi lấy danh sách tác giả:', error);
         res.status(500).send('Có lỗi xảy ra');

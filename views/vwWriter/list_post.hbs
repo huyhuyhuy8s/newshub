@@ -17,7 +17,7 @@
             Đã đăng
         </button> --}}
         <button onclick="window.location.href='/writer/list_post_reject'">
-            <i class="bi bi-x-circle" ></i>
+            <i class="bi bi-x-circle"></i>
             Danh sách các bài viết từ chối & Lý do từ chối
         </button>
     </div>
@@ -33,6 +33,7 @@
                 <th>Ngày đăng</th>
                 <th>Bài viết Premium</th>
                 <th>Trạng thái</th>
+                <th>Sửa đổi</th>
             </tr>
         </thead>
         <tbody>
@@ -59,11 +60,13 @@
                     {{/if}}
                     {{/if}}
                 </td>
-                {{!-- <td>
-                    <a href="/writer/updatenews?id_news={{this.Id_News}}">
+                <td>
+                    <a>{{this.Id_News}}</a>
+                    <a href="/writer/update_article?id_news={{this.Id_News}}">
                         <i class="bi bi-pencil-square"></i>
                     </a>
-                </td> --}}
+                </td>
+
             </tr>
             {{/each}}
 

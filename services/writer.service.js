@@ -163,7 +163,54 @@ const writerService = {
             console.error("Lỗi khi lấy bài viết bị từ chối:", error);
             throw error;
         }
-    }
+    },
+
+    async getCategoryByWriterId(id_writer) {
+        try {
+            // Lấy thông tin writer
+            const writer = await db('Writer').where('Id_Writer', id_writer).first();
+            if (!writer) {
+                throw new Error('Writer not found');
+            }
+    
+            // Lấy category dựa trên Id_Category của writer
+            const category = await db('Category').where('Id_Category', writer.Id_Category).first();
+            return category; // Trả về category
+        } catch (error) {
+            console.error("Lỗi khi lấy category của writer:", error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
+    async getSubCategoriesByWriterId(id_writer) {
+        try {
+            // Lấy Id_Category của writer
+            const writer = await db('Writer').where('Id_Writer', id_writer).first();
+            if (!writer) {
+                throw new Error('Writer not found');
+            }
+    
+            const id_category = writer.Id_Category; // Lấy Id_Category của writer
+    
+            // Lấy danh sách sub-category dựa trên Id_Category
+            const subCategories = await db('SubCategory')
+                .where('Id_Category', id_category)
+                .select('Id_SubCategory', 'Name'); // Chọn các trường cần thiết
+    
+            return subCategories;
+        } catch (error) {
+            console.error("Lỗi khi lấy sub-category của writer:", error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
+    async findNewsByIdFullAttribute(id_news) {
+        try {
+            const news = await db('News').where('Id_News', id_news).first(); // Lấy thông tin bài viết
+            return news; // Trả về thông tin bài viết
+        } catch (error) {
+            console.error('Lỗi khi lấy thông tin bài viết:', error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
 
 }
 export default writerService

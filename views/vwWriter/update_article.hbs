@@ -83,22 +83,17 @@
 
 {{> headerWriter}}
 
-<form action="" method="post" enctype="multipart/form-data">
+<form action="/writer/update_article" method="post" enctype="multipart/form-data">
 
     <nav>
         <div class="search">
-            <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết">
+            <input type="text" name="title" id="title" value="{{news.Title}}" required>
         </div>
         <div class="filter">
-            {{!-- <button class="btn" type="submit" onclick="submitPost()">
-                <i class="bi bi-floppy"></i>
-                Lưu bản nháp</button>
-            <button class="btn" type="submit" onclick="submitPost()">
-                <i class="bi bi-eye"></i>
-                Xem bài viết</button> --}}
+
             <button class="btn" type="submit" onclick="submitPost()">
                 <i class="bi bi-cloud-upload"></i>
-                Đăng tải</button>
+                Cập nhật bài viết</button>
         </div>
     </nav>
     <a href=""></a>
@@ -110,9 +105,7 @@
     </div>
     <div id="body">
         <div class="creat">
-            <textarea id="article" placeholder="Thêm nội dung vào đây...">
-
-            </textarea>
+            <textarea id="article" name="content" required>{{news.Content}}</textarea>
             <textarea name="save" id="save"></textarea>
         </div>
         <div class="nav">
@@ -120,32 +113,27 @@
                 <h3>Thuộc tính bài viết</h3>
                 <div>
                     <label for="premium" style="user-select: none;">Bài viết Premium</label>
-                    <input type="checkbox" id="premium" name="premium" value="true">
+                    <input type="checkbox" id="premium" name="premium" {{#if news.Premium}}checked{{/if}}>
                 </div>
             </div>
             <div class="category">
                 <h3>Chuyên mục</h3>
                 <div>
-                    {{!-- <select name="category" id="category">
-                        <option value="none" disabled selected>Chọn chuyên mục</option>
-                        <option value="CAT0001">Thời sự</option>
-                    </select> --}}
+
                     <select name="category" id="category" onchange="loadSubCategories(this.value)">
-                      
+
                         <option value="{{category.Id_Category}}">{{category.Name}}</option>
-            
+
                     </select>
                 </div>
 
                 <h3>Chuyên mục cấp 2</h3>
-                {{!-- <select name="sub_category" id="sub-category">
-                    <option value="none" disabled selected>Chọn chuyên mục</option>
-                    <option value="SUB0001">SUB0001</option>
-                </select> --}}
+
                 <select name="sub_category" id="sub-category">
                     <option value="none" disabled selected>Chọn chuyên mục</option>
                     {{#each subCategories}}
-                    <option value="{{this.Id_SubCategory}}">{{this.Name}}</option>
+                    <option value="{{this.Id_SubCategory}}" {{#if (eq this.Id_SubCategory
+                        news.Id_SubCategory)}}selected{{/if}}>{{this.Name}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -155,11 +143,11 @@
             </div>
             <div class="meta-title">
                 <h3>Tóm tắt tiêu đề</h3>
-                <input type="text" name="meta_title" id="meta-title" placeholder="meta-title">
+                <input type="text" name="meta_title" id="meta-title"  value="{{news.Meta_title}}">
             </div>
             <div class="meta-description">
                 <h3>Tóm tắt nội dung</h3>
-                <input type="text" name="meta_description" id="meta-description" placeholder="meta-description">
+                <input type="text" name="meta_description" id="meta-description" value="{{news.Meta_description}}">
             </div>
         </div>
     </div>

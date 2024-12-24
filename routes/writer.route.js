@@ -1,6 +1,6 @@
 import writerService from '../services/writer.service.js';
 import session from 'express-session';
-import express from 'express';
+import express, { query } from 'express';
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
 import multer from 'multer';
@@ -16,19 +16,19 @@ var storage = multer.diskStorage(
         }
     }
 );
-var upload = multer({ storage: storage });
+let upload = multer({ storage: storage });
 let id_user;
 
 const router = express.Router();
 
 router.get('/home', async (req, res) => {
+
     const id = req.query.id_user;
 
     id_user = id;
 
-    console.log('iduser1 o dau route: ', id_user);
 
-    res.render('vwWriter/overview', { layout: 'moderator' });
+    res.render('vwWriter/overview', { layout: 'moderator', id_user });
 });
 
 
@@ -38,8 +38,7 @@ router.get('/home', async (req, res) => {
 router.get('/list-post', async (req, res) => {
     const posts = await writerService.findAllPost(await writerService.findWriter(id_user));
 
-    console.log('id user list_post ', id_user)
-    console.log('id writer list_post ', await writerService.findWriter(id_user));
+
 
     for (let post of posts) {
         if (post.Id_Status === 'STS0004') { // Nếu trạng thái là "Từ chối"
@@ -48,7 +47,7 @@ router.get('/list-post', async (req, res) => {
         }
     }
 
-    res.render('vwWriter/list_post', { layout: 'moderator', posts: posts });
+    res.render('vwWriter/list_post', { layout: 'moderator', posts: posts, id_user });
 });
 
 
@@ -62,7 +61,7 @@ router.get('/updatenews', async (req, res) => {
         if (!news) {
             return res.status(404).send('Bài viết không tồn tại');
         }
-        res.render('vwWriter/updatenews', { layout: 'moderator', news }); // Truyền thông tin bài viết vào view
+        res.render('vwWriter/updatenews', { layout: 'moderator', news, id_user }); // Truyền thông tin bài viết vào view
     } catch (error) {
         console.error('Lỗi khi lấy thông tin bài viết:', error);
         res.status(500).send('Có lỗi xảy ra');
@@ -73,17 +72,29 @@ router.get('/updatenews', async (req, res) => {
 
 
 router.get('/create-article', async (req, res) => {
-    res.render('vwWriter/create_article', { layout: 'moderator' });
+
+    console.log('user id writer cre:', id_user);
+
+
+    try {
+        const id_writer = await writerService.findWriter(id_user)
+        const category = await writerService.getCategoryByWriterId(id_writer);
+        const subCategories = await writerService.getSubCategoriesByWriterId(id_writer);  // Lấy danh sách sub-category
+
+        res.render('vwWriter/create_article', { layout: 'moderator', id_user,category, subCategories });
+    } catch (error) {
+        console.error('Lỗi khi lấy chuyên mục:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+
+    // res.render('vwWriter/create_article', { layout: 'moderator', id_user });
 });
 
 router.post('/create-article', upload.single('filename'), async (req, res) => {
-    // const content = req.body.save;
-    // console.log(content);
-    // console.log(req.file.filename);
 
 
 
-    res.send('File uploaded successfully');
+
     let news = {
         Id_Writer: await writerService.findWriter(id_user),
         Id_Status: "STS0002",
@@ -97,11 +108,16 @@ router.post('/create-article', upload.single('filename'), async (req, res) => {
         Meta_description: req.body.meta_description,
     }
     writerService.addData(news);
-    res.render('vwWriter/list_post', { layout: 'moderator' });
+
+    // res.render('vwWriter/list_post', { layout: 'moderator', id_user });
+
+    res.redirect(`/writer/list-post?id_user=${id_user}`);
+
+
 })
 
 router.get('/preview', async (req, res) => {
-    res.render('vwWriter/preview', { layout: 'moderator' });
+    res.render('vwWriter/preview', { layout: 'moderator', id_user });
 });
 
 
@@ -123,7 +139,7 @@ router.get('/inforeditor', async (req, res) => {
     }
 
 
-    res.render('vwWriter/inforwriter', { layout: 'moderator', writer });
+    res.render('vwWriter/inforwriter', { layout: 'moderator', writer, id_user });
 });
 
 
@@ -162,18 +178,48 @@ router.post('/inforeditor/update', async (req, res) => {
 
 router.get('/list_post_reject', async (req, res) => {
 
-    console.log('+ id user :', id_user);
-    const t = await writerService.findWriter(id_user);
-    console.log('t :', t);
+
+  
+
 
     try {
         const rejectedPost = await writerService.getRejectedPosts(await writerService.findWriter(id_user)); // Gọi hàm để lấy dữ liệu
-        console.log('rejectedPost: ', rejectedPost);
-        res.render('vwWriter/list_post_reject', { layout: 'moderator', posts: rejectedPost });
+      
+        res.render('vwWriter/list_post_reject', { layout: 'moderator', posts: rejectedPost, id_user });
     } catch (error) {
         console.error('Lỗi khi lấy danh sách bài viết bị từ chối:', error);
         res.status(500).send('Có lỗi xảy ra');
     }
+});
+
+
+
+
+router.get('/update_article', async (req, res) => {
+
+    console.log('user id writer cre:', id_user);
+   
+    const id_news = req.query.id_news; 
+    console.log('id_news id writer id_news:', id_news);
+
+    try {
+        
+        const news = await writerService.findNewsByIdFullAttribute(id_news); 
+        if (!news) {
+            return res.status(404).send('Bài viết không tồn tại');
+        }
+        console.log('neews:', news);
+        const id_writer = await writerService.findWriter(id_user);
+        const category = await writerService.getCategoryByWriterId(id_writer);
+        const subCategories = await writerService.getSubCategoriesByWriterId(id_writer);
+      
+
+        res.render('vwWriter/update_article', { layout: 'moderator', news, id_user, category, subCategories });
+    } catch (error) {
+        console.error('Lỗi khi lấy chuyên mục:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+
 });
 
 
