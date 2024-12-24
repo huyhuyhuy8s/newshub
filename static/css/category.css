@@ -31,6 +31,8 @@
     }
 }
 
+
+
 .parent1 {
     display: grid;
     grid-template: 1fr / 5.5fr 4.5fr;
@@ -274,6 +276,39 @@
             /* Công Thuận chỉnh sửa css bỏ dòng content: "Thể thao"...  (10/12/2024) */
             /* content: "Thể thao"; */
             font-style: italic;
+        }
+    }
+}
+
+.pagination {
+    margin-top: 4em;
+    align-items: center;
+    justify-content: center;
+
+    ul {
+        display: flex;
+        flex-direction: row;
+        gap: 1em;
+
+        li {
+            list-style-type: none;
+
+            a {
+                padding: 0.5em 1em;
+                border: 2px solid var(--grey);
+                border-radius: 5px;
+            }
+
+            .prev-next {
+                border: var(--red);
+                background-color: var(--red);
+                color: var(--white);
+            }
+
+            .isDisable {
+                pointer-events: none;
+                background-color: var(--grey);
+            }
         }
     }
 }

@@ -60,31 +60,46 @@
     </div>
     {{!-- phân trang --}}
     <div class="pagination" id="pagination">
-        {{#if isFirstPage}}
-        {{!-- Nếu là đầu trang thì không cho ấn --}}
-        <a href="#">Previous</a>
-        {{else}}
-        <a href="/category/{{categoryId}}/{{subCategoryId}}?page={{previousPage}}">Previous</a>
-        {{/if}}
+        <ul>
+            {{#if isFirstPage}}
+            {{!-- Nếu là đầu trang thì không cho ấn --}}
+            <li>
+                <a href="#" class="isDisable prev-next">Previous</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/category/{{categoryId}}/{{subCategoryId}}?page={{previousPage}}#parent3"
+                    class="prev-next">Previous</a>
+            </li>
+            {{/if}}
 
 
-        {{#each this.page_items}}
-        {{#if isActive}}
-        {{!-- Nếu là là chính trang đó thì không cho ấn --}}
-        <a href="#">{{value}}</a>
+            {{#each this.page_items}}
+            {{#if isActive}}
+            {{!-- Nếu là là chính trang đó thì không cho ấn --}}
+            <li>
+                <a href="#" class="isDisable">{{value}}</a>
+            </li>
 
-        {{else}}
+            {{else}}
+            <li>
+                <a href="/category/{{../categoryId}}/{{../subCategoryId}}?page={{value}}#parent3">{{value}}</a>
+            </li>
 
-        <a href="/category/{{../categoryId}}/{{../subCategoryId}}?page={{value}}">{{value}}</a>
-
-        {{/if}}
-        {{/each}}
-        {{#if isLastPage}}
-        {{!-- Nếu là cuối trang thì không cho ấn --}}
-        <a href="#">Next</a>
-        {{else}}
-        <a href="/category/{{categoryId}}/{{subCategoryId}}?page={{nextPage}}">Next</a>
-        {{/if}}
+            {{/if}}
+            {{/each}}
+            {{#if isLastPage}}
+            {{!-- Nếu là cuối trang thì không cho ấn --}}
+            <li>
+                <a href="#" class="isDisable prev-next">Next</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/category/{{categoryId}}/{{subCategoryId}}?page={{nextPage}}#parent3"
+                    class="prev-next">Next</a>
+            </li>
+            {{/if}}
+        </ul>
         <!-- Thêm các nút phân trang -->
     </div>
 </div>
