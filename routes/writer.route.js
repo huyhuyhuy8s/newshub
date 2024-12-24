@@ -3,10 +3,23 @@ import session from 'express-session';
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
+import multer from 'multer';
+import path from 'path';
+
+var storage = multer.diskStorage(
+    {
+        destination: 'imgs/uploads/',
+        filename: function (req, file, cb) {
+            //req.body is empty...
+            //How could I get the new_file_name property sent from client here?
+            cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        }
+    }
+);
+var upload = multer({ storage: storage });
+let id_user;
 
 const router = express.Router();
-
-let id_user;
 
 router.get('/home', async (req, res) => {
     if (id_user === undefined) id_user = req.query.id_user;
@@ -22,7 +35,7 @@ router.get('/list-post', async (req, res) => {
             post.Reason = reason; // Gán lý do vào bài viết
         }
     }
-    
+
     res.render('vwWriter/list_post', { layout: 'moderator', posts: posts });
 });
 
@@ -30,10 +43,10 @@ router.get('/list-post', async (req, res) => {
 router.get('/updatenews', async (req, res) => {
     const id_news = req.query.id_news; // Lấy Id_News từ query
     console.log('user id writer:', id_user);
-  
+
     try {
         const news = await writerService.findNewsById(id_news); // Lấy thông tin bài viết
-     
+
         if (!news) {
             return res.status(404).send('Bài viết không tồn tại');
         }
@@ -51,23 +64,27 @@ router.get('/create-article', async (req, res) => {
     res.render('vwWriter/create_article', { layout: 'moderator' });
 });
 
-router.post('/create-article', async (req, res) => {
-    const content = req.body.save;
+router.post('/create-article', upload.single('filename'), async (req, res) => {
+    // const content = req.body.save;
+    // console.log(content);
+    // console.log(req.file.filename);
 
-    
 
-    // let news = {
-    //     Id_Writer: writerService.findWriter(id_user),
-    //     Id_Status: "STS0001",
-    //     Content: req.body.save,
-    //     Image: '',
-    //     Title: req.body.title,
-    //     Premium: req.body.premium ? true : false,
-    //     Id_SubCategory: req.body.sub_category,
-    //     Meta_title: req.body.meta_title,
-    //     Meta_description: req.body.meta_description,
-    // }
-    // writerService.addData(news);
+
+    res.send('File uploaded successfully');
+    let news = {
+        Id_Writer: await writerService.findWriter(id_user),
+        Id_Status: "STS0001",
+        Content: req.body.save,
+        Image: req.file.filename,
+        Title: req.body.title,
+        Premium: req.body.premium ? true : false,
+        Id_SubCategory: req.body.sub_category,
+        Meta_title: req.body.meta_title,
+        Meta_description: req.body.meta_description,
+    }
+    writerService.addData(news);
+    res.render('vwWriter/list_post', { layout: 'moderator' });
 })
 
 router.get('/preview', async (req, res) => {
@@ -92,8 +109,8 @@ router.get('/inforeditor', async (req, res) => {
         writer.Birthday = moment(writer.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
     }
 
- 
-    res.render('vwWriter/inforwriter', { layout: 'moderator', writer});
+
+    res.render('vwWriter/inforwriter', { layout: 'moderator', writer });
 });
 
 
@@ -119,7 +136,7 @@ router.post('/inforeditor/update', async (req, res) => {
         }
 
         await writerService.updateUser(id_user, updatedUser); // Gọi hàm cập nhật với id_user
-  
+
 
         // Chuyển hướng về trang thông tin người dùng
         res.redirect('/writer/inforeditor');

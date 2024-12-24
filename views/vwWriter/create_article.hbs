@@ -1,6 +1,6 @@
 {{#fillHtmlContent 'css'}}
 <!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/5o2hhgemqy0axvklkkh20ria6cf801vvy0t4bgmwk5t69m2c/tinymce/7/tinymce.min.js"
+<script src="https://cdn.tiny.cloud/1/c7ncx5x4bdo5yb9klw2gzs1kx687tmkt0zt4da7tppggll7v/tinymce/7/tinymce.min.js"
     referrerpolicy="origin"></script>
 <link rel="stylesheet" href="/css/writer/style_create.css">
 {{/fillHtmlContent}}
@@ -12,11 +12,12 @@
         plugins: [
             // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+            'textpattern', 'tinydrive', 'code',
             // Your account includes a free trial of TinyMCE premium features
             // Try the most popular premium features until Dec 21, 2024:
-            'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf', 'textpattern', 'tinydrive', 'code',
+            //'checklist','mediaembed','casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf',
         ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | image | insertfile image link | code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough code| link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | charmap insertfile',
         tinycomments_mode: 'embedded',
         tinycomments_author: 'Author name',
         //image field
@@ -25,6 +26,7 @@
         block_unsupported_drop: true, //block all unsupported type image
         file_picker_types: 'image',
         /* and here's our custom image picker*/
+        /* mediaembed_max_width: 450, */
         file_picker_callback: (cb, value, meta) => {
             const input = document.createElement('input');
             input.setAttribute('type', 'file');
@@ -80,11 +82,10 @@
 
 {{> headerWriter}}
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 
     <nav>
         <div class="search">
-            <h2>Tiêu đề bài viết</h2>
             <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết">
         </div>
         <div class="filter">
@@ -99,6 +100,13 @@
                 Đăng tải</button>
         </div>
     </nav>
+    <a href=""></a>
+    <div id="banner">
+        <label class="custom-file-upload" id="custom_file_upload">
+            <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png">
+            <h2>Chọn ảnh bìa của bài viết</h2>
+        </label>
+    </div>
     <div id="body">
         <div class="creat">
             <textarea id="article" placeholder="Thêm nội dung vào đây...">

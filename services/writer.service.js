@@ -13,7 +13,7 @@ const writerService = {
     async findWriter(id_user) {
         try {
             const writer = await db('writer').where('Id_User', id_user).first();
-            return writer ? writer.Id_Writer : null;;
+            return await writer ? writer.Id_Writer : null;;
         }
         catch (error) {
             console.error("Khong tim thay writer");
@@ -57,10 +57,7 @@ const writerService = {
             news.Views = 0;
 
             // console.log(news);
-            // console.log(news.Content);
             const ret = await db('News').insert(news);
-            // console.log(ret.Content);
-            // console.log(ret, 'succ');
         }
         catch (error) {
             console.error(error);

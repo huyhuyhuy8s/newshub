@@ -16,6 +16,20 @@ a {
     text-decoration: none;
 }
 
+.sticky {
+    position: fixed;
+    top: 0;
+    z-index: 5;
+    /* width: 100%; */
+}
+
+.sticky2 {
+    position: fixed;
+    top: 2.8em;
+    z-index: 5;
+    /* width: 100%; */
+}
+
 /* Header */
 header {
     margin: 0;
@@ -89,6 +103,7 @@ nav {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     border-bottom: 1px solid var(--grey);
     padding: 1em 5em;
     background-color: var(--white);
@@ -118,6 +133,12 @@ nav {
             background-color: #F6E6E6;
             color: var(--red);
             width: 3em;
+        }
+
+        #title {
+            width: 80em;
+            margin: 1em;
+            height: 3em;
         }
     }
 
