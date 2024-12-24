@@ -211,6 +211,17 @@ const writerService = {
             throw error; // Ném lỗi để xử lý ở nơi khác
         }
     },
+    async updateNews(id_news, updatedNews) {
+        try {
+            // Cập nhật thông tin bài viết trong bảng News
+            await db('News')
+                .where('Id_News', id_news)
+                .update(updatedNews);
+        } catch (error) {
+            console.error('Lỗi khi cập nhật bài viết:', error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
 
 }
 export default writerService

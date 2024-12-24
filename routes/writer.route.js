@@ -223,5 +223,29 @@ router.get('/update_article', async (req, res) => {
 });
 
 
+router.post('/update_article', upload.single('filename'), async (req, res) => {
+    const { id_news, title, content, premium, sub_category, meta_title, meta_description } = req.body;
+
+    try {
+        const updatedNews = {
+            Title: title,
+            Content: content,
+            Premium: premium ? true : false,
+            Id_SubCategory: sub_category,
+            Meta_title: meta_title,
+            Meta_description: meta_description,
+            // Nếu có hình ảnh mới, bạn có thể thêm logic để xử lý
+        };
+
+        await writerService.updateNews(id_news, updatedNews); // Gọi hàm cập nhật với id_news
+
+        res.redirect(`/writer/list-post?id_user=${id_user}`); // Chuyển hướng về danh sách bài viết
+    } catch (error) {
+        console.error('Lỗi khi cập nhật bài viết:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
 
 export default router;

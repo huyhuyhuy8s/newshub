@@ -6,13 +6,9 @@
 {{> headerAdmin}}
 
 <div class="container">
-
-
-
-
     <h1>Quản lý các chuyên mục cấp 2 </h1>
 
-    <form action="/admin/subcategorymanagement/add" method="post">
+    <form action="/admin/subcategorymanagement/add" method="post" style="background-color: white">
         <div id="category-selection-editor" style="display: block;">
             <label for="category">Chọn chuyên mục:</label>
             <select id="category" name="id_category" onchange="fetchSubCategories(this.value)">

@@ -40,7 +40,7 @@ router.get("/dashboard", async (req, res) => {
         dataBar: JSON.stringify(dataBar),
         labelsPie: JSON.stringify(labelsPie),
         dataPie: JSON.stringify(dataPie),
-        layout: 'admin'
+        layout: 'moderator'
 
     })
 });
@@ -51,7 +51,7 @@ router.get("/usermanagement", async (req, res) => {
 
     res.render('vwAdmin/usermanagement', {
         inforUser: inforUser,
-        layout: 'admin'
+        layout: 'moderator'
     })
 
 });
@@ -89,7 +89,7 @@ router.get("/admininforuser", async (req, res) => {
 
 
     res.render('vwAdmin/admininforuser', {
-        layout: 'admin',
+        layout: 'moderator',
         inforUser: inforUser,
         newsCountApproved: newsCountApproved,
         newsCountPending: newsCountPending,
@@ -237,7 +237,7 @@ router.get("/newsmanagement", async (req, res) => {
         const newsDetails = await adminService.getNewsDetails(); // Lấy thông tin bài viết
 
         res.render('vwAdmin/newsmanagement', {
-            layout: 'admin',
+            layout: 'moderator',
             newsDetails: newsDetails // Truyền thông tin bài viết vào template
         });
     } catch (error) {
@@ -260,18 +260,20 @@ router.post("/newsmanagement/update-status", async (req, res) => {
 });
 
 router.get('/tagsmanagement', async (req, res) => {
-    res.render('vwAdmin/tagsmanagement', { layout: 'admin' });
+    res.render('vwAdmin/tagsmanagement', { layout: 'moderator' });
 })
 
 
 
 router.get('/tagsmanagement', async (req, res) => {
     try {
+      
         const tags = await adminService.getTags(); // Lấy danh sách tag
         res.render('vwAdmin/tagsmanagement', {
-            layout: 'admin',
+            layout: 'moderator',
             tags: tags // Truyền danh sách tag vào view
         });
+        console.log('cac tag ', tags);
     } catch (error) {
         console.error("Lỗi khi lấy danh sách tag:", error);
         res.status(500).send("Có lỗi xảy ra khi lấy danh sách tag.");
@@ -311,11 +313,11 @@ router.get('/subcategorymanagement', async (req, res) => {
 
 
     try {
-  
+
         res.render('vwAdmin/subcategorymanagement', {
-            layout: 'admin',
+            layout: 'moderator',
             categories: categories,
-        
+
         });
     } catch (error) {
         console.error("Lỗi khi lấy danh sách chuyên mục:", error);
@@ -328,7 +330,7 @@ router.get('/subcategorymanagement/:id_category', async (req, res) => {
 
     try {
         const subcategories = await adminService.getSubCategoriesByCategoryId(id_category);
-   
+
         res.json(subcategories); // Trả về danh sách subcategories dưới dạng JSON
     } catch (error) {
         console.error("Lỗi khi lấy subcategories:", error);
@@ -339,7 +341,7 @@ router.get('/subcategorymanagement/:id_category', async (req, res) => {
 
 router.post('/subcategorymanagement/add', async (req, res) => {
     const { id_category, name } = req.body; // Lấy thông tin từ body
- 
+
 
     try {
         const newSubCategory = await adminService.addSubCategory(id_category, name); // Gọi hàm thêm subcategory
