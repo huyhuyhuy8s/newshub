@@ -187,7 +187,7 @@ export default {
     },
 
     // lấy bài viết mới nhất của category sắp xếp theo thời gian
-    async getRecentNewsByCategory(categoryId) {
+    async getRecentNewsByCategory(categoryId,limit,offset) {
         try {
             const now = new Date();
             const news = await db('News as n')
@@ -203,16 +203,34 @@ export default {
                     's.Name as SubCategoryName',
                     'c.Id_Category'
                 )
-                .orderBy('n.Date', 'desc');
-
+                .orderBy('n.Date', 'desc')
+                .limit(limit)
+                .offset(offset);
             return news;
         } catch (error) {
             console.error('Database error:', error);
             throw error;
         }
     },
-
-
+    async countNewsbyCategory(categoryId) {
+        try {
+            const now = new Date();
+            const countNews = await db('News as n')
+                .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
+                .join('Category as c', 's.Id_Category', 'c.Id_Category')
+                .where({
+                    'c.Id_Category': categoryId,
+                    'n.Id_Status': 'STS0001'
+                })
+                .andWhere('n.Date', '<', now)
+                .count('* as total').first();
+            return countNews;
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    }
+,
 
     // sub_category
     async findSubCategoryById(subCategoryId) {
