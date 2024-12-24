@@ -9,14 +9,15 @@ const router = express.Router();
 let id_user;
 
 router.get('/home', async (req, res) => {
-    if (id_user === undefined) id_user = req.query.id_user;
+    // if (id_user === undefined) id_user = req.query.id_user;
+    const id = req.query.id_user;
+
+    id_user = id;
+   
     
     res.render('vwEditor/overview', { layout: 'moderator'});
 });
 
-// router.get('/list-writer', async (req, res) => {
-//     res.render('vwEditor/list_writer', { layout: 'moderator' });
-// });
 
 
 // 21/12/2024
@@ -138,6 +139,7 @@ router.post('/article/update-premium', async (req, res) => {
 
         console.error('Lỗi khi cập nhật trạng thái Premium:', error);
         res.status(500).send('Có lỗi xảy ra');
+        
     }
 });
 
@@ -146,7 +148,7 @@ router.post('/article/update-premium', async (req, res) => {
 
 
 
-router.get('/list-article_reject', async (req, res) => {
+router.get('/list_article_reject', async (req, res) => {
 
     try {
         const rejectedArticles = await editorService.getRejectedArticles(); // Gọi hàm để lấy dữ liệu
@@ -190,6 +192,20 @@ router.get('/list-writer', async (req, res) => {
     }
 });
 
+
+// 24/12/2024
+router.post('/article/update-date', async (req, res) => {
+    const { id_news, date } = req.body; // Lấy id_news và date từ body
+
+    try {
+        await editorService.updateNewsDate(id_news, date); // Gọi hàm cập nhật ngày
+        // res.status(200).send('Cập nhật ngày thành công');
+        res.redirect(`/editor/article?id_news=${id_news}`); 
+    } catch (error) {
+        console.error('Lỗi khi cập nhật ngày:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
 
 
 

@@ -87,8 +87,7 @@ async function togglePremium(id_news) {
 
     const updatedNews = newPremiumValue ? 0 : 1; 
 
-    console.log('ID News:', id_news);
-    console.log('New updatedNews Value:', updatedNews); // true nếu chuyển sang Premium, false nếu chuyển sang Free
+
 
     try {
         const response = await fetch('/editor/article/update-premium', {

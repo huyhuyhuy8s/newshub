@@ -1,4 +1,5 @@
 import db from '../utils/db.js';
+import moment from 'moment';
 
 const editorService = {
     async findEditor(id_user) {
@@ -166,6 +167,16 @@ const editorService = {
             throw error; 
         }
     },
+    async updateNewsDate(id_news, date) {
+        try {
+            await db('News')
+                .where('Id_News', id_news)
+                .update({ Date: moment(date).format('YYYY-MM-DD HH:mm:ss') }); // Cập nhật ngày
+        } catch (error) {
+            console.error("Lỗi khi cập nhật ngày bài viết:", error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    }
 
 
 }

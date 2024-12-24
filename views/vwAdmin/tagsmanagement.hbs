@@ -1,0 +1,63 @@
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/admin/newsmanagement.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+{{/fillHtmlContent}}
+
+{{> headerAdmin}}
+
+<div class="container">
+    <h1>Quản lý tất cả các nhãn bài viết</h1>
+    <div class="filter-section">
+        <!-- Tìm kiếm -->
+        <form action="/admin/tagsmanagement/add" method="post">
+            <div class="filter-item">
+                <label for="search-input">Tên nhãn</label>
+                <input type="text" name="tag_name" id="search-input" placeholder="Nhập tên nhãn" class="filter-input">
+            </div>
+
+            <div class="filter-item">
+                <button class="filter-button" type="submit">
+                    <i class="bi bi-person-add"></i>
+                    Thêm nhãn
+                </button>
+            </div>
+        </form>
+    </div>
+    <table class="article-table">
+        <thead>
+            <tr>
+                <th>Số thứ tự</th>
+                <th>Tên nhãn</th>
+                <th>Xóa nhãn</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each tags}}
+            <tr>
+                <td>{{@index}}</td>
+                <!-- Giả sử bạn có helper formatDate để định dạng ngày -->
+                <td>{{this.Name}}</td>
+                <td>
+                    <form action="/admin/tagsmanagement/delete" method="post">
+                        <input type="hidden" name="id_tag" value="{{this.Id_Tag}}">
+                        <button type="submit" class="edit-button">Xoá</button>
+                    </form>
+                </td>
+            </tr>
+            {{/each}}
+
+
+
+
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/newsmanagement.js"></script>
+{{/fillHtmlContent}}

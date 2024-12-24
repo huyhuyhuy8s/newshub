@@ -3,7 +3,7 @@
 {{/fillHtmlContent}}
 <nav>
     <div class="filter">
-         <button type="button" id="premium-toggle" onclick="togglePremium('{{news.Id_News}}')">
+        <button type="button" id="premium-toggle" onclick="togglePremium('{{news.Id_News}}')">
             {{#if news.Premium}}
             Chuyển sang Free
             {{else}}
@@ -90,8 +90,14 @@
     <h5>{{news.Title}}</h5>
     <div class="b_title">
         <div class="date">
-
-            <a>{{formatDate news.Date}}</a>
+      
+            <form action="/editor/article/update-date" method="post">
+                <input type="hidden" name="id_news" value="{{news.Id_News}}"> <!-- Ẩn trường Id_News -->
+                <label for="date">Cập nhật thời gian đăng bài:</label>
+                <input type="date" name="date" id="date" value="{{formatUpdateDateOfArticleInEditor news.Date}}">
+                <!-- Trường nhập liệu cho ngày -->
+                <button type="submit">Cập nhật</button> <!-- Nút gửi -->
+            </form>
         </div>
         <div class="author">
             <a>Tác giả: {{news.Pen_Name}}</a>

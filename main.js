@@ -234,6 +234,13 @@ app.engine('hbs', engine({
             const year = d.getFullYear();
             return `${day}/${month}/${year}`;
         },
+
+        formatUpdateDateOfArticleInEditor: (date) => {
+            if (!date) return '';
+            return moment(date).format('YYYY-MM-DD'); // Định dạng ngày theo định dạng YYYY-MM-DD
+        }
+
+        
     },
 }));
 
@@ -305,7 +312,7 @@ app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
 
 // app.use('/admin', adminRouter);
-app.use('/admin', isAdmin, adminRouter); // 20/12
+app.use('/admin', isAdmin, adminRouter); 
 app.use('/editor', isEditor, editorRouter);
 app.use('/writer', isWriter, writerRouter);
 

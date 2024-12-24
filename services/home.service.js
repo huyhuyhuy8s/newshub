@@ -1,4 +1,5 @@
 import db from '../utils/db.js';
+import moment from 'moment';
 
 const homeService = {
 
@@ -6,10 +7,12 @@ const homeService = {
         try {
             const oneWeekAgo = new Date();
             oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            const now = new Date(); 
 
             const topNews = await db('News as n')
                 .where('n.Date', '>=', oneWeekAgo)
                 .andWhere('n.Id_Status', 'STS0001') // Lọc theo trạng thái
+                .andWhere('n.Date', '<', now) 
                 .orderBy('n.Views', 'desc')
                 .select('n.*')
                 .limit(4); // Lấy 4 bài viết
@@ -24,9 +27,11 @@ const homeService = {
     async getTopCategoriesWithLatestNews() {
         try {
             // Lấy 10 category có tổng lượng views cao nhất
+            const now = new Date(); 
             const topCategories = await db('Category as c')
                 .join('SubCategory as sc', 'c.Id_Category', 'sc.Id_Category')
                 .join('News as n', 'sc.Id_SubCategory', 'n.Id_SubCategory')
+                .andWhere('n.Date', '<', now) 
                 .select('c.Id_Category', 'c.Name as CategoryName') // Chỉ lấy thông tin category
                 .groupBy('c.Id_Category')
                 .orderByRaw('SUM(n.Views) DESC')
@@ -56,10 +61,12 @@ const homeService = {
     async get12TopViewedNews() {
         try {
             const oneMonthAgo = new Date();
+            const now = new Date(); 
             oneMonthAgo.setDate(oneMonthAgo.getDate() - 30); // Tính toán ngày 7 ngày trước
 
             const topNews = await db('News as n')
                 .where('n.Id_Status', 'STS0001') // Lọc theo trạng thái
+                .andWhere('n.Date', '<', now) 
                 .andWhere('n.Date', '>=', oneMonthAgo) // Lọc theo ngày đăng trong 7 ngày gần nhất
                 .orderBy('n.Views', 'desc')
                 .select('n.*')
@@ -74,11 +81,13 @@ const homeService = {
 
     async getTopNewsFromTopCategory() {
         try {
+            const now = new Date(); 
             // Bước 1: Lấy chuyên mục có tổng view cao nhất
             const topCategory = await db('Category as c')
                 .join('SubCategory as sc', 'c.Id_Category', 'sc.Id_Category')
                 .join('News as n', 'sc.Id_SubCategory', 'n.Id_SubCategory')
                 .where('n.Id_Status', 'STS0001') // Lọc theo trạng thái
+                .andWhere('n.Date', '<', now) 
                 .select('c.Id_Category', 'c.Name as CategoryName')
                 .groupBy('c.Id_Category', 'c.Name')
                 .orderByRaw('SUM(n.Views) DESC')
@@ -95,6 +104,7 @@ const homeService = {
             const topNews = await db('News as n')
                 .join('SubCategory as sc', 'n.Id_SubCategory', 'sc.Id_SubCategory') // Thêm JOIN với SubCategory
                 .where('n.Id_Status', 'STS0001') // Lọc theo trạng thái
+                .andWhere('n.Date', '<', now) 
                 .andWhere('sc.Id_Category', topCategory.Id_Category) // Lọc theo chuyên mục
                 .orderBy('n.Views', 'desc')
                 .select('n.*')
@@ -109,10 +119,12 @@ const homeService = {
     },
     async getTop10RecentNews() {
         try {
+            const now = new Date(); 
             const topNews = await db('News as n')
                 .join('SubCategory as sc', 'n.Id_SubCategory', 'sc.Id_SubCategory')
                 .join('Category as c', 'sc.Id_Category', 'c.Id_Category') // Thêm JOIN với bảng Category
                 .where('n.Id_Status', 'STS0001') 
+                .andWhere('n.Date', '<', now) 
                 .orderBy('n.Date', 'desc') // Sắp xếp theo ngày giảm dần
                 .select('n.*', 'sc.Name as SubCategoryName', 'c.Name as CategoryName') // Lấy tên Category
                 .limit(10); // Lấy 10 bài viết mới nhất
@@ -125,9 +137,11 @@ const homeService = {
     },
     async getRecentNewsFromCategory(categoryId) {
         try {
+            const now = new Date(); 
             const latestNews = await db('News as n')
                 .join('SubCategory as sc', 'n.Id_SubCategory', 'sc.Id_SubCategory') // Thêm JOIN với SubCategory
                 .where('sc.Id_Category', categoryId) // Lọc theo category
+                .andWhere('n.Date', '<', now) 
                 .andWhere('n.Id_Status', 'STS0001') // Lọc theo trạng thái
                 .orderBy('n.Date', 'desc') // Sắp xếp theo ngày giảm dần
                 .select('n.*') // Lấy tất cả thông tin bài viết
@@ -141,9 +155,11 @@ const homeService = {
     },
     async get12RecentNewsFromCategory(categoryId) {
         try {
+            const now = new Date(); 
             const latestNews = await db('News as n')
                 .join('SubCategory as sc', 'n.Id_SubCategory', 'sc.Id_SubCategory')
                 .where('sc.Id_Category', categoryId) // Lọc theo category
+                .andWhere('n.Date', '<', now) 
                 .andWhere('n.Id_Status', 'STS0001') // Lọc theo trạng thái
                 .orderBy('n.Date', 'desc') // Sắp xếp theo ngày giảm dần
                 .select('n.*') // Lấy tất cả thông tin bài viết
