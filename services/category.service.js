@@ -227,7 +227,7 @@ export default {
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory') // Thực hiện join với bảng SubCategory
                 .where('n.Id_SubCategory', subCategoryId)
                 .where('n.Date', '>=', date)
-                .where('n.Id_Status', 'STS0001') 
+                .where('n.Id_Status', 'STS0001')
                 .orderBy('n.Views', 'desc')
                 .select('n.*', 's.Id_Category');
 
@@ -238,7 +238,7 @@ export default {
         }
     },
 
-    async getRecentNewsBySubCategory(subCategoryId) {
+    async getRecentNewsBySubCategory(subCategoryId, limit, offset) {
         try {
             const news = await db('News as n')
                 .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
@@ -250,7 +250,8 @@ export default {
                     's.Name as SubCategoryName',
                     's.Id_Category'
                 )
-                .limit(10); // Giới hạn 10 bài viết mới nhất
+                .limit(limit)
+                .offset(offset); // Giới hạn 5 bài viết mới nhất
 
             return news;
         } catch (error) {
@@ -258,6 +259,18 @@ export default {
             throw error;
         }
     },
-
+    async countNewsbySubCategory(subCategoryId) {
+        try {
+            const countNews = await db('News as n')
+                .join('SubCategory as s', 'n.Id_SubCategory', 's.Id_SubCategory')
+                .where('n.Id_SubCategory', subCategoryId)
+                .where('n.Id_Status', 'STS0001')
+                .count('* as total').first(); 
+            return countNews;
+        } catch (error) {
+            console.error('Database error:', error);
+            throw error;
+        }
+    }
 
 }
