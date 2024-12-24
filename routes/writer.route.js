@@ -86,11 +86,12 @@ router.post('/create-article', upload.single('filename'), async (req, res) => {
     res.send('File uploaded successfully');
     let news = {
         Id_Writer: await writerService.findWriter(id_user),
-        Id_Status: "STS0001",
+        Id_Status: "STS0002",
         Content: req.body.save,
         Image: req.file.filename,
         Title: req.body.title,
         Premium: req.body.premium ? true : false,
+        // Id_Category: req.body.category,
         Id_SubCategory: req.body.sub_category,
         Meta_title: req.body.meta_title,
         Meta_description: req.body.meta_description,
