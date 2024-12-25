@@ -12,10 +12,9 @@
         <div id="category-selection-editor" style="display: block;">
             <label for="category">Chọn chuyên mục:</label>
             <select id="category" name="id_category" onchange="fetchSubCategories(this.value)">
-                <option value="none">chọn chuyên mục</option>
+                <option value="none" disabled selected>Chọn chuyên mục</option>
                 {{#each categories}}
                 <option value="{{this.Id_Category}}">{{this.Name}}</option>
-
                 {{/each}}
             </select>
 

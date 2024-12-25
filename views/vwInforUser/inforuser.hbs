@@ -21,40 +21,51 @@
     <div class="container">
         <div class="user-info">
             <h2>Thông tin của {{name}}</h2>
-            <form id="update-form" method="POST" action="/inforuser/update">
-                <label for="last-name">Họ và tên</label>
-                <input type="text" id="last-name" name="name" value="{{name}}">
+            <form id="update-form" method="POST" action="/inforuser/update" class="informoderator">
+                <label for="last-name">
+                    Họ và tên
+                    <input type="text" id="last-name" name="name" value="{{name}}">
+                </label>
 
-                <label for="email">Email</label>
-                <input type="email" id="email" name="email" value="{{email}}" readonly>
+                <label for="email">
+                    Email
+                    <input type="email" id="email" name="email" value="{{email}}" readonly>
+                </label>
 
-                <label for="dob">Ngày sinh</label>
-                <input type="date" id="dob" name="dob" value="{{birthday}}">
+                <label for="dob">
+                    Ngày sinh
+                    <input type="date" id="dob" name="dob" value="{{birthday}}">
+                </label>
 
-                <label for="password">Mật khẩu</label>
-                <input type="password" id="password" name="password" value="">
+                <label for="password">
+                    Mật khẩu
+                    <input type="password" id="password" name="password" value="">
+                </label>
 
-                <label for="password-confirm">Nhập lại mật khẩu</label>
-                <input type="password" id="password-confirm" name="confirm_password" value="">
+                <label for="password-confirm">
+                    Nhập lại mật khẩu
+                    <input type="password" id="password-confirm" name="confirm_password" value="">
+                </label>
 
-                <label for="account-type">Loại tài khoản</label>
-                
-                {{#if userInfo.subcriber.Date_register}}
-                <input type="text" id="account-type" value="Thành viên đã đăng ký" disabled>
-                {{else if userInfo.administrator}}
-                <input type="text" id="account-type" value="Quản trị viên" disabled>
-                {{else if userInfo.editor}}
-                <input type="text" id="account-type" value="Biên tập viên" disabled>
-                {{else if userInfo.writer}}
-                <input type="text" id="account-type" value="Nhà báo" disabled>
-                {{else}}
-                <input type="text" id="account-type" value="Thành viên vãng lai" disabled>
-                {{/if}}
+                <label for="account-type">
+                    Loại tài khoản
+
+                    {{#if userInfo.subcriber.Date_register}}
+                    <input type="text" id="account-type" value="Thành viên đã đăng ký" disabled>
+                    {{else if userInfo.administrator}}
+                    <input type="text" id="account-type" value="Quản trị viên" disabled>
+                    {{else if userInfo.editor}}
+                    <input type="text" id="account-type" value="Biên tập viên" disabled>
+                    {{else if userInfo.writer}}
+                    <input type="text" id="account-type" value="Nhà báo" disabled>
+                    {{else}}
+                    <input type="text" id="account-type" value="Thành viên vãng lai" disabled>
+                    {{/if}}
+                </label>
 
                 <button type="submit" class="save-btn">Lưu thông tin</button>
+                <button id="back-btn" class="back-btn">Trở về trang chủ</button>
             </form>
-            <br>
-            <button id="back-btn" class="back-btn">Trở về trang chủ</button>
         </div>
 
         <div class="utility-containter">

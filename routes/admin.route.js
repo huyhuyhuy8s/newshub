@@ -259,15 +259,10 @@ router.post("/newsmanagement/update-status", async (req, res) => {
     }
 });
 
-router.get('/tagsmanagement', async (req, res) => {
-    res.render('vwAdmin/tagsmanagement', { layout: 'moderator' });
-})
-
-
 
 router.get('/tagsmanagement', async (req, res) => {
     try {
-      
+
         const tags = await adminService.getTags(); // Lấy danh sách tag
         res.render('vwAdmin/tagsmanagement', {
             layout: 'moderator',

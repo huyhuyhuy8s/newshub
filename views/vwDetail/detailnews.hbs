@@ -72,7 +72,7 @@
     {{!-- 10 bài viết liên quan tới tag bài viết hiện tại --}}
     <div id="article-related">
         <div class="title">
-            <h4>10 bài viết liên quan tới tag bài viết hiện tại</h4>
+            <h4>10 bài viết có nhãn liên quan bài viết hiện tại</h4>
             <div class="button-flex">
                 <button onclick="scrollNext('bai-viet-lien-quan', 'very-first', -1)">Previous</button>
                 <button onclick="scrollNext('bai-viet-lien-quan', 'very-first')">Next</button>
@@ -100,7 +100,7 @@
     <!-- 10 bài viết nổi bật liên quan tới chuyên mục c1 của bài viết hiện tại -->
     <div id="article-related">
         <div class="title">
-            <h4>10 bài viết nổi bật (nhiều lượt xem nhất) trong danh mục trong 1 tháng qua</h4>
+            <h4>10 bài viết nổi bật của danh mục trong 1 tháng qua</h4>
             <div class="button-flex">
                 <button onclick="scrollNext('bai-viet-noi-bat', 'very-second', -1)">Previous</button>
                 <button onclick="scrollNext('bai-viet-noi-bat', 'very-second')">Next</button>
@@ -127,7 +127,7 @@
 
     <!-- 3 bài viết nổi bật trong 1 tuần vừa qua của mọi chuyên mục-->
     <div id="bai-viet-khac">
-        <h3>3 bài viết nổi bật (nhiều view nhất) trong 1 tuần vừa qua của mọi chuyên mục</h3>
+        <h3>Bài viết nổi bật trong 1 tuần vừa qua</h3>
         <div id="article_list">
             {{#each topViewedLastWeek}}
             <a href="/news/{{this.Id_News}}">

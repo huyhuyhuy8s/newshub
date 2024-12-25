@@ -54,6 +54,12 @@
             h4 {
                 font-weight: bold;
             }
+
+            img {
+                height: 30em;
+                width: 100%;
+                object-fit: cover;
+            }
         }
 
         a {
@@ -82,10 +88,12 @@
                 /* padding: 1em 0; */
                 flex-direction: column;
                 border: 2px solid var(--red);
+                /* background-color: var(--white); */
 
                 div {
-                    display: flex;
-                    flex-direction: column;
+                    display: grid;
+                    grid-template-rows: 2em 2em;
+                    /* flex-direction: column; */
                     gap: 1em;
                     padding: 2em 0.6em;
                     background-color: var(--white);
@@ -101,7 +109,7 @@
 
                 .hinhanh-div {
                     width: 100%;
-                    height: 100%;
+                    height: 12em;
                     object-fit: cover;
                 }
             }
@@ -147,6 +155,11 @@
         }
     }
 
+    .image-container {
+        height: 8em;
+        border: 2px solid var(--grey);
+    }
+
 }
 
 
@@ -173,15 +186,24 @@
 
         .highlight-post {
             display: grid;
-            grid-template-rows: 1fr 4em 2em;
+            grid-template-rows: 1fr 8em;
             gap: 1em;
             border-bottom: 2px solid var(--grey);
             margin-bottom: 1em;
-            background-color: var(--white);
             border: 2px solid var(--red);
 
+            img {
+                height: 15em;
+                width: 100%;
+                object-fit: cover;
+                border: 0.1px solid var(--grey);
+            }
+
             div {
-                padding: 0.4em 1em;
+                display: grid;
+                grid-template-rows: 4em 2em;
+                padding: 0.8em 1em;
+                background-color: var(--white);
             }
 
             h5 {
@@ -190,6 +212,7 @@
 
             p {
                 padding: 0;
+                align-self: end;
             }
 
         }
@@ -219,6 +242,9 @@
                 img {
                     grid-area: 1/ 2 / 3 / 3;
                     object-fit: cover;
+                    height: 8em;
+                    width: 100%;
+                    border: 0.1px solid var(--grey);
                 }
             }
         }
@@ -292,10 +318,11 @@
         }
 
         img {
-            height: 100%;
+            height: 18em;
             width: 100%;
-            object-fit: contain;
+            object-fit: cover;
             justify-self: self-end;
+            border: 0.1px solid var(--grey);
         }
 
         .content {
@@ -345,6 +372,8 @@
                 padding: 0.5em 1em;
                 border: 2px solid var(--grey);
                 border-radius: 5px;
+                background-color: var(--white);
+                color: var(--black);
             }
 
             .prev-next {

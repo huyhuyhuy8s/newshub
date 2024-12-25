@@ -81,7 +81,7 @@ router.get('/create-article', async (req, res) => {
         const category = await writerService.getCategoryByWriterId(id_writer);
         const subCategories = await writerService.getSubCategoriesByWriterId(id_writer);  // Lấy danh sách sub-category
 
-        res.render('vwWriter/create_article', { layout: 'moderator', id_user,category, subCategories });
+        res.render('vwWriter/create_article', { layout: 'moderator', id_user, category, subCategories });
     } catch (error) {
         console.error('Lỗi khi lấy chuyên mục:', error);
         res.status(500).send('Có lỗi xảy ra');
@@ -130,7 +130,7 @@ router.get('/preview', async (req, res) => {
 
 
 
-router.get('/inforeditor', async (req, res) => {
+router.get('/inforwriter', async (req, res) => {
     const writer = await writerService.getUserById(id_user);
 
 
@@ -143,7 +143,7 @@ router.get('/inforeditor', async (req, res) => {
 });
 
 
-router.post('/inforeditor/update', async (req, res) => {
+router.post('/inforwriter/update', async (req, res) => {
     const { name, birthday, password, id_user } = req.body; // Lấy id_user từ body
 
     try {
@@ -168,7 +168,7 @@ router.post('/inforeditor/update', async (req, res) => {
 
 
         // Chuyển hướng về trang thông tin người dùng
-        res.redirect('/writer/inforeditor');
+        res.redirect('/writer/inforwriter');
     } catch (error) {
         console.error('Error updating user info:', error);
         res.status(500).send('Có lỗi xảy ra, vui lòng thử lại! (route)'); // Trả về lỗi
@@ -179,12 +179,12 @@ router.post('/inforeditor/update', async (req, res) => {
 router.get('/list_post_reject', async (req, res) => {
 
 
-  
+
 
 
     try {
         const rejectedPost = await writerService.getRejectedPosts(await writerService.findWriter(id_user)); // Gọi hàm để lấy dữ liệu
-      
+
         res.render('vwWriter/list_post_reject', { layout: 'moderator', posts: rejectedPost, id_user });
     } catch (error) {
         console.error('Lỗi khi lấy danh sách bài viết bị từ chối:', error);
@@ -198,13 +198,13 @@ router.get('/list_post_reject', async (req, res) => {
 router.get('/update_article', async (req, res) => {
 
     console.log('user id writer cre:', id_user);
-   
-    const id_news = req.query.id_news; 
+
+    const id_news = req.query.id_news;
     console.log('id_news id writer id_news:', id_news);
 
     try {
-        
-        const news = await writerService.findNewsByIdFullAttribute(id_news); 
+
+        const news = await writerService.findNewsByIdFullAttribute(id_news);
         if (!news) {
             return res.status(404).send('Bài viết không tồn tại');
         }
@@ -212,7 +212,7 @@ router.get('/update_article', async (req, res) => {
         const id_writer = await writerService.findWriter(id_user);
         const category = await writerService.getCategoryByWriterId(id_writer);
         const subCategories = await writerService.getSubCategoriesByWriterId(id_writer);
-      
+
 
         res.render('vwWriter/update_article', { layout: 'moderator', news, id_user, category, subCategories });
     } catch (error) {

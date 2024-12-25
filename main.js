@@ -307,16 +307,6 @@ app.use(function (req, res, next) {
 
 
 
-// app.get('/', function (req, res) {
-//     if (!req.session.auth) {
-//         return res.redirect('/account/login');
-//     }
-//     res.render('home', {
-//         layout: 'main',
-//         user: req.session.authUser
-//     });
-// });
-
 app.use('/account', accountRouter);
 
 app.use('/', homeRouter);

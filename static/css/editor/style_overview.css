@@ -8,6 +8,7 @@
         color: var(--red);
         font-weight: bold;
         font-style: var(--text-fam);
+        margin-bottom: 1em;
     }
 
     .content {
@@ -17,6 +18,8 @@
 
         .graph {
             width: 100%;
+            background-color: var(--white);
+            border-radius: 20px;
         }
 
         .figure {

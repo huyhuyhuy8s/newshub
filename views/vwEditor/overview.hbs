@@ -25,8 +25,10 @@
 <div id="body">
     <div class="title">Tổng quan bài viết</div>
     <div class="content">
-        <div class="graph">
-            <canvas id="line-chart"></canvas>
+        <div class="graph-container" style="border: 2px solid var(--grey);border-radius: 20px;">
+            <div class="graph">
+                <canvas id="line-chart"></canvas>
+            </div>
         </div>
 
         <div class="figure">
@@ -171,6 +173,9 @@
         },
 
         options: {
+            layout: {
+                padding: 32
+            },
             plugins: {
                 title: {
                     display: true,
