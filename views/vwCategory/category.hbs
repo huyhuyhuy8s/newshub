@@ -23,16 +23,14 @@
                 {{#each topNews}}
                 <a class="highlight-element"
                     href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
-                    <<<<<<< HEAD <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/uploads/{{Image}}">
+                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/uploads/{{Image}}">
                         <div>
                             <h5>{{truncateText Meta_title 35}}</h5>
                             <p>{{formatDate Date}}</p>
                         </div>
-                        =======
-                        <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                        <p>{{truncateText Meta_title 35}}</p>
-                        <h6>{{formatDate Date}}</h6>
-                        >>>>>>> Thuan_2
+                    
+                  
+                     
                 </a>
                 {{/each}}
             </div>

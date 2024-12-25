@@ -6,7 +6,7 @@
 
     <div class="user-info">
         <h2>Thông tin của {{writer.Name}}</h2>
-        <form id="update-form" method="POST" action="/inforeditor/update">
+        <form id="update-form" method="POST" action="/inforwriter/update">
             <input type="hidden" id="name" name="id_user" value="{{writer.Id_User}}" required>
             <label for="last-name">Họ và tên</label>
             <input type="text" id="name" name="name" value="{{writer.Name}}" required>
@@ -30,9 +30,10 @@
 
 
             <button type="submit" class="save-btn">Lưu thông tin</button>
+          
         </form>
         <br>
-        <button id="back-btn" class="back-btn">Trở về trang chủ</button>
+        <button id="back-btn" class="back-btn" data-id="{{writer.Id_User}}">Trở về trang chủ</button>
     </div>
 
 </div>

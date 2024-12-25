@@ -15,8 +15,7 @@
                 <th>Ngày sinh</th>
                 <th>Email</th>
                 <th>Công việc</th>
-                <th>Trạng thái tài khoản</th>
-                <th>Hoạt Động</th>
+        
                 <th>Chi Tiết</th>
             </tr>
         </thead>
@@ -27,10 +26,9 @@
                 <td>{{formatDateInfor this.Birthday}}</td>
                 <td>{{this.Email}}</td>
                 <td>{{this.Role}}</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
+         
                 <td>
-                    <a href="/admin/inforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
+                    <a href="/admin/admininforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
                 </td>
             </tr>
             {{/each}}

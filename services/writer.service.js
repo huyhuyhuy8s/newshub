@@ -113,20 +113,20 @@ const writerService = {
             console.error("Lỗi khi tìm kiếm bài viết:", error);
         }
     },
-    async countNewsStatusByUserId(Id_user, date) {
+    async countNewsStatusByUserId(id_user, date) {
         try {
 
             const result = await db('News')
                 .join('Writer', 'News.Id_Writer', 'Writer.Id_Writer')
                 .join('Status_Of_News', 'News.Id_Status', 'Status_Of_News.Id_Status')
-                .where('Writer.Id_User', Id_user)
+                .where('Writer.Id_User', id_user)
                 .andWhere(db.raw('DATE(News.Date) = ?', [date]))  // filter by the specific date
                 .select('Status_Of_News.Title_Status as title_status')
                 .count('News.Id_News as count')
                 .groupBy('Status_Of_News.Title_Status')  // Group by status
                 .orderBy('title_status');  // Order by status or as needed
             // If there are no results for a specific title_status, we manually return that as 0
-            const statusList = ['Đồng ý', 'Chưa duyệt', 'Chưa đạt', 'Đã xoá'];; // Example of all possible status values
+            const statusList = ['Đồng ý', 'Chưa duyệt', 'Chưa đạt', 'Từ chối'];; // Example of all possible status values
             const countMap = result.reduce((acc, row) => {
                 acc[row.title_status] = row.count;
                 return acc;
@@ -172,7 +172,7 @@ const writerService = {
             if (!writer) {
                 throw new Error('Writer not found');
             }
-    
+
             // Lấy category dựa trên Id_Category của writer
             const category = await db('Category').where('Id_Category', writer.Id_Category).first();
             return category; // Trả về category
@@ -188,14 +188,14 @@ const writerService = {
             if (!writer) {
                 throw new Error('Writer not found');
             }
-    
+
             const id_category = writer.Id_Category; // Lấy Id_Category của writer
-    
+
             // Lấy danh sách sub-category dựa trên Id_Category
             const subCategories = await db('SubCategory')
                 .where('Id_Category', id_category)
                 .select('Id_SubCategory', 'Name'); // Chọn các trường cần thiết
-    
+
             return subCategories;
         } catch (error) {
             console.error("Lỗi khi lấy sub-category của writer:", error);
@@ -205,6 +205,9 @@ const writerService = {
     async findNewsByIdFullAttribute(id_news) {
         try {
             const news = await db('News').where('Id_News', id_news).first(); // Lấy thông tin bài viết
+            if (news) {
+                news.Premium = news.Premium.equals(Buffer.from([1]));
+            }
             return news; // Trả về thông tin bài viết
         } catch (error) {
             console.error('Lỗi khi lấy thông tin bài viết:', error);
@@ -213,15 +216,38 @@ const writerService = {
     },
     async updateNews(id_news, updatedNews) {
         try {
+            // Chuyển đổi Premium từ boolean sang BIT
+            updatedNews.Premium = updatedNews.Premium ? 1 : 0;
+
+            // Thêm thời gian hiện tại vào updatedNews
+            updatedNews.Date = new Date();
+
+            // Lấy thông tin bài viết hiện tại để kiểm tra Id_Status
+            const currentNews = await db('News').where('Id_News', id_news).first();
+
             // Cập nhật thông tin bài viết trong bảng News
             await db('News')
                 .where('Id_News', id_news)
                 .update(updatedNews);
+
+            // Nếu Id_Status là 'STS0004', thực hiện các bước tiếp theo
+            if (currentNews && currentNews.Id_Status === 'STS0004') {
+                // Xóa bản ghi trong Editor_Check_News
+                await db('Editor_Check_News')
+                    .where('Id_News', id_news)
+                    .del();
+
+            }
+            // Cập nhật Id_Status thành 'STS0002'
+            await db('News')
+                .where('Id_News', id_news)
+                .update({ Id_Status: 'STS0002' });
         } catch (error) {
             console.error('Lỗi khi cập nhật bài viết:', error);
             throw error; // Ném lỗi để xử lý ở nơi khác
         }
     },
+
 
 }
 export default writerService

@@ -193,33 +193,7 @@ const adminService = {
             throw error;
         }
     },
-    // async addUsertoSubcriber(entity) {
-    //     try {
-    //         const lastSubcriber = await db('Subcriber')
-    //             .orderBy('Id_Subcriber', 'desc')
-    //             .first();
-
-    //         // Tạo ID mới
-    //         let newId;
-    //         if (!lastSubcriber) {
-    //             // Nếu chưa có user nào
-    //             newId = 'SUBC0001';
-    //         } else {
-    //             // Lấy số từ ID cuối cùng và tăng lên 1
-    //             const lastNumber = parseInt(lastSubcriber.Id_Subcriber.slice(4));
-    //             newId = `SUBC${String(lastNumber + 1).padStart(4, '0')}`;
-    //         }
-
-    //         // Gán ID mới vào entity
-
-    //         // Thêm user mới vào database
-    //         const ids = await db('Subcriber').insert(entity);
-    //         return ids[0];
-    //     } catch (error) {
-    //         console.error(' error:', error);
-    //         throw error;
-    //     }
-    // },
+  
     async getNewsCountByWriterId(id_writer) {
         try {
             // Truy vấn số lượng bài viết của Writer dựa trên Id_Writer
@@ -673,70 +647,23 @@ const adminService = {
             throw error; // Ném lỗi để xử lý ở route
         }
     },
-
-    async getUserInforById(id_user) {
-
+    async getUserById(id_user) {
         try {
-            const result = await db('User')
-                .select(
-                    'User.Id_User',
-                    'User.Name',
-                    'User.Birthday',
-                    'User.Email',
-                    db.raw(`
-      CASE 
-        WHEN Editor.Id_Editor IS NOT NULL THEN 'Editor'
-        WHEN Writer.Id_Writer IS NOT NULL THEN 'Writer'
-        WHEN Subcriber.Id_Subcriber IS NOT NULL THEN 'Subscriber'
-        ELSE 'User'
-      END AS Role
-    `),
-                    db.raw(`
-        CASE 
-          WHEN Writer.Id_Writer IS NOT NULL THEN Writer.Pen_Name
-          ELSE NULL
-        END AS Pen_Name
-      `)
-                )
-                .leftJoin('Editor', 'User.Id_User', 'Editor.Id_User')
-                .leftJoin('Writer', 'User.Id_User', 'Writer.Id_User')
-                .leftJoin('Subcriber', 'User.Id_User', 'Subcriber.Id_User')
-                .where('User.Id_User', id_user) // Thêm điều kiện để lấy thông tin cho một người dùng cụ thể
-                .first(); // Sử dụng `.first()` để lấy kết quả đầu tiên (một bản ghi duy nhất)
-
-
-            return result;
-        } catch (err) {
-            console.error(err);
-        }
-
-    },
-    async addUsertoSubcriber(entity) {
-        try {
-            const lastSubcriber = await db('Subcriber')
-                .orderBy('Id_Subcriber', 'desc')
+            const user = await db('User')
+                .where('Id_User', id_user)
                 .first();
 
-            // Tạo ID mới
-            let newId;
-            if (!lastSubcriber) {
-                // Nếu chưa có user nào
-                newId = 'SUBC0001';
-            } else {
-                // Lấy số từ ID cuối cùng và tăng lên 1
-                const lastNumber = parseInt(lastSubcriber.Id_Subcriber.slice(4));
-                newId = `SUBC${String(lastNumber + 1).padStart(4, '0')}`;
+            if (!user) {
+                throw new Error('Người dùng không tồn tại');
             }
 
-            // Gán ID mới vào entity
-
-            // Thêm user mới vào database
-            const ids = await db('Subcriber').insert(entity);
-            return ids[0];
+            return user;
         } catch (error) {
-            console.error(' error:', error);
+            console.error("Lỗi khi lấy thông tin người dùng:", error);
             throw error;
         }
-    }
+    },
+
+   
 }
 export default adminService

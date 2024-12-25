@@ -1,0 +1,36 @@
+
+{{#fillHtmlContent 'css'}}
+<link rel="stylesheet" href="/css/inforuser.css">
+{{/fillHtmlContent}}
+<div class="container">
+
+    <div class="user-info">
+        <h2>Thông tin của {{admin.Name}}</h2>
+        <form id="update-form" method="POST" action="/inforadmin/update">
+            <input type="hidden" id="name" name="id_user" value="{{admin.Id_User}}" required>
+            <label for="last-name">Họ và tên</label>
+            <input type="text" id="name" name="name" value="{{admin.Name}}" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" value="{{admin.Email}}" readonly>
+
+            <label for="dob">Ngày sinh</label>
+            <input type="date" id="birthday" name="birthday" value="{{admin.Birthday}}" required>
+
+            <label for="account-type">Loại tài khoản</label>
+
+
+            <input type="text" id="account-type" value="Quản trị viên" disabled>
+
+
+        </form>
+        <br>
+        <button id="back-btn" class="back-btn" data-id="{{admin.Id_User}}">Trở về trang chủ</button>
+    </div>
+
+</div>
+
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/scriptInforAdmin.js"></script>
+{{/fillHtmlContent}}

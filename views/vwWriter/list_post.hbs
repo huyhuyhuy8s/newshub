@@ -31,6 +31,7 @@
                 <th>STT</th>
                 <th>Tiêu đề</th>
                 <th>Ngày đăng</th>
+                <th>Lượt xem</th>
                 <th>Bài viết Premium</th>
                 <th>Trạng thái</th>
                 <th>Sửa đổi</th>
@@ -42,6 +43,7 @@
                 <td>{{@index}}</td>
                 <td class="title">{{truncateText this.Title 50}}</td>
                 <td>{{formatDateAndTime this.Date}}</td>
+                <td>{{this.Views}}</td>
                 <td>
 
                     <input type="checkbox" name="check_articles" {{#if this.Premium}}checked{{/if}} disabled>
@@ -61,7 +63,7 @@
                     {{/if}}
                 </td>
                 <td>
-                    <a>{{this.Id_News}}</a>
+                 
                     <a href="/writer/update_article?id_news={{this.Id_News}}">
                         <i class="bi bi-pencil-square"></i>
                     </a>

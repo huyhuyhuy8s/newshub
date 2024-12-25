@@ -5,8 +5,12 @@ import adminService from '../services/admin.service.js';
 
 const router = express.Router();
 
+let id_user;
+
 router.get("/dashboard", async (req, res) => {
-    const { id_user } = req.query;
+    id_user  = req.query.id_user;
+
+ 
 
     const getTotalNewsCount = await adminService.getTotalNewsCount()
     const getTotalUserCount = await adminService.getTotalUserCount()
@@ -40,7 +44,9 @@ router.get("/dashboard", async (req, res) => {
         dataBar: JSON.stringify(dataBar),
         labelsPie: JSON.stringify(labelsPie),
         dataPie: JSON.stringify(dataPie),
-        layout: 'moderator'
+        layout: 'moderator',
+
+        id_user
 
     })
 });
@@ -51,7 +57,8 @@ router.get("/usermanagement", async (req, res) => {
 
     res.render('vwAdmin/usermanagement', {
         inforUser: inforUser,
-        layout: 'moderator'
+        layout: 'moderator',
+        id_user
     })
 
 });
@@ -62,6 +69,8 @@ router.get("/admininforuser", async (req, res) => {
     const { id_user } = req.query;
     const inforUser = await adminService.getUserInforById(id_user)
     const subscriberInfo = await adminService.getSubscriberInfoByUserId(id_user); // Lấy thông tin Subscriber
+
+
 
 
 
@@ -99,7 +108,8 @@ router.get("/admininforuser", async (req, res) => {
 
         newsCounts: newsCounts,
 
-        categories: categories
+        categories: categories,
+        id_user
     })
 });
 
@@ -157,9 +167,12 @@ router.post("/subcriber/update", async (req, res) => {
 router.post("/subcriber/create", async (req, res) => {
     const { id_user } = req.body; // Lấy Id_User từ body
 
+    console.log('id user sub:', id_user);
+
     try {
         // Tạo một Subscriber mới
         const newSubscriberId = await adminService.addUsertoSubcriber(id_user);
+        console.log('newSubscriberId:', newSubscriberId);
         //console.log('Tạo Subscriber mới thành công với ID:', newSubscriberId);
         res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng về trang thông tin của Subscriber mới
     } catch (error) {
@@ -238,7 +251,8 @@ router.get("/newsmanagement", async (req, res) => {
 
         res.render('vwAdmin/newsmanagement', {
             layout: 'moderator',
-            newsDetails: newsDetails // Truyền thông tin bài viết vào template
+            newsDetails: newsDetails,
+            id_user
         });
     } catch (error) {
         console.error("Lỗi khi lấy thông tin bài viết:", error);
@@ -259,21 +273,22 @@ router.post("/newsmanagement/update-status", async (req, res) => {
     }
 });
 
-router.get('/tagsmanagement', async (req, res) => {
-    res.render('vwAdmin/tagsmanagement', { layout: 'moderator' });
-})
+
 
 
 
 router.get('/tagsmanagement', async (req, res) => {
+   
     try {
+
       
         const tags = await adminService.getTags(); // Lấy danh sách tag
         res.render('vwAdmin/tagsmanagement', {
             layout: 'moderator',
-            tags: tags // Truyền danh sách tag vào view
+            tags: tags,
+            id_user // Truyền danh sách tag vào view
         });
-        console.log('cac tag ', tags);
+       
     } catch (error) {
         console.error("Lỗi khi lấy danh sách tag:", error);
         res.status(500).send("Có lỗi xảy ra khi lấy danh sách tag.");
@@ -282,6 +297,7 @@ router.get('/tagsmanagement', async (req, res) => {
 
 router.post('/tagsmanagement/add', async (req, res) => {
     const { tag_name } = req.body; // Lấy tên tag từ body
+
 
     try {
         await adminService.addTag(tag_name); // Gọi hàm thêm tag
@@ -317,6 +333,7 @@ router.get('/subcategorymanagement', async (req, res) => {
         res.render('vwAdmin/subcategorymanagement', {
             layout: 'moderator',
             categories: categories,
+            id_user
 
         });
     } catch (error) {
@@ -350,6 +367,18 @@ router.post('/subcategorymanagement/add', async (req, res) => {
         console.error("Lỗi khi thêm subcategory:", error);
         res.status(500).send("Có lỗi xảy ra khi thêm subcategory.");
     }
+});
+
+router.get('/inforadmin', async (req, res) => {
+    const admin = await adminService.getUserById(id_user);
+ 
+
+    if (admin.Birthday) {
+        admin.Birthday = moment(admin.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
+    }
+
+
+    res.render('vwAdmin/inforadmin', { layout: 'moderator', admin, id_user });
 });
 
 

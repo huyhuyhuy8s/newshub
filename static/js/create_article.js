@@ -1,5 +1,31 @@
 
 function submitPost() {
+
+  
+
+    // Lấy giá trị từ các trường cần thiết
+    const title = document.getElementById("title").value;
+    const content = tinymce.activeEditor.getContent("article");
+    const subCategory = document.getElementById("sub-category").value;
+    const metaTitle = document.getElementById("meta-title").value;
+    const metaDescription = document.getElementById("meta-description").value;
+    const fileInput = document.getElementById("myFile").files.length; // Kiểm tra xem có file nào được chọn không
+
+    // Kiểm tra xem tất cả các trường đã được điền chưa
+    if (!title || !content || subCategory === "none" || !metaTitle || !metaDescription || fileInput === 0) {
+        alert("Vui lòng điền đầy đủ thông tin!"); // Hiện thông báo lỗi
+        return; // Ngăn không cho gửi form
+    }
+   
+
+    document.getElementById("save").value = tinymce.activeEditor.getContent("article");
+}
+
+
+function submitPostUpdate() {
+
+
+
     document.getElementById("save").value = tinymce.activeEditor.getContent("article");
 }
 

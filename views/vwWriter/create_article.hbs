@@ -84,10 +84,14 @@
 {{> headerWriter}}
 
 <form action="" method="post" enctype="multipart/form-data">
+ <h1 style="display: flex; justify-content: center; align-items: center; ">
+        Tạo bài viết
+    </h1>
+    
 
     <nav>
         <div class="search">
-            <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết">
+            <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết" required>
         </div>
         <div class="filter">
             <button class="btn" type="submit" onclick="submitPost()">
@@ -98,13 +102,13 @@
     <a href=""></a>
     <div id="banner">
         <label class="custom-file-upload" id="custom_file_upload">
-            <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png">
+            <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png" required>
             <h2>Chọn ảnh bìa của bài viết</h2>
         </label>
     </div>
     <div id="body">
         <div class="creat">
-            <textarea id="article" placeholder="Thêm nội dung vào đây...">
+            <textarea id="article" placeholder="Thêm nội dung vào đây..." required>
 
             </textarea>
             <textarea name="save" id="save"></textarea>
@@ -122,10 +126,7 @@
             <div class="category">
                 <h3>Chuyên mục</h3>
                 <div>
-                    {{!-- <select name="category" id="category">
-                        <option value="none" disabled selected>Chọn chuyên mục</option>
-                        <option value="CAT0001">Thời sự</option>
-                    </select> --}}
+                   
                     <select name="category" id="category" onchange="loadSubCategories(this.value)">
                       
                         <option value="{{category.Id_Category}}">{{category.Name}}</option>
@@ -134,11 +135,8 @@
                 </div>
 
                 <h3>Chuyên mục cấp 2</h3>
-                {{!-- <select name="sub_category" id="sub-category">
-                    <option value="none" disabled selected>Chọn chuyên mục</option>
-                    <option value="SUB0001">SUB0001</option>
-                </select> --}}
-                <select name="sub_category" id="sub-category">
+             
+                <select name="sub_category" id="sub-category" required>
                     <option value="none" disabled selected>Chọn chuyên mục</option>
                     {{#each subCategories}}
                     <option value="{{this.Id_SubCategory}}">{{this.Name}}</option>
@@ -151,11 +149,11 @@
             </div> --}}
             <div class="meta-title">
                 <h3>Tóm tắt tiêu đề</h3>
-                <input type="text" name="meta_title" id="meta-title" placeholder="meta-title">
+                <input type="text" name="meta_title" id="meta-title" placeholder="Meta-title" required>
             </div>
             <div class="meta-description">
                 <h3>Tóm tắt nội dung</h3>
-                <input type="text" name="meta_description" id="meta-description" placeholder="meta-description">
+                <input type="text" name="meta_description" id="meta-description" placeholder="Meta-description" required>
             </div>
         </div>
     </div>

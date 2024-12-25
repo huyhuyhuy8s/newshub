@@ -33,6 +33,7 @@
 
                 <th>Ngày bị từ chối duyệt</th>
                 <th>Lý do từ chối</th>
+                <th>Sửa đổi</th>
             </tr>
         </thead>
         <tbody>
@@ -43,6 +44,12 @@
 
                 <td>{{formatDateAndTime this.Date_feedback}}</td>
                 <td>{{this.Reason}}</td> <!-- Hiển thị lý do từ chối -->
+                <td>
+
+                    <a href="/writer/update_article?id_news={{this.Id_News}}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
             </tr>
             {{/each}}
 

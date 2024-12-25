@@ -84,14 +84,17 @@
 {{> headerWriter}}
 
 <form action="/writer/update_article" method="post" enctype="multipart/form-data">
-
+    <h1 style="display: flex; justify-content: center; align-items: center; ">
+        Cập nhật bài viết
+    </h1>
+    <input type="hidden" name="id_news" value="{{news.Id_News}}">
     <nav>
         <div class="search">
             <input type="text" name="title" id="title" value="{{news.Title}}" required>
         </div>
         <div class="filter">
 
-            <button class="btn" type="submit" onclick="submitPost()">
+            <button class="btn" type="submit" onclick="submitPostUpdate()">
                 <i class="bi bi-cloud-upload"></i>
                 Cập nhật bài viết</button>
         </div>
@@ -140,11 +143,12 @@
 
                 <h3>Chuyên mục cấp 2</h3>
 
-                <select name="sub_category" id="sub-category">
+
+                <select name="sub_category" id="sub-category" required>
 
                     {{#each subCategories}}
                     <option value="{{this.Id_SubCategory}}" {{#if (eq this.Id_SubCategory
-                        news.Id_SubCategory)}}selected{{/if}}>{{this.Name}}</option>
+                        ../news.Id_SubCategory)}}selected{{/if}}>{{this.Name}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -154,11 +158,12 @@
             </div> --}}
             <div class="meta-title">
                 <h3>Tóm tắt tiêu đề</h3>
-                <input type="text" name="meta_title" id="meta-title" value="{{news.Meta_title}}">
+                <input type="text" name="meta_title" id="meta-title" value="{{news.Meta_title}}" required>
             </div>
             <div class="meta-description">
                 <h3>Tóm tắt nội dung</h3>
-                <input type="text" name="meta_description" id="meta-description" value="{{news.Meta_description}}">
+                <input type="text" name="meta_description" id="meta-description" value="{{news.Meta_description}}"
+                    required>
             </div>
         </div>
     </div>

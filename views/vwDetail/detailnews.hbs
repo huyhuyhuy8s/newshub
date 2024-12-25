@@ -21,7 +21,7 @@
                 <p>Lượt xem: {{news.Views}}</p>
             </div>
         </div>
-        <img src="/imgs/detail/suôi thầu.jpg">
+        <img src="/imgs/uploads/{{news.Image}}">
         <div class="content">{{{news.Content}}}</div>
     </div>
     <!-- tag -->
@@ -81,7 +81,7 @@
         <div class="top-article" id="bai-viet-lien-quan">
             {{#each relatedNews}}
             <a class="articles" id="very-first" href="/news/{{this.Id_News}}">
-                <img src="/imgs/detail/bv.jpg" alt="...">
+                <img src="/imgs/uploads/{{relatedNews.Image}}" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">{{this.Meta_title}}</h5>
                     <p class="card-text">{{this.Meta_description}}</p>
@@ -109,7 +109,7 @@
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedNews}}
             <a class="articles" id="very-second" href="/news/{{this.Id_News}}">
-                <img src="/imgs/detail/suôi thầu.jpg" alt="...">
+                <img src="/imgs/uploads/{{topViewedNews.Image}}" alt="...">
                 <div class="card-body-3">
                     <h5>{{truncateText this.Meta_title 100}}</h5>
                     <p>{{truncateText this.Meta_description 100}}</p>
@@ -131,7 +131,7 @@
         <div id="article_list">
             {{#each topViewedLastWeek}}
             <a href="/news/{{this.Id_News}}">
-                <img src="/imgs/detail/suôi thầu2.jpg" alt="">
+                <img src="/imgs/uploads/{{topViewedLastWeek.Image}}" alt="">
                 <div>
                     <h5>{{this.Meta_title}}</h5>
                     <p>{{this.Meta_description}}</p>

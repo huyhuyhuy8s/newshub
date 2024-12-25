@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
         };
 
         try {
-            const response = await fetch('/writer/inforeditor/update', {
+            const response = await fetch('/writer/inforwriter/update', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json', // Đặt header cho JSON
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Nếu cập nhật thành công, tải lại trang để hiển thị thông tin mới
                 location.reload();
             } else {
-                alert('Có lỗi xảy ra khi cập nhật thông tin respỏn.'); // Thông báo lỗi
+                alert('Có lỗi xảy ra khi cập nhật thông tin respon.'); // Thông báo lỗi
             }
         } catch (error) {
             console.error('Lỗi khi gửi yêu cầu:', error);
@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 document.getElementById('back-btn').addEventListener('click', function () {
-    window.location.href = '/writer/home'; // Chuyển hướng về trang chủ
+    const id_user = this.getAttribute('data-id'); 
+    window.location.href = `/writer/home?id_user=${id_user}`; // Chuyển hướng về trang chủ
 });
 
 
