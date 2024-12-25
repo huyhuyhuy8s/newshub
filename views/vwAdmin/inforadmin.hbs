@@ -1,4 +1,3 @@
-
 {{#fillHtmlContent 'css'}}
 <link rel="stylesheet" href="/css/inforuser.css">
 {{/fillHtmlContent}}
@@ -6,26 +5,30 @@
 
     <div class="user-info">
         <h2>Thông tin của {{admin.Name}}</h2>
-        <form id="update-form" method="POST" action="/inforadmin/update">
-            <input type="hidden" id="name" name="id_user" value="{{admin.Id_User}}" required>
-            <label for="last-name">Họ và tên</label>
-            <input type="text" id="name" name="name" value="{{admin.Name}}" required>
+        <form id="update-form" method="POST" action="/inforadmin/update" class="informoderator">
+            <input type="hidden" id="name" name="id_user" value="{{admin.Id_User}}" readonly>
+            <label for="last-name">
+                Họ và tên
+                <input type="text" id="name" name="name" value="{{admin.Name}}" readonly>
+            </label>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{admin.Email}}" readonly>
+            <label for="email">
+                Email
+                <input type="email" id="email" name="email" value="{{admin.Email}}" readonly>
+            </label>
 
-            <label for="dob">Ngày sinh</label>
-            <input type="date" id="birthday" name="birthday" value="{{admin.Birthday}}" required>
+            <label for="dob">
+                Ngày sinh
+                <input type="date" id="birthday" name="birthday" value="{{admin.Birthday}}" readonly>
+            </label>
 
-            <label for="account-type">Loại tài khoản</label>
+            <label for="account-type">
+                Loại tài khoản
+                <input type="text" id="account-type" value="Quản trị viên" disabled>
+            </label>
 
-
-            <input type="text" id="account-type" value="Quản trị viên" disabled>
-
-
+            <a href="/" class="back-btn">Trở về trang chủ</a>
         </form>
-        <br>
-        <button id="back-btn" class="back-btn" data-id="{{admin.Id_User}}">Trở về trang chủ</button>
     </div>
 
 </div>

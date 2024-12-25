@@ -44,7 +44,7 @@ async function updateStatus(id_news, new_status) {
 
 // viết lý do từ chôi
 function showRejectionInput() {
-    document.getElementById('rejectionContainer').style.display = 'block'; // Hiển thị ô nhập lý do
+    document.getElementById('rejectionContainer').style.display = 'flex'; // Hiển thị ô nhập lý do
 }
 
 async function submitRejectionReason(id_news) {
@@ -81,11 +81,11 @@ async function submitRejectionReason(id_news) {
 
 
 async function togglePremium(id_news) {
-    
+
     const currentPremiumStatus = document.getElementById('premium-toggle').innerText.includes('Free') ? false : true;
     const newPremiumValue = !currentPremiumStatus; // Đổi trạng thái
 
-    const updatedNews = newPremiumValue ? 0 : 1; 
+    const updatedNews = newPremiumValue ? 0 : 1;
 
 
 
@@ -98,7 +98,7 @@ async function togglePremium(id_news) {
             body: JSON.stringify({ id_news, updatedNews }),
         });
         if (response.ok) {
-         
+
             location.reload();
         } else {
             alert('Có lỗi xảy ra khi cập nhật trạng thái Premium.');

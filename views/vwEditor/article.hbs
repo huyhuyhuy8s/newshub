@@ -6,13 +6,7 @@
 {{/fillHtmlContent}}
 <nav>
     <div class="filter">
-        {{!-- <button type="button" id="premium-toggle" onclick="togglePremium('{{news.Id_News}}')">
-            {{#if news.Premium}}
-            Chuyển sang Free
-            {{else}}
-            Chuyển sang Premium
-            {{/if}}
-        </button> --}}
+
     </div>
     <div class="filter">
         {{#if (eq news.Id_Status 'STS0001')}}
@@ -61,20 +55,11 @@
             <i class="bi bi-arrow-right"></i>
             Từ chối
         </button>
+
         <div id="rejectionContainer" style="display: none;">
             <input type="text" id="rejectionReason" placeholder="Nhập lý do từ chối" />
             <button onclick="submitRejectionReason('{{news.Id_News}}')">Gửi</button>
         </div>
-
-
-
-
-        {{!-- {{else if (eq news.Id_Status 'STS0004')}}
-        <button type="button" onclick="updateStatus('{{news.Id_News}}', 'STS0004')">
-            <i class="bi bi-x-circle"></i>
-            Từ chối
-        </button> --}}
-
 
         {{/if}}
         <button type="button" onclick="window.location.href='/editor/list-article'">
@@ -82,29 +67,7 @@
             Quay lại
         </button>
     </div>
-
 </nav>
-
-
-
-
-
-<div id="article">
-    <h5>{{news.Title}}</h5>
-    <div class="b_title">
-        <div class="date">
-            <input type="date" name="date" id="date">
-            <a>{{formatDate news.Date}}</a>
-        </div>
-        <div class="author">
-            <a>Tác giả: {{news.Pen_Name}}</a>
-
-        </div>
-    </div>
-
-
-
-</div>
 
 
 <form action="/editor/update_article" method="post" enctype="multipart/form-data">
@@ -123,22 +86,37 @@
                 Cập nhật bài viết</button>
         </div>
     </nav>
-    <a href=""></a>
-    <div id="banner">
-        <label class="custom-file-upload" id="custom_file_upload">
-            <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png">
-            <h2>Chọn ảnh bìa mới cho bài viết</h2>
-        </label>
 
-        <div id="banner">
-            <h3>Hình ảnh hiện tại:</h3>
-            {{#if news.Image}} <!-- Kiểm tra xem có hình ảnh không -->
-            <img src="/imgs/uploads/{{news.Image}}" alt="Current Image" style="max-width: 200px;">
-            {{else}}
-            <p>Không có hình ảnh hiện tại.</p>
-            {{/if}}
+    <nav class="nav2">
+        <div class="search2">
+            <a>{{formatDate news.Date}}</a>
+            <input type="date" name="date" id="date" value="{{news.Date}}">
         </div>
+        <div class="filter2">
+            <p>Tác giả: {{news.Pen_Name}}</p>
+        </div>
+    </nav>
 
+    <div class="article-container">
+        <div id="banner2">
+            <label class="custom-file-upload" id="custom_file_upload2">
+                <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png">
+                <h2>Chọn ảnh bìa mới cho bài viết</h2>
+            </label>
+        </div>
+        <div id="banner2">
+            {{#if news.Image}} <!-- Kiểm tra xem có hình ảnh không -->
+            <label class="custom-file-upload" id="custom_file_upload2"
+                style="background-image: url(/imgs/uploads/{{news.Image}});">
+                <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png" disabled>
+                <h2 style="color: white">Hình ảnh hiện tại:</h2>
+                {{else}}
+                <label class="custom-file-upload" id="custom_file_upload2" style="align-self: end;">
+                    <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png" disabled>
+                    <h2>Không có hình ảnh hiện tại.</h2>
+                    {{/if}}
+                </label>
+        </div>
     </div>
 
     <div id="body">
@@ -149,7 +127,7 @@
         <div class="nav">
             <div class="state">
                 <h3>Thuộc tính bài viết</h3>
-                <div>
+                <div style="display: flex;">
                     <label for="premium" style="user-select: none;">Bài viết Premium</label>
                     <input type="checkbox" id="premium" name="premium" {{#if news.Premium}}checked{{/if}}>
                 </div>
