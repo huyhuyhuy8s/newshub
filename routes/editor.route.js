@@ -166,6 +166,8 @@ router.get('/home/typefilter', async (req, res) => {
 
 router.get('/inforeditor', async (req, res) => {
     const editor = await editorService.getUserById(id_user);
+    console.log('editor: ', editor);
+    console.log('id user: ', id_user);
 
     if (editor.Birthday) {
         editor.Birthday = moment(editor.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng

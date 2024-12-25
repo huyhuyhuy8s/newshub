@@ -67,7 +67,7 @@
     <div class="parent3">
 
         {{#each recentnews}}
-        <a href="/news/{{Id_News}}" class="post">
+        <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{formatDate Date}}</p>
             <div class="content">
                 <h4>{{Meta_title}}</h4>
@@ -81,7 +81,7 @@
                     {{/each}}
                 </p>
             </div>
-            <img src="../../imgs/category/shintaeyong.webp" alt="" class="image">
+            <img src="/img/uploads/{{this.Image}}" alt="" class="image">
         </a>
         {{/each}}
 
