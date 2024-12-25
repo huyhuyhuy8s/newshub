@@ -9,7 +9,7 @@ import accountService from '../services/account.service.js';
 import randomstring from 'randomstring';
 import nodemailer from 'nodemailer';
 
-
+import passport from 'passport';
 
 const router = express.Router();
 
@@ -57,7 +57,7 @@ router.post('/login', async (req, res) => {
             ...user,
             ...roles // Thêm các quyền vào authUser
         };
-
+        req.session.cookie.maxAge = 0; // 30 phút
         // Kiểm tra xem User có Subscriber không 20/12
         const subscriber = await accountService.getSubscriberInfoByUserId(user.Id_User);
         req.session.isSubscriber = !!subscriber; // true nếu có subscriber, false nếu không
@@ -74,8 +74,14 @@ router.post('/login', async (req, res) => {
     }
 });
 
-
-
+router.get("/auth/google",
+    passport.authenticate("google", {
+        scope: [
+            "profile",
+            "email",
+        ]
+    })
+);
 
 router.post('/register', async function (req, res) {
     const { name, email, password, confirm_password, dob } = req.body;

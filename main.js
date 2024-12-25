@@ -1,3 +1,5 @@
+
+
 import express from 'express';
 import { engine } from 'express-handlebars';
 import { dirname, join } from 'path';
@@ -15,14 +17,22 @@ import inforUserRouter from './routes/inforuser.route.js';
 import adminRouter from './routes/admin.route.js';
 import editorRouter from './routes/editor.route.js';
 import writerRouter from './routes/writer.route.js';
-import { isAdmin, isEditor, isWriter } from './auth/auth.js'; 
+import { isAdmin, isEditor, isWriter } from './auth/auth.js';
 
+import accountService from'./services/account.service.js'
 import writerService from './services/writer.service.js';
 
 import jwt from 'jsonwebtoken';
 import cors from 'cors';
 import moment from 'moment';
+import { access } from 'fs';
 
+import passport from 'passport';
+import { Strategy as GoogleStrategy } from "passport-google-oauth20";
+
+import authGoogleRouter from "./routes/authGoogle.route.js"
+import dotenv from 'dotenv';
+dotenv.config();
 const privateKey = `
 -----BEGIN RSA PRIVATE KEY-----
 MIIEpAIBAAKCAQEAtHNFkvSd+v/lKkep+4eQJlJsqnAU/3F9DRZW+7oUGPbvUXsH
@@ -68,6 +78,9 @@ app.use(session({
         maxAge: 3600000,
     },
 }));
+
+
+
 // This allows Express to parse JSON request bodies
 app.use(express.json({ limit: '50mb' }));
 app.use(express.urlencoded({ limit: '50mb', extended: true }));
@@ -86,7 +99,6 @@ app.engine('hbs', engine({
             return numeral(value).format('0,0') + ' vnd';
         },
         fillHtmlContent: hbs_section(),
-
 
 
 
@@ -135,7 +147,6 @@ app.engine('hbs', engine({
             const day = d.getDate().toString().padStart(2, '0');
             return `${year}-${month}-${day}`; // Định dạng theo YYYY-MM-DD
         },
-
         // nếu title dài trên 50 ký tự thì sẽ cắt bớt và thêm "..."
         truncateText: (text, length) => {
             if (text.length !== null) {
@@ -200,7 +211,6 @@ app.engine('hbs', engine({
             return `${day}/${month}/${year}`; // Trả về định dạng ngày hết hạn
         },
 
-
         formatCountDaysRegisterAndExpirationSubcriber: function (dateRegisterString, dateExpiredString) {
             const dateRegister = new Date(dateRegisterString);
             const dateExpired = new Date(dateExpiredString);
@@ -234,16 +244,17 @@ app.engine('hbs', engine({
             const year = d.getFullYear();
             return `${day}/${month}/${year}`;
         },
-
-        formatUpdateDateOfArticleInEditor: (date) => {
-            if (!date) return '';
-            return moment(date).format('YYYY-MM-DD'); // Định dạng ngày theo định dạng YYYY-MM-DD
+        //helper chọn role
+        if_eq: function (a, b, options) {
+            if (a == b) {
+                return options.fn(this);  // Nếu giá trị của a và b bằng nhau, render block của helper
+            } else {
+                return options.inverse(this);  // Nếu không, render block ngược lại
+            }
         }
 
-        
     },
 }));
-
 
 app.post('/jwt', (req, res) => {
     // NOTE: Before you proceed with the TOKEN, verify your users' session or access.
@@ -286,6 +297,29 @@ app.use(async function (req, res, next) {
     }
 });
 
+
+
+app.use(passport.initialize());
+app.use(passport.session());
+passport.use(
+    new GoogleStrategy(
+        {
+            clientID: process.env.GOOGLE_CLIENT_ID,
+            clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+            callbackURL: "http://localhost:3000/auth/google/callback",
+        },
+        (accessToken, refreshToken, profile, done) => {
+            // Log toàn bộ profile để xem cấu trúc dữ liệu
+            //console.log('Google Profile:', JSON.stringify(profile, null, 2));
+            return done(null, profile);
+        }
+    )
+);
+passport.serializeUser((user, done) => done(null, user));
+passport.deserializeUser((user, done) => done(null, user));
+
+
+
 app.set('view engine', 'hbs');
 app.set('views', join(__dirname, 'views'));
 
@@ -298,9 +332,15 @@ app.use(function (req, res, next) {
 
 
 
-
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+// app.get('/', function (req, res) {
+//     if (!req.session.auth) {
+//         return res.redirect('/account/login');
+//     }
+//     res.render('home', {
+//         layout: 'main',
+//         user: req.session.authUser
+//     });
+// });
 
 app.use('/account', accountRouter);
 
@@ -312,12 +352,14 @@ app.use('/search', searchnewsRouter);
 app.use('/inforuser', inforUserRouter);
 
 // app.use('/admin', adminRouter);
-app.use('/admin', isAdmin, adminRouter); 
-app.use('/editor', isEditor, editorRouter);
+app.use('/admin', isAdmin, adminRouter); // 20/12
 app.use('/writer', isWriter, writerRouter);
-
+app.use('/editor', isEditor, editorRouter);
+app.use('/auth',authGoogleRouter)
 
 // Server setup
 app.listen(3000, () => {
     console.log('Server started on http://localhost:3000');
 });
+
+
