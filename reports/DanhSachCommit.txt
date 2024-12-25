@@ -1,0 +1,1421 @@
+commit de07a929247806505841599ebeb1ec9da9546eac
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 25 21:03:59 2024 +0700
+
+    Final Commit
+    
+    Update and remove Console.log terminal
+
+commit 2a7726234b9197f4825aea446ca56cd3cb6dc052
+Merge: 9deba36 e3b2520
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 25 20:55:29 2024 +0700
+
+    Merge branch 'back_end'
+
+commit e3b25205b0d4255b90c3325e5d6dac94bcff1e01
+Merge: bbc2e12 3b92450
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 25 20:54:45 2024 +0700
+
+    Merge branch 'back_end' of https://github.com/huyhuyhuy8s/newshub into back_end
+
+commit bbc2e12eb154845a882da5138e5e64124d33dbf7
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 25 20:54:36 2024 +0700
+
+    8h53pm 25/12/2025
+    
+    Update css lý do từ chối của updatedetail
+    update nút quay về của writer + editor infor
+
+commit 3b9245002b82a1a51c53b0f928a4407edbdb29ad
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Dec 25 20:52:55 2024 +0700
+
+    Cập nhật final
+
+commit 28a5db3e61f7bebc1ba66eea88d9141b82047d3c
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Dec 25 18:57:19 2024 +0700
+
+    Cập nhật editor & searchnews
+
+commit 1cc655b78f2f6ed67f72cf0ebec38fc83adc42df
+Merge: 9ed34d8 e89d603
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Dec 25 18:57:01 2024 +0700
+
+    Merge branch 'back_end' of https://github.com/huyhuyhuy8s/newshub into back_end
+
+commit 9ed34d865f69ac11d8a4368ec6305bd9417e901d
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Dec 25 18:12:20 2024 +0700
+
+    Cập nhật bài tổng (25/12/2024) 18h
+
+commit e89d6038986b00a9b8fec114538eb9b2494af856
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 25 18:09:48 2024 +0700
+
+    test commit
+
+commit a917ef999e51696404a2172858187ea5c6348679
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 25 17:52:22 2024 +0700
+
+    Update 17h50 - 25/12/2024
+    
+    - add reports
+    - update css
+    + admin css
+    + writer css
+    + home css
+    + inforuser css
+    + editor css
+    + category & subcategory css
+    + detailnews css
+    +
+
+commit 43be1f14e4ebb83e5b38a762efccaf26398c2e02
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Wed Dec 25 11:19:53 2024 +0700
+
+    thêm login bằng google sử dụng passportjs
+    
+    thêm account.route
+    thêm authGoogle.route.(code + tạo file mới)
+    thêm import ở hàm main
+    thêm đường dẫn ở đăng nhập bằng google
+
+commit e290fde9fae21fdcb3a7883416668b171a62172a
+Merge: 3344da5 c77dc5e
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 24 21:29:11 2024 +0700
+
+    Merge branch 'back_end' of https://github.com/huyhuyhuy8s/newshub into back_end
+
+commit 6d28a5eeae503c5d1d7d309616695c1520dd1f46
+Merge: e290fde 598c42e
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 21:28:58 2024 +0700
+
+    Merge branch 'Thuan_2' into back_end
+
+commit 3344da51fad1daed53e2a1565cbaf312d04f2fa7
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 24 21:28:53 2024 +0700
+
+    Fix url image for home, category,subcategory
+
+commit c77dc5e3f6c65a007748d2133b0b0c342ebc73f4
+Merge: 3208d64 574bbc6
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 21:26:38 2024 +0700
+
+    Merge branch 'back_end' of https://github.com/huyhuyhuy8s/newshub into back_end
+
+commit 3208d643ecabf4dae6eb65d9dab4f7ca3b8fd57e
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 21:26:29 2024 +0700
+
+    21h26 24/12/2024 Update thêm giao diện admin
+
+commit 574bbc6365447278869052fc30f414c8338378a2
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 21:26:01 2024 +0700
+
+    Cập nhật
+
+commit 2a7ff96c310bdfe55daa0b28020fa85890083de7
+Merge: 6424933 bda7060
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 21:03:45 2024 +0700
+
+    Merge branch 'back_end' of https://github.com/huyhuyhuy8s/newshub into back_end
+
+commit 6424933db651dceaf00a49eb090cc3964685bf76
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 21:02:47 2024 +0700
+
+    cập nhật
+
+commit a16d4bd240eb44f74e2d840a7ad2f111a8e93e4e
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 21:00:48 2024 +0700
+
+    Cập nhật 21h 24/12/2024
+
+commit bda706093f9be042d59354e0232090274c09d275
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 21:00:14 2024 +0700
+
+    Chỉnh sửa giao diện ngày 21h ngày 24/12/2024
+    
+    Chỉnh lại màu sắc toàn cục của mọi trang
+
+commit 598c42ebade5db371fb5e4b43807db4ba0730e88
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 18:51:24 2024 +0700
+
+    update style for category and subcategory pagination
+
+commit 36144e83f79c345c4a3a3ac28f43f214af83d4f8
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 24 18:31:49 2024 +0700
+
+    add pagnination cho route,service,category.hbs
+
+commit 751f6452cec315d7375c10d5c216aae714da83a3
+Merge: dc1b334 499db32
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 18:14:23 2024 +0700
+
+    Merge branch 'Thuan_2' into back_end
+
+commit 499db32aa67501b7531c72dfe079afb3eda9a9b8
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:56:02 2024 +0700
+
+    merge with version 16h51
+
+commit fff56b8e0610a9cd70ddac72fd78af42a48737cf
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:51:36 2024 +0700
+
+    solve confict
+
+commit c86f24b17532ee3483cf6beff7731ca527aa7ad0
+Merge: 7edca64 5cb2f94
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 24 17:46:39 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 7edca64a02d645629b75da09f59ccfd78e7c3d81
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 24 17:46:14 2024 +0700
+
+    thêm pagnination cho subcategory(hbs,route và service)
+
+commit dc1b334e5ef5de19356e3db79b8abd475a53ec57
+Merge: 9e1fe1e db11ad5
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:41:14 2024 +0700
+
+    Merge branch 'back_end' of https://github.com/huyhuyhuy8s/newshub into back_end
+
+commit 9e1fe1eca281bd6e1a3dfd152d0fc062a87ea565
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:40:59 2024 +0700
+
+    merge with branch Thuan_2
+
+commit 9deba360ade9c00786a82221fd00a8c5f90f57f5
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:34:50 2024 +0700
+
+    Delete routes/Category.route.js
+    
+    delete Category.route.js
+
+commit db11ad5f7d00a9d6a110dd80aa3f533d1a9af769
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:33:12 2024 +0700
+
+    Delete routes/Category.route.js
+    
+    delete Category.route.js
+
+commit 5cb2f94f816eec5dde7e9cc0e0aa49bc6d8160f2
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:32:22 2024 +0700
+
+    Delete routes/Category.route.js
+    
+    delete Category.route.js
+
+commit 7320226f8e343f8a937a3733bcaefdd42a304fa0
+Merge: a6c6c04 9d694fa
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:19:14 2024 +0700
+
+    Merge branch 'Thuan_2' into back_end
+
+commit 9d694faf8af6f735166768b55cf724636eb7de25
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 17:06:47 2024 +0700
+
+    Cập nhật lần 3 (24/12/2024)
+    
+    sửa Category.service.js thành category.service.js
+
+commit 2741c0f401516661977e834a23809df9603e0859
+Merge: 2a79e1e 1022554
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 17:04:03 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+    
+    # Conflicts:
+    #       services/category.service.js
+
+commit 1022554520b9ef73f8db14eb2aae1960ba9dfd41
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:03:16 2024 +0700
+
+    Delete services/category.service.js
+    
+    delete category.service.js
+
+commit 2a79e1eca755172e016f558e3a0911bea0c118f4
+Merge: 27847f1 8b6ecca
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 17:02:23 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 8b6eccace165a1affaa2fe23ba984f89c5b852e5
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:02:09 2024 +0700
+
+    Delete services/Category.service.js
+    
+    delete worm Category.service.js
+
+commit 97641f07a6e7656c87b8a81acaabe82de25cb227
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 17:01:23 2024 +0700
+
+    update gitignore
+
+commit a6c6c049711f7d69833009bc91b73a29209e546f
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 16:59:33 2024 +0700
+
+    update gitignore
+
+commit 27847f164ae362c8d9a207c27113b1a7ade5059a
+Merge: adb3dbe 5fe5f53
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 16:58:57 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit f495ada980052355fe7d83049f972306545c33f9
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 16:58:40 2024 +0700
+
+    update gitignore
+
+commit adb3dbe626b32fdb9866c20ff370b00924e03a5e
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 16:56:42 2024 +0700
+
+    Cập nhật lần 2 (24/12/2024)
+
+commit 5fe5f538a12ddab956090fb85129e54e7b641cce
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 24 16:53:24 2024 +0700
+
+    thêm pagnination cho subcategory.hbs
+
+commit 5dcfbbd4f2f904e5b6fad0042cedd45ff54ad3b7
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 24 16:52:44 2024 +0700
+
+    Cập nhật bài 16h51 (24/12/2024 - Noel)
+
+commit 432f27a49c079fa7bea65189f9d88e7df027090d
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 16:49:38 2024 +0700
+
+    update thêm phần tạo bài viết cho writer
+
+commit ff4cc88eb9eae2d04808a7897f9d06fbd7a397e9
+Merge: 913fa46 b1e1c4a
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 24 01:15:26 2024 +0700
+
+    14/12/2024 commit
+    
+    Merge 3 nhanh Thuận_2 + Duy_2 và Back_end.
+    Thêm phần giao diện của Admin về nhãn
+
+commit b1e1c4a800f367e05674de7a390bbc82e4c3bef9
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Dec 23 23:01:45 2024 +0700
+
+    ấdasdasd
+
+commit d388fabdd8e054c3e62b5a1761a5f499d921b037
+Merge: a6b0098 f14d42a
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Dec 23 23:01:30 2024 +0700
+
+    On Duy_2: !!GitHub_Desktop<Duy_2>
+
+commit f14d42a129ec6718103620d3a76fc2ca147c1819
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Dec 23 23:01:30 2024 +0700
+
+    index on Duy_2: a6b0098 add router (dashboard) cho writer
+
+commit a6b00980481724260336d44916ae3ae00990f415
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Mon Dec 23 22:59:14 2024 +0700
+
+    add router (dashboard) cho writer
+
+commit bae9c0a470c82beb7291baaf270efee97e80d566
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Mon Dec 23 22:58:33 2024 +0700
+
+    add router (dashboard) editor.route.js
+
+commit bad78cf9ba9ddda99f61ecaf94a64aef467f6796
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Mon Dec 23 22:56:56 2024 +0700
+
+    service của editor và writer cho phần dashboard
+
+commit c91729856a26e4a25ff3f898786b397e183c5fa1
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Mon Dec 23 22:55:53 2024 +0700
+
+    làm dashboard editor
+
+commit 4830128600bf7d4cd0b3be45a55b57dc3ef4b9c2
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Mon Dec 23 22:55:14 2024 +0700
+
+    Dashboard của writer
+
+commit 913fa46d4dde77354aac8a580d799b0714afae25
+Merge: 5607fd7 4f96f02
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Dec 23 22:42:17 2024 +0700
+
+    Merge branch 'Thuan_2' into back_end
+
+commit 5607fd7957e98f0ca6c6df47e960579a78f33b81
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Dec 23 22:42:02 2024 +0700
+
+    update subcategory, category, detailnew, stylemain, home css
+
+commit 4f96f0216b3238c33349d2cb92fedffff767ab50
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 23 03:35:08 2024 +0700
+
+    Cập nhật bỏ vài console trong file editor.route.js (ko quan trọng)
+    
+    - Chỉ console thôi, chứ bài giống lần push trước
+
+commit 81d79f0b1678866e82041ab9e8108ae06c73e21a
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 23 03:32:17 2024 +0700
+
+    Cập nhật 3h30 23/12/2024
+    
+    - Làm xong cập nhật Premium khi Editor nhấn vào 'Sửa đổi' Bài viết trong 'Danh sách bài viết' của Editor
+
+commit 580ff4a8ca8c96f77e6cf1012e641d446e508112
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sun Dec 22 18:20:58 2024 +0700
+
+    Cập nhật bài 18h20 (22/12/2024)
+    
+    - Chỉnh sửa 1 xíu phần Editor, đã hoàn chỉnh.
+    - Làm xong phần 'Danh sách bài viết' của Writer, làm xong xem/sửa thông tin writer, logout.
+
+commit 7d971a979d5812a6ca4234844b72d570ca5459a3
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Sun Dec 22 13:46:17 2024 +0700
+
+    overview nha
+
+commit ced01291e9931945e0ce1d910f81729b684a67e6
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Sun Dec 22 13:44:39 2024 +0700
+
+    gọi route home, theo tháng
+    
+    route lúc mới load vô ok rồi, chưa 2 cái nút để làm client render đang nghĩ cách....
+
+commit 2f1864f7545d4cdb30b7ff16ef5199bd1dc1f853
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Sun Dec 22 13:42:44 2024 +0700
+
+    service của editor thống kê theo tháng
+
+commit 42e35702c6cda19b5c33d32479425162a4748de5
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sun Dec 22 12:56:47 2024 +0700
+
+    Cập nhật 22/12/2024
+    
+    - Đã làm xong trang Editor
+
+commit 3859dff1dd998a65cc1c3a930b42d6dd2b7a836b
+Merge: 7d128de 8ccb6b2
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Dec 21 10:48:56 2024 +0700
+
+    Merge branch 'Thuan_2' into back_end
+
+commit 7d128dec97f0ed690db2892557c9aa02a949524f
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Dec 21 10:46:48 2024 +0700
+
+    update otp alert and home css
+
+commit 8ccb6b2ca94b166026fd70053f2a56107651a00c
+Merge: 13f5680 0434ea2
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Dec 21 10:32:49 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 13f5680e0c91454ab1b368d362bfb5e265184e26
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Dec 21 10:32:45 2024 +0700
+
+    add tinydrive for writer create post
+
+commit 0434ea206fce8e32a4ab101156fcf4fc3972d4b8
+Merge: 08ac149 1c9a506
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Fri Dec 20 18:55:59 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 08ac14906dab25b39e73759ecbd8c7b0683f84b1
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Fri Dec 20 18:55:49 2024 +0700
+
+    fix css in home
+
+commit 1c9a50623acf6c2a5eea43eeb11f1de1d36e698a
+Merge: 494165d 3c2263d
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Fri Dec 20 18:47:33 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 494165d91fb0df579fa3e5387849e0eecfcdbeca
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Fri Dec 20 18:46:41 2024 +0700
+
+    Cập nhật ngày 20/12/2024
+    
+    Đã làm xong phân quyền truy cập từng vai trò
+
+commit 3c2263d12ae5a925be030c10bc9c24daa88b66d8
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Fri Dec 20 16:29:58 2024 +0700
+
+    k bieets
+
+commit c4ec949e801f685f95e82dbf1f75f4e15ba1bf12
+Merge: 5dc1604 3695685
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Fri Dec 20 13:57:49 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 5dc1604a35f7a41e31de60ea1f73ff41801800c0
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Fri Dec 20 13:57:46 2024 +0700
+
+    update thêm bài viết cho writer
+
+commit 36956850a07b8f7db71e7d25fcceae0ff228cf5f
+Merge: bb72c56 2e6bc33
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Fri Dec 20 12:27:41 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit bb72c562b1715e7beb9d1345d455edadbeddfc4d
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Fri Dec 20 12:26:57 2024 +0700
+
+    Cập nhật 12h26 20/12/2024
+    
+    Hoàn tất trang Admin
+
+commit 2e6bc3346c902a33b20ab59cd8404c14bb67a024
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Fri Dec 20 11:37:11 2024 +0700
+
+    update chart in editor and writer home
+
+commit 86a062b77f5b241c76e93743092e0560d459a542
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 19 23:36:57 2024 +0700
+
+    Update 11h36pm 19/12/2024
+    
+    Chỉnh sửa lại đường dẫn, giao diện của editor, writer.
+    Đang xử lý để thu về giá trị của bài viết được tạo bởi writer
+
+commit 16e4c885d5c538d7f5e6e15b2df63dcd912cbe92
+Merge: 5ad4c54 c3721d8
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 20:19:32 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 5ad4c54e31f7ef5ed6f285d092157a5fdbe51a75
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 20:19:29 2024 +0700
+
+    Cập nhật 20h20 19/12/2024
+
+commit c3721d8328a7c8d39b8989d98acc8100fa58c73e
+Merge: 5bd9f2d d277b4c
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 19 20:18:31 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 5bd9f2d661b2c894b44224348d06bd8ffbfd76ea
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 19 20:18:28 2024 +0700
+
+    chỉnh lại giao diện của editor và writer
+
+commit 11dab5522295cd19d813f9ca3dec02bb9bdd0e9e
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 19:00:52 2024 +0700
+
+    File database 19h 19/12/2024
+
+commit d277b4cbb64d4db92b4dc4adaac1c2524384dbbd
+Merge: 769de3a ae01c4e
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 18:58:43 2024 +0700
+
+    Merge branch 'Thuan_2' of https://github.com/huyhuyhuy8s/newshub into Thuan_2
+
+commit 769de3a0ccbbfa48370929888d981eb8d065da7c
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 18:58:01 2024 +0700
+
+    Cập nhật bài 19h (19/12/2024)
+
+commit ae01c4eb4832ae7d4ebbae9d749598282ba2b242
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 19 18:20:53 2024 +0700
+
+    add view, route, service for editor, writer
+
+commit 30f404d7c6b885ca4ed83d6ebe2fc59675af6c6f
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 19 15:20:23 2024 +0700
+
+    add views of Editor and Writer
+
+commit e0c05517f469e4a528983744ace2d352457503b8
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 15:18:54 2024 +0700
+
+    Cập nhật 15h18 (19/12/2024)
+
+commit 4d990ac03ce0d5ea48d73d6f3398decc784ef378
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 19 15:11:50 2024 +0700
+
+    format editor and writer GUI
+
+commit 64e5698f88052a9aa1f7bf5cc4e51f04126d7567
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Thu Dec 19 14:56:54 2024 +0700
+
+    fix inforUser
+
+commit 6e0ccce9aec2ca28364b1fdcfd9f3663ec2a19c4
+Author: duytm19 <tranminhduy1912@gmail.com>
+Date:   Thu Dec 19 14:42:00 2024 +0700
+
+    Update account.service.js
+
+commit d6c800041fedce23df9f333acf2cd6169a1a8dc8
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 14:00:54 2024 +0700
+
+    Cập nhật file Database 19/12/204
+
+commit 26dd8425e5cc70060d46ca24b1e1285f0edc3c38
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 13:59:34 2024 +0700
+
+    git ignore
+
+commit ee663f561c6cb3da3515ca1481a1b85c94dd9fc7
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 11:57:23 2024 +0700
+
+    Merge switch backend
+
+commit 94a5e1036732051e596aeab3a2fe3e2237432c14
+Merge: 3dc05e2 440faf3
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 11:57:04 2024 +0700
+
+    Merge branch 'back_end' into Thuan_2
+
+commit 3dc05e2f9de5fa5044519737214710373778eeb2
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 11:43:07 2024 +0700
+
+    Cập nhật 11h42 (19/12/2024)
+    
+    - Làm dc cái hiện thị đúng số ngày đăng kí, ngày hết hạn
+
+commit 440faf377e2cb1b770ef4bf7ab436ed99bbec5fb
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Thu Dec 19 11:04:32 2024 +0700
+
+    fix register and otp
+
+commit b1beca7763c1d1ced7da28ab2b324679ddaea746
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 19 10:55:59 2024 +0700
+
+    Cập nhật 10h ngày 19/12/2024
+    
+    - Làm xong trang Search bài viết (hiện tại Limit số bài viết trang Search là 15)
+    - Làm xong trang Thông tin thành viên (Subcriber), có thể sửa đổi Name, Birthday, Password (ko sửa dc email). Hiện số ngày đã đăng kí tài khoản, hiện ngày hết hạn tài khoản (ngày hết hạn tính 7 ngày sau ngày đăng kí).
+    - Cập nhật thêm là khi đăng kí tài khoản ở Register thì tài khoản User đó đồng thời tạo Subcriber
+
+commit 6989ff0331bdb2f7d6cb8f3e52caae533736c1aa
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Thu Dec 19 01:12:47 2024 +0700
+
+    add draw of Writer, duyet bai of Editor
+
+commit d666e4b49e6dcaba10d0c08c26daa975c8f0ac32
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Thu Dec 19 00:50:44 2024 +0700
+
+    aaaa
+
+commit 36ca060a7d11d2a46954d9fc9d94a875c2c9861c
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Thu Dec 19 00:48:04 2024 +0700
+
+    add usermanagement
+
+commit d10a75fac4187a8bc1cb3e08091baf43ea487c02
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Wed Dec 18 23:42:47 2024 +0700
+
+    Change sth in nav - category
+
+commit 7cd5a0a0e747d6994f3a4b8081d50a1571d57a52
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Wed Dec 18 23:27:44 2024 +0700
+
+    add creat article of Writer
+
+commit ad08df223ee7e2eddc24d3af47059625fdc2dd93
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 18 20:46:23 2024 +0700
+
+    hoàn thiện về phần hiển thị của home, detail. cần hỗ trợ fix về login, register
+
+commit 05ff6696d17917c41a6c3a87ba50ae6d468f0aa9
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Wed Dec 18 20:42:18 2024 +0700
+
+    quan ly nguooi dung
+
+commit da84cd062acae58637d3ab4c5e98a774c807db4b
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 18 19:27:41 2024 +0700
+
+    thêm đường dẫn chi tiết cho các bài viết hiển thị ở home
+
+commit 4c2530cb3ab658f85314a5f11ea701ad77b03aa9
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Wed Dec 18 19:23:43 2024 +0700
+
+     làm dash board ngày 18/12
+
+commit de450061e0fa8099a9df4725db65ffae0ccbc83d
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Wed Dec 18 18:32:50 2024 +0700
+
+    add list & overview of Writer
+
+commit 0750039095f415a8e0a9dfc2f30547b78ab27f3d
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 18 17:35:08 2024 +0700
+
+    merge again 18/12/2024
+    
+    remove unnecessary files in routes, services, and views
+
+commit 230eef0712aa880d7236ef034b977d28e6f88920
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Wed Dec 18 17:19:02 2024 +0700
+
+    dashboard 18/12
+
+commit b06d1823dcf7f61d512a562c4b1e3e02e5f7a341
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Dec 18 05:17:52 2024 +0700
+
+    Cập nhật 5h15 (18/12/2024)
+    
+    - Làm xong trang search, chưa làm URL của các trang cate, sub_cate, detail... vì không biết làm.
+    - Trang search đang có bất cập là nó chỉ đang load dc các bài viết từ sub1->sub5, ko hiểu vì sao, trong khi kiểm tra mọi thứ đều đã đúng. Ngày mai sẽ test lại sau.
+    - File Database như cũ, ko chỉnh sửa gì cả.
+
+commit 8dca589dd2b34ca65b4ee79603d1b8f1f25038b5
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Tue Dec 17 23:21:17 2024 +0700
+
+    Fix header & add list_cancel
+    
+    Fix sth in header and add list of rejected article
+
+commit 161fe8a8d9faf402c8046d06a4ddcbdd10559817
+Merge: a79125f 0020942
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 17 17:54:15 2024 +0700
+
+    Merge branch 'Phat' into backend
+
+commit 29cb5113ab4e91f1a54ac79ebcf1eaeaee3be237
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Tue Dec 17 16:10:50 2024 +0700
+
+    add Editor folder
+    
+    Add overview & list artucles of Editor
+
+commit 00209426a1b4b9f296245dfc05b839c1749af352
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 15:36:00 2024 +0700
+
+    update remove quản lý report
+
+commit 4ba590aec42ee4cc18f0726a6e49b5316db657fe
+Merge: d76b340 a6c81b7
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 15:26:08 2024 +0700
+
+    Merge branch 'Phat' of https://github.com/huyhuyhuy8s/newshub into Phat
+
+commit d76b3402d70fc469ce6ca91ce7a61e6aa268b133
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 15:24:21 2024 +0700
+
+    update inforUser, quản lý thành viên
+
+commit a6c81b744a53b1a75543a933f2559046011f448e
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Tue Dec 17 15:18:39 2024 +0700
+
+    chỉnh sửa dashboard admin
+    
+    chỉnh sửa dashboard.html,dashboard.css
+
+commit a79125f03d85c9b7c358ff7184a7de2649c8df86
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 13:41:13 2024 +0700
+
+    merge account, category, searchnews, detail, category
+
+commit 4e2b690478bb562e1ff4d96295ff11dd0afb550f
+Merge: 768e36f fb7f5c0
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 13:40:33 2024 +0700
+
+    Merge branch 'Duy' into back_end
+
+commit 768e36f87bba37fe50eea3fc7bcd708b0ea6ad86
+Merge: 5729c95 4ed15c1
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 13:37:37 2024 +0700
+
+    Merge branch 'Thuan_2' into back_end
+
+commit 5729c95fa93df7b6d29a5d81a25846fc08b0284b
+Merge: 39feafa 0b87bf8
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 17 13:29:46 2024 +0700
+
+    merge 1
+
+commit 4ed15c17eb1a5d09fa0c3ad633fca411cbfb2ed5
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 16 21:17:12 2024 +0700
+
+    cập nhật lần 2 (16/12/2024)
+
+commit 39feafa84a3590b713cdc3d6d33e7b7423a4eea1
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 16 20:56:26 2024 +0700
+
+    Cập nhật 21h 16/12/2024 (sau buổi báo cáo)
+
+commit a32e56b86ff9311dcf79577b16cbdea6a8d3dad4
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Mon Dec 16 18:26:44 2024 +0700
+
+    thêm trang thông tin của writer
+    
+    thêm icon,infowriter css và html
+
+commit 066ba2502c68d1c25d4bd1a0fe38b2b8ae8b16d4
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 16 03:49:27 2024 +0700
+
+    Cập nhật file Database 16/12/2024
+    
+    - Sửa lại các Id_Comment insert value cho được nhiều comment hơn ("CMT000001"...). Xong phần comment
+
+commit ed16844636736e6d7cb82111d491ca199d1dfa9c
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 16 03:46:45 2024 +0700
+
+    Cập nhật 4h a.m 16/12/2024
+    
+    - Đã làm được phần Bình luận (comment) khi comment xong nó sẽ hiện ra comment đó liền, và đồng thời lưu vào database, không cần reload lại trang.
+    + Các comment Thuận set trong database có Id_Comment có dạng "CMT000001", "CMT000002"..... mỗi cần có ai bình luận sẽ tạo comment với ID số tiếp theo trong database, tạo với đúng Id_News đang xem hiện tại và Id_User đang đăng nhập.
+    - Trang home có chỉnh lại 1 xíu lặt vặt, cụ thể chỉnh lại cái tên Category hiện thị cho đúng thôi.
+    ** File database dữ liệu mẫu Thuận đã update lại (nhánh Thuan).
+
+commit 4cbde1c57ca03c0f6b9d19cd7d67eb412a1a43db
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sun Dec 15 03:47:04 2024 +0700
+
+    Cập nhật Database 15/12/2024
+    
+    - Thêm các value để chạy demo
+
+commit eff1229700cc7d9219fe768b9ece310ae94e95cc
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sun Dec 15 03:45:31 2024 +0700
+
+    Cập nhật 15/12/2024
+    
+    - Đã xong trang Home, trong trang home các thẻ gom 1 bài viết đang là <div> nên ko gắn href path để nhấn vào bài viết dẫn tới detailnews đc, có gì sửa lại.
+    - Phần Comment của detailnews vẫn chưa làm dc, vẫn đang mò thêm.
+    - Database Thuận cũng cập nhật lên để có data chạy demo rôi (lấy file database có số cao nhất).
+    - Về các nội dung của trang người xem này thì có thể nói hoàn thành xong gần hết cả rồi.
+
+commit 1d6f5daca0dca213cc83bc0568a268755ebefb99
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Fri Dec 13 02:08:51 2024 +0700
+
+    Cập nhật Database 2h a.m 13/12/2024
+    
+    - Thêm thuộc tính Time (datetime) cho Comment
+    - Tạo các insert value Tag, Comment... để chạy demo thử
+
+commit d73e18d02b920126fff9abe29433ef578ade045e
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Fri Dec 13 02:06:23 2024 +0700
+
+    Cập nhật 2h a.m 13/12/2024
+    
+    - Hoàn tất trang Detail của bài viết như đã yêu cầu, Thuận đổi tên các file detail thành detailnews vì sợ để mỗi detail mai mốt sẽ bị lẫn lộn. Phần tạo Comment chưa làm đc, sẽ tìm hiểu làm thêm sau.
+    - Chưa tách các stylesheet css ra riêng từng trang (home, category, detailnews). Vì chưa biết tách riêng section gì đó.
+    - Chưa làm trang Home, mai làm.
+    - Trang detail mấy cái tag, bài viết liên quan tới tag,... đã chỉnh chu, đã tạo các value trong database để chạy demo thử, Thuận sẽ push database lên nhánh Thuan. Các thông tin: tên tác giả, ngày đăng,... cũng đã chỉnh chu, kiểm tra kỹ lưỡng. Nói chung trang detailnews chỉ còn phần Commnent chưa đạt. Ngoài ra thì còn 1 số lặt vặt về font chữ, size ảnh, những cái lặt vặt frontend... thì nhờ frontend chỉnh sửa lại cho hợp lý sau.
+    - Ở database Thuận có thêm thuộc tính Time (Datetime) cho Comment, để mỗi lần có người comment sẽ lưu lại thời gian, để hiện thị trên chỗ Comment danh sách Comment theo trình tự sắp xếp thời gian, các bình luận cũng đã có thêm thông tin ngày đăng comment.
+    - Đã làm tăng (+1) view mỗi lần click vào 1 bài viết nào đó (cộng vào trong database), giả sử khi có tăng làm thay đổi tới thang sắp xếp độ nổi bật của các bài viết thì nó cũng sẽ tự cập nhật thang nổi bật theo luôn.
+
+commit 8195fb80636279dc73c63c5c3c1aab8f86e4b8a3
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Dec 12 16:41:12 2024 +0700
+
+    Cập nhật bài 12/12/2024
+    
+    - Đã làm dc trang Sub_category
+    - Đã làm dc trang Detail
+    - Đã làm đc gán Tag cho bài viết
+
+commit b1778a109ac9486159587ad62bf8fc6fef5737c5
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Wed Dec 11 20:11:27 2024 +0700
+
+    Thông tin report
+    
+    inforReport.html,inforReport.css
+
+commit 25e212c12e109bdb680446ed1a3ca77b54790875
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Wed Dec 11 17:46:50 2024 +0700
+
+    Hoàn thiện admin(tieptuc)
+    
+    quanlybaiviet,quanlybaireport,dashboard,quanlythanhvien
+
+commit d76937c7cd7cbc9f99c42182394f81886016d68f
+Merge: 719efd4 7cac336
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Tue Dec 10 19:35:34 2024 +0700
+
+    Merge branch 'Phat' of https://github.com/huyhuyhuy8s/newshub into Phat
+
+commit 719efd46ecf763dacf619adb1c22472507184f97
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Tue Dec 10 19:35:31 2024 +0700
+
+    thiết kế cho admin
+    
+    vwadmin, quanlybaiviet.js, quanlybaiviet.css,quanlybaiviet.html,header
+
+commit fb7f5c07980569a1f204c0111c2c77e087841f21
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Tue Dec 10 17:08:05 2024 +0700
+
+    update otp
+
+commit 7cac336e69d7329c86e0e256b2baf6b303c5f8a7
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Tue Dec 10 15:17:39 2024 +0700
+
+    fix search position
+
+commit 524677008589e3bae88fce8a3be19a2b5b32d06d
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Tue Dec 10 11:47:25 2024 +0700
+
+    Làm search bài viết
+    
+    search.css,search.html,search.js
+
+commit eadbe068b7f3ea17580e985021f25e91b046a1d6
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Dec 10 02:14:31 2024 +0700
+
+    Cập nhật bài 2h sáng ngày 10/12/2024
+    
+    Đã làm được khá hoàn chỉnh trang Category
+    - Parent 1: hiện thị các bài viết nổi bật trong tuần, tính nổi bật dựa trên view tất cả các bài viết của Category đó.
+    - Parent 2: hiện thị 3 Sub_Category nổi bật nhất trong Category (Sub_Category nổi bật trong Category được tính bằng tổng view của các bài viết của mỗi Sub_Category). Mỗi Sub_Category hiện thị 4 bài viết nổi bật nhất trong Sub_Category đó, tính dựa vào view.
+    - Parent 3: Hiện thị được các bài viết dựa theo thời gian đăng bài:
+       + Nếu dưới 1 giờ thì sẽ hiện phút "30 phút trước", "50 phút trước"...
+       + Nếu dưới 1 ngày, trên 1 tiếng  thì sẽ hiện "1 giờ trước", "7 giờ trước"...
+       + Nếu trên 1 ngày, dưới 1 tháng thì hiện "2 ngày trước", "15 ngày trước"...
+       + Nếu trên 1 tháng, dưới 1 năm thì hiện "1 tháng trước", "5 tháng trước"...
+       + Nếu trên 1 năm thì hiện "1 năm trước", "2 năm trước", "8 năm trước"...
+    - Parent 3 hiện tại đang xổ full các bài viết, CHƯA có phân trang 1,2,3,4,5.... mỗi trang hiện 10 bài.
+    - Đã cập nhật Ngày đăng của tất các bài viết ở parent1 và 2 luôn rồi, format kiểu "Ngày đăng 12/12/2024".
+    - Đã làm được cái nếu như Meta_Description dài quá, thì sẽ cắt ký tự và hiện "...", ví dụ Meta_Description của News đó dài 450 ký tự, thì sẽ cắt 200 ký tự đầu và gán thêm "...".
+    - Database Thụn cũng có chỉnh sửa thêm các insert value để chạy demo các thay đổi trên, mà hiện tại Thuận chưa push file dtb.
+    
+    ** Lưu ý: hiện tại ở parent1, các ảnh ở phần  <div class="triple-highlight"> nó chưa ổn, kiểu như là nếu Meta_Title của cái bài ở phần  <div class="triple-highlight"> nó dài quá thì cái ảnh nó bị thay đổi kích thước, trật kích thước ảnh ở 3 bài viết ở  <div class="triple-highlight">.
+
+commit 256d06d1803e05509b2779dcb985cbaf9a1be49a
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Mon Dec 9 22:50:31 2024 +0700
+
+    update otp
+
+commit ed92a1c0c7c9125c967e0d2c3827121017dc28d8
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 9 02:04:59 2024 +0700
+
+    Update Database 9/12
+    
+    - Thêm các giá trị insert value để chạy demo bài thử, đồng thời cũng chỉnh sửa lại 1 xíu lặt vặt nhỏ trong mấy cái insert value khác (1 xíu).
+
+commit 2e81c7e151c398cdc4770d493bfa724f9051e101
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Mon Dec 9 02:00:08 2024 +0700
+
+    Cập nhật bài 9/12
+    
+    - Đã làm được đưa bài viết từ database lên (phần class="parent1") theo thứ tự giảm dần của view.
+    - Đã thử chạy demo:
+    + Tạo 5 sub_categr trong database, 4 sub_categr đầu là của Categr 1, sub_categr thứ 5 là của Categr 2.
+    + Thì khi nhấn vào chuyên mục 1 (cấp1) thì chỉ hiện các news của 4 sub categr đó. Còn nhấn vào chueyen mục 2 (cấp1) thì chỉ hiện các bài viết của sub_categr thứ 5.
+    - File database Thụn tạo các insert value chạy demo thử, Thụn đã push lên nhánh 'Thuan' rồi nha, chứ lấy file đánh số cao nhất.
+
+commit baf65f304c051caf35229a754d9b5f222f679d6f
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sun Dec 8 16:46:21 2024 +0700
+
+    Cập nhật Database 8_12
+    
+    - Chỉ cập nhật các ví dụ insert value để demo cho đúng thứ tự tăng của Id_User
+
+commit 24c8bbe6042348190193331f934ccd3eb38cb565
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sun Dec 8 16:41:02 2024 +0700
+
+    WIP: Update backend 8_12
+    
+    - Đã làm thêm được hiện thị Category và Sub_category lấy từ database lên.
+    - Đã cập nhật được mỗi khi đăng kí tạo tài khoản mới, Id_User sẽ tự động tăng "USER0001","USER0002"....3..4...5..
+    - Đã cập nhật mỗi khi đăng kí tạo tài khoản mới, sẽ kiểm tra mail đó đã có đăng kí chưa, nếu có thì thông báo lỗi đăng kí.
+
+commit 754126a7a6ed5b9d1d885ee49a71e5495860c489
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Sat Dec 7 13:01:00 2024 +0700
+
+    WIP: Update backend 6_12
+
+commit c72557f83193dfd9b32dd47b2a3d150215d94404
+Merge: 2e3a4df fe1590a
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 5 22:36:08 2024 +0700
+
+    Merge branch 'Huy' into back_end
+
+commit fe1590a356353bf79325bac9c8c3278d56bd0f08
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 5 22:34:34 2024 +0700
+
+    update framework
+
+commit 26ea7fbe7ee29d6dffb0cbb77f05af3d608097bc
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 5 13:04:06 2024 +0700
+
+    sort and ordered front-end stuffs
+    
+    create views, imgs folder and its sub folder to store neccessary stuffs
+
+commit d50559b008079e4c03ae609de86e592a7027ef37
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Dec 5 12:13:32 2024 +0700
+
+    update login, register, otp
+
+commit 2e3a4dff998accd84083d226f2a94558ad79e8c2
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Wed Dec 4 01:25:21 2024 +0700
+
+    Publish formed node js
+    
+    created services, routes, static, utils, views, middleware
+
+commit 9c8132a1c6ab47598e75a6e39f1eee879dcdee86
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Nov 30 22:51:53 2024 +0700
+
+    update subnav in home, detail
+
+commit 0b87bf876832a560984ee7445cf96894888ee2fe
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Sat Nov 30 21:00:12 2024 +0700
+
+    login and register
+
+commit cbfc4b373070eba6c4d549818e0392d0ce0a1ad4
+Merge: ff70c15 73436ae
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Thu Nov 28 16:47:26 2024 +0700
+
+    Merge branch 'front_end' into Thu
+
+commit ff70c15f9adeb74469072c16ba6ce317800a82f6
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Thu Nov 28 16:47:17 2024 +0700
+
+    hihi
+
+commit d14d903014a1fcb43112ae942f2317f65acc767c
+Merge: 14f486b 73436ae
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Thu Nov 28 09:39:26 2024 +0700
+
+    merge front_end and database
+
+commit 14f486b1c30f427688e281484355d3e263094db3
+Author: dutm19 <tranminhduy1912@gmail.com>
+Date:   Thu Nov 28 09:28:29 2024 +0700
+
+    add some database and routes
+
+commit 73436ae284de6718d6ebe76195fff3c96ffc1e68
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 28 08:52:55 2024 +0700
+
+    Merge Phat and Thu
+    
+    Add home, detail, ChuyenMuc, Login, Sign in, OTP
+
+commit 23fd100069cf6cf43df20b95d59f7c1fd33e5036
+Merge: bb762d1 309c773
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 28 07:15:34 2024 +0700
+
+    Merge branch 'Thu' into front_end
+
+commit bb762d1407fa770fb069b54c622828d8cce4f9da
+Merge: 6895ade 20fb258
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 28 07:13:11 2024 +0700
+
+    Merge branch 'Phat' into front_end
+
+commit 20fb258419cb58c76886d3c6af2be074646a0413
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 28 07:10:48 2024 +0700
+
+    add search button
+
+commit 309c7735c62bc05cdce1f4559a40b79452d9434a
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Thu Nov 28 01:54:25 2024 +0700
+
+    fix_6
+    
+    Add the tag <a> for all title of articles
+
+commit 2dd684b2faf12fd47a2c36efa1d7c99c8e2e86ae
+Author: Công Thuận <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Nov 27 23:55:48 2024 +0700
+
+    Delete .vscode directory
+
+commit d795baba3fc5298b11de0b8d15729455578663da
+Author: Công Thuận <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Nov 27 23:55:32 2024 +0700
+
+    Delete package.json
+
+commit 741fa454c3239c6ea4e9b7dad48731dad0c2b7f2
+Author: Công Thuận <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Nov 27 23:54:53 2024 +0700
+
+    Delete views directory
+
+commit 8c2d8be4ad12fb1ae7cd610752dfc3571659d7c0
+Author: Công Thuận <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Nov 27 23:41:17 2024 +0700
+
+    Delete main.js
+
+commit fef47947608d07fa8a9cea7a983ac74458cd2309
+Author: Công Thuận <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Nov 27 23:40:00 2024 +0700
+
+    Delete .gitignore
+
+commit 903a6a1173beb97e7a8af741911162f013a1c4eb
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Wed Nov 27 23:37:08 2024 +0700
+
+    27_11
+    
+    sửa các thuộc tính Date thành DateTime
+
+commit 3c9f2c7f37d51824ace9d8e246e9aa949c07c6f1
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 21:05:29 2024 +0700
+
+    fix div name, element and add link into each element
+
+commit 9a95898e9875997674e4f978b52ba4cd7a7859bd
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 20:45:28 2024 +0700
+
+    Update content in parent2
+    
+    Thay đổi cấu trúc của nội dung bên trong parent2 thành các cấu trúc tối giản hơn
+
+commit 6bf87323614637a8ec81161c0bf1c8266ac12bd9
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sun Nov 24 20:27:41 2024 +0700
+
+    fix_5
+    
+    Update scroll for top article related (detail.html)
+
+commit 8d7a5761fdb0f071a68228ba1ddf493514736a3e
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 18:12:40 2024 +0700
+
+    split script into separate file
+
+commit 1511ddebb4843199d8f5cad601960af4ca95d5fd
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 15:23:54 2024 +0700
+
+    cut down header, footer, nav, and :root to styleMain.css
+
+commit 0cb9bbd4d8e308865d4c74cc176a581b3d90860d
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 15:07:05 2024 +0700
+
+    update chuyenmuc css
+    
+    thêm vào header, footer, nav, baiviet -> post
+
+commit 82f1fa64c1e18971680129f5dbc0a4d8687a5fcb
+Merge: 3d5472e 18d4960
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sun Nov 24 14:45:50 2024 +0700
+
+    Merge branch 'Thu' of https://github.com/huyhuyhuy8s/newshub into Thu
+
+commit bec25237b8ccf976a7c8cda3e5993136b241f2ce
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 14:06:34 2024 +0700
+
+    update header, footer
+    
+    header, footer, nav and baiviet -> post
+
+commit 18d4960129bce894f0a4b0328fa4f14bfb6e5c17
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 14:05:42 2024 +0700
+
+    update font-family
+
+commit 3d5472e403edf2937f08cba4659eb11bc872f550
+Merge: eb800fb ebad123
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sun Nov 24 13:37:56 2024 +0700
+
+    Merge branch 'Thu' of https://github.com/huyhuyhuy8s/newshub into Thu
+
+commit eb800fb2b64d6bd7bf94b0248ab9f63f1e988638
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sun Nov 24 13:37:50 2024 +0700
+
+    fix_4
+    
+    Add header & footer for detail.html
+
+commit ebad12374cb0bc67a23bc640e29735cc8236ddb9
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sun Nov 24 11:48:18 2024 +0700
+
+    fixed inline tabs
+
+commit ae5a120770180a4e79b17832594dd9e05a495017
+Merge: 024ac50 0d5ee58
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sat Nov 23 21:17:17 2024 +0700
+
+    Merge branch 'Thu' of https://github.com/huyhuyhuy8s/newshub into Thu
+
+commit 024ac5086c9a19f3fb196da5bf8e0c3c22865efa
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sat Nov 23 21:14:12 2024 +0700
+
+    fix_3
+    
+    update cata-logitic
+
+commit 0d5ee5853e6f09014c5d72adc53a68a7e31a5ace
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Nov 23 21:11:31 2024 +0700
+
+    footer and header updated
+
+commit 5f7c62bfc947452b4af5170fbc6bee6548954ba4
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Sat Nov 23 19:36:00 2024 +0700
+
+    he
+
+commit 7a4087fe80b1f2fa97c9488fc9391c805d638ee5
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Fri Nov 22 00:21:50 2024 +0700
+
+    fix_2
+    
+    Add header & footer
+
+commit 8c058504e8186e613701b6755d017eeea1195503
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Thu Nov 21 16:50:36 2024 +0700
+
+    21/11/2024 Cập nhật Database
+    
+    Đã sửa chữa, thêm, bớt.... những lưu ý họp ngày T3 (19/11)
+
+commit bdde315f0c8d98628d501bac4cdefcafc13ce4b2
+Author: Công Thuận Fork <119850160+FOREST2004@users.noreply.github.com>
+Date:   Tue Nov 19 12:46:53 2024 +0700
+
+    LuocDoQuanHe
+    
+    Lược đồ quan hệ có thể chuyển về Physical Diagram để xem các bảng
+
+commit e00b6b81711b5c201103f3b52ba0b6dcbefc95fb
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Tue Nov 19 10:31:11 2024 +0700
+
+    w
+
+commit 04775f0d75deef936f77f381ee8cb8522deba6b0
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Nov 18 13:14:39 2024 +0700
+
+    fixed
+
+commit 6ed05d3f9fa3f99107990037e92d1eb32cbf1b0c
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Nov 18 12:12:54 2024 +0700
+
+    temp fixed
+
+commit f7a292a8c091557f6640a39406b529834db7d1f1
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Mon Nov 18 09:43:06 2024 +0700
+
+    little fix
+
+commit 5e4b35de8067da25fb01648e1f98c114922004cf
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Mon Nov 18 09:37:36 2024 +0700
+
+    fixed
+
+commit 30c5d0c7499cb0e93181e9d6a918b645207bf4c9
+Author: Thea5524 <119855391+Thea5524@users.noreply.github.com>
+Date:   Sun Nov 17 23:16:24 2024 +0700
+
+    Home & Detail
+    
+    Trang chủ và Trang xem chi tiết bài viết
+
+commit 4c95088beafef8b64a54c6551d009cdcbfc424c6
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Sun Nov 17 20:43:08 2024 +0700
+
+    login,register,otp, chuyenmuc
+
+commit 6895adeb2c738376d24e72d09c93a3f128a2f4c6
+Author: huyhuyhuy8s <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 14 10:41:14 2024 +0700
+
+    liite changes
+
+commit 523a2eabad641d3de951a8ad24cb5dc251bf32ab
+Author: Ivanzxje <ngotuongphat@gmail.com>
+Date:   Wed Nov 13 21:09:09 2024 +0700
+
+    Form đăng nhập
+
+commit 4af5415a92dbeb6cb600bd25fffffa0a169fea83
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 7 16:26:12 2024 +0700
+
+    npm init
+
+commit ed386a6c489da61869255cfd9d02665b13ae1d6b
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 7 14:49:23 2024 +0700
+
+    Update README.md
+
+commit be649254d62669eed29ec129ff77ae739ed1b9aa
+Author: Lê Minh Huy <78388860+huyhuyhuy8s@users.noreply.github.com>
+Date:   Thu Nov 7 14:39:46 2024 +0700
+
+    Initial commit
