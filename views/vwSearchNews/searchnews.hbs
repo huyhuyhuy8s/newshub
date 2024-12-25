@@ -61,7 +61,7 @@
         </button>
     </div>
 
-    
+
 
 
     <div class="parent3">
@@ -70,9 +70,9 @@
         <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{formatDate Date}}</p>
             <div class="content">
-                <h4>{{Meta_title}}</h4>
+                <h4>{{truncateText Meta_title 70}}</h4>
                 <p>
-                    {{Meta_description}}
+                    {{truncateText Meta_description 150}}
                 </p>
                 <p> </p>
                 <p>
@@ -81,11 +81,11 @@
                     {{/each}}
                 </p>
             </div>
-            <img src="/img/uploads/{{this.Image}}" alt="" class="image">
+            <img src="/imgs/uploads/{{Image}}" alt="" class="image">
         </a>
         {{/each}}
 
-       
+
 
     </div>
 </div>
