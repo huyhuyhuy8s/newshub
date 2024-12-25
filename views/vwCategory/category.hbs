@@ -23,14 +23,11 @@
                 {{#each topNews}}
                 <a class="highlight-element"
                     href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
-                     <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/uploads/{{Image}}">
-                        <div>
-                            <h5>{{truncateText Meta_title 35}}</h5>
-                            <p>{{formatDate Date}}</p>
-                        </div>
-                    
-                  
-                     
+                    <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/uploads/{{Image}}">
+                    <div>
+                        <h5>{{truncateText Meta_title 35}}</h5>
+                        <p>{{formatDate Date}}</p>
+                    </div>
                 </a>
                 {{/each}}
             </div>

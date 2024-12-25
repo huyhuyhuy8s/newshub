@@ -6,34 +6,40 @@
 
     <div class="user-info">
         <h2>Thông tin của {{writer.Name}}</h2>
-        <form id="update-form" method="POST" action="/inforwriter/update">
+        <form id="update-form" method="POST" action="/inforwriter/update" class="informoderator">
             <input type="hidden" id="name" name="id_user" value="{{writer.Id_User}}" required>
-            <label for="last-name">Họ và tên</label>
-            <input type="text" id="name" name="name" value="{{writer.Name}}" required>
+            <label for="last-name">
+                <p>Họ và tên</p>
+                <input type="text" id="name" name="name" value="{{writer.Name}}" required>
+            </label>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{writer.Email}}" readonly>
+            <label for="email">
+                <p>Email</p>
+                <input type="email" id="email" name="email" value="{{writer.Email}}" readonly>
+            </label>
 
-            <label for="dob">Ngày sinh</label>
-            <input type="date" id="birthday" name="birthday" value="{{writer.Birthday}}" required>
+            <label for="dob">
+                <p>Ngày sinh</p>
+                <input type="date" id="birthday" name="birthday" value="{{writer.Birthday}}" required>
+            </label>
 
-            <label for="password">Mật khẩu</label>
-            <input type="password" id="password" name="password" value="">
+            <label for="password">
+                <p>Mật khẩu</p>
+                <input type="password" id="password" name="password" value="">
+            </label>
 
-            <label for="password-confirm">Nhập lại mật khẩu</label>
-            <input type="password" id="password-confirm" name="confirm_password" value="">
+            <label for="password-confirm">
+                <p>Nhập lại mật khẩu</p>
+                <input type="password" id="password-confirm" name="confirm_password" value="">
+            </label>
 
-            <label for="account-type">Loại tài khoản</label>
-
-
-            <input type="text" id="account-type" value="Nhà báo" disabled>
-
-
+            <label for="account-type">
+                <p>Loại tài khoản</p>
+                <input type="text" id="account-type" value="Nhà báo" disabled>
+            </label>
             <button type="submit" class="save-btn">Lưu thông tin</button>
-          
+            <button id="back-btn" class="back-btn">Trở về trang chủ</button>
         </form>
-        <br>
-        <button id="back-btn" class="back-btn" data-id="{{writer.Id_User}}">Trở về trang chủ</button>
     </div>
 
 </div>

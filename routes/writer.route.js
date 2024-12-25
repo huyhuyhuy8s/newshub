@@ -387,7 +387,6 @@ router.get('/update_article', async (req, res) => {
         const subCategories = await writerService.getSubCategoriesByWriterId(id_writer);
 
 
-
         res.render('vwWriter/update_article', { layout: 'moderator', news, id_user, category, subCategories });
     } catch (error) {
         console.error('Lỗi khi lấy chuyên mục:', error);

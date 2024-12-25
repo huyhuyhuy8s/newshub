@@ -9,7 +9,7 @@
     <h1>Quản lý tất cả các nhãn bài viết</h1>
     <div class="filter-section">
         <!-- Tìm kiếm -->
-        <form action="/admin/tagsmanagement/add" method="post">
+        <form action="/admin/tagsmanagement/add" method="post" style="background-color: white;">
             <div class="filter-item">
                 <label for="search-input">Tên nhãn</label>
                 <input type="text" name="tag_name" id="search-input" placeholder="Nhập tên nhãn" class="filter-input">
@@ -38,18 +38,13 @@
                 <!-- Giả sử bạn có helper formatDate để định dạng ngày -->
                 <td>{{this.Name}}</td>
                 <td>
-                    <form action="/admin/tagsmanagement/delete" method="post">
+                    <form action="/admin/tagsmanagement/delete" method="post" style="background-color: white;">
                         <input type="hidden" name="id_tag" value="{{this.Id_Tag}}">
                         <button type="submit" class="edit-button">Xoá</button>
                     </form>
                 </td>
             </tr>
             {{/each}}
-
-
-
-
-
         </tbody>
 
     </table>
