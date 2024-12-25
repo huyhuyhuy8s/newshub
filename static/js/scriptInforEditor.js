@@ -46,7 +46,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 document.getElementById('back-btn').addEventListener('click', function () {
-    window.location.href = '/editor/home'; // Chuyển hướng về trang chủ
+    const id_user = this.getAttribute('data-id'); 
+    window.location.href = `/editor/home?id_user=${id_user}`; // Chuyển hướng về trang chủ
 });
 
 

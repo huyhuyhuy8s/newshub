@@ -44,7 +44,7 @@ async function updateStatus(id_news, new_status) {
 
 // viết lý do từ chôi
 function showRejectionInput() {
-    document.getElementById('rejectionContainer').style.display = 'block'; // Hiển thị ô nhập lý do
+    document.getElementById('rejectionContainer').style.display = 'flex '; // Hiển thị ô nhập lý do
 }
 
 async function submitRejectionReason(id_news) {

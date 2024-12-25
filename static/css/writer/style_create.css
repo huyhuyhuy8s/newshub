@@ -5,12 +5,49 @@
     --blue: #00bfff;
 }
 
+form {
+    background-color: var(--white);
+}
+
+#banner {
+    margin: 0 75px;
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    gap: 2em;
+    width: 100%;
+
+    input[type="file"] {
+        display: none;
+    }
+
+    #custom_file_upload {
+        /* background-image: url('/imgs/main/background.jpg'); */
+        background-color: var(--white);
+        width: calc(100% - 75px * 2 - 2em - 4em);
+        height: 20em;
+        line-height: 20em;
+        padding: 2em;
+        border: 2px dashed var(--black);
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        h2 {
+            text-align: center;
+            font-weight: normal;
+        }
+    }
+}
+
 #body {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     padding: 1em 1em;
     gap: 2em;
-
 
     .creat {
         grid-area: 1 / span 4;
@@ -28,10 +65,12 @@
         gap: 2em;
         border-radius: 10px;
         font-size: 12pt;
+        background-color: var(--white);
 
         h3 {
             font-size: 16pt;
         }
+
 
         .state,
         .category,
@@ -44,6 +83,7 @@
             gap: 0.5em;
             border-radius: 10px;
             padding: 0.5em;
+
 
             select {
                 width: 100%;
@@ -66,6 +106,43 @@
                 height: 3.5em;
             }
 
+            .premium {
+                display: grid;
+                grid-template-columns: 1em auto;
+                gap: 0.5em;
+                font-size: 1.1rem;
+                /* font-weight: bold; */
+                line-height: 1.1;
+            }
+
+            input[type="checkbox"] {
+                appearance: none;
+                background-color: #fff;
+                margin: 0;
+                font: inherit;
+                color: currentColor;
+                width: 1.15em;
+                height: 1.15em;
+                border: 0.15em solid currentColor;
+                border-radius: 0.15em;
+                transform: translateY(-0.075em);
+                display: grid;
+                place-content: center;
+            }
+
+            input[type="checkbox"]::before {
+                content: "";
+                width: 0.65em;
+                height: 0.65em;
+                transform: scale(0);
+                transition: 120ms transform ease-in-out;
+                box-shadow: inset 1em 1em var(--red);
+            }
+
+            input[type="checkbox"]:checked::before {
+                transform: scale(1);
+            }
+
             button {
                 background-color: var(--red);
                 color: var(--white);
@@ -74,4 +151,8 @@
             }
         }
     }
+}
+
+textarea {
+    min-height: 100em;
 }

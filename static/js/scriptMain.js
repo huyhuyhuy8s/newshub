@@ -1,11 +1,11 @@
 // set child2 height = child1 (include div1 and triple highlight)
 // Adjust the heights
 try {
-    document.getElementsByClassName('child2')[0].style.height = `${document.getElementsByClassName('div1')[0].offsetHeight + document.getElementsByClassName('triple-highlight')[0].offsetHeight}px`;
+    document.getElementsByClassName('child2')[0].style.height = `${document.getElementsByClassName('div1')[0].offsetHeight + document.getElementsByClassName('triple-highlight')[0].offsetHeight + 23}px`;
 }
 catch { }
 try {
-    document.getElementById("article_top10").style.height = `${document.getElementsByClassName("grid-head")[0].offsetHeight + document.getElementById("article_list").offsetHeight}px`;
+    document.getElementById("article_top10").style.height = `${document.getElementsByClassName("grid-head")[0].offsetHeight + document.getElementById("article_list").offsetHeight + 16}px`;
 }
 catch { }
 try {

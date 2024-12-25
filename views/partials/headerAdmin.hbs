@@ -1,37 +1,41 @@
 <header id="menu">
-
     <button id="btn-change-acc" onclick="ChangeAccount()">
         <img src="/imgs/main/avt.png">
     </button>
     <ul>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/admin/dashboard" class="header-item">
+            <a href="/admin/dashboard?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-graph-up"></i>
                 Trang chủ
             </a>
         </li>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/admin/newsmanagement" class="header-item">
+            <a href="/admin/newsmanagement?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-list-ul"></i>
                 Quản lý bài viết
             </a>
         </li>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/admin/usermanagement" class="header-item">
+            <a href="/admin/usermanagement?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-person-lines-fill"></i>
                 Quản lý người dùng
             </a>
         </li>
         <li onclick="ChangeColorBtn(this)">
-            <a href="/admin/tagsmanagement" class="header-item">
+            <a href="/admin/tagsmanagement?id_user={{id_user}}" class="header-item">
                 <i class="bi bi-person-lines-fill"></i>
                 Quản lý nhãn
             </a>
         </li>
+        <li onclick="ChangeColorBtn(this)">
+            <a href="/admin/subcategorymanagement?id_user={{id_user}}" class="header-item">
+                <i class="bi bi-person-lines-fill"></i>
+                Quản lý chuyên mục cấp 2
+            </a>
+        </li>
+     
     </ul>
 </header>
-
-
 <div id="ChangeAccount-Div">
     <div class="avt">
         <img src="/imgs/main/avt.png">
@@ -39,7 +43,7 @@
     </div>
     <ul>
         <li>
-            <a href="/editor/inforeditor">
+            <a href="/admin/inforadmin">
                 <i class="bi bi-info-lg"></i>
                 Thông tin của tôi
             </a>
@@ -53,11 +57,8 @@
     </ul>
     <button class="btn-sign-out" type="submit" onclick="logout()">
         Đăng xuất
-
     </button>
-
 </div>
-
 {{#fillHtmlContent 'js'}}
-<script src="/js/scriptInforEditor.js"></script>
+<script src="/js/scriptInforAdmin.js"></script>
 {{/fillHtmlContent}}

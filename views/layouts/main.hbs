@@ -14,105 +14,103 @@
 </head>
 
 <body>
-    <div class="card border">
-        <header>
-            <ul class="left">
-                {{!-- <li>
-                    <a href="#"><i class="bi bi-list"></i></a>
-                </li> --}}
+    <header>
+        <ul class="left">
+            {{!-- <li>
+                <a href="#"><i class="bi bi-list"></i></a>
+            </li> --}}
 
+            <li>
+                <button type="button" class="search-icon" onclick="searchClick()">
+                    <i class="bi bi-search"></i></button>
+            </li>
+
+        </ul>
+        <div class="middle">
+            <a href="/"><img src="/imgs/main/logokonen.png"></a>
+        </div>
+        <ul class="right">
+
+            {{#if auth}}
+            <a
+                href="/inforuser/inforuser?id_user={{authUser.Id_User}}&name={{authUser.Name}}&email={{authUser.Email}}&birthday={{formatDateInfor authUser.Birthday}}">
                 <li>
-                    <button type="button" class="search-icon" onclick="searchClick()">
-                        <i class="bi bi-search"></i></button>
+                    Xin chào, {{authUser.Name}}
+
                 </li>
+            </a>
+            <a href="/account/logout" onclick="handleLogout(event)">
+                <li>
+                    Đăng xuất
+                    {{!-- <a href="/account/logout">Đăng xuất</a> --}}
+                </li>
+            </a>
+            {{else}}
+            <a href="/account/login">
+                <li>
+                    Đăng nhập
+                </li>
+            </a>
+            <a href="/account/register">
+                <li>
+                    Đăng ký
+                </li>
+            </a>
+            {{/if}}
+        </ul>
+    </header>
+    <nav id="nav">
+        <ul id="nav-ul">
+            {{#each lcCategories}}
+            <a href="/category/{{Id_Category}}">
+                <li class="{{toLowerCase Name}}">{{Name}}</li>
+            </a>
+            {{/each}}
+        </ul>
 
-            </ul>
-            <div class="middle">
-                <a href="/"><img src="/imgs/main/logokonen.png"></a>
-            </div>
-            <ul class="right">
-
-                {{#if auth}}
-                <a
-                    href="/inforuser/inforuser?id_user={{authUser.Id_User}}&name={{authUser.Name}}&email={{authUser.Email}}&birthday={{formatDateInfor authUser.Birthday}}">
-                    <li>
-                        Xin chào, {{authUser.Name}}
-
-                    </li>
-                </a>
-                <a href="/account/logout" onclick="handleLogout(event)">
-                    <li>
-                        Đăng xuất
-                        {{!-- <a href="/account/logout">Đăng xuất</a> --}}
-                    </li>
-                </a>
-                {{else}}
-                <a href="/account/login">
-                    <li>
-                        Đăng nhập
-                    </li>
-                </a>
-                <a href="/account/register">
-                    <li>
-                        Đăng ký
-                    </li>
-                </a>
-                {{/if}}
-            </ul>
-        </header>
-
-
-        <nav id="nav">
-            <ul id="nav-ul">
-                {{#each lcCategories}}
-                <a href="/category/{{Id_Category}}">
-                    <li class="{{toLowerCase Name}}">{{Name}}</li>
+        <div id="subnav">
+            {{#each lcCategories}}
+            <ul hidden id="{{toLowerCase Name}}">
+                {{#each SubCategories}}
+                <a href="/category/{{../Id_Category}}/{{Id_SubCategory}}">
+                    <li>{{Name}}</li>
                 </a>
                 {{/each}}
             </ul>
-
-            <div id="subnav">
-                {{#each lcCategories}}
-                <ul hidden id="{{toLowerCase Name}}">
-                    {{#each SubCategories}}
-                    <a href="/category/{{../Id_Category}}/{{Id_SubCategory}}">
-                        <li>{{Name}}</li>
-                    </a>
-                    {{/each}}
-                </ul>
-                {{/each}}
-            </div>
-        </nav>
+            {{/each}}
+        </div>
+    </nav>
+    <div class="card border">
 
         {{{body}}}
 
-        <footer>
-            <a class="left" href="#">
-                <img src="/imgs/main/logokonen.png">
-            </a>
-            <div class="right">
-                <ul class="right-top">
-                    <li><a href="/">Trang chủ</a></li>
-                    {{#each lcCategories}}
-                    <li><a href="/category/{{Id_Category}}">{{formatName Name}}</a></li>
-                    {{/each}}
-                </ul>
-                <ul class="right-center">
-                    <li><a href="#">Giới thiệu</a></li>
-                    <li><a href="#">Chính sách bảo mật</a></li>
-                    <li><a href="#">Thông tin liên hệ</a></li>
-                    <li><a href="#">Đóng góp ý kiến</a></li>
-                    <li><a href="#">Hỗ trợ khả năng về truy cập</a></li>
-                    <li><a href="#">Điều khoản sử dụng</a></li>
-                    <li><a href="#">Dữ liệu người dùng</a></li>
-                    <li><a href="#">Cookie</a></li>
-                </ul>
-            </div>
-            <p class="right-bot">NewHubs không chịu trách nhiệm về nội dung của các trang web bên ngoài.<a href="#"
-                    class="pl-2">Đọc thêm về điều khoản</a></p>
-        </footer>
     </div>
 
+    <footer>
+        <a class="left" href="#">
+            <img src="/imgs/main/logokonen.png">
+        </a>
+        <div class="right">
+            <ul class="right-top">
+                <li><a href="/">Trang chủ</a></li>
+                {{#each lcCategories}}
+                <li><a href="/category/{{Id_Category}}">{{formatName Name}}</a></li>
+                {{/each}}
+            </ul>
+            <ul class="right-center">
+                <li><a href="#">Giới thiệu</a></li>
+                <li><a href="#">Chính sách bảo mật</a></li>
+                <li><a href="#">Thông tin liên hệ</a></li>
+                <li><a href="#">Đóng góp ý kiến</a></li>
+                <li><a href="#">Hỗ trợ khả năng về truy cập</a></li>
+                <li><a href="#">Điều khoản sử dụng</a></li>
+                <li><a href="#">Dữ liệu người dùng</a></li>
+                <li><a href="#">Cookie</a></li>
+            </ul>
+        </div>
+        <p class="right-bot">NewHubs không chịu trách nhiệm về nội dung của các trang web bên ngoài.<a href="#"
+                class="pl-2">Đọc thêm về điều khoản</a></p>
+    </footer>
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>

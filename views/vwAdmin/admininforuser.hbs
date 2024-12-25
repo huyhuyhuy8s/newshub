@@ -6,48 +6,63 @@
 
 
 <div class="container">
+
     <div class="user-info">
         <h2>Thông tin của {{inforUser.Name}}</h2>
-        <form action="/admin/admininforuser/update" method="post">
+        <form action="/admin/admininforuser/update" method="post" class="informoderator">
             <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
-            <label for="first-name">Tên</label>
-            <input type="text" id="name" name="name" value="{{inforUser.Name}}">
+            <label for="first-name">
+                Tên
+                <input type="text" id="name" name="name" value="{{inforUser.Name}}">
+            </label>
 
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" value="{{inforUser.Email}}" disabled>
+            <label for="email">
+                Email
+                <input type="email" id="email" name="email" value="{{inforUser.Email}}" disabled>
+            </label>
 
-            <label for="dob">Ngày sinh</label>
-            <input type="date" id="dob" name="birthday" value="{{formatDateInfor inforUser.Birthday}}">
+            <label for="dob">
+                Ngày sinh
+                <input type="date" id="dob" name="birthday" value="{{formatDateInfor inforUser.Birthday}}">
+            </label>
 
-            <label for="account-type">Loại tài khoản</label>
+            <label for="account-type">
+                Loại tài khoản
+
+                {{#if inforUser.Id_Editor}}
+                <input type="text" id="account-type" name="account-type" value="Biên tập viên" disabled>
+                {{else if inforUser.Id_Writer}}
+                <input type="text" id="account-type" name="account-type" value="Nhà báo" disabled>
+                {{else if inforUser.Id_Subcriber}}
+                <input type="text" id="account-type" name="account-type" value="Thành viên" disabled>
+                {{else if inforUser.Id_Administrator}}
+                <input type="text" id="account-type" name="account-type" value="Quản trị viên" disabled>
+                {{else if inforUser.Id_User}}
+                <input type="text" id="account-type" name="account-type" value="Thành viên chưa được duyệt" disabled>
+                {{/if}}
+            </label>
 
             {{#if inforUser.Id_Editor}}
-            <input type="text" id="account-type" name="account-type" value="Biên tập viên" disabled>
-            {{else if inforUser.Id_Writer}}
-            <input type="text" id="account-type" name="account-type" value="Nhà báo" disabled>
-            {{else if inforUser.Id_Subcriber}}
-            <input type="text" id="account-type" name="account-type" value="Thành viên" disabled>
-            {{else if inforUser.Id_Administrator}}
-            <input type="text" id="account-type" name="account-type" value="Quản trị viên" disabled>
-            {{else if inforUser.Id_User}}
-            <input type="text" id="account-type" name="account-type" value="Thành viên chưa được duyệt" disabled>
-            {{/if}}
-
-            {{#if inforUser.Id_Editor}}
-            <label for="Category">Duyệt bài cho chuyên mục</label>
-            <input type="text" id="category" name="category" value="{{inforUser.Name_Category_Editor}}" disabled>
+            <label for="Category">
+                Duyệt bài cho chuyên mục
+                <input type="text" id="category" name="category" value="{{inforUser.Name_Category_Editor}}" disabled>
+            </label>
             {{/if}}
 
             {{#if inforUser.Id_Writer}}
-            <label for="Category">Viết bài cho chuyên mục</label>
-            <input type="text" id="category" name="category" value="{{inforUser.Name_Category_Writer}}" disabled>
+            <label for="Category">
+                Viết bài cho chuyên mục
+                <input type="text" id="category" name="category" value="{{inforUser.Name_Category_Writer}}" disabled>
+            </label>
 
 
-            <label for="pen-name">Bút Danh</label>
-            <input type="text" id="pen-name" name="pen_name" value="{{inforUser.Pen_Name}}">
+            <label for="pen-name">
+                Bút Danh
+                <input type="text" id="pen-name" name="pen_name" value="{{inforUser.Pen_Name}}">
+            </label>
             {{/if}}
             <button type="submit" class="save-btn">Lưu thông tin</button>
-
+            <a href="/" class="back-btn">Trở về trang chủ</a>
         </form>
 
     </div>
@@ -61,7 +76,6 @@
         <div class="moderator-info">
 
             <h2>Thông số các bài viết của {{inforUser.Name}}</h2>
-
             <div class="user-stats">
                 <div class="stat">
                     <h1><i class="bi bi-newspaper"></i></h1>
@@ -107,7 +121,7 @@
                     </div>
                 </div>
             </div>
-            <form action="/admin/writer/delete" method="post">
+            <form action="/admin/writer/delete" method="post" class="informoderator">
                 <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
                 <button type="submit" class="stop-work">Dừng công việc</button>
             </form>
@@ -163,7 +177,6 @@
         <div class="moderator-info">
 
             <h2>Thông số các bài viết phê duyệt của {{inforUser.Name}}</h2>
-
             <div class="user-stats">
                 <div class="stat">
                     <h1><i class="bi bi-newspaper"></i></h1>
@@ -276,7 +289,8 @@
                             <p>Đã là thành viên trong</p>
                             <span class="number">
                                 {{#if subscriberInfo.Date_register}}
-                                {{formatCountDaysRegisterAndExpirationSubcriber subscriberInfo.Date_register subscriberInfo.Date_expired}} ngày
+                                {{formatCountDaysRegisterAndExpirationSubcriber subscriberInfo.Date_register
+                                subscriberInfo.Date_expired}} ngày
                                 {{else}}
                                 0 ngày!
                                 {{/if}}
@@ -356,11 +370,59 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="stop-work">Duyệt</button>
+                <button type="submit" class="stop-work">Duyệt thành viên đọc báo</button>
+
+
             </form>
+            <br>
+            <form action="/admin/editor/create" method="post">
+                {{!-- duyet thanh bien tap vien --}}
+                <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+                <button type="button" class="stop-work" onclick="showCategorySelection('editor')">Cấp quyền thành biên
+                    tập
+                    viên</button>
+
+                <div id="category-selection-editor" style="display: none;">
+                    <label for="category">Chọn chuyên mục:</label>
+                    <select id="category" name="id_category">
+                        {{#each categories}}
+                        <option value="{{this.Id_Category}}">{{this.Name}}</option>
+                        {{/each}}
+                    </select>
+                    <button type="submit" class="stop-work">OK</button>
+                </div>
+            </form>
+
+            <br>
+            <form action="/admin/writer/create" method="post">
+                {{!-- duyet thanh bien tap vien --}}
+                <input type="hidden" name="id_user" value="{{inforUser.Id_User}}">
+                <button type="button" class="stop-work" onclick="showCategorySelection('writer')">Cấp quyền thành nhà
+                    báo</button>
+
+                <div id="category-selection-writer" style="display: none;">
+                    <label for="category">Chọn chuyên mục:</label>
+                    <select id="category" name="id_category">
+                        {{#each categories}}
+                        <option value="{{this.Id_Category}}">{{this.Name}}</option>
+                        {{/each}}
+                    </select>
+                    <label for="Pen_name">Bút danh</label>
+                    <input type="text" id="penname" name="penname" value="{{inforUser.Name}}" readonly>
+                    <a> Nhà báo có thể tự chỉnh sửa bút danh ở phần sửa thông tin cá nhân</a><br><br>
+                    <button type="submit" class="stop-work">OK</button>
+                </div>
+
+
+            </form>
+
         </div>
 
         {{/if}}
 
     </div>
 </div>
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/scriptAdmin.js"></script>
+{{/fillHtmlContent}}

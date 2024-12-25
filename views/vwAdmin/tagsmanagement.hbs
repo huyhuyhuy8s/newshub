@@ -6,94 +6,50 @@
 {{> headerAdmin}}
 
 <div class="container">
-    <h1>Quản lý tất cả bài viết</h1>
+    <h1>Quản lý tất cả các nhãn bài viết</h1>
     <div class="filter-section">
         <!-- Tìm kiếm -->
-        <div class="filter-item">
-            <label for="search-input">Tên nhãn</label>
-            <input type="text" id="search-input" placeholder="Tên nhãn" class="filter-input">
-        </div>
+        <form action="/admin/tagsmanagement/add" method="post" style="background-color: white;">
+            <div class="filter-item">
+                <label for="search-input">Tên nhãn</label>
+                <input type="text" name="tag_name" id="search-input" placeholder="Nhập tên nhãn" class="filter-input">
+            </div>
 
-        <div class="filter-item">
-            <button class="filter-button">
-                <i class="bi bi-person-add"></i>
-                Thêm nhãn
-            </button>
-        </div>
+            <div class="filter-item">
+                <button class="filter-button" type="submit">
+                    <i class="bi bi-person-add"></i>
+                    Thêm nhãn
+                </button>
+            </div>
+        </form>
     </div>
     <table class="article-table">
         <thead>
             <tr>
                 <th>Số thứ tự</th>
                 <th>Tên nhãn</th>
-                <th>Xóa</th>
+                <th>Xóa nhãn</th>
             </tr>
         </thead>
         <tbody>
-            {{#each newsDetails}}
+            {{#each tags}}
             <tr>
-                <td>{{formatDateNewsManagementAdmin this.Date}}</td>
+                <td>{{@index}}</td>
                 <!-- Giả sử bạn có helper formatDate để định dạng ngày -->
-                <td>{{this.Pen_Name}}</td>
-                <td>{{this.CategoryName}}</td>
-                <td>{{this.SubCategoryName}}</td>
-                <td>{{this.Title}}</td>
+                <td>{{this.Name}}</td>
                 <td>
-                    {{#if this.Tags}}
-                    {{this.Tags}} <!-- Hiển thị tên Tag -->
-                    {{else}}
-                    Không có Tag
-                    {{/if}}
-                </td>
-                <td>{{this.Views}}</td>
-
-                <td>
-                    <select class="status-select" data-id="{{this.Id_News}}">
-                        <option value="" disabled>Chọn trạng thái</option>
-                        <option value="STS0001" {{#if (eq this.Id_Status 'STS0001' )}}selected{{/if}}>Đồng ý</option>
-                        <option value="STS0002" {{#if (eq this.Id_Status 'STS0002' )}}selected{{/if}}>Chưa duyệt
-                        </option>
-                        <option value="STS0003" {{#if (eq this.Id_Status 'STS0003' )}}selected{{/if}}>Chưa đạt</option>
-                        <option value="STS0004" {{#if (eq this.Id_Status 'STS0004' )}}selected{{/if}}>Từ chối</option>
-                    </select>
-                </td>
-                <td>
-
-                    <button class="edit-button" data-id="{{this.Id_News}}">Cập nhật</button>
+                    <form action="/admin/tagsmanagement/delete" method="post" style="background-color: white;">
+                        <input type="hidden" name="id_tag" value="{{this.Id_Tag}}">
+                        <button type="submit" class="edit-button">Xoá</button>
+                    </form>
                 </td>
             </tr>
             {{/each}}
-
-
-
-
-
         </tbody>
 
     </table>
-    {{!-- <div class="pagination" id="pagination">
-        <button>1</button>
-        <button class="active">2</button>
-        <button>3</button>
-        <button>4</button>
-        <!-- Thêm các nút phân trang -->
-    </div> --}}
+
 </div>
-
-{{!-- <!-- Modal -->
-<div id="confirmation-modal" class="modal">
-    <div class="modal-content">
-        <p>Bạn chắc chắn có muốn thay đổi?</p>
-        <button id="confirm-btn" class="modal-button">Đồng ý</button>
-        <button id="cancel-btn" class="modal-button">Hủy</button>
-    </div>
-</div> --}}
-
-
-<!-- 
-</body>
-
-</html> -->
 
 {{#fillHtmlContent 'js'}}
 <script src="/js/newsmanagement.js"></script>

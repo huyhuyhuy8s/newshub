@@ -5,9 +5,26 @@ import randomstring from 'randomstring';
 export default {
     async add(entity) {
         try {
+            const lastUser = await db('User')
+                .orderBy('Id_User', 'desc')
+                .first();
+
+            // Tạo ID mới
+            let newId;
+            if (!lastUser) {
+                newId = 'USR0001'; // Nếu chưa có user nào
+            } else {
+                const lastNumber = parseInt(lastUser.Id_User.slice(3)); // Lấy số từ ID cuối cùng
+                newId = `USR${String(lastNumber + 1).padStart(4, '0')}`; // Tạo ID mới
+            }
             // Hash password trước khi lưu
             const salt = bcrypt.genSaltSync(10);
             entity.Password = bcrypt.hashSync(entity.Password, salt);
+
+            // Gán ID mới và thời gian hiện tại
+            entity.Id_User = newId;
+            entity.Date_register = new Date(); // Lấy thời gian hiện tại
+
 
             // Thêm user mới vào database
             const ids = await db('User').insert(entity);

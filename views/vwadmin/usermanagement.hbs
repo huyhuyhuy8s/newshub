@@ -1,61 +1,12 @@
 {{#fillHtmlContent 'css'}}
-<link rel="stylesheet" href="/css/quanlythanhvien.css">
+<link rel="stylesheet" href="/css/admin/usermanagement.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-{{/fillHtmlContent}}
-
-{{#fillHtmlContent 'js'}}
-<script src="/js/quanlythanhvien.js" defer></script>
 {{/fillHtmlContent}}
 
 {{> headerAdmin}}
 
 <div class="container">
     <h1>Quản lý thành viên</h1>
-    <div class="filter-section">
-        <!-- Tìm kiếm -->
-        <div class="filter-item">
-            <label for="search-input">Tìm kiếm</label>
-            <input type="text" id="search-input" placeholder="Tìm kiếm thành viên" class="filter-input">
-        </div>
-
-        <!-- Vai trò thành viên -->
-        <div class="filter-item">
-            <label for="role-type">Vai trò</label>
-            <select id="role-type" class="filter-select">
-                <option value="" disabled selected>Chọn vai trò</option>
-                <option value="editor">Editor</option>
-                <option value="writer">Nhà Báo</option>
-                <option value="member">Thành viên</option>
-                <option value="membership">Thành viên premium</option>
-            </select>
-        </div>
-
-        <!-- Trạng thái tài khoản -->
-        <div class="filter-item">
-            <label for="status-input">Trạng thái</label>
-            <select id="status-input" class="filter-select">
-                <option value="" disabled selected>Chọn trạng thái</option>
-                <option value="active">Hoạt động</option>
-                <option value="inactive">Không hoạt động</option>
-                <option value="suspended">Đã bị khóa</option>
-            </select>
-        </div>
-
-        <!-- Nút lọc -->
-        <div class="filter-item">
-            <button class="filter-button">
-                <i class="bi bi-filter"></i>
-                Lọc
-            </button>
-        </div>
-
-        <div class="filter-item">
-            <button class="filter-button">
-                <i class="bi bi-person-add"></i>
-                Thêm thành viên
-            </button>
-        </div>
-    </div>
 
     <table class="report-table">
         <thead>
@@ -64,8 +15,7 @@
                 <th>Ngày sinh</th>
                 <th>Email</th>
                 <th>Công việc</th>
-                <th>Trạng thái tài khoản</th>
-                <th>Hoạt Động</th>
+        
                 <th>Chi Tiết</th>
             </tr>
         </thead>
@@ -76,10 +26,9 @@
                 <td>{{formatDateInfor this.Birthday}}</td>
                 <td>{{this.Email}}</td>
                 <td>{{this.Role}}</td>
-                <td>Còn hoạt động</td>
-                <td>2 days ago</td>
+         
                 <td>
-                    <a href="/admin/inforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
+                    <a href="/admin/admininforuser?id_user={{this.Id_User}}" class="detail-btn">Xem chi tiết</a>
                 </td>
             </tr>
             {{/each}}
@@ -88,20 +37,11 @@
     </table>
 
 
-    <div class="pagination" id="pagination">
+    {{!-- <div class="pagination" id="pagination">
         <button class="prev">Prev</button>
         <button class="active">1</button>
         <button>2</button>
         <button>3</button>
         <button class="next">Next</button>
-    </div>
-</div>
-
-<!-- Modal -->
-<div id="confirmation-modal" class="modal">
-    <div class="modal-content">
-        <p>Bạn có chắc chắn muốn thay đổi trạng thái tài khoản này?</p>
-        <button id="confirm-btn" class="modal-button">Xác nhận</button>
-        <button id="cancel-btn" class="modal-button">Hủy</button>
-    </div>
+    </div> --}}
 </div>

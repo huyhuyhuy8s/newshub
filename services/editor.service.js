@@ -1,4 +1,5 @@
 import db from '../utils/db.js';
+import moment from 'moment';
 
 const editorService = {
     async countNewsStatusByUserId(Id_user, date) {
@@ -17,7 +18,7 @@ const editorService = {
                 .orderBy('title_status');  // Order by status or as needed
 
             // If there are no results for a specific title_status, we manually return that as 0
-            const statusList = ['Đồng ý', 'Chưa duyệt', 'Chưa đạt', 'Đã xoá'];; // Example of all possible status values
+            const statusList = ['Đồng ý', 'Chưa duyệt', 'Chưa đạt', 'Từ chối'];; // Example of all possible status values
             const countMap = result.reduce((acc, row) => {
                 acc[row.title_status] = row.count;
                 return acc;
@@ -200,6 +201,99 @@ const editorService = {
         } catch (error) {
             console.error("Lỗi khi cập nhật thông tin người dùng:", error);
             throw error;
+        }
+    },
+    async updateNewsDate(id_news, date) {
+        try {
+            await db('News')
+                .where('Id_News', id_news)
+                .update({ Date: moment(date).format('YYYY-MM-DD HH:mm:ss') }); // Cập nhật ngày
+        } catch (error) {
+            console.error("Lỗi khi cập nhật ngày bài viết:", error);
+            throw error; // Ném lỗi để xử lý ở route
+        }
+    },
+
+
+
+    // 25/12/2024
+    async findNewsByIdFullAttribute(id_news) {
+        try {
+            const news = await db('News').where('Id_News', id_news).first(); // Lấy thông tin bài viết
+            if (news) {
+                news.Premium = news.Premium.equals(Buffer.from([1]));
+            }
+            return news; // Trả về thông tin bài viết
+        } catch (error) {
+            console.error('Lỗi khi lấy thông tin bài viết:', error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
+
+    async updateNews(id_news, updatedNews) {
+        try {
+            updatedNews.Premium = updatedNews.Premium ? 1 : 0; // Chuyển đổi boolean thành BIT
+
+            // Cập nhật thông tin bài viết trong bảng News
+            await db('News')
+                .where('Id_News', id_news)
+                .update(updatedNews);
+
+
+
+        } catch (error) {
+            console.error('Lỗi khi cập nhật bài viết:', error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
+    async findWriterByNewsId(id_news) {
+        try {
+            const result = await db('News')
+                .where('Id_News', id_news)
+                .select('Id_Writer')
+                .first();
+            
+            return result ? result.Id_Writer : null; // Trả về Id_Writer nếu tìm thấy, null nếu không tìm thấy
+        } catch (error) {
+            console.error('Lỗi khi lấy Id_Writer từ bài viết:', error);
+            throw error;
+        }
+    },
+    async getCategoryByWriterId(id_writer) {
+        try {
+            // Lấy thông tin writer
+            const writer = await db('Writer').where('Id_Writer', id_writer).first();
+            if (!writer) {
+                throw new Error('Writer not found');
+            }
+
+            // Lấy category dựa trên Id_Category của writer
+            const category = await db('Category').where('Id_Category', writer.Id_Category).first();
+            return category; // Trả về category
+        } catch (error) {
+            console.error("Lỗi khi lấy category của writer:", error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
+        }
+    },
+    async getSubCategoriesByWriterId(id_writer) {
+        try {
+            // Lấy Id_Category của writer
+            const writer = await db('Writer').where('Id_Writer', id_writer).first();
+            if (!writer) {
+                throw new Error('Writer not found');
+            }
+
+            const id_category = writer.Id_Category; // Lấy Id_Category của writer
+
+            // Lấy danh sách sub-category dựa trên Id_Category
+            const subCategories = await db('SubCategory')
+                .where('Id_Category', id_category)
+                .select('Id_SubCategory', 'Name'); // Chọn các trường cần thiết
+
+            return subCategories;
+        } catch (error) {
+            console.error("Lỗi khi lấy sub-category của writer:", error);
+            throw error; // Ném lỗi để xử lý ở nơi khác
         }
     },
 

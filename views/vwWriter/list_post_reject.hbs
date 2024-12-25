@@ -1,0 +1,58 @@
+{{> headerWriter}}
+
+<nav>
+    <div class="search">
+        {{!-- <input type="text" placeholder="Nhập tin cần tìm...">
+        <button type="button">
+            <i class="bi bi-search"></i></button> --}}
+        <button onclick="window.location.href='/writer/list-post'"
+            style="width: fit-content; border: 1px solid var(--red);" class="btn">
+            <i class="bi bi-x-circle"></i>
+            Danh sách các bài viết
+        </button>
+    </div>
+    <div class="filter">
+        {{!-- <button class="btn">
+            <i class="bi bi-arrow-clockwise"></i>
+            Chờ duyệt</button>
+        <button class="btn">
+            <i class="bi bi-check2-all"></i>
+            Đã đăng</button>
+        <button class="btn">
+            <i class="bi bi-x-circle"></i>
+            Từ chối</button> --}}
+    </div>
+</nav>
+<br>
+<div id="body" class="moderator-list">
+    <table width="100%">
+        <thead>
+            <tr>
+                <th>STT</th>
+                <th>Tiêu đề</th>
+
+                <th>Ngày bị từ chối duyệt</th>
+                <th>Lý do từ chối</th>
+                <th>Sửa đổi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each posts}}
+            <tr>
+                <td>{{@index}}</td>
+                <td>{{this.Title}}</a></td>
+
+                <td>{{formatDateAndTime this.Date_feedback}}</td>
+                <td>{{this.Reason}}</td> <!-- Hiển thị lý do từ chối -->
+                <td>
+
+                    <a href="/writer/update_article?id_news={{this.Id_News}}">
+                        <i class="bi bi-pencil-square"></i>
+                    </a>
+                </td>
+            </tr>
+            {{/each}}
+
+        </tbody>
+    </table>
+</div>

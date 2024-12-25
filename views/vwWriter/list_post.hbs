@@ -1,23 +1,27 @@
 {{> headerWriter}}
 
-{{!-- <nav>
-    <div class="search">
+<nav>
+    {{!-- <div class="search">
         <input type="text" placeholder="Nhập tin cần tìm...">
         <button type="button">
-            <i class="bi bi-search"></i></button>
-    </div>
+            <i class="bi bi-search"></i>
+        </button>
+    </div> --}}
     <div class="filter">
-        <button class="btn">
+        {{!-- <button>
             <i class="bi bi-arrow-clockwise"></i>
-            Chờ duyệt</button>
-        <button class="btn">
+            Chờ duyệt
+        </button>
+        <button>
             <i class="bi bi-check2-all"></i>
-            Đã đăng</button>
-        <button class="btn">
+            Đã đăng
+        </button> --}}
+        <button onclick="window.location.href='/writer/list_post_reject'" style="width: fit-content;">
             <i class="bi bi-x-circle"></i>
-            Từ chối</button>
+            Danh sách các bài viết từ chối & Lý do từ chối
+        </button>
     </div>
-</nav> --}}
+</nav>
 <br>
 
 <div id="body" class="moderator-list">
@@ -27,6 +31,7 @@
                 <th>STT</th>
                 <th>Tiêu đề</th>
                 <th>Ngày đăng</th>
+                <th>Lượt xem</th>
                 <th>Bài viết Premium</th>
                 <th>Trạng thái</th>
                 <th>Sửa đổi</th>
@@ -38,6 +43,7 @@
                 <td>{{@index}}</td>
                 <td class="title">{{truncateText this.Title 50}}</td>
                 <td>{{formatDateAndTime this.Date}}</td>
+                <td>{{this.Views}}</td>
                 <td>
 
                     <input type="checkbox" name="check_articles" {{#if this.Premium}}checked{{/if}} disabled>
@@ -57,10 +63,12 @@
                     {{/if}}
                 </td>
                 <td>
-                    <a href="/writer/updatenews?id_news={{this.Id_News}}">
+                 
+                    <a href="/writer/update_article?id_news={{this.Id_News}}">
                         <i class="bi bi-pencil-square"></i>
                     </a>
                 </td>
+
             </tr>
             {{/each}}
 

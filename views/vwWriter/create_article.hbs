@@ -1,22 +1,24 @@
 {{#fillHtmlContent 'css'}}
 <!-- Place the first <script> tag in your HTML's <head> -->
-<script src="https://cdn.tiny.cloud/1/5o2hhgemqy0axvklkkh20ria6cf801vvy0t4bgmwk5t69m2c/tinymce/7/tinymce.min.js"
+<script src="https://cdn.tiny.cloud/1/c7ncx5x4bdo5yb9klw2gzs1kx687tmkt0zt4da7tppggll7v/tinymce/7/tinymce.min.js"
     referrerpolicy="origin"></script>
 <link rel="stylesheet" href="/css/writer/style_create.css">
 {{/fillHtmlContent}}
 
 {{#fillHtmlContent 'js'}}
+<script src="/js/scriptModerator.js"></script>
 <script>
     tinymce.init({
         selector: '#article',
         plugins: [
             // Core editing features
             'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+            'textpattern', 'tinydrive', 'code',
             // Your account includes a free trial of TinyMCE premium features
             // Try the most popular premium features until Dec 21, 2024:
-            'checklist', 'mediaembed', 'casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf', 'textpattern', 'tinydrive', 'code',
+            //'checklist','mediaembed','casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf',
         ],
-        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | emoticons charmap | removeformat | image | insertfile image link | code',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough code| link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | charmap insertfile',
         tinycomments_mode: 'embedded',
         tinycomments_author: 'Author name',
         //image field
@@ -25,6 +27,7 @@
         block_unsupported_drop: true, //block all unsupported type image
         file_picker_types: 'image',
         /* and here's our custom image picker*/
+        /* mediaembed_max_width: 450, */
         file_picker_callback: (cb, value, meta) => {
             const input = document.createElement('input');
             input.setAttribute('type', 'file');
@@ -80,50 +83,33 @@
 
 {{> headerWriter}}
 
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
+ <h1 style="display: flex; justify-content: center; align-items: center; ">
+        Tạo bài viết
+    </h1>
+    
 
     <nav>
         <div class="search">
-            <h2>Tiêu đề bài viết</h2>
-            <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết">
+            <input type="text" name="title" id="title" placeholder="Tiêu đề bài viết" required>
         </div>
         <div class="filter">
-            <button class="btn" type="submit" onclick="submitPost()">
-                <i class="bi bi-floppy"></i>
-                Lưu bản nháp</button>
-            <button class="btn" type="submit" onclick="submitPost()">
-                <i class="bi bi-eye"></i>
-                Xem bài viết</button>
             <button class="btn" type="submit" onclick="submitPost()">
                 <i class="bi bi-cloud-upload"></i>
                 Đăng tải</button>
         </div>
     </nav>
+    <a href=""></a>
+    <div id="banner">
+        <label class="custom-file-upload" id="custom_file_upload">
+            <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png" required>
+            <h2>Chọn ảnh bìa của bài viết</h2>
+        </label>
+    </div>
     <div id="body">
         <div class="creat">
-            <textarea id="article" placeholder="Thêm nội dung vào đây...">
-# OS Security
+            <textarea id="article" placeholder="Thêm nội dung vào đây..." required>
 
-1. Trusted Computer Base (TCB):
-
-- Complete mediation:
-
-- Tamper-proof: Chống bị xâm phạm
-	- Protect-mode
-	- Filesystem
-	- User mode | System mode
-- Correctness: Đảm bảo sai thì cũng không ảnh hưởng gì tới máy (Defensive Coding, Secure coding)
-2. Linux known OS vulnerabilities:
-- Environment variables: Biến môi trường là các biến mà máy sẽ sử dụng trong các chương trình (Ex: Path là địa chỉ dẫn tới user, %appdata% là địa chỉ dẫ tới local roaming etc...) thường thì sẽ được viết hoa\
-Trường hợp trong linux thì có thể dùng các lệnh như `whereis` để tìm được đỉa chỉ lưu của câu lệnh / biến của hệ thống.
-- Vị trí của các biến môi trường: phía trước stack frame của hàm main sẽ là nơi lưu trữ của các biến môi trường.\
-![screenshot](stack.png)\
-Khai báo biến trong linux bằng [tên biến]=[giá trị biến]\
-Ex: `MYVAR=/bin/sh`\
-Nhưng biến này sẽ không xuất hiện trong chương trình khi chạy\
-Và biến được khai báo trong chương trình sẽ không xuất hiện trong linux\
-Để biến có thể xuất hiện thì dùng lệnh (trong gdb)\
-`Export MYVAR = /bin/sh`\
             </textarea>
             <textarea name="save" id="save"></textarea>
         </div>
@@ -131,36 +117,43 @@ Và biến được khai báo trong chương trình sẽ không xuất hiện tr
             <div class="state">
                 <h3>Thuộc tính bài viết</h3>
                 <div>
-                    <label for="premium" style="user-select: none;">Bài viết Premium</label>
-                    <input type="checkbox" id="premium" name="premium" value="true">
+                    <label for="premium" style="user-select: none;" class="premium">
+                        <input type="checkbox" id="premium" name="premium" value="true">
+                        Bài viết Premium
+                    </label>
                 </div>
             </div>
             <div class="category">
                 <h3>Chuyên mục</h3>
                 <div>
-                    <select name="category" id="category">
-                        <option value="none" disabled selected>Chọn chuyên mục</option>
-                        <option value="CAT0001">Thời sự</option>
+                   
+                    <select name="category" id="category" onchange="loadSubCategories(this.value)">
+                      
+                        <option value="{{category.Id_Category}}">{{category.Name}}</option>
+            
                     </select>
                 </div>
 
                 <h3>Chuyên mục cấp 2</h3>
-                <select name="sub_category" id="sub-category">
+             
+                <select name="sub_category" id="sub-category" required>
                     <option value="none" disabled selected>Chọn chuyên mục</option>
-                    <option value="SUB0001">SUB0001</option>
+                    {{#each subCategories}}
+                    <option value="{{this.Id_SubCategory}}">{{this.Name}}</option>
+                    {{/each}}
                 </select>
             </div>
-            <div class="tags">
+            {{!-- <div class="tags">
                 <h3>Tags</h3>
                 <input type="text" name="tags" id="tags" placeholder="#tags">
-            </div>
+            </div> --}}
             <div class="meta-title">
                 <h3>Tóm tắt tiêu đề</h3>
-                <input type="text" name="meta_title" id="meta-title" placeholder="meta-title">
+                <input type="text" name="meta_title" id="meta-title" placeholder="Meta-title" required>
             </div>
             <div class="meta-description">
                 <h3>Tóm tắt nội dung</h3>
-                <input type="text" name="meta_description" id="meta-description" placeholder="meta-description">
+                <input type="text" name="meta_description" id="meta-description" placeholder="Meta-description" required>
             </div>
         </div>
     </div>

@@ -10,10 +10,12 @@
         <div class="child1">
             {{#with firstNews}}
             <a class="div1" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
-                <img alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
-                <h4>{{truncateText Meta_title 50}}</h4>
-                <p>{{truncateText Meta_description 200}}</p>
-                <p>{{formatDate Date}}</p>
+                <img alt="{{Meta_title}}" src="/imgs/uploads/{{Image}}">
+                <div class="content-container">
+                    <h4>{{truncateText Meta_title 50}}</h4>
+                    <p>{{truncateText Meta_description 200}}</p>
+                    <p>{{formatDate Date}}</p>
+                </div>
             </a>
             {{/with}}
 
@@ -21,7 +23,7 @@
                 {{#each topNews}}
                 <a class="highlight-element"
                     href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
-                    <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/category/mancity1.png">
+                    <img class="hinhanh-div" alt="{{Meta_title}}" src="/imgs/uploads/{{Image}}">
                     <div>
                         <h5>{{truncateText Meta_title 35}}</h5>
                         <p>{{formatDate Date}}</p>
@@ -39,7 +41,7 @@
                     <h6>{{truncateText Meta_title 50}}</h6>
                     <p>{{truncateText Meta_description 120}}</p>
                 </div>
-                <img src="/imgs/category/mancity1.png" alt="{{Meta_title}}" class="image-container">
+                <img src="/imgs/uploads/{{Image}}" alt="{{Meta_title}}" class="image-container">
             </a>
             {{/each}}
         </div>
@@ -54,9 +56,11 @@
             {{#with highlightPost}}
             <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}"
                 class="highlight-post">
-                <img src="/imgs/category/pickball.webp" alt="{{Meta_title}}">
-                <h5>{{truncateText Meta_title 70}}</h5>
-                <p>{{formatDate Date}}</p>
+                <img src="/imgs/uploads/{{Image}}" alt="{{Meta_title}}">
+                <div>
+                    <h5>{{truncateText Meta_title 70}}</h5>
+                    <p>{{formatDate Date}}</p>
+                </div>
             </a>
             {{/with}}
             <div class="other-section">
@@ -64,7 +68,7 @@
                 <a class="post-section"
                     href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
                     <h5>{{truncateText Meta_title 100}}</h5>
-                    <img src="/imgs/category/nhatban.webp" alt="{{Meta_title}}">
+                    <img src="/imgs/uploads/{{Image}}" alt="{{Meta_title}}">
                     <p>{{formatDate Date}}</p>
                 </a>
                 {{/each}}
@@ -73,7 +77,7 @@
         {{/each}}
     </div>
 
-    <div class="parent3">
+    <div class="parent3" id="parent3">
         {{#each recentNews}}
         <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}" class="post">
             <p>{{timeAgo Date}}</p>
@@ -84,8 +88,49 @@
                 </p>
                 <div class="content-after">{{SubCategoryName}}</div>
             </div>
-            <img src="/imgs/category/shintaeyong.webp" alt="{{Meta_title}}" class="image">
+            <img src="/imgs/uploads/{{Image}}" alt="{{Meta_title}}" class="image">
         </a>
         {{/each}}
+    </div>
+    <div class="pagination" id="pagination">
+        <ul>
+            {{#if isFirstPage}}
+            {{!-- Nếu là đầu trang thì không cho ấn --}}
+            <li>
+                <a href="#" class="isDisable prev-next">Previous</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/category/{{categoryId}}?page={{previousPage}}#parent3" class="prev-next">Previous</a>
+            </li>
+            {{/if}}
+
+
+            {{#each this.page_items}}
+            {{#if isActive}}
+            {{!-- Nếu là là chính trang đó thì không cho ấn --}}
+            <li>
+                <a href="#" class="isDisable">{{value}}</a>
+            </li>
+
+            {{else}}
+            <li>
+                <a href="/category/{{../categoryId}}?page={{value}}#parent3">{{value}}</a>
+            </li>
+
+            {{/if}}
+            {{/each}}
+            {{#if isLastPage}}
+            {{!-- Nếu là cuối trang thì không cho ấn --}}
+            <li>
+                <a href="#" class="isDisable prev-next">Next</a>
+            </li>
+            {{else}}
+            <li>
+                <a href="/category/{{categoryId}}?page={{nextPage}}#parent3" class="prev-next">Next</a>
+            </li>
+            {{/if}}
+        </ul>
+        <!-- Thêm các nút phân trang -->
     </div>
 </div>

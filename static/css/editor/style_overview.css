@@ -8,6 +8,7 @@
         color: var(--red);
         font-weight: bold;
         font-style: var(--text-fam);
+        margin-bottom: 1em;
     }
 
     .content {
@@ -17,6 +18,8 @@
 
         .graph {
             width: 100%;
+            background-color: var(--white);
+            border-radius: 20px;
         }
 
         .figure {
@@ -31,6 +34,7 @@
                 justify-content: space-between;
                 border-radius: 15px;
                 padding: 1.5em 2em;
+                background-color: var(--white);
 
                 h3 {
                     font-size: 20pt;

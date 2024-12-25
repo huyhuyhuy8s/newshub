@@ -3,6 +3,21 @@ import editorService from '../services/editor.service.js';
 import express from 'express';
 import bcrypt from 'bcryptjs';
 import moment from 'moment';
+import multer from 'multer';
+import path from 'path';
+
+
+var storage = multer.diskStorage(
+    {
+        destination: 'imgs/uploads/',
+        filename: function (req, file, cb) {
+            //req.body is empty...
+            //How could I get the new_file_name property sent from client here?
+            cb(null, file.fieldname + '-' + Date.now() + path.extname(file.originalname));
+        }
+    }
+);
+let upload = multer({ storage: storage });
 
 const router = express.Router();
 
@@ -12,8 +27,12 @@ let id_user;
 
 // mặc định là 1 tháng
 router.get('/home', async (req, res) => {
-    if (id_user === undefined) id_user = req.query.id_user;
+    const id = req.query.id_user;
+
+    id_user = id;
+
     let startDate = moment(moment().subtract(1, 'month').format('YYYY-MM-DD'));
+    const startDate1 = moment(moment().subtract(1, 'month').format('YYYY-MM-DD'))
     const endDate = moment(moment().format('YYYY-MM-DD'));
     let dates = [];
     let acceptCounts = [];
@@ -34,19 +53,19 @@ router.get('/home', async (req, res) => {
             if (status.title_status === "Chưa đạt") {
                 refuseCounts.push(status.count);
             }
-            if (status.title_status === "Đã xoá") {
+            if (status.title_status === "Từ chối") {
                 deleteCounts.push(status.count);
             }
         });
 
         startDate.add(1, 'days'); // Tăng ngày lên 1
     }
-    //console.log(notAcceptCounts)
 
     const totalAccept = acceptCounts.reduce((sum, current) => sum + current, 0);
     const totalNotAccept = notAcceptCounts.reduce((sum, current) => sum + current, 0);
     const totalRefuse = refuseCounts.reduce((sum, current) => sum + current, 0);
     const totalDelete = deleteCounts.reduce((sum, current) => sum + current, 0);
+
     res.render('vwEditor/overview', {
         layout: 'moderator',
         dates: JSON.stringify(dates),  // Truyền labels (Ngày 1, Ngày 2, ...)
@@ -58,34 +77,39 @@ router.get('/home', async (req, res) => {
         totalNotAccept: totalNotAccept,
         totalRefuse: totalRefuse,
         totalDelete: totalDelete,
-        startDate: startDate,
-        endDate: endDate
+        startDate: startDate1,
+        endDate: endDate,
+
+        id_user
     });
 });
 
 
 router.get('/home/typefilter', async (req, res) => {
-    //console.log("Hi")
+   
     const id_user = req.query.id_user;
     const filter = req.query.filter;
 
 
     let startDate
+    let startDate1
     let endDate
     if (filter === 'one_week') {
         startDate = moment(moment().subtract(1, 'week').format('YYYY-MM-DD'));
+        startDate1 = moment(moment().subtract(1, 'week').format('YYYY-MM-DD'));
         endDate = moment(moment().format('YYYY-MM-DD'));
     }
     else if (filter === 'one_month') {
         startDate = moment(moment().subtract(1, 'month').format('YYYY-MM-DD'));
+        startDate1 = moment(moment().subtract(1, 'month').format('YYYY-MM-DD'));
         endDate = moment(moment().format('YYYY-MM-DD'));
     }
     else if (filter === 'custom') {
         startDate = moment(req.query.startDate, 'YYYY-MM-DD')
+        startDate1 = moment(req.query.startDate, 'YYYY-MM-DD')
         endDate = moment(req.query.endDate, 'YYYY-MM-DD');
     }
-    // console.log(startDate)
-    // endDate = moment(moment().format('YYYY-MM-DD'));
+
     let dates = [];
     let acceptCounts = [];
     let notAcceptCounts = [];
@@ -105,7 +129,7 @@ router.get('/home/typefilter', async (req, res) => {
             if (status.title_status === "Chưa đạt") {
                 refuseCounts.push(status.count);
             }
-            if (status.title_status === "Đã xoá") {
+            if (status.title_status === "Từ chối") {
                 deleteCounts.push(status.count);
             }
         });
@@ -114,11 +138,12 @@ router.get('/home/typefilter', async (req, res) => {
     }
 
 
+
     const totalAccept = acceptCounts.reduce((sum, current) => sum + current, 0);
     const totalNotAccept = notAcceptCounts.reduce((sum, current) => sum + current, 0);
     const totalRefuse = refuseCounts.reduce((sum, current) => sum + current, 0);
     const totalDelete = deleteCounts.reduce((sum, current) => sum + current, 0);
-    // console.log(acceptCounts)
+  
     res.render('vwEditor/overview', {
         layout: 'moderator',
         dates: JSON.stringify(dates),  // Truyền labels (Ngày 1, Ngày 2, ...)
@@ -130,23 +155,26 @@ router.get('/home/typefilter', async (req, res) => {
         totalNotAccept: totalNotAccept,
         totalRefuse: totalRefuse,
         totalDelete: totalDelete,
-        startDate: startDate,
-        endDate: endDate
-    });
+        startDate: startDate1,
+        endDate: endDate,
 
+        id_user
+    });
 })
 
 
 
 router.get('/inforeditor', async (req, res) => {
     const editor = await editorService.getUserById(id_user);
+    console.log('editor: ', editor);
+    console.log('id user: ', id_user);
 
     if (editor.Birthday) {
         editor.Birthday = moment(editor.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
     }
 
 
-    res.render('vwEditor/inforeditor', { layout: 'moderator', editor });
+    res.render('vwEditor/inforeditor', { layout: 'moderator', editor, id_user });
 });
 
 router.post('/inforeditor/update', async (req, res) => {
@@ -192,7 +220,7 @@ router.get('/list-article', async (req, res) => {
 
     const posts = await editorService.findAllPost(id_editor);
 
-    res.render('vwEditor/list_article', { layout: 'moderator', posts });
+    res.render('vwEditor/list_article', { layout: 'moderator', posts, id_user });
 });
 
 
@@ -220,7 +248,17 @@ router.get('/article', async (req, res) => {
         if (!news) {
             return res.status(404).send('Bài viết không tồn tại');
         }
-        res.render('vwEditor/article', { layout: 'moderator', news }); // Truyền thông tin bài viết vào view
+
+        const id_writer = await editorService.findWriterByNewsId(id_news);
+      
+        const category = await editorService.getCategoryByWriterId(id_writer);
+      
+        const subCategories = await editorService.getSubCategoriesByWriterId(id_writer);
+      
+   
+   
+
+        res.render('vwEditor/article', { layout: 'moderator', news, id_user, category, subCategories }); // Truyền thông tin bài viết vào view
     } catch (error) {
         console.error('Lỗi khi lấy thông tin bài viết:', error);
         res.status(500).send('Có lỗi xảy ra');
@@ -252,6 +290,7 @@ router.post('/article/update-premium', async (req, res) => {
 
         console.error('Lỗi khi cập nhật trạng thái Premium:', error);
         res.status(500).send('Có lỗi xảy ra');
+
     }
 });
 
@@ -259,11 +298,12 @@ router.post('/article/update-premium', async (req, res) => {
 
 
 
-router.get('/list-article_reject', async (req, res) => {
+
+router.get('/list_article_reject', async (req, res) => {
 
     try {
         const rejectedArticles = await editorService.getRejectedArticles(); // Gọi hàm để lấy dữ liệu
-        res.render('vwEditor/list_article_reject', { layout: 'moderator', posts: rejectedArticles });
+        res.render('vwEditor/list_article_reject', { layout: 'moderator', posts: rejectedArticles , id_user});
     } catch (error) {
         console.error('Lỗi khi lấy danh sách bài viết bị từ chối:', error);
         res.status(500).send('Có lỗi xảy ra');
@@ -296,11 +336,59 @@ router.get('/list-writer', async (req, res) => {
 
     try {
         const writersWithStatusCount = await editorService.getWritersWithStatusCount(id_editor);
-        res.render('vwEditor/list_writer', { layout: 'moderator', writers: writersWithStatusCount });
+        res.render('vwEditor/list_writer', { layout: 'moderator', writers: writersWithStatusCount, id_user });
     } catch (error) {
         console.error('Lỗi khi lấy danh sách tác giả:', error);
         res.status(500).send('Có lỗi xảy ra');
     }
 });
+
+
+// 24/12/2024
+router.post('/article/update-date', async (req, res) => {
+    const { id_news, date } = req.body; // Lấy id_news và date từ body
+
+    try {
+        await editorService.updateNewsDate(id_news, date); // Gọi hàm cập nhật ngày
+        // res.status(200).send('Cập nhật ngày thành công');
+        res.redirect(`/editor/article?id_news=${id_news}`);
+    } catch (error) {
+        console.error('Lỗi khi cập nhật ngày:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
+
+router.post('/update_article', upload.single('filename'), async (req, res) => {
+    const { id_news, title, content, premium, sub_category, meta_title, meta_description } = req.body;
+
+
+
+    try {
+        const oldNews = await editorService.findNewsByIdFullAttribute(id_news);
+        const updatedNews = {
+            Title: title,
+            Content: content,
+            Premium: premium ? true : false,
+            Id_SubCategory: sub_category,
+            Meta_title: meta_title,
+            Meta_description: meta_description,
+            // Nếu có hình ảnh mới, bạn có thể thêm logic để xử lý
+            Image: req.file ? req.file.filename : oldNews.Image,  // Nếu không có file, gán là null
+        };
+
+
+        await editorService.updateNews(id_news, updatedNews); // Gọi hàm cập nhật với id_news
+
+        res.redirect(`/editor/list-article?id_user=${id_user}`); // Chuyển hướng về danh sách bài viết
+    } catch (error) {
+        console.error('Lỗi khi cập nhật bài viết:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
+
 
 export default router;

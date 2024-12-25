@@ -2,59 +2,53 @@
 <link rel="stylesheet" href="/css/admin/newsmanagement.css">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 {{/fillHtmlContent}}
+{{#fillHtmlContent 'js'}}
+<script>
+    let a = document.querySelectorAll('.status-select');
+    a.forEach(status => {
+        status.addEventListener("onchange", function (e) {
+            switch (e.target.value) {
+                case "STS0001":
+                    status.classList.add('accepted');
+                    status.classList.remove('not-yet');
+                    status.classList.remove('not-enough');
+                    status.classList.remove('rejected');
+                    break;
+                case "STS0002":
+                    status.classList.remove('accepted');
+                    status.classList.add('not-yet');
+                    status.classList.remove('not-enough');
+                    status.classList.remove('rejected');
+                    break;
+                case "STS0003":
+                    status.classList.remove('accepted');
+                    status.classList.remove('not-yet');
+                    status.classList.add('not-enough');
+                    status.classList.remove('rejected');
+                    break;
+                case "STS0004":
+                    status.classList.remove('accepted');
+                    status.classList.remove('not-yet');
+                    status.classList.remove('not-enough');
+                    status.classList.add('rejected');
+                    break;
+                default:
+                    status.classList.remove('accepted');
+                    status.classList.remove('not-yet');
+                    status.classList.remove('not-enough');
+                    status.classList.remove('rejected');
+            }
+        });
+    })
+</script>
+{{/fillHtmlContent}}
+
 
 {{> headerAdmin}}
 
 <div class="container">
     <h1>Quản lý tất cả bài viết</h1>
-    {{!-- <div class="filter-section">
-        <!-- Tìm kiếm -->
-        <div class="filter-item">
-            <label for="search-input">Tìm kiếm</label>
-            <input type="text" id="search-input" placeholder="Tìm kiếm" class="filter-input">
-        </div>
 
-        <!-- Chuyên mục và Chuyên mục cấp 2 -->
-        <div class="filter-item">
-            <label for="category-select">Chuyên mục</label>
-            <select id="category-select" class="filter-select">
-                <option value="">Chọn chuyên mục</option>
-                <option value="thethao">Thể thao</option>
-                <option value="giaitri">Giải trí</option>
-                <option value="kinhte">Kinh tế</option>
-            </select>
-        </div>
-
-        <div class="filter-item">
-            <label for="subcategory-select">Chuyên mục cấp 2</label>
-            <select id="subcategory-select" class="filter-select">
-                <option value="">Chọn chuyên mục cấp 2</option>
-                <option value="bongda">Bóng đá</option>
-                <option value="chungkhoan">Chứng khoán</option>
-                <option value="phimanh">Phim ảnh</option>
-            </select>
-        </div>
-
-        <!-- Tag -->
-        <div class="filter-item">
-            <label for="tag-input">Tag</label>
-            <input type="text" id="tag-input" placeholder="#Tag" class="filter-input">
-        </div>
-
-        <!-- Ngày bắt đầu - Ngày kết thúc -->
-        <div class="filter-item">
-            <label for="date-input">Thời gian</label>
-            <input type="text" id="date-input" placeholder="Ngày bắt đầu - Ngày kết thúc" class="filter-input">
-        </div>
-
-        <!-- Nút filter -->
-        <div class="filter-item">
-            <button class="filter-button">
-                Enter
-                <i class="bi bi-filter"></i>
-            </button>
-        </div>
-    </div> --}}
     <table class="article-table">
         <thead>
             <tr>
@@ -90,11 +84,14 @@
                 <td>
                     <select class="status-select" data-id="{{this.Id_News}}">
                         <option value="" disabled>Chọn trạng thái</option>
-                        <option value="STS0001" {{#if (eq this.Id_Status 'STS0001' )}}selected{{/if}}>Đồng ý</option>
-                        <option value="STS0002" {{#if (eq this.Id_Status 'STS0002' )}}selected{{/if}}>Chưa duyệt
-                        </option>
-                        <option value="STS0003" {{#if (eq this.Id_Status 'STS0003' )}}selected{{/if}}>Chưa đạt</option>
-                        <option value="STS0004" {{#if (eq this.Id_Status 'STS0004' )}}selected{{/if}}>Từ chối</option>
+                        <option value="STS0001" {{#if (eq this.Id_Status 'STS0001' )}}selected{{/if}} class="accepted">
+                            Đồng ý</option>
+                        <option value="STS0002" {{#if (eq this.Id_Status 'STS0002' )}}selected{{/if}} class="not-yet">
+                            Chưa duyệt</option>
+                        <option value="STS0003" {{#if (eq this.Id_Status 'STS0003' )}}selected{{/if}}
+                            class="not-enough">Chưa đạt</option>
+                        <option value="STS0004" {{#if (eq this.Id_Status 'STS0004' )}}selected{{/if}} class="rejected">
+                            Từ chối</option>
                     </select>
                 </td>
                 <td>
@@ -103,38 +100,10 @@
                 </td>
             </tr>
             {{/each}}
-
-
-
-
-
         </tbody>
-
     </table>
-    {{!-- <div class="pagination" id="pagination">
-        <button>1</button>
-        <button class="active">2</button>
-        <button>3</button>
-        <button>4</button>
-        <!-- Thêm các nút phân trang -->
-    </div> --}}
 </div>
 
-{{!-- <!-- Modal -->
-<div id="confirmation-modal" class="modal">
-    <div class="modal-content">
-        <p>Bạn chắc chắn có muốn thay đổi?</p>
-        <button id="confirm-btn" class="modal-button">Đồng ý</button>
-        <button id="cancel-btn" class="modal-button">Hủy</button>
-    </div>
-</div> --}}
 
 
-<!-- 
-</body>
-
-</html> -->
-
-{{#fillHtmlContent 'js'}}
 <script src="/js/newsmanagement.js"></script>
-{{/fillHtmlContent}}

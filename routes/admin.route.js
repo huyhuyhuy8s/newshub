@@ -5,8 +5,12 @@ import adminService from '../services/admin.service.js';
 
 const router = express.Router();
 
+let id_user;
+
 router.get("/dashboard", async (req, res) => {
-    const { id_user } = req.query;
+    id_user  = req.query.id_user;
+
+ 
 
     const getTotalNewsCount = await adminService.getTotalNewsCount()
     const getTotalUserCount = await adminService.getTotalUserCount()
@@ -40,7 +44,9 @@ router.get("/dashboard", async (req, res) => {
         dataBar: JSON.stringify(dataBar),
         labelsPie: JSON.stringify(labelsPie),
         dataPie: JSON.stringify(dataPie),
-        layout: 'admin'
+        layout: 'moderator',
+
+        id_user
 
     })
 });
@@ -51,7 +57,8 @@ router.get("/usermanagement", async (req, res) => {
 
     res.render('vwAdmin/usermanagement', {
         inforUser: inforUser,
-        layout: 'admin'
+        layout: 'moderator',
+        id_user
     })
 
 });
@@ -65,11 +72,15 @@ router.get("/admininforuser", async (req, res) => {
 
 
 
+
+
     // Lấy id_Category của Editor
     const categoryId = await adminService.getCategoryIdByEditorId(inforUser.Id_Editor);
 
     // Lấy số lượng bài viết cho Editor dựa trên id_Category
     const newsCounts = await adminService.getNewsCountsForEditor(categoryId);
+
+    const categories = await adminService.getCategories();
 
 
     let newsCountApproved = 0;
@@ -87,7 +98,7 @@ router.get("/admininforuser", async (req, res) => {
 
 
     res.render('vwAdmin/admininforuser', {
-        layout: 'admin',
+        layout: 'moderator',
         inforUser: inforUser,
         newsCountApproved: newsCountApproved,
         newsCountPending: newsCountPending,
@@ -95,7 +106,10 @@ router.get("/admininforuser", async (req, res) => {
         newsCountRejected: newsCountRejected,
         subscriberInfo: subscriberInfo,
 
-        newsCounts: newsCounts
+        newsCounts: newsCounts,
+
+        categories: categories,
+        id_user
     })
 });
 
@@ -153,9 +167,12 @@ router.post("/subcriber/update", async (req, res) => {
 router.post("/subcriber/create", async (req, res) => {
     const { id_user } = req.body; // Lấy Id_User từ body
 
+    console.log('id user sub:', id_user);
+
     try {
         // Tạo một Subscriber mới
         const newSubscriberId = await adminService.addUsertoSubcriber(id_user);
+        console.log('newSubscriberId:', newSubscriberId);
         //console.log('Tạo Subscriber mới thành công với ID:', newSubscriberId);
         res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng về trang thông tin của Subscriber mới
     } catch (error) {
@@ -163,6 +180,44 @@ router.post("/subcriber/create", async (req, res) => {
         res.status(500).send("Có lỗi xảy ra khi tạo Subscriber.");
     }
 });
+
+// 24/12/2024
+router.post('/editor/create', async (req, res) => {
+    const { id_user, id_category } = req.body;
+
+
+    try {
+        await adminService.createEditor(id_user, id_category); // Gọi hàm tạo editor
+        res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng đến trang thành công
+    } catch (error) {
+        console.error('Lỗi khi tạo biên tập viên:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+router.post('/writer/create', async (req, res) => {
+    const { id_user, id_category, penname } = req.body;
+
+
+    try {
+        await adminService.createWriter(id_user, id_category, penname); // Gọi hàm tạo editor
+        res.redirect(`/admin/admininforuser?id_user=${id_user}`); // Chuyển hướng đến trang thành công
+    } catch (error) {
+        console.error('Lỗi khi tạo nhà báo:', error);
+        res.status(500).send('Có lỗi xảy ra');
+    }
+});
+
+
+
+
+
+
+
+
+
+
+
 
 router.post("/writer/delete", async (req, res) => {
     const { id_user } = req.body; // Lấy Id_User từ body
@@ -195,8 +250,9 @@ router.get("/newsmanagement", async (req, res) => {
         const newsDetails = await adminService.getNewsDetails(); // Lấy thông tin bài viết
 
         res.render('vwAdmin/newsmanagement', {
-            layout: 'admin',
-            newsDetails: newsDetails // Truyền thông tin bài viết vào template
+            layout: 'moderator',
+            newsDetails: newsDetails,
+            id_user
         });
     } catch (error) {
         console.error("Lỗi khi lấy thông tin bài viết:", error);
@@ -217,9 +273,109 @@ router.post("/newsmanagement/update-status", async (req, res) => {
     }
 });
 
+
 router.get('/tagsmanagement', async (req, res) => {
-    res.render('vwAdmin/tagsmanagement', { layout: 'admin' });
-})
+   
+    try {
+
+        const tags = await adminService.getTags(); // Lấy danh sách tag
+        res.render('vwAdmin/tagsmanagement', {
+            layout: 'moderator',
+            tags: tags,
+            id_user // Truyền danh sách tag vào view
+        });
+       
+    } catch (error) {
+        console.error("Lỗi khi lấy danh sách tag:", error);
+        res.status(500).send("Có lỗi xảy ra khi lấy danh sách tag.");
+    }
+});
+
+router.post('/tagsmanagement/add', async (req, res) => {
+    const { tag_name } = req.body; // Lấy tên tag từ body
+
+
+    try {
+        await adminService.addTag(tag_name); // Gọi hàm thêm tag
+        res.redirect('/admin/tagsmanagement'); // Chuyển hướng về trang quản lý tag
+    } catch (error) {
+        console.error('Lỗi khi thêm tag:', error);
+        res.status(500).send('Có lỗi xảy ra khi thêm tag.');
+    }
+});
+
+router.post('/tagsmanagement/delete', async (req, res) => {
+    const { id_tag } = req.body; // Lấy Id_Tag từ body
+
+    try {
+        await adminService.deleteTag(id_tag); // Gọi hàm xóa tag
+        res.redirect('/admin/tagsmanagement'); // Chuyển hướng về trang quản lý tag
+    } catch (error) {
+        console.error('Lỗi khi xóa tag:', error);
+        res.status(500).send('Có lỗi xảy ra khi xóa tag.');
+    }
+});
+
+
+
+
+router.get('/subcategorymanagement', async (req, res) => {
+    // const { id_category } = req.params;
+    const categories = await adminService.getCategories();
+
+
+    try {
+
+        res.render('vwAdmin/subcategorymanagement', {
+            layout: 'moderator',
+            categories: categories,
+            id_user
+
+        });
+    } catch (error) {
+        console.error("Lỗi khi lấy danh sách chuyên mục:", error);
+        res.status(500).send("Có lỗi xảy ra khi lấy danh sách chuyên mục.");
+    }
+});
+
+router.get('/subcategorymanagement/:id_category', async (req, res) => {
+    const { id_category } = req.params;
+
+    try {
+        const subcategories = await adminService.getSubCategoriesByCategoryId(id_category);
+
+        res.json(subcategories); // Trả về danh sách subcategories dưới dạng JSON
+    } catch (error) {
+        console.error("Lỗi khi lấy subcategories:", error);
+        res.status(500).send("Có lỗi xảy ra khi lấy subcategories.");
+    }
+});
+
+
+router.post('/subcategorymanagement/add', async (req, res) => {
+    const { id_category, name } = req.body; // Lấy thông tin từ body
+
+
+    try {
+        const newSubCategory = await adminService.addSubCategory(id_category, name); // Gọi hàm thêm subcategory
+        res.redirect('/admin/subcategorymanagement'); // Chuyển hướng về trang quản lý subcategory
+    } catch (error) {
+        console.error("Lỗi khi thêm subcategory:", error);
+        res.status(500).send("Có lỗi xảy ra khi thêm subcategory.");
+    }
+});
+
+router.get('/inforadmin', async (req, res) => {
+    const admin = await adminService.getUserById(id_user);
+ 
+
+    if (admin.Birthday) {
+        admin.Birthday = moment(admin.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
+    }
+
+
+    res.render('vwAdmin/inforadmin', { layout: 'moderator', admin, id_user });
+});
 
 
 export default router;

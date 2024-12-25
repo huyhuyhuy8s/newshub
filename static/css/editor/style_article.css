@@ -2,6 +2,96 @@ body {
     margin: 0 200px;
 }
 
+
+#rejectionContainer {
+    display: flex;
+    gap: 1em;
+
+    #rejectionReason {
+        height: 3em;
+        line-height: 3em;
+        padding: 0 1em;
+        border-radius: 5px;
+    }
+}
+
+.article-container {
+    margin: 0 75px;
+    grid-template-columns: 1fr 1fr;
+    display: grid;
+    gap: 16em;
+}
+
+#banner2 {
+    display: flex;
+    align-items: center;
+    padding: 1em;
+    gap: 2em;
+    /* width: 100%; */
+
+    input[type="file"] {
+        display: none;
+    }
+
+    #custom_file_upload2 {
+        /* background-image: url('/imgs/main/background.jpg'); */
+        background-color: var(--white);
+        /* width: calc(100% - 75px * 2 - 2em - 4em); */
+        width: 100%;
+        height: 20em;
+        line-height: 20em;
+        padding: 2em;
+        border: 2px dashed var(--black);
+        border-radius: 5px;
+        display: inline-block;
+        cursor: pointer;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center center;
+
+        h2 {
+            text-align: center;
+            font-weight: normal;
+        }
+    }
+}
+
+.nav2 {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 1em;
+
+    .search2 {
+        display: flex;
+        gap: 0.5em;
+        align-items: center;
+
+        input {
+            border-color: var(--light-red);
+            border-radius: 5px;
+            width: 20em;
+            box-shadow: none;
+            padding: 0 0.5em;
+            font-size: 12pt;
+            height: 2em;
+        }
+
+        button {
+            width: 3em;
+            height: 3em;
+        }
+
+        button:hover {
+            transition: ease-in-out 0.2s;
+            border: 1px var(--light-red) solid;
+            background-color: #F6E6E6;
+            color: var(--red);
+            width: 3em;
+        }
+    }
+
+}
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -72,7 +162,6 @@ nav {
     display: none;
 
 }
-
 
 #article {
     h5 {

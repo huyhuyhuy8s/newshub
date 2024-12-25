@@ -1,53 +1,55 @@
 {{#fillHtmlContent 'css'}}
-<link rel="stylesheet" href="/css/dashboard.css">
+<link rel="stylesheet" href="/css/admin/dashboard.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 {{/fillHtmlContent}}
 
 {{> headerAdmin}}
 
-<div class="dashboard">
-    <h1>Dashboard</h1>
-    <div class="cards">
-        <a href="#" class="card" style="background-color: #f4cccc;">
-            <span class="card-icon">📄</span>
-            <span class="card-value">Bài viết: {{totalNewsCount}}</span>
-        </a>
-        <a href="#" class="card" style="background-color: #d1e7ff;">
-            <span class="card-icon">👥</span>
-            <span class="card-value">Tổng thành viên: {{totalUserCount}}</span>
-        </a>
-        <a href="#" class="card" style="background-color: #fce5cd;">
-            <span class="card-icon">🧑‍💼</span>
-            <span class="card-value">Nhân sự: {{totalStaffCount}}</span>
-        </a>
-    </div>
-    <div class="cards">
-        <a href="#" class="card" style="background-color: #d9f7be;">
-            <span class="card-icon">✔️</span>
-            <span class="card-value">Đã duyệt: {{totalAcceptNewsCount}}</span>
-        </a>
-        <a href="#" class="card" style="background-color: #ffebb8;">
-            <span class="card-icon">⏳</span>
-            <span class="card-value">Chờ phê duyệt: {{totalNotAcceptNewCount}}</span>
-        </a>
-        <a href="#" class="card" style="background-color: #f4cccc;">
-            <span class="card-icon">🚫</span>
-            <span class="card-value">Bị từ chối: {{totalNotRefuseNewCount}}</span>
-        </a>
-    </div>
-
-    <!-- Các biểu đồ -->
-    <div class="charts-container">
-        <div class="chart">
-            <h2>Tổng quan các bài viết từng chuyên mục</h2>
-            <div class="chart-container">
-                <canvas id="categoryChart"></canvas>
+<div class="body">
+    {{!-- <h1>Trang chủ</h1> --}}
+    <div class="dashboard">
+        <div class="container">
+            <div class="cards">
+                <a href="#" class="card" style="background-color: #f4cccc;">
+                    <span class="card-icon">📄</span>
+                    <span class="card-value">Bài viết: {{totalNewsCount}}</span>
+                </a>
+                <a href="#" class="card" style="background-color: #d1e7ff;">
+                    <span class="card-icon">👥</span>
+                    <span class="card-value">Tổng thành viên: {{totalUserCount}}</span>
+                </a>
+                <a href="#" class="card" style="background-color: #fce5cd;">
+                    <span class="card-icon">🧑‍💼</span>
+                    <span class="card-value">Nhân sự: {{totalStaffCount}}</span>
+                </a>
+                <a href="#" class="card" style="background-color: #d9f7be;">
+                    <span class="card-icon">✔️</span>
+                    <span class="card-value">Đã duyệt: {{totalAcceptNewsCount}}</span>
+                </a>
+                <a href="#" class="card" style="background-color: #ffebb8;">
+                    <span class="card-icon">⏳</span>
+                    <span class="card-value">Chờ phê duyệt: {{totalNotAcceptNewCount}}</span>
+                </a>
+                <a href="#" class="card" style="background-color: #f4cccc;">
+                    <span class="card-icon">🚫</span>
+                    <span class="card-value">Bị từ chối: {{totalNotRefuseNewCount}}</span>
+                </a>
+            </div>
+            <div class="chart">
+                <h2>Tổng quan các bài viết từng chuyên mục</h2>
+                <div class="chart-container">
+                    <canvas id="categoryChart"></canvas>
+                </div>
             </div>
         </div>
 
-        <div class="chart">
-            <h2>Tổng số lượng view các bài viết theo chuyên mục</h2>
-            <div class="chart-container">
-                <canvas id="categoryPieChart"></canvas>
+        <!-- Các biểu đồ -->
+        <div class="charts-container">
+            <div class="chart">
+                <h2>Tổng số lượng view các bài viết theo chuyên mục</h2>
+                <div class="chart-container">
+                    <canvas id="categoryPieChart"></canvas>
+                </div>
             </div>
         </div>
     </div>
@@ -87,6 +89,9 @@
         }
         ,
         options: {
+            layout: {
+                padding: 32
+            },
             responsive: true,
             maintainAspectRatio: false,  // Bỏ giới hạn tỷ lệ
         }
@@ -113,6 +118,9 @@
             }]
         },
         options: {
+            layout: {
+                padding: 32
+            },
             responsive: true,
             plugins: {
                 legend: {

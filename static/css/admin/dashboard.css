@@ -14,6 +14,8 @@ body {
     background-color: var(--grey);
     margin: 0;
     padding: 0;
+    overflow-y: hidden;
+    overflow-x: hidden;
 }
 
 /* Header */
@@ -41,83 +43,107 @@ body {
     color: var(--black);
 }
 
-/* Phần Dashboard */
-.dashboard {
-    max-width: 1200px;
-    margin: 20px auto;
-    padding: 10px;
+.body {
+    width: 90%;
+    margin: 2em auto;
 }
 
-/* Tiêu đề chính */
-h1 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 40px;
+
+.dashboard {
+    /* max-width: 1200px; */
+    margin: 20px auto;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 6fr 4fr;
+    gap: 4em;
+
+    .container {
+        display: flex;
+        flex-direction: column;
+        gap: 2em;
+    }
 }
+
 
 /* Phần Cards */
 .cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-around;
-    gap: 10px;
-    /* Khoảng cách giữa các card */
-    margin-bottom: 40px;
+    display: grid;
+    grid-template: 1fr 1fr/ 1fr 1fr 1fr;
+    width: 100%;
+    row-gap: 3em;
+    column-gap: 5em;
+
+
+    .card {
+        padding: 2em 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        border-radius: 8px;
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s, box-shadow 0.3s;
+        gap: 1em;
+
+        .card-icon {
+            font-size: 32px;
+        }
+
+        .card-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+    }
 }
 
-.card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 250px;
-    height: 125px;
-    margin: 10px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #333;
-    font-weight: bold;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s, box-shadow 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
-}
-
-.card-icon {
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.card-value {
-    font-size: 18px;
-    font-weight: bold;
-}
 
 /* Phần Biểu đồ */
 .charts-container {
     display: flex;
+    flex-direction: column;
     gap: 20px;
-    /* Khoảng cách giữa hai biểu đồ */
-    justify-content: space-between;
-    margin-top: 50px;
+
+    .chart {
+        justify-content: space-around;
+
+        .chart-container {
+            height: fit-content;
+        }
+    }
 }
 
 .chart {
+    width: 100%;
     flex: 1;
+    display: flex;
+    flex-direction: column;
     /* Cả hai biểu đồ sẽ chiếm cùng một không gian */
     text-align: center;
+    background-color: var(--white);
+    border-radius: 8px;
+
+    h2 {
+        padding-top: 1em;
+        text-align: center;
+    }
 }
 
 .chart-container {
-    position: relative;
-    height: 400px;
+    align-content: center;
+    justify-content: center;
+    height: 100%;
     width: 100%;
 }
 
 canvas {
-    width: 80% !important;
-    height: auto !important;
+    width: 100% !important;
+    /* height: auto !important; */
 }

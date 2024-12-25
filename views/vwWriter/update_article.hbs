@@ -1,0 +1,171 @@
+{{#fillHtmlContent 'css'}}
+<!-- Place the first <script> tag in your HTML's <head> -->
+<script src="https://cdn.tiny.cloud/1/c7ncx5x4bdo5yb9klw2gzs1kx687tmkt0zt4da7tppggll7v/tinymce/7/tinymce.min.js"
+    referrerpolicy="origin"></script>
+<link rel="stylesheet" href="/css/writer/style_create.css">
+{{/fillHtmlContent}}
+
+{{#fillHtmlContent 'js'}}
+<script src="/js/scriptModerator.js"></script>
+<script>
+    tinymce.init({
+        selector: '#article',
+        plugins: [
+            // Core editing features
+            'anchor', 'autolink', 'charmap', 'codesample', 'emoticons', 'image', 'link', 'lists', 'media', 'searchreplace', 'table', 'visualblocks', 'wordcount',
+            'textpattern', 'tinydrive', 'code',
+            // Your account includes a free trial of TinyMCE premium features
+            // Try the most popular premium features until Dec 21, 2024:
+            //'checklist','mediaembed','casechange', 'export', 'formatpainter', 'pageembed', 'a11ychecker', 'tinymcespellchecker', 'permanentpen', 'powerpaste', 'advtable', 'advcode', 'editimage', 'advtemplate', 'ai', 'mentions', 'tinycomments', 'tableofcontents', 'footnotes', 'mergetags', 'autocorrect', 'typography', 'inlinecss', 'markdown', 'importword', 'exportword', 'exportpdf',
+        ],
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough code| link image media table mergetags | addcomment showcomments | spellcheckdialog a11ycheck typography | align lineheight | checklist numlist bullist indent outdent | charmap insertfile',
+        tinycomments_mode: 'embedded',
+        tinycomments_author: 'Author name',
+        //image field
+        images_file_types: 'jpg,svg,webp,png', //choose type of image extension
+        file_picker_types: 'file image media', //type of media picker
+        block_unsupported_drop: true, //block all unsupported type image
+        file_picker_types: 'image',
+        /* and here's our custom image picker*/
+        /* mediaembed_max_width: 450, */
+        file_picker_callback: (cb, value, meta) => {
+            const input = document.createElement('input');
+            input.setAttribute('type', 'file');
+            input.setAttribute('accept', 'image/*');
+
+            input.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+
+                const reader = new FileReader();
+                reader.addEventListener('load', () => {
+                    /*
+                      Note: Now we need to register the blob in TinyMCEs image blob
+                      registry. In the next release this part hopefully won't be
+                      necessary, as we are looking to handle it internally.
+                    */
+                    const id = 'blobid' + (new Date()).getTime();
+                    const blobCache = tinymce.activeEditor.editorUpload.blobCache;
+                    const base64 = reader.result.split(',')[1];
+                    const blobInfo = blobCache.create(id, file, base64);
+                    blobCache.add(blobInfo);
+
+                    /* call the callback and populate the Title field with the file name */
+                    cb(blobInfo.blobUri(), { title: file.name });
+                });
+                reader.readAsDataURL(file);
+            });
+
+            input.click();
+        },
+        tinydrive_token_provider: '/jwt',
+        textpattern_patterns: [
+            { start: '*', end: '*', format: 'italic' },
+            { start: '**', end: '**', format: 'bold' },
+            { start: '#', format: 'h1' },
+            { start: '##', format: 'h2' },
+            { start: '###', format: 'h3' },
+            { start: '####', format: 'h4' },
+            { start: '#####', format: 'h5' },
+            { start: '######', format: 'h6' },
+            { start: '1. ', cmd: 'InsertOrderedList' },
+            { start: '* ', cmd: 'InsertUnorderedList' },
+            { start: '- ', cmd: 'InsertUnorderedList' }
+        ],
+        mergetags_list: [
+            { value: 'First.Name', title: 'First Name' },
+            { value: 'Email', title: 'Email' },
+        ],
+        ai_request: (request, respondWith) => respondWith.string(() => Promise.reject('See docs to implement AI Assistant')),
+    });
+</script>
+<script src="/js/create_article.js"></script>
+{{/fillHtmlContent}}
+
+{{> headerWriter}}
+
+<form action="/writer/update_article" method="post" enctype="multipart/form-data">
+    <h1 style="display: flex; justify-content: center; align-items: center; ">
+        Cập nhật bài viết
+    </h1>
+    <input type="hidden" name="id_news" value="{{news.Id_News}}">
+    <nav>
+        <div class="search">
+            <input type="text" name="title" id="title" value="{{news.Title}}" required>
+        </div>
+        <div class="filter">
+
+            <button class="btn" type="submit" onclick="submitPostUpdate()">
+                <i class="bi bi-cloud-upload"></i>
+                Cập nhật bài viết</button>
+        </div>
+    </nav>
+    <a href=""></a>
+    <div id="banner">
+        <label class="custom-file-upload" id="custom_file_upload">
+            <input type="file" id="myFile" name="filename" accept="image/jpg, image/jpeg, image/png">
+            <h2>Chọn ảnh bìa mới cho bài viết</h2>
+        </label>
+
+        <div id="banner">
+            <h3>Hình ảnh hiện tại:</h3>
+            {{#if news.Image}} <!-- Kiểm tra xem có hình ảnh không -->
+            <img src="/imgs/uploads/{{news.Image}}" alt="Current Image" style="max-width: 200px;">
+            {{else}}
+            <p>Không có hình ảnh hiện tại.</p>
+            {{/if}}
+        </div>
+
+    </div>
+
+    <div id="body">
+        <div class="creat">
+            <textarea id="article" name="content" required>{{news.Content}}</textarea>
+            <textarea name="save" id="save"></textarea>
+        </div>
+        <div class="nav">
+            <div class="state">
+                <h3>Thuộc tính bài viết</h3>
+                <div>
+                    <label for="premium" style="user-select: none;">Bài viết Premium</label>
+                    <input type="checkbox" id="premium" name="premium" {{#if news.Premium}}checked{{/if}}>
+                </div>
+            </div>
+            <div class="category">
+                <h3>Chuyên mục</h3>
+                <div>
+
+                    <select name="category" id="category" onchange="loadSubCategories(this.value)">
+
+                        <option value="{{category.Id_Category}}">{{category.Name}}</option>
+
+                    </select>
+                </div>
+
+                <h3>Chuyên mục cấp 2</h3>
+
+
+                <select name="sub_category" id="sub-category" required>
+
+                    {{#each subCategories}}
+                    <option value="{{this.Id_SubCategory}}" {{#if (eq this.Id_SubCategory
+                        ../news.Id_SubCategory)}}selected{{/if}}>{{this.Name}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            {{!-- <div class="tags">
+                <h3>Tags</h3>
+                <input type="text" name="tags" id="tags" placeholder="#tags">
+            </div> --}}
+            <div class="meta-title">
+                <h3>Tóm tắt tiêu đề</h3>
+                <input type="text" name="meta_title" id="meta-title" value="{{news.Meta_title}}" required>
+            </div>
+            <div class="meta-description">
+                <h3>Tóm tắt nội dung</h3>
+                <input type="text" name="meta_description" id="meta-description" value="{{news.Meta_description}}"
+                    required>
+            </div>
+        </div>
+    </div>
+
+</form>

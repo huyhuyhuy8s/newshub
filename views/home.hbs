@@ -11,11 +11,12 @@
     <!-- Tin tức nổi bật & top 10 categories -->
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-8">
+            <div class="col-sm-8" style="background-color: transparent;">
                 <div class="row">
                     {{#if firstNewstopViewedNews}}
-                    <a class="grid-head" href="/news/news?id={{firstNewstopViewedNews.Id_News}}">
-                        <img src="/imgs/home/donal.jpg"
+                    <a class="grid-head" href="/news/news?id={{firstNewstopViewedNews.Id_News}}"
+                        style="background-color: white;">
+                        <img src="/imgs/uploads/{{firstNewstopViewedNews.Image}}"
                             class="img-grid-head img-fluid ${3|rounded-top,rounded-right,rounded-bottom,rounded-left,rounded-circle,|}"
                             alt="">
                         <div class="content-grid-head">
@@ -35,7 +36,7 @@
                     {{#each News234stopViewedNews}}
                     <div class="article-list-element">
                         <a href="/news/news?id={{this.Id_News}}">
-                            <img src="/imgs/home/bv.jpg" class="img-fluid" alt="">
+                            <img src="/imgs/uploads/{{this.Image}}" class="img-fluid" alt="">
                             <div class="article-list-content">
                                 <h5>{{truncateText this.Meta_title 45}}</h5> <!-- Tiêu đề bài viết -->
                                 <p>{{truncateText this.Meta_description 135}}</p> <!-- Mô tả bài viết -->
@@ -73,20 +74,19 @@
     <!-- 10 bài viết nổi bật liên quan tới chuyên mục c1 của bài viết hiện tại -->
     <div id="article-related">
         <div class="title red">
-            <h4 style="color: white;">10 news view cao nhất mọi danh mục trong 1 tháng</h4>
+            <h4 style="color: white;text-transform:uppercase">10 bài viết được xem nhiều nhất trong 1 tháng</h4>
             <div class="button-flex">
-                <button onclick="scrollNext('bai-viet-noi-bat', 'very-first', -1)"
-                    style="color: white;">Previous</button>
-                <button onclick="scrollNext('bai-viet-noi-bat', 'very-first')" style="color: white;">Next</button>
+                <button onclick="scrollNext('bai-viet-noi-bat', 'very-first', -1)">Previous</button>
+                <button onclick="scrollNext('bai-viet-noi-bat', 'very-first')">Next</button>
             </div>
         </div>
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedAllTime}}
             <a class="articles" id="very-first" href="/news/news?id={{this.Id_News}}">
-                <img src="/imgs/detail/suôi thầu.jpg" alt="...">
+                <img src="/imgs/uploads/{{this.Image}}" alt="...">
                 <div class="card-body">
                     <h5>{{truncateText this.Meta_title 50}}</h5>
-                    <p>{{truncateText this.Meta_description 145}}</p>
+                    <p>{{truncateText this.Meta_description 105}}</p>
                 </div>
             </a>
             {{else}}
@@ -101,7 +101,10 @@
 
     <!-- Category nổi bật nhất -->
     <div class="container-fluid">
-        <h5 class="title font-weight-bold">{{topCategory.CategoryName}}</h5>
+        <div class="title-parent">
+            <h5 class="title font-weight-bold">{{topCategory.CategoryName}}</h5>
+            <h5 class="title font-weight-bold">Top 10 danh sách bài viết mới nhất</h5>
+        </div>
         <div class="row">
             <div class="col-sm-4">
                 <div class="card shadow-sm">
@@ -123,7 +126,7 @@
                 <div class="card shadow-sm">
                     {{#if firstNewsgetTopNewsFromTopCategory}} <!-- Kiểm tra xem có bài viết đầu tiên không -->
                     <a class="article-big" href="/news/news?id={{firstNewsgetTopNewsFromTopCategory.Id_News}}">
-                        <img src="/imgs/home/donal.jpg">
+                        <img src="/imgs/uploads/{{firstNewsgetTopNewsFromTopCategory.Image}}">
                         <div class="article-big-content">
                             <h4>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_title 65}}</h4>
                             <p>{{truncateText firstNewsgetTopNewsFromTopCategory.Meta_description 200}}</p>
@@ -163,12 +166,13 @@
         <div id="article_outer">
             {{#if firstNewsRecentTravelNews}}
             <a href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}">
-                <img src="/imgs/home/suôi thầu.jpg">
+                <img src="/imgs/uploads/{{firstNewsRecentTravelNews.Image}}">
             </a>
             {{/if}}
             <div class="article-title">
                 {{#if firstNewsRecentTravelNews}}
-                <a class="article-title-content" href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}">
+                <a class="article-title-content" href="/news/news?id={{firstNewsRecentTravelNews.Id_News}}"
+                    style="padding-right: 2em;">
                     <h3>{{truncateText firstNewsRecentTravelNews.Meta_title 70}}</h3>
                     <p>{{truncateText firstNewsRecentTravelNews.Meta_description 280}}</p>
                     <p class="date">
@@ -187,7 +191,7 @@
                     </div>
 
 
-                    <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
+                    <img class="article-inner-image" src="/imgs/uploads/{{SecondNewsRecentTravelNews.Image}}" alt="...">
                     {{/if}}
                 </a>
             </div>
@@ -202,7 +206,8 @@
         <div id="article_outer">
             <div class="article-title">
                 {{#if firstNewsRecentHealthNews}}
-                <a class="article-title-content" href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}">
+                <a class="article-title-content" href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}"
+                    style="padding-left: 2em;">
                     <h3>{{truncateText firstNewsRecentHealthNews.Meta_title 70}}</h3>
                     <p>{{truncateText firstNewsRecentHealthNews.Meta_description 280}}</p>
                     <p class="date">
@@ -213,7 +218,7 @@
                 <a class="media position-relative" id="article-inner"
                     href="/news/news?id={{SecondNewsRecentHealthNews.Id_News}}">
                     {{#if SecondNewsRecentHealthNews}}
-                    <img class="article-inner-image" src="/imgs/home/suôi thầu2.jpg" alt="...">
+                    <img class="article-inner-image" src="/imgs/uploads/{{SecondNewsRecentHealthNews.Image}}" alt="...">
                     <div class="media-body article-inner-content-left">
                         <h5>{{truncateText SecondNewsRecentHealthNews.Meta_title 40}}</h5>
                         <p>{{truncateText SecondNewsRecentHealthNews.Meta_description 140}}</p>
@@ -224,7 +229,7 @@
             </div>
             {{#if firstNewsRecentHealthNews}}
             <a href="/news/news?id={{firstNewsRecentHealthNews.Id_News}}">
-                <img src="/imgs/home/suôi thầu.jpg">
+                <img src="/imgs/uploads/{{firstNewsRecentHealthNews.Image}}">
             </a>
             {{/if}}
             </>
@@ -233,17 +238,16 @@
     <!-- 10 bài viết nổi bật liên quan tới chuyên mục c1 của bài viết hiện tại -->
     <div id="article-related">
         <div class="title red">
-            <h4 style="color: white;">Top 10 bài viết mới nhất của chuyên mục nổi bật nhì</h4>
+            <h4 style="color: white;text-transform:uppercase;">10 bài viết mới nhất trong giải trí</h4>
             <div class="button-flex">
-                <button onclick="scrollNext('bai-viet-moi-nhat', 'very-second', -1)"
-                    style="color: white;">Previous</button>
-                <button onclick="scrollNext('bai-viet-moi-nhat', 'very-second')" style="color: white;">Next</button>
+                <button onclick="scrollNext('bai-viet-moi-nhat', 'very-second', -1)">Previous</button>
+                <button onclick="scrollNext('bai-viet-moi-nhat', 'very-second')">Next</button>
             </div>
         </div>
         <div class="top-article" id="bai-viet-moi-nhat">
             {{#each latestNewsFromTop2Category}}
             <a href="/news/news?id={{this.Id_News}}" class="articles" id="very-second">
-                <img src="/imgs/detail/suôi thầu.jpg" alt="...">
+                <img src="/imgs/uploads/{{this.Image}}" alt="...">
                 <div class="card-body">
                     <h5>{{truncateText this.Meta_title 50}}</h5>
                     <p>{{truncateText this.Meta_description 120}}</p>
@@ -257,13 +261,12 @@
 
 
 
-    <!-- Chuyên mục chính trị -->
     <div class="container-fluid">
         <h5 class="title font-weight-bold">{{top3Category.CategoryName}}</h5>
         <div class="border-danger">
             <div class="cata-politic">
                 <a class="politic-left" href="/news/news?id={{firstNewsFromTop3Category.Id_News}}">
-                    <img src="/imgs/home/donal.jpg">
+                    <img src="/imgs/uploads/{{firstNewsFromTop3Category.Image}}">
                     <div class="content">
                         <h3 class="font-weight-bold">{{truncateText firstNewsFromTop3Category.Meta_title 100}}</h3>
                         <p>{{truncateText firstNewsFromTop3Category.Meta_description 200}}</p>
@@ -279,7 +282,7 @@
                             <p>{{truncateText this.Meta_description 200}}</p> <!-- Mô tả bài viết -->
                             <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                         </div>
-                        <img src="/imgs/home/bv.jpg">
+                        <img src="/imgs/uploads/{{this.Image}}">
                     </a>
                     {{/each}}
                 </div>
