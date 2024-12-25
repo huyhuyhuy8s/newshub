@@ -36,11 +36,9 @@ router.get('/home', async (req, res) => {
 
 
     const id = req.query.id_user;
-    console.log('id: ', id);
 
 
     id_user = id;
-    console.log('id_user: ', id_user);
 
 
     let startDate = moment(moment().subtract(1, 'month').format('YYYY-MM-DD'));
@@ -73,12 +71,10 @@ router.get('/home', async (req, res) => {
         startDate.add(1, 'days'); // Tăng ngày lên 1
     }
 
-    console.log(deleteCounts)
     const totalAccept = acceptCounts.reduce((sum, current) => sum + current, 0);
     const totalNotAccept = notAcceptCounts.reduce((sum, current) => sum + current, 0);
     const totalRefuse = refuseCounts.reduce((sum, current) => sum + current, 0);
     const totalDelete = deleteCounts.reduce((sum, current) => sum + current, 0);
-    console.log(startDate1)
     res.render('vwWriter/overview', {
         layout: 'moderator',
         dates: JSON.stringify(dates),  // Truyền labels (Ngày 1, Ngày 2, ...)
@@ -121,8 +117,7 @@ router.get('/home/typefilter', async (req, res) => {
         startDate1 = moment(req.query.startDate, 'YYYY-MM-DD')
         endDate = moment(req.query.endDate, 'YYYY-MM-DD');
     }
-    // console.log(startDate)
-    // endDate = moment(moment().format('YYYY-MM-DD'));
+
     let dates = [];
     let acceptCounts = [];
     let notAcceptCounts = [];
@@ -156,7 +151,7 @@ router.get('/home/typefilter', async (req, res) => {
     const totalNotAccept = notAcceptCounts.reduce((sum, current) => sum + current, 0);
     const totalRefuse = refuseCounts.reduce((sum, current) => sum + current, 0);
     const totalDelete = deleteCounts.reduce((sum, current) => sum + current, 0);
-    // console.log(acceptCounts)
+
     res.render('vwWriter/overview', {
         layout: 'moderator',
         dates: JSON.stringify(dates),  // Truyền labels (Ngày 1, Ngày 2, ...)
@@ -313,10 +308,6 @@ router.get('/inforwriter', async (req, res) => {
     if (writer.Birthday) {
         writer.Birthday = moment(writer.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
     }
-
-
-
-    console.log('id user khi chuyen qua infor wroter: ', id_user);
     res.render('vwWriter/inforwriter', { layout: 'moderator', writer, id_user });
 });
 

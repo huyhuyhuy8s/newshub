@@ -9,6 +9,14 @@
     --border-radius: 15px;
 }
 
+form,
+.informoderator {
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+}
+
 body {
     font-family: var(--text-fam);
     background-color: var(--grey);
@@ -55,13 +63,14 @@ body {
 .moderator-info {
     display: flex;
     flex-direction: column;
-    min-width: 750px;
+    min-width: 800px;
     margin: 20px auto;
     background: #fff;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     height: fit-content;
+    gap: 1em;
 }
 
 h2,
@@ -74,6 +83,19 @@ h3 {
     display: flex;
     gap: 10px;
     /* Khoảng cách giữa các ô */
+}
+
+.back-btn {
+    color: #000000;
+    text-decoration-line: none;
+    text-align: center;
+    border: 2px solid var(--grey);
+    padding: 10px 0;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    width: 100%;
 }
 
 .stat {
@@ -89,6 +111,7 @@ h3 {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     margin-bottom: 20px;
+    min-height: 5em;
 }
 
 .stat-icon h1 {
@@ -97,12 +120,13 @@ h3 {
 
 
 .stat-content p {
-    margin: 0;
+    margin: 0 1em;
     font-size: 14px;
     color: #333;
 }
 
 .stat-content .number {
+    margin-left: 1em;
     font-weight: bold;
     font-size: 20px;
     color: #000;
@@ -124,6 +148,7 @@ h3 {
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
+    width: 100%;
 }
 
 .stop-work {

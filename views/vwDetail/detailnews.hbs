@@ -57,7 +57,7 @@
             <div class="comment">
                 <div class="img-container">
                     <div class="image">
-                        <img src="/imgs/detail/biden.jpg" alt="Avatar">
+                        <img src="/imgs/detail/avatar_comment.png" alt="Avatar">
                     </div>
                     <h6>{{this.UserName}}</h6>
                 </div>
@@ -80,11 +80,11 @@
         </div>
         <div class="top-article" id="bai-viet-lien-quan">
             {{#each relatedNews}}
-            <a class="articles" id="very-first" href="/news/{{this.Id_News}}">
-                <img src="/imgs/uploads/{{relatedNews.Image}}" alt="...">
+            <a class="articles" id="very-first" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
+                <img src="/imgs/uploads/{{this.Image}}" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">{{this.Meta_title}}</h5>
-                    <p class="card-text">{{this.Meta_description}}</p>
+                    <h5 class="card-title">{{truncateText this.Meta_title 80}}</h5>
+                    <p class="card-text">{{truncateText this.Meta_description 100}}</p>
                     <p class="card-text">{{formatDate this.Date}}</p>
                 </div>
             </a>
@@ -108,8 +108,8 @@
         </div>
         <div class="top-article" id="bai-viet-noi-bat">
             {{#each topViewedNews}}
-            <a class="articles" id="very-second" href="/news/{{this.Id_News}}">
-                <img src="/imgs/uploads/{{topViewedNews.Image}}" alt="...">
+            <a class="articles" id="very-second" href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
+                <img src="/imgs/uploads/{{this.Image}}" alt="...">
                 <div class="card-body-3">
                     <h5>{{truncateText this.Meta_title 100}}</h5>
                     <p>{{truncateText this.Meta_description 100}}</p>
@@ -130,11 +130,11 @@
         <h3>Bài viết nổi bật trong 1 tuần vừa qua</h3>
         <div id="article_list">
             {{#each topViewedLastWeek}}
-            <a href="/news/{{this.Id_News}}">
-                <img src="/imgs/uploads/{{topViewedLastWeek.Image}}" alt="">
+            <a href="/news/news?id={{Id_News}}&subcategory={{Id_SubCategory}}&category={{Id_Category}}">
+                <img src="/imgs/uploads/{{this.Image}}" alt="">
                 <div>
-                    <h5>{{this.Meta_title}}</h5>
-                    <p>{{this.Meta_description}}</p>
+                    <h5>{{truncateText this.Meta_title 80}}</h5>
+                    <p>{{truncateText this.Meta_description 100}}</p>
                     <p class="date">{{formatDate this.Date}}</p>
                 </div>
             </a>

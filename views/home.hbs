@@ -39,7 +39,7 @@
                             <img src="/imgs/uploads/{{this.Image}}" class="img-fluid" alt="">
                             <div class="article-list-content">
                                 <h5>{{truncateText this.Meta_title 45}}</h5> <!-- Tiêu đề bài viết -->
-                                <p>{{truncateText this.Meta_description 135}}</p> <!-- Mô tả bài viết -->
+                                <p>{{truncateText this.Meta_description 80}}</p> <!-- Mô tả bài viết -->
                                 <p class="date">
                                     {{formatDate this.Date}} <!-- Ngày bài viết -->
                                 </p>
@@ -261,7 +261,6 @@
 
 
 
-    <!-- Chuyên mục chính trị -->
     <div class="container-fluid">
         <h5 class="title font-weight-bold">{{top3Category.CategoryName}}</h5>
         <div class="border-danger">
@@ -283,7 +282,7 @@
                             <p>{{truncateText this.Meta_description 200}}</p> <!-- Mô tả bài viết -->
                             <p class="date">{{formatDate this.Date}}</p> <!-- Ngày bài viết -->
                         </div>
-                        <img src="/imgs/uploads/{{this.secondNewsFromTop3Category}}">
+                        <img src="/imgs/uploads/{{this.Image}}">
                     </a>
                     {{/each}}
                 </div>

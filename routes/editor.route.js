@@ -86,7 +86,7 @@ router.get('/home', async (req, res) => {
 
 
 router.get('/home/typefilter', async (req, res) => {
-   
+
     const id_user = req.query.id_user;
     const filter = req.query.filter;
 
@@ -143,7 +143,7 @@ router.get('/home/typefilter', async (req, res) => {
     const totalNotAccept = notAcceptCounts.reduce((sum, current) => sum + current, 0);
     const totalRefuse = refuseCounts.reduce((sum, current) => sum + current, 0);
     const totalDelete = deleteCounts.reduce((sum, current) => sum + current, 0);
-  
+
     res.render('vwEditor/overview', {
         layout: 'moderator',
         dates: JSON.stringify(dates),  // Truyền labels (Ngày 1, Ngày 2, ...)
@@ -166,8 +166,6 @@ router.get('/home/typefilter', async (req, res) => {
 
 router.get('/inforeditor', async (req, res) => {
     const editor = await editorService.getUserById(id_user);
-    console.log('editor: ', editor);
-    console.log('id user: ', id_user);
 
     if (editor.Birthday) {
         editor.Birthday = moment(editor.Birthday).format('YYYY-MM-DD'); // Đảm bảo định dạng đúng
@@ -250,13 +248,13 @@ router.get('/article', async (req, res) => {
         }
 
         const id_writer = await editorService.findWriterByNewsId(id_news);
-      
+
         const category = await editorService.getCategoryByWriterId(id_writer);
-      
+
         const subCategories = await editorService.getSubCategoriesByWriterId(id_writer);
-      
-   
-   
+
+
+
 
         res.render('vwEditor/article', { layout: 'moderator', news, id_user, category, subCategories }); // Truyền thông tin bài viết vào view
     } catch (error) {
@@ -303,7 +301,7 @@ router.get('/list_article_reject', async (req, res) => {
 
     try {
         const rejectedArticles = await editorService.getRejectedArticles(); // Gọi hàm để lấy dữ liệu
-        res.render('vwEditor/list_article_reject', { layout: 'moderator', posts: rejectedArticles , id_user});
+        res.render('vwEditor/list_article_reject', { layout: 'moderator', posts: rejectedArticles, id_user });
     } catch (error) {
         console.error('Lỗi khi lấy danh sách bài viết bị từ chối:', error);
         res.status(500).send('Có lỗi xảy ra');

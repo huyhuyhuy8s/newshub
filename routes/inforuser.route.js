@@ -17,10 +17,10 @@ router.get('/inforuser', async (req, res) => {
         if (!userInfo) {
             return res.status(404).send('User not found');
         }
-        
-        
+
+
         // Truyền userInfo vào view
-        res.render('vwInforUser/inforuser', { userInfo, layout: false, id_user, name, email, birthday });
+        res.render('vwInforUser/inforuser', { userInfo, layout: false, id_user, name, email, birthday, title: "Editor Infor" });
     } catch (error) {
         console.error('Error fetching user info:', error);
         res.status(500).send('Internal Server Error');
@@ -30,7 +30,7 @@ router.get('/inforuser', async (req, res) => {
 // Route để cập nhật thông tin người dùng
 router.post('/update', async (req, res) => {
     const { name, email, dob, password } = req.body;
-    
+
 
     try {
         if (!req.session.auth) {
@@ -80,7 +80,7 @@ router.post('/renew', async (req, res) => {
         await inforUserService.renewSubscription(userId);
         const userInfo = await inforUserService.getUserInfo(userId);
         res.redirect(`/inforuser/inforuser?id_user=${userId}&name=${userInfo.Name}&email=${userInfo.Email}&birthday=${userInfo.Birthday}`);
-       
+
     } catch (error) {
         console.error('Error renewing subscription:', error);
         res.status(500).send('Có lỗi xảy ra khi gia hạn!');

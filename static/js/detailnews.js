@@ -42,7 +42,7 @@ document.getElementById('submitComment').addEventListener('click', async () => {
             newComment.innerHTML = `
                 <div class="img-container">
                     <div class="image">
-                        <img src="/imgs/detail/biden.jpg" alt="Avatar">
+                        <img src="/imgs/detail/avatar_comment.png" alt="Avatar">
                     </div>
                     <h6>${userName}</h6>
                 </div>
